@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tsKaizen | AI and Automation for Local Business</title>
+<meta name="description" content="tsKaizen builds AI-powered websites, chat and call assistants, and automation systems that help local businesses capture every lead and build a better future.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16182E; --amber:#F59E0B; --indigo:#6366F1; --indigo-d:#4F46E5;
+  --ivory:#FAF7F0; --muted:#A9AEC6; --muted-d:#7C7F99; --line:rgba(255,255,255,.10);
+  --grad:linear-gradient(120deg,var(--indigo),var(--amber));
+  --hl:linear-gradient(100deg,#8E97FF 0%,#F59E0B 95%);
+  --maxw:1120px; --sect:74px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; font-family:"DM Sans",system-ui,sans-serif; color:var(--muted); line-height:1.62; -webkit-font-smoothing:antialiased;
+  background:
+   radial-gradient(900px 600px at 82% 2%, rgba(99,102,241,.22), transparent 60%),
+   radial-gradient(760px 520px at 6% 12%, rgba(245,158,11,.10), transparent 60%),
+   radial-gradient(900px 760px at 60% 80%, rgba(99,102,241,.13), transparent 65%),
+   linear-gradient(180deg,#0B0D1E 0%, #131530 30%, #14162C 55%, #161834 78%, #0C0E20 100%);
+  background-repeat:no-repeat;}
+h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif; color:var(--ivory); line-height:1.07; margin:0; letter-spacing:-0.02em;}
+p{margin:0;} a{color:inherit; text-decoration:none;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.eyebrow{font-family:"Space Grotesk",sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin-bottom:16px;}
+.grad{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.hl{background:var(--hl); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.muted{color:var(--muted);}
+
+/* sections: full-bleed with inner wrap, consistent rhythm, alternating faint band */
+.section{padding:var(--sect) 0;}
+.section.band{background:rgba(255,255,255,.022); box-shadow:inset 0 1px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(255,255,255,.035);}
+
+.btn{display:inline-flex; align-items:center; gap:9px; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px; padding:14px 27px; border-radius:999px; cursor:pointer; border:1.5px solid transparent; transition:transform .18s,box-shadow .18s,border-color .18s;}
+.btn-primary{background:var(--amber); color:var(--ink); box-shadow:0 12px 28px -10px rgba(245,158,11,.6);}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 18px 34px -10px rgba(245,158,11,.72);}
+.btn-ghost{border-color:rgba(250,247,240,.26); color:var(--ivory);}
+.btn-ghost:hover{border-color:var(--ivory); transform:translateY(-2px);}
+
+/* header: logo LEFT (large, blended), nav RIGHT */
+header{position:sticky; top:0; z-index:50; background:rgba(11,13,30,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);}
+.head-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+.logo-svg{height:48px; width:auto; display:block;}
+.logo-svg-sm{height:28px; width:auto; display:block;}
+.nav{display:flex; gap:24px; align-items:center;}
+.nav a{color:var(--muted); font-size:14.5px; font-weight:500; position:relative; padding:6px 1px; transition:color .15s;}
+.nav a:hover, .nav a.active{color:var(--ivory);}
+.nav a.active:not(.navcta)::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px; border-radius:2px; background:var(--grad);}
+.navcta{color:var(--ink)!important; background:var(--amber); padding:10px 18px; border-radius:999px; font-family:"Space Grotesk"; font-weight:600;}
+
+/* hero (tightened + balanced right) */
+.hero{padding:82px 0 70px; display:grid; grid-template-columns:1.25fr .75fr; gap:34px; align-items:center;}
+.hero h1{font-size:clamp(40px,5.4vw,64px); font-weight:700; letter-spacing:-0.03em;}
+.hero .sub{margin-top:24px; font-size:clamp(16px,1.9vw,20px); max-width:540px;}
+.hero .cta-row{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+.hero-icon{position:relative; display:flex; justify-content:center; align-items:center;}
+.hero-glow{position:absolute; width:78%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle, rgba(99,102,241,.40), rgba(245,158,11,.12) 45%, transparent 68%); filter:blur(26px); z-index:0;}
+.hero-icon-svg{position:relative; z-index:1; width:min(330px,74vw); height:auto; filter:drop-shadow(0 26px 52px rgba(99,102,241,.4)); animation:floaty 7s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.hero-loop{stroke-dasharray:1; stroke-dashoffset:1; animation:draw 1.9s ease-out forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+
+/* mission */
+.mission{display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:24px; padding:38px 40px;}
+.mission .mi{width:84px;height:84px;flex:none;border-radius:20px;background:radial-gradient(circle at 35% 30%, rgba(99,102,241,.5), transparent), var(--ink);display:flex;align-items:center;justify-content:center;}
+.mission h2{font-size:clamp(23px,2.8vw,32px); margin-bottom:10px;} .mission p{font-size:17px;}
+
+/* section heads (all left-aligned) */
+.shead{max-width:680px; margin-bottom:44px;}
+.shead h2{font-size:clamp(28px,3.4vw,42px); font-weight:700;}
+.shead p{margin-top:15px; font-size:17px;}
+
+/* services (equal-height cards, result pinned to bottom) */
+.svc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;}
+.svc{display:flex; flex-direction:column; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:20px; padding:30px 26px; transition:transform .2s,border-color .2s,background .2s;}
+.svc:hover{transform:translateY(-5px); border-color:rgba(245,158,11,.4); background:rgba(255,255,255,.06);}
+.svc .badge{width:50px;height:50px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
+.svc h3{font-size:20px; margin-bottom:10px;} .svc .why{font-size:14.5px; margin-bottom:18px;}
+.svc .impact{font-size:14px; color:var(--ivory); border-top:1px solid var(--line); padding-top:13px; margin-top:auto;}
+.svc .impact b{color:var(--amber);}
+
+/* cost */
+.cost-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;}
+.cost-narr{background:linear-gradient(135deg, rgba(99,102,241,.14), rgba(245,158,11,.08)); border:1px solid var(--line); border-radius:22px; padding:34px 32px;}
+.cost-narr h3{font-size:22px; margin-bottom:14px;} .cost-narr p{font-size:15.5px; margin-bottom:13px;}
+.leak-list{display:flex; flex-direction:column; gap:14px;}
+.leak{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:16px; padding:20px 22px; display:flex; gap:15px; align-items:flex-start;}
+.leak .x{flex:none; width:30px;height:30px;border-radius:9px;background:rgba(245,158,11,.16);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;}
+.leak b{color:var(--ivory); display:block; margin-bottom:3px; font-family:"Space Grotesk"; font-size:15.5px;} .leak span{font-size:14.5px;}
+
+/* data */
+.data-wrap{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:24px; padding:36px 34px;}
+.chart-title{font-family:"Space Grotesk"; color:var(--ivory); font-size:16px; font-weight:600; margin-bottom:4px;}
+.chart-sub{font-size:13px; color:var(--muted-d); margin-bottom:18px;}
+.chart-svg{width:100%; height:auto; display:block;}
+.chart-source{font-size:12px; color:var(--muted-d); margin-top:10px;}
+.stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:30px;}
+.stat{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:18px; padding:24px 22px;}
+.stat .n{font-family:"Space Grotesk"; font-size:34px; font-weight:700; color:var(--ivory); line-height:1;}
+.stat .l{font-size:13.5px; color:var(--muted); margin-top:9px;}
+.data-source{font-size:12px; color:var(--muted-d); margin-top:18px;}
+
+/* method */
+.method-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+.mstep{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:20px; padding:30px 28px;}
+.mstep .mn{font-family:"Space Grotesk"; font-weight:700; font-size:13px; letter-spacing:.1em; color:var(--amber); margin-bottom:14px;}
+.mstep h3{color:var(--ivory); font-size:20px; margin-bottom:10px;} .mstep p{font-size:14.5px;}
+.loopline{margin-top:26px; display:inline-flex; gap:9px; align-items:center; color:var(--muted); font-size:14.5px;} .loopline b{color:var(--amber);}
+
+/* who */
+.chips{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{font-family:"Space Grotesk";font-weight:500;font-size:14px;color:var(--ivory);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:9px 16px;border-radius:999px;}
+.feature{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin-top:26px;}
+.feature .ic{width:80px;height:80px;flex:none;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%, rgba(99,102,241,.45), transparent), var(--ink);border-radius:18px;}
+.feature .ic svg{width:50px;height:50px;}
+.feature h4{font-size:18px;margin-bottom:4px;}.feature p{font-size:14.5px;}
+
+/* about */
+.about-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:start;}
+.about-grid p{font-size:16.5px; margin-bottom:15px;}
+.name-card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:30px 30px;}
+.name-card .row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);}
+.name-card .row:last-child{border-bottom:none;}
+.name-card .k{font-family:"Space Grotesk";font-weight:700;color:var(--amber);font-size:19px;flex:none;width:78px;}
+.name-card .v{font-size:14.5px;} .name-card .v b{color:var(--ivory);}
+.slogan{margin-top:42px;text-align:center;padding:38px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:20px;}
+.slogan .q{font-family:"Space Grotesk";font-size:clamp(22px,3vw,33px);color:var(--ivory);font-weight:600;}
+
+/* consultation */
+.consult-grid{display:grid; grid-template-columns:1.12fr .88fr; gap:40px; align-items:start;}
+.form-card{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:22px;padding:34px 32px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-family:"Space Grotesk";font-size:13.5px;font-weight:500;color:var(--ivory);margin-bottom:7px;}
+.field .req{color:var(--amber);}
+.field input,.field select,.field textarea{width:100%;background:rgba(11,13,30,.6);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--ivory);font-family:inherit;font-size:15px;outline:none;transition:border-color .15s;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--indigo);}
+.field textarea{min-height:108px;resize:vertical;}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%23A9AEC6' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 15px center;}
+.form-msg{display:none;margin-top:4px;padding:14px 16px;border-radius:12px;font-size:14.5px;}
+.form-msg.ok{display:block;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:#a7f3d0;}
+.form-msg.err{display:block;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.4);color:#fecaca;}
+.aside h3{font-size:20px;margin-bottom:14px;}
+.cline{display:flex;align-items:center;gap:11px;margin-bottom:13px;font-size:15.5px;color:var(--ivory);}
+.cline .ic{width:38px;height:38px;flex:none;border-radius:10px;background:rgba(99,102,241,.16);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.cline a:hover{color:var(--amber);}
+.steps{margin-top:24px;padding-top:22px;border-top:1px solid var(--line);}
+.steps .st{display:flex;gap:13px;margin-bottom:15px;}
+.steps .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;font-family:"Space Grotesk";font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.steps .st p{font-size:14.5px;} .steps .st b{color:var(--ivory);}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:42px 0 34px;}
+.foot-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.foot-slogan{font-size:14px;color:var(--muted);margin-top:10px;}
+.foot-contact{text-align:right;font-size:14.5px;}
+.foot-contact a{display:block;color:var(--ivory);margin-bottom:6px;} .foot-contact a:hover{color:var(--amber);}
+.foot-copy{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted-d);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+/* chat */
+.chat-fab{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--ink);border:1px solid var(--line);box-shadow:0 14px 34px -10px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;}
+.chat-fab:hover{transform:scale(1.07);}
+.chat-panel{position:fixed;right:20px;bottom:92px;z-index:60;width:min(372px,calc(100vw - 32px));height:520px;max-height:calc(100vh - 130px);background:#fff;border-radius:20px;box-shadow:0 30px 70px -18px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;}
+.chat-panel.open{display:flex;}
+.chat-head{background:var(--ink);padding:15px 18px;display:flex;align-items:center;gap:11px;}
+.chat-head .who h4{color:var(--ivory);font-size:15px;margin:0;} .chat-head .who small{color:var(--muted);font-size:11.5px;}
+.chat-head .dot{width:8px;height:8px;border-radius:50%;background:#34d399;margin-left:auto;box-shadow:0 0 0 3px rgba(52,211,153,.2);}
+.chat-body{flex:1;overflow-y:auto;padding:16px;background:#F4F5F9;display:flex;flex-direction:column;gap:10px;}
+.msg{max-width:84%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.5;}
+.msg.bot{background:#fff;border:1px solid #E7E9F1;border-bottom-left-radius:5px;align-self:flex-start;color:var(--ink);}
+.msg.user{background:var(--ink);color:var(--ivory);border-bottom-right-radius:5px;align-self:flex-end;}
+.chat-input{display:flex;gap:8px;padding:11px;border-top:1px solid #E7E9F1;background:#fff;}
+.chat-input input{flex:1;border:1px solid #E7E9F1;border-radius:999px;padding:10px 15px;font-family:inherit;font-size:14px;outline:none;}
+.chat-input input:focus{border-color:var(--indigo);}
+.chat-input button{flex:none;width:40px;height:40px;border-radius:50%;border:none;background:var(--amber);color:var(--ink);font-size:17px;cursor:pointer;}
+
+/* back to top */
+.totop{position:fixed;left:20px;bottom:20px;z-index:55;width:46px;height:46px;border-radius:50%;background:rgba(27,30,60,.9);border:1px solid var(--line);color:var(--ivory);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;}
+.totop.show{opacity:1;pointer-events:auto;} .totop:hover{transform:translateY(-3px);}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;} .reveal.in{opacity:1;transform:none;}
+
+@media (max-width:880px){
+  :root{--sect:58px;}
+  .nav a:not(.navcta){display:none;} .nav{gap:0;} .logo-svg{height:38px;}
+  .hero{grid-template-columns:1fr;padding:48px 0 36px;} .hero-icon{order:-1;margin-bottom:6px;} .hero-icon-svg{width:165px;}
+  .mission{grid-template-columns:1fr;}
+  .svc-grid,.method-grid{grid-template-columns:1fr;}
+  .cost-grid,.about-grid,.consult-grid{grid-template-columns:1fr;gap:26px;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .foot-inner{flex-direction:column;} .foot-contact{text-align:left;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;} .reveal{opacity:1;transform:none;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap head-inner">
+    <a href="#top" aria-label="tsKaizen"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481 170" class="logo-svg"><rect width="481" height="170" fill="#16182E"/><defs><linearGradient id="loopgradHead" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><g transform="translate(40,30.0) scale(1.1)"><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradHead)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></g><g transform="translate(180.00,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M261.39990234375 0Q215.899658203125 0 189.2493896484375 26.82525634765625Q162.59912109375 53.6505126953125 162.59912109375 99.40087890625V405.9990234375H27.39990234375V492.500244140625H162.59912109375V656.299560546875H265.500732421875V492.500244140625H413.39990234375V405.9990234375H265.500732421875V116.501220703125Q265.500732421875 86.501220703125 294.20068359375 86.501220703125H396.500244140625V0Z" fill="#F59E0B"/></g><g transform="translate(448.00,0)"><path d="M277.7498779296875 -14Q183.899658203125 -14 121.72467041015625 28.0Q59.5496826171875 70 46.19970703125 154.6495361328125L142.2510986328125 178Q149.60107421875 136.700439453125 168.90087890625 113.02569580078125Q188.20068359375 89.3509521484375 216.5504150390625 79.27606201171875Q244.900146484375 69.201171875 277.7498779296875 69.201171875Q327.3494873046875 69.201171875 353.77410888671875 87.8509521484375Q380.19873046875 106.500732421875 380.19873046875 136.500244140625Q380.19873046875 166.8497314453125 355.12408447265625 180.92462158203125Q330.0494384765625 194.99951171875 281.499755859375 203.699462890625L247.2001953125 209.7493896484375Q197.300048828125 219.0494384765625 156.39990234375 236.199462890625Q115.499755859375 253.3494873046875 91.07464599609375 283.299560546875Q66.6495361328125 313.2496337890625 66.6495361328125 359.7998046875Q66.6495361328125 429.9500732421875 119.07464599609375 468.22515869140625Q171.499755859375 506.500244140625 257.39990234375 506.500244140625Q340.39990234375 506.500244140625 393.82501220703125 469.32525634765625Q447.2501220703125 432.1502685546875 462.8502197265625 368.300537109375L367.19873046875 340.699951171875Q358.498779296875 385.699462890625 329.4490966796875 404.499267578125Q300.3994140625 423.299072265625 257.39990234375 423.299072265625Q214.7503662109375 423.299072265625 190.8507080078125 407.82427978515625Q166.9510498046875 392.3494873046875 166.9510498046875 363.699951171875Q166.9510498046875 334.100341796875 190.4508056640625 320.1505126953125Q213.9505615234375 306.20068359375 254.2501220703125 299.1507568359375L288.5496826171875 293.100830078125Q342.4498291015625 283.80078125 386.02496337890625 267.6507568359375Q429.60009765625 251.500732421875 455.0501708984375 221.87567138671875Q480.500244140625 192.2506103515625 480.500244140625 142.3504638671875Q480.500244140625 67.500244140625 425.57513427734375 26.7501220703125Q370.6500244140625 -14 277.7498779296875 -14Z" fill="#F59E0B"/></g></g><g transform="translate(242.91,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M66 0V700H198V422H216L443 700H612L320 355L622 0H448L216 284H198V0Z" fill="#FAF7F0"/></g><g transform="translate(611.00,0)"><path d="M224 -14Q171 -14 129.0 4.5Q87 23 62.5 58.5Q38 94 38 145Q38 196 62.5 230.5Q87 265 130.5 282.5Q174 300 230 300H366V328Q366 363 344.0 385.5Q322 408 274 408Q227 408 204.0 386.5Q181 365 174 331L58 370Q70 408 96.5 439.5Q123 471 167.5 490.5Q212 510 276 510Q374 510 431.0 461.0Q488 412 488 319V134Q488 104 516 104H556V0H472Q435 0 411.0 18.0Q387 36 387 66V67H368Q364 55 350.0 35.5Q336 16 306.0 1.0Q276 -14 224 -14ZM246 88Q299 88 332.5 117.5Q366 147 366 196V206H239Q204 206 184.0 191.0Q164 176 164 149Q164 122 185.0 105.0Q206 88 246 88Z" fill="#FAF7F0"/></g><g transform="translate(1174.00,0)"><path d="M70 0V496H196V0ZM133 554Q99 554 75.5 576.0Q52 598 52 634Q52 670 75.5 692.0Q99 714 133 714Q168 714 191.0 692.0Q214 670 214 634Q214 598 191.0 576.0Q168 554 133 554Z" fill="#FAF7F0"/></g><g transform="translate(1425.00,0)"><path d="M52 0V150L324 376V392H62V496H462V346L190 120V104H470V0Z" fill="#FAF7F0"/></g><g transform="translate(1928.00,0)"><path d="M296 -14Q222 -14 165.5 17.5Q109 49 77.5 106.5Q46 164 46 242V254Q46 332 77.0 389.5Q108 447 164.0 478.5Q220 510 294 510Q367 510 421.0 477.5Q475 445 505.0 387.5Q535 330 535 254V211H174Q176 160 212.0 128.0Q248 96 300 96Q353 96 378.0 119.0Q403 142 416 170L519 116Q505 90 478.5 59.5Q452 29 408.0 7.5Q364 -14 296 -14ZM175 305H407Q403 348 372.5 374.0Q342 400 293 400Q242 400 212.0 374.0Q182 348 175 305Z" fill="#FAF7F0"/></g><g transform="translate(2490.00,0)"><path d="M70 0V496H194V431H212Q224 457 257.0 480.5Q290 504 357 504Q415 504 458.5 477.5Q502 451 526.0 404.5Q550 358 550 296V0H424V286Q424 342 396.5 370.0Q369 398 318 398Q260 398 228.0 359.5Q196 321 196 252V0Z" fill="#FAF7F0"/></g></g></svg></a>
+    <nav class="nav">
+      <a href="#mission">Mission</a>
+      <a href="#services">Services</a>
+      <a href="#data">The Data</a>
+      <a href="#method">Method</a>
+      <a href="#about">About</a>
+      <a href="#consult" class="navcta">Book a free consultation</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+
+  <section class="hero-sect"><div class="wrap hero">
+    <div class="reveal">
+      <div class="eyebrow">AI &amp; Automation Consulting &middot; Orlando</div>
+      <h1>Innovating tech with AI. Building a <span class="hl">better future</span> with automation.</h1>
+      <p class="sub">tsKaizen helps local businesses put AI and automation to work, so they capture every lead, answer every customer, and grow without adding hours to the day.</p>
+      <div class="cta-row">
+        <a href="#consult" class="btn btn-primary">Book a free consultation</a>
+        <a href="#services" class="btn btn-ghost">Explore services</a>
+      </div>
+    </div>
+    <div class="hero-icon"><div class="hero-glow"></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="hero-icon-svg" width="100" height="100"><defs><linearGradient id="loopgradHero" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradHero)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
+  </div></section>
+
+  <section class="section band" id="mission"><div class="wrap">
+    <div class="mission reveal">
+      <div class="mi"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="46" height="46"><defs><linearGradient id="loopgradMis" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradMis)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
+      <div>
+        <div class="eyebrow">Our mission</div>
+        <h2>Put enterprise-grade AI within reach of every local business.</h2>
+        <p class="muted">The tools big companies use to move faster and serve better should not be locked behind enterprise budgets. We build, deploy, and maintain AI and automation for the businesses that give a community its character, so they can compete, grow, and spend more time on the people they serve.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section" id="services"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">What we build</div>
+      <h2>Three services. One outcome: a business that runs smarter.</h2>
+      <p class="muted">Each one closes a gap that quietly costs local businesses customers every single day.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <div class="svc"><div class="badge">&#128187;</div><h3>Website Design &amp; Build</h3><p class="why">Your website is your first impression and your hardest working salesperson. A slow or dated site sends visitors straight to a competitor.</p><p class="impact"><b>The result:</b> a fast, modern, mobile-first site that turns visitors into customers.</p></div>
+      <div class="svc"><div class="badge">&#129302;</div><h3>AI Chatbots &amp; Call Assistants</h3><p class="why">Customers expect answers instantly, day or night. When no one replies, they move on, and you never even know it happened.</p><p class="impact"><b>The result:</b> an AI assistant that answers messages and calls 24/7 and captures every lead.</p></div>
+      <div class="svc"><div class="badge">&#9889;</div><h3>Automation Systems</h3><p class="why">Every hour on repetitive manual work is an hour not spent growing or serving customers. Busywork silently caps how far you can scale.</p><p class="impact"><b>The result:</b> follow-ups, scheduling, and data entry run themselves, freeing your team.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section band" id="cost"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">The hidden cost</div>
+      <h2>What really happens when there is no automation.</h2>
+      <p class="muted">The leaks are invisible on a busy day. Over a month, they add up to real revenue walking out the door.</p>
+    </div>
+    <div class="cost-grid reveal">
+      <div class="cost-narr">
+        <h3>Every gap is a customer you never met.</h3>
+        <p>When a business runs on memory and manual effort, opportunities slip through the cracks the moment things get busy. The phone rings while you are serving a table. A message arrives at 9pm. A quote never gets followed up. None of it feels like a loss in the moment, because you never see the customer you missed.</p>
+        <p>Automation is simply a system that never gets busy, never forgets, and never sleeps. It catches what a busy team cannot, so the work you already did to earn that lead does not go to waste.</p>
+        <p class="muted">Multiply one missed call a day by your average order value, and the cost of doing nothing becomes very real, very fast.</p>
+      </div>
+      <div class="leak-list">
+        <div class="leak"><span class="x">&#33;</span><div><b>The missed call</b><span>A call at lunch is a catering order or booking that quietly goes to whoever picks up first.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>The after-hours message</b><span>A question at night with no reply is a customer who has booked elsewhere by morning.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>The follow-up that never happens</b><span>A warm lead with no follow-up cools off and never closes. Most sales need more than one touch.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>The manual hours</b><span>Time spent retyping, scheduling, and chasing is time not spent growing or serving customers.</span></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section" id="data"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">The shift is already here</div>
+      <h2>AI is not a trend. It is the new baseline.</h2>
+      <p class="muted">Around the world, the businesses adopting AI are answering faster, serving better, and pulling ahead. The data is hard to argue with.</p>
+    </div>
+    <div class="data-wrap reveal">
+      <div class="chart-title">Share of organizations using AI in at least one business function</div>
+      <div class="chart-sub">Global, 2017 to 2025</div>
+      <svg viewBox="0 0 720 360" class="chart-svg" xmlns="http://www.w3.org/2000/svg"><defs>
+<linearGradient id="chartLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#F59E0B"/></linearGradient>
+<linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6366F1" stop-opacity="0.32"/><stop offset="1" stop-color="#6366F1" stop-opacity="0"/></linearGradient>
+</defs><line x1="56" y1="312.0" x2="694" y2="312.0" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="316.0" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">0%</text><line x1="56" y1="242.5" x2="694" y2="242.5" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="246.5" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">25%</text><line x1="56" y1="173.0" x2="694" y2="173.0" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="177.0" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">50%</text><line x1="56" y1="103.5" x2="694" y2="103.5" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="107.5" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">75%</text><line x1="56" y1="34.0" x2="694" y2="34.0" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="38.0" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">100%</text><path d="M56.0 256.4 L215.5 150.8 L375.0 156.3 L534.5 159.1 L614.2 95.2 L694.0 67.4 L 694.0 312.0 L 56.0 312.0 Z" fill="url(#chartArea)"/><path d="M56.0 256.4 L215.5 150.8 L375.0 156.3 L534.5 159.1 L614.2 95.2 L694.0 67.4" fill="none" stroke="url(#chartLine)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56.0" cy="256.4" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="56.0" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2017</text><circle cx="215.5" cy="150.8" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="215.5" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2019</text><circle cx="375.0" cy="156.3" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="375.0" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2021</text><circle cx="534.5" cy="159.1" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="534.5" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2023</text><circle cx="614.2" cy="95.2" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="614.2" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2024</text><circle cx="694.0" cy="67.4" r="6" fill="#F59E0B" stroke="#0B0D1E" stroke-width="2"/><text x="694.0" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2025</text><text x="694.0" y="53.4" fill="#F59E0B" font-size="18" font-weight="700" text-anchor="end" font-family="Space Grotesk">88%</text><text x="54.0" y="244.4" fill="#A9AEC6" font-size="13" font-weight="600" text-anchor="start" font-family="Space Grotesk">20%</text></svg>
+      <div class="chart-source">Source: McKinsey Global Survey on the State of AI, 2025 (1,993 respondents across ~105 countries).</div>
+    </div>
+    <div class="stat-row reveal">
+      <div class="stat"><div class="n"><span class="grad">88%</span></div><div class="l">of organizations now use AI in at least one business function, up from 78% a year earlier.</div></div>
+      <div class="stat"><div class="n">74%</div><div class="l">of executives report a return on investment within the first year of adopting AI.</div></div>
+      <div class="stat"><div class="n">15%</div><div class="l">average cost savings reported by early adopters across their operations.</div></div>
+      <div class="stat"><div class="n">23%</div><div class="l">average productivity improvement reported by early AI adopters.</div></div>
+    </div>
+    <div class="data-source">Sources: McKinsey State of AI 2025 &middot; Google Cloud ROI of AI study &middot; Gartner. AI keeps getting cheaper, faster, and easier, and starting early is the simplest edge you will ever gain.</div>
+  </div></section>
+
+  <section class="section band" id="method"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">How we work</div>
+      <h2>Advise. Build. Improve.</h2>
+      <p class="muted">A simple, proven path from where you are to a system that keeps paying off. True to the name: purpose first, then continuous improvement.</p>
+    </div>
+    <div class="method-grid reveal">
+      <div class="mstep"><div class="mn">01 / ADVISE</div><h3>Find the leaks</h3><p>I study how your business shows up and pinpoint exactly what is costing you customers, then recommend the highest-impact fix first.</p></div>
+      <div class="mstep"><div class="mn">02 / BUILD</div><h3>Put it to work</h3><p>I design and deploy your website, AI assistant, and automations, tailored to how you actually operate, and launch them fast.</p></div>
+      <div class="mstep"><div class="mn">03 / IMPROVE</div><h3>Keep getting better</h3><p>I monitor, refine, and grow the system month after month, so it keeps compounding value instead of going stale.</p></div>
+    </div>
+    <div class="loopline reveal"><b>&#8635;</b> Improve feeds back into Advise. That continuous loop is the heart of Kaizen.</div>
+  </div></section>
+
+  <section class="section" id="who"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">Who we help</div><h2>Built for the businesses that make a neighborhood feel like home.</h2></div>
+    <div class="reveal">
+      <div class="chips">
+        <span class="chip">Cafes &amp; Restaurants</span><span class="chip">Salons &amp; Spas</span><span class="chip">Home Services</span>
+        <span class="chip">Real Estate</span><span class="chip">Auto &amp; Collision</span><span class="chip">Professional Services</span>
+      </div>
+      <div class="feature">
+        <div class="ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50"><defs><linearGradient id="loopgradFeat" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradFeat)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
+        <div><h4>Jacob&rsquo;s Cafe &amp; Restaurant &middot; Orlando, FL</h4><p class="muted">A full rebuild: a warm, modern website plus an AI assistant that answers messages and phone calls around the clock and captures every catering and order lead automatically.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section band" id="about"><div class="wrap">
+    <div class="about-grid reveal">
+      <div>
+        <div class="eyebrow">Our name &amp; story</div>
+        <h2 style="font-size:clamp(28px,3.6vw,42px);margin-bottom:20px;">Hi, I&rsquo;m Anthony.</h2>
+        <p>I founded tsKaizen to bring the kind of technology big companies take for granted to the local businesses that give a community its character.</p>
+        <p>My background is in finance and operations, and I have spent years building real technology that solves real problems for real people. I do not just recommend tools. I design, build, and maintain them.</p>
+        <p>What drives me is the joy of building something that works and watching a business grow because of it. Innovation and your success are the same goal to me.</p>
+      </div>
+      <div class="name-card">
+        <div class="eyebrow" style="margin-bottom:8px;">What the name means</div>
+        <div class="row"><div class="k">ts</div><div class="v"><b>Telos</b> is Greek for purpose. It stands for innovating technology with AI, always starting from the outcome that matters to you.</div></div>
+        <div class="row"><div class="k">Kaizen</div><div class="v"><b>Kaizen</b> is Japanese for continuous improvement. It stands for building a better future with automation that keeps getting better over time.</div></div>
+        <div class="row"><div class="k" style="font-size:15px;">Together</div><div class="v">Purpose-driven technology, built to improve the longer we work together.</div></div>
+      </div>
+    </div>
+    <div class="slogan reveal">
+      <div class="eyebrow" style="text-align:center;">The tsKaizen promise</div>
+      <div class="q">Smarter systems, <span class="hl">with a human touch.</span></div>
+    </div>
+  </div></section>
+
+  <section class="section" id="consult"><div class="wrap">
+    <div class="shead reveal" style="margin-bottom:34px;">
+      <div class="eyebrow">Consultation</div>
+      <h2>Tell me what you are trying to solve.</h2>
+      <p class="muted">I review every request personally and get back to you quickly with a plan, not a sales pitch. The more detail you give, the faster I can help.</p>
+    </div>
+    <div class="consult-grid reveal">
+      <div class="form-card">
+        <div class="field"><label>Your name <span class="req">*</span></label><input id="f-name" type="text" placeholder="Jane Smith"></div>
+        <div class="field"><label>Company name <span class="req">*</span></label><input id="f-company" type="text" placeholder="Jane's Bakery"></div>
+        <div class="field"><label>Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="jane@janesbakery.com"></div>
+        <div class="field"><label>Phone <span style="color:var(--muted);font-weight:400;">(optional)</span></label><input id="f-phone" type="tel" placeholder="(555) 123-4567"></div>
+        <div class="field"><label>Which service are you looking for? <span class="req">*</span></label>
+          <select id="f-service"><option value="">Select a service</option><option>Website design or build</option><option>AI chatbot or call assistant</option><option>Automation systems</option><option>Not sure / more than one</option></select></div>
+        <div class="field"><label>What problem are you trying to solve? <span class="req">*</span></label><textarea id="f-problem" placeholder="Tell me what is slowing you down or costing you customers right now."></textarea></div>
+        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="submitConsult()">Send my request</button>
+        <div class="form-msg" id="formMsg"></div>
+      </div>
+      <div class="aside">
+        <h3>Or reach me directly</h3>
+        <div class="cline"><span class="ic">&#9742;</span><a href="tel:+15612603951">+1 (561) 260-3951</a></div>
+        <div class="cline"><span class="ic">&#9993;</span><a href="mailto:anthonypichardo31@tskaizen.com">anthonypichardo31@tskaizen.com</a></div>
+        <div class="steps">
+          <div class="eyebrow" style="margin-bottom:14px;">What happens next</div>
+          <div class="st"><div class="n">1</div><p><b>I review your request</b> personally, usually the same day.</p></div>
+          <div class="st"><div class="n">2</div><p><b>I reach out with a tailored plan</b> and clear next steps.</p></div>
+          <div class="st"><div class="n">3</div><p><b>We build and launch</b> the solution, then keep improving it.</p></div>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+</main>
+
+<footer><div class="wrap">
+  <div class="foot-inner">
+    <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481 170" class="logo-svg-sm"><rect width="481" height="170" fill="#16182E"/><defs><linearGradient id="loopgradFoot" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><g transform="translate(40,30.0) scale(1.1)"><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradFoot)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></g><g transform="translate(180.00,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M261.39990234375 0Q215.899658203125 0 189.2493896484375 26.82525634765625Q162.59912109375 53.6505126953125 162.59912109375 99.40087890625V405.9990234375H27.39990234375V492.500244140625H162.59912109375V656.299560546875H265.500732421875V492.500244140625H413.39990234375V405.9990234375H265.500732421875V116.501220703125Q265.500732421875 86.501220703125 294.20068359375 86.501220703125H396.500244140625V0Z" fill="#F59E0B"/></g><g transform="translate(448.00,0)"><path d="M277.7498779296875 -14Q183.899658203125 -14 121.72467041015625 28.0Q59.5496826171875 70 46.19970703125 154.6495361328125L142.2510986328125 178Q149.60107421875 136.700439453125 168.90087890625 113.02569580078125Q188.20068359375 89.3509521484375 216.5504150390625 79.27606201171875Q244.900146484375 69.201171875 277.7498779296875 69.201171875Q327.3494873046875 69.201171875 353.77410888671875 87.8509521484375Q380.19873046875 106.500732421875 380.19873046875 136.500244140625Q380.19873046875 166.8497314453125 355.12408447265625 180.92462158203125Q330.0494384765625 194.99951171875 281.499755859375 203.699462890625L247.2001953125 209.7493896484375Q197.300048828125 219.0494384765625 156.39990234375 236.199462890625Q115.499755859375 253.3494873046875 91.07464599609375 283.299560546875Q66.6495361328125 313.2496337890625 66.6495361328125 359.7998046875Q66.6495361328125 429.9500732421875 119.07464599609375 468.22515869140625Q171.499755859375 506.500244140625 257.39990234375 506.500244140625Q340.39990234375 506.500244140625 393.82501220703125 469.32525634765625Q447.2501220703125 432.1502685546875 462.8502197265625 368.300537109375L367.19873046875 340.699951171875Q358.498779296875 385.699462890625 329.4490966796875 404.499267578125Q300.3994140625 423.299072265625 257.39990234375 423.299072265625Q214.7503662109375 423.299072265625 190.8507080078125 407.82427978515625Q166.9510498046875 392.3494873046875 166.9510498046875 363.699951171875Q166.9510498046875 334.100341796875 190.4508056640625 320.1505126953125Q213.9505615234375 306.20068359375 254.2501220703125 299.1507568359375L288.5496826171875 293.100830078125Q342.4498291015625 283.80078125 386.02496337890625 267.6507568359375Q429.60009765625 251.500732421875 455.0501708984375 221.87567138671875Q480.500244140625 192.2506103515625 480.500244140625 142.3504638671875Q480.500244140625 67.500244140625 425.57513427734375 26.7501220703125Q370.6500244140625 -14 277.7498779296875 -14Z" fill="#F59E0B"/></g></g><g transform="translate(242.91,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M66 0V700H198V422H216L443 700H612L320 355L622 0H448L216 284H198V0Z" fill="#FAF7F0"/></g><g transform="translate(611.00,0)"><path d="M224 -14Q171 -14 129.0 4.5Q87 23 62.5 58.5Q38 94 38 145Q38 196 62.5 230.5Q87 265 130.5 282.5Q174 300 230 300H366V328Q366 363 344.0 385.5Q322 408 274 408Q227 408 204.0 386.5Q181 365 174 331L58 370Q70 408 96.5 439.5Q123 471 167.5 490.5Q212 510 276 510Q374 510 431.0 461.0Q488 412 488 319V134Q488 104 516 104H556V0H472Q435 0 411.0 18.0Q387 36 387 66V67H368Q364 55 350.0 35.5Q336 16 306.0 1.0Q276 -14 224 -14ZM246 88Q299 88 332.5 117.5Q366 147 366 196V206H239Q204 206 184.0 191.0Q164 176 164 149Q164 122 185.0 105.0Q206 88 246 88Z" fill="#FAF7F0"/></g><g transform="translate(1174.00,0)"><path d="M70 0V496H196V0ZM133 554Q99 554 75.5 576.0Q52 598 52 634Q52 670 75.5 692.0Q99 714 133 714Q168 714 191.0 692.0Q214 670 214 634Q214 598 191.0 576.0Q168 554 133 554Z" fill="#FAF7F0"/></g><g transform="translate(1425.00,0)"><path d="M52 0V150L324 376V392H62V496H462V346L190 120V104H470V0Z" fill="#FAF7F0"/></g><g transform="translate(1928.00,0)"><path d="M296 -14Q222 -14 165.5 17.5Q109 49 77.5 106.5Q46 164 46 242V254Q46 332 77.0 389.5Q108 447 164.0 478.5Q220 510 294 510Q367 510 421.0 477.5Q475 445 505.0 387.5Q535 330 535 254V211H174Q176 160 212.0 128.0Q248 96 300 96Q353 96 378.0 119.0Q403 142 416 170L519 116Q505 90 478.5 59.5Q452 29 408.0 7.5Q364 -14 296 -14ZM175 305H407Q403 348 372.5 374.0Q342 400 293 400Q242 400 212.0 374.0Q182 348 175 305Z" fill="#FAF7F0"/></g><g transform="translate(2490.00,0)"><path d="M70 0V496H194V431H212Q224 457 257.0 480.5Q290 504 357 504Q415 504 458.5 477.5Q502 451 526.0 404.5Q550 358 550 296V0H424V286Q424 342 396.5 370.0Q369 398 318 398Q260 398 228.0 359.5Q196 321 196 252V0Z" fill="#FAF7F0"/></g></g></svg><p class="foot-slogan">Innovating tech with AI. Building a better future with automation.</p></div>
+    <div class="foot-contact"><a href="tel:+15612603951">+1 (561) 260-3951</a><a href="mailto:anthonypichardo31@tskaizen.com">anthonypichardo31@tskaizen.com</a></div>
+  </div>
+  <div class="foot-copy"><span>&copy; <span id="yr"></span> tsKaizen. All rights reserved.</span><span>Orlando, Florida</span></div>
+</div></footer>
+
+<button class="totop" id="toTop" aria-label="Back to top">&#8593;</button>
+<div class="chat-fab" id="chatFab" role="button" tabindex="0" aria-label="Open assistant"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34" height="34"><defs><linearGradient id="loopgradFab" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradFab)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="30" height="30"><defs><linearGradient id="loopgradChat" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradChat)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg><div class="who"><h4>tsKaizen Assistant</h4><small>Ask about services or your business</small></div><span class="dot"></span></div>
+  <div class="chat-body" id="chatBody"><div class="msg bot">Hi! I&rsquo;m the tsKaizen assistant. Want to know how a website, an AI assistant, or automation could help your business? Ask away, or try &ldquo;What do you offer?&rdquo;</div></div>
+  <div class="chat-input"><input id="chatInput" type="text" placeholder="Type a message..." autocomplete="off"><button id="chatSend" aria-label="Send">&#8593;</button></div>
+</div>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* scroll reveal */
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* scroll-spy nav highlight */
+const navLinks=[...document.querySelectorAll('.nav a:not(.navcta)')];
+const spy=new IntersectionObserver((es)=>{es.forEach(e=>{
+  if(e.isIntersecting){var id=e.target.id; navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));}
+});},{rootMargin:'-45% 0px -50% 0px'});
+['mission','services','data','method','about'].forEach(id=>{var s=document.getElementById(id); if(s) spy.observe(s);});
+
+/* back to top */
+const toTop=document.getElementById('toTop');
+window.addEventListener('scroll',()=>{toTop.classList.toggle('show', window.scrollY>700);});
+toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+/* consultation form (sends to Formspree, lands in your inbox) */
+async function submitConsult(){
+  var v=id=>(document.getElementById(id).value||'').trim();
+  var name=v('f-name'),company=v('f-company'),email=v('f-email'),phone=v('f-phone'),service=v('f-service'),problem=v('f-problem');
+  var m=document.getElementById('formMsg');
+  if(!name||!company||!email||!service||!problem){m.className='form-msg err';m.textContent='Please fill in all required fields so I can help you properly.';return;}
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){m.className='form-msg err';m.textContent='That email does not look right. Mind double-checking it?';return;}
+  var btn=document.querySelector('#consult .btn-primary'); if(btn){btn.disabled=true;btn.textContent='Sending...';}
+  try{
+    var res=await fetch("https://formspree.io/f/xkolwdag",{
+      method:"POST",
+      headers:{"Content-Type":"application/json","Accept":"application/json"},
+      body:JSON.stringify({name:name,company:company,email:email,phone:(phone||'-'),service:service,message:problem,_subject:"New consultation: "+company+" ("+service+")"})
+    });
+    if(res.ok){
+      m.className='form-msg ok';m.textContent='Thanks '+name+'! Your request is in. I will get back to you fast.';
+      ['f-name','f-company','f-email','f-phone','f-service','f-problem'].forEach(id=>document.getElementById(id).value='');
+    } else {
+      m.className='form-msg err';m.textContent='Something went wrong. Please email anthonypichardo31@tskaizen.com directly.';
+    }
+  }catch(e){
+    m.className='form-msg err';m.textContent='Network hiccup. Please email anthonypichardo31@tskaizen.com directly.';
+  }finally{
+    if(btn){btn.disabled=false;btn.textContent='Send my request';}
+  }
+}
+
+/* chat */
+const TSKAIZEN_BOT_URL="https://ts-kaizen-website--AnthonyPichardo.replit.app";
+const fab=document.getElementById('chatFab'),panel=document.getElementById('chatPanel'),cb=document.getElementById('chatBody'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+function tgl(){panel.classList.toggle('open');if(panel.classList.contains('open'))ci.focus();}
+fab.addEventListener('click',tgl);fab.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tgl();}});
+function add(t,w){var d=document.createElement('div');d.className='msg '+w;d.textContent=t;cb.appendChild(d);cb.scrollTop=cb.scrollHeight;}
+function demo(q){q=q.toLowerCase();
+  if(/offer|service|do you|build|provide/.test(q))return"I offer three things: modern websites, AI assistants that answer chats and calls 24/7, and automation that handles repetitive work. Which sounds closest to what you need?";
+  if(/price|cost|how much/.test(q))return"Pricing depends on your needs. Most clients start with a free consultation, then choose a build plus a monthly plan to keep it improving. Want to book that consultation?";
+  if(/website|site|web/.test(q))return"I build fast, modern, mobile-first websites that turn visitors into customers. Want me to look at your current one?";
+  if(/chat|call|phone|bot|assistant/.test(q))return"The AI assistant answers customer messages and phone calls around the clock and captures every lead, even when you are closed. You are using a small demo of it now.";
+  if(/automat|workflow|streamline/.test(q))return"Automation takes the busywork off your plate: follow-ups, scheduling, reminders, and data entry that run themselves. What task eats the most time?";
+  if(/data|stat|trend|grow/.test(q))return"AI use jumped from 20% of organizations in 2017 to 88% in 2025, and most adopters see a return within the first year. Starting early is the easiest edge you can get.";
+  if(/consult|book|meet|contact/.test(q))return"Love it. Scroll to the Consultation section and tell me what you are solving, or email anthonypichardo31@tskaizen.com. I respond fast.";
+  if(/hi|hello|hey/.test(q))return"Hey! Ask me about websites, AI assistants, or automation and how they could help your business.";
+  return"Great question. The best next step is a quick consultation, free and no obligation. Scroll to the Consultation section and tell me more.";
+}
+async function csend(){var q=(ci.value||'').trim();if(!q)return;add(q,'user');ci.value='';
+  if(TSKAIZEN_BOT_URL){try{var r=await fetch(TSKAIZEN_BOT_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q})});var d=await r.json();add(d.reply||d.text||"Thanks! I will get back to you shortly.",'bot');}catch(e){add("I could not reach the assistant just now. Email anthonypichardo31@tskaizen.com and I will reply fast.",'bot');}}
+  else{setTimeout(()=>add(demo(q),'bot'),400);}
+}
+cs.addEventListener('click',csend);ci.addEventListener('keydown',e=>{if(e.key==='Enter')csend();});
+</script>
+</body>
+</html>
