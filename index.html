@@ -2,471 +2,1167 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tsKaizen | AI and Automation for Local Business</title>
-<meta name="description" content="tsKaizen builds AI-powered websites, chat and call assistants, and automation systems that help local businesses capture every lead and build a better future.">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>tsKaizen | AI systems for Orlando contractors</title>
+<meta name="description" content="tsKaizen builds AI agents for Central Florida contractors: bid response, pre-submittal permit review, and closeout packages. Built on your own job history.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
+/* ============================================================
+   CONFIG NOTE: all editable values live in the CONFIG object
+   at the bottom of this file. Nothing is hard-coded in markup
+   except long-form copy.
+   ============================================================ */
+
 :root{
-  --ink:#16182E; --amber:#F59E0B; --indigo:#6366F1; --indigo-d:#4F46E5;
-  --ivory:#FAF7F0; --muted:#A9AEC6; --muted-d:#7C7F99; --line:rgba(255,255,255,.10);
-  --grad:linear-gradient(120deg,var(--indigo),var(--amber));
-  --hl:linear-gradient(100deg,#8E97FF 0%,#F59E0B 95%);
-  --maxw:1120px; --sect:74px;
+  --ink:#16182E;          /* logo field navy */
+  --ink-deep:#0E1020;     /* darker block */
+  --indigo:#4F46E5;       /* logo loop start */
+  --indigo-dark:#4338CA;
+  --indigo-tint:#EEEDFC;
+  --amber:#F59E0B;        /* logo loop end / arrow */
+  --amber-dark:#D97706;
+  --amber-tint:#FEF3DC;
+  --ivory:#FAF7F0;        /* logo wordmark */
+  --ivory-warm:#F2EDE2;
+  --white:#FFFFFF;
+  --slate:#5A5F73;
+  --line:#DCD7CB;
+  --r:8px;
+  --r-sm:6px;
+  --max:1180px;
 }
-*{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{margin:0; font-family:"DM Sans",system-ui,sans-serif; color:var(--muted); line-height:1.62; -webkit-font-smoothing:antialiased;
-  background:
-   radial-gradient(900px 600px at 82% 2%, rgba(99,102,241,.22), transparent 60%),
-   radial-gradient(760px 520px at 6% 12%, rgba(245,158,11,.10), transparent 60%),
-   radial-gradient(900px 760px at 60% 80%, rgba(99,102,241,.13), transparent 65%),
-   linear-gradient(180deg,#0B0D1E 0%, #131530 30%, #14162C 55%, #161834 78%, #0C0E20 100%);
-  background-repeat:no-repeat;}
-h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif; color:var(--ivory); line-height:1.07; margin:0; letter-spacing:-0.02em;}
-p{margin:0;} a{color:inherit; text-decoration:none;}
-.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
-.eyebrow{font-family:"Space Grotesk",sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin-bottom:16px;}
-.grad{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
-.hl{background:var(--hl); -webkit-background-clip:text; background-clip:text; color:transparent;}
-.muted{color:var(--muted);}
 
-/* sections: full-bleed with inner wrap, consistent rhythm, alternating faint band */
-.section{padding:var(--sect) 0;}
-.section.band{background:rgba(255,255,255,.022); box-shadow:inset 0 1px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(255,255,255,.035);}
-
-.btn{display:inline-flex; align-items:center; gap:9px; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px; padding:14px 27px; border-radius:999px; cursor:pointer; border:1.5px solid transparent; transition:transform .18s,box-shadow .18s,border-color .18s;}
-.btn-primary{background:var(--amber); color:var(--ink); box-shadow:0 12px 28px -10px rgba(245,158,11,.6);}
-.btn-primary:hover{transform:translateY(-2px); box-shadow:0 18px 34px -10px rgba(245,158,11,.72);}
-.btn-ghost{border-color:rgba(250,247,240,.26); color:var(--ivory);}
-.btn-ghost:hover{border-color:var(--ivory); transform:translateY(-2px);}
-
-/* header: logo LEFT (large, blended), nav RIGHT */
-header{position:sticky; top:0; z-index:50; background:rgba(11,13,30,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);}
-.head-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
-.logo-svg{height:48px; width:auto; display:block;}
-.logo-svg-sm{height:28px; width:auto; display:block;}
-.nav{display:flex; gap:24px; align-items:center;}
-.nav a{color:var(--muted); font-size:14.5px; font-weight:500; position:relative; padding:6px 1px; transition:color .15s;}
-.nav a:hover, .nav a.active{color:var(--ivory);}
-.nav a.active:not(.navcta)::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px; border-radius:2px; background:var(--grad);}
-.navcta{color:var(--ink)!important; background:var(--amber); padding:10px 18px; border-radius:999px; font-family:"Space Grotesk"; font-weight:600;}
-
-/* hero (tightened + balanced right) */
-.hero{padding:82px 0 70px; display:grid; grid-template-columns:1.25fr .75fr; gap:34px; align-items:center;}
-.hero h1{font-size:clamp(40px,5.4vw,64px); font-weight:700; letter-spacing:-0.03em;}
-.hero .sub{margin-top:24px; font-size:clamp(16px,1.9vw,20px); max-width:540px;}
-.hero .cta-row{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
-.hero-icon{position:relative; display:flex; justify-content:center; align-items:center;}
-.hero-glow{position:absolute; width:78%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle, rgba(99,102,241,.40), rgba(245,158,11,.12) 45%, transparent 68%); filter:blur(26px); z-index:0;}
-.hero-icon-svg{position:relative; z-index:1; width:min(330px,74vw); height:auto; filter:drop-shadow(0 26px 52px rgba(99,102,241,.4)); animation:floaty 7s ease-in-out infinite;}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
-.hero-loop{stroke-dasharray:1; stroke-dashoffset:1; animation:draw 1.9s ease-out forwards;}
-@keyframes draw{to{stroke-dashoffset:0;}}
-
-/* mission */
-.mission{display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:24px; padding:38px 40px;}
-.mission .mi{width:84px;height:84px;flex:none;border-radius:20px;background:radial-gradient(circle at 35% 30%, rgba(99,102,241,.5), transparent), var(--ink);display:flex;align-items:center;justify-content:center;}
-.mission h2{font-size:clamp(23px,2.8vw,32px); margin-bottom:10px;} .mission p{font-size:17px;}
-
-/* section heads (all left-aligned) */
-.shead{max-width:680px; margin-bottom:44px;}
-.shead h2{font-size:clamp(28px,3.4vw,42px); font-weight:700;}
-.shead p{margin-top:15px; font-size:17px;}
-
-/* services (equal-height cards, result pinned to bottom) */
-.svc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;}
-.svc{display:flex; flex-direction:column; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:20px; padding:30px 26px; transition:transform .2s,border-color .2s,background .2s;}
-.svc:hover{transform:translateY(-5px); border-color:rgba(245,158,11,.4); background:rgba(255,255,255,.06);}
-.svc .badge{width:50px;height:50px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
-.svc h3{font-size:20px; margin-bottom:10px;} .svc .why{font-size:14.5px; margin-bottom:18px;}
-.svc .impact{font-size:14px; color:var(--ivory); border-top:1px solid var(--line); padding-top:13px; margin-top:auto;}
-.svc .impact b{color:var(--amber);}
-
-/* cost */
-.cost-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;}
-.cost-narr{background:linear-gradient(135deg, rgba(99,102,241,.14), rgba(245,158,11,.08)); border:1px solid var(--line); border-radius:22px; padding:34px 32px;}
-.cost-narr h3{font-size:22px; margin-bottom:14px;} .cost-narr p{font-size:15.5px; margin-bottom:13px;}
-.leak-list{display:flex; flex-direction:column; gap:14px;}
-.leak{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:16px; padding:20px 22px; display:flex; gap:15px; align-items:flex-start;}
-.leak .x{flex:none; width:30px;height:30px;border-radius:9px;background:rgba(245,158,11,.16);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;}
-.leak b{color:var(--ivory); display:block; margin-bottom:3px; font-family:"Space Grotesk"; font-size:15.5px;} .leak span{font-size:14.5px;}
-
-/* data */
-.data-wrap{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:24px; padding:36px 34px;}
-.chart-title{font-family:"Space Grotesk"; color:var(--ivory); font-size:16px; font-weight:600; margin-bottom:4px;}
-.chart-sub{font-size:13px; color:var(--muted-d); margin-bottom:18px;}
-.chart-svg{width:100%; height:auto; display:block;}
-.chart-source{font-size:12px; color:var(--muted-d); margin-top:10px;}
-.stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:30px;}
-.stat{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:18px; padding:24px 22px;}
-.stat .n{font-family:"Space Grotesk"; font-size:34px; font-weight:700; color:var(--ivory); line-height:1;}
-.stat .l{font-size:13.5px; color:var(--muted); margin-top:9px;}
-.data-source{font-size:12px; color:var(--muted-d); margin-top:18px;}
-
-/* method */
-.method-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
-.mstep{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:20px; padding:30px 28px;}
-.mstep .mn{font-family:"Space Grotesk"; font-weight:700; font-size:13px; letter-spacing:.1em; color:var(--amber); margin-bottom:14px;}
-.mstep h3{color:var(--ivory); font-size:20px; margin-bottom:10px;} .mstep p{font-size:14.5px;}
-.loopline{margin-top:26px; display:inline-flex; gap:9px; align-items:center; color:var(--muted); font-size:14.5px;} .loopline b{color:var(--amber);}
-
-/* who */
-.chips{display:flex;flex-wrap:wrap;gap:10px;}
-.chip{font-family:"Space Grotesk";font-weight:500;font-size:14px;color:var(--ivory);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:9px 16px;border-radius:999px;}
-.feature{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin-top:26px;}
-.feature .ic{width:80px;height:80px;flex:none;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%, rgba(99,102,241,.45), transparent), var(--ink);border-radius:18px;}
-.feature .ic svg{width:50px;height:50px;}
-.feature h4{font-size:18px;margin-bottom:4px;}.feature p{font-size:14.5px;}
-
-/* about */
-.about-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:start;}
-.about-grid p{font-size:16.5px; margin-bottom:15px;}
-.name-card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:30px 30px;}
-.name-card .row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);}
-.name-card .row:last-child{border-bottom:none;}
-.name-card .k{font-family:"Space Grotesk";font-weight:700;color:var(--amber);font-size:19px;flex:none;width:78px;}
-.name-card .v{font-size:14.5px;} .name-card .v b{color:var(--ivory);}
-.slogan{margin-top:42px;text-align:center;padding:38px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:20px;}
-.slogan .q{font-family:"Space Grotesk";font-size:clamp(22px,3vw,33px);color:var(--ivory);font-weight:600;}
-
-/* consultation */
-.consult-grid{display:grid; grid-template-columns:1.12fr .88fr; gap:40px; align-items:start;}
-.form-card{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:22px;padding:34px 32px;}
-.field{margin-bottom:18px;}
-.field label{display:block;font-family:"Space Grotesk";font-size:13.5px;font-weight:500;color:var(--ivory);margin-bottom:7px;}
-.field .req{color:var(--amber);}
-.field input,.field select,.field textarea{width:100%;background:rgba(11,13,30,.6);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--ivory);font-family:inherit;font-size:15px;outline:none;transition:border-color .15s;}
-.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--indigo);}
-.field textarea{min-height:108px;resize:vertical;}
-.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%23A9AEC6' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 15px center;}
-.form-msg{display:none;margin-top:4px;padding:14px 16px;border-radius:12px;font-size:14.5px;}
-.form-msg.ok{display:block;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:#a7f3d0;}
-.form-msg.err{display:block;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.4);color:#fecaca;}
-.aside h3{font-size:20px;margin-bottom:14px;}
-.cline{display:flex;align-items:center;gap:11px;margin-bottom:13px;font-size:15.5px;color:var(--ivory);}
-.cline .ic{width:38px;height:38px;flex:none;border-radius:10px;background:rgba(99,102,241,.16);display:flex;align-items:center;justify-content:center;font-size:17px;}
-.cline a:hover{color:var(--amber);}
-.steps{margin-top:24px;padding-top:22px;border-top:1px solid var(--line);}
-.steps .st{display:flex;gap:13px;margin-bottom:15px;}
-.steps .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;font-family:"Space Grotesk";font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;}
-.steps .st p{font-size:14.5px;} .steps .st b{color:var(--ivory);}
-
-/* footer */
-footer{border-top:1px solid var(--line);padding:42px 0 34px;}
-.foot-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
-.foot-slogan{font-size:14px;color:var(--muted);margin-top:10px;}
-.foot-contact{text-align:right;font-size:14.5px;}
-.foot-contact a{display:block;color:var(--ivory);margin-bottom:6px;} .foot-contact a:hover{color:var(--amber);}
-.foot-copy{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted-d);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
-
-/* chat */
-.chat-fab{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--ink);border:1px solid var(--line);box-shadow:0 14px 34px -10px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;}
-.chat-fab:hover{transform:scale(1.07);}
-.chat-panel{position:fixed;right:20px;bottom:92px;z-index:60;width:min(372px,calc(100vw - 32px));height:520px;max-height:calc(100vh - 130px);background:#fff;border-radius:20px;box-shadow:0 30px 70px -18px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;}
-.chat-panel.open{display:flex;}
-.chat-head{background:var(--ink);padding:15px 18px;display:flex;align-items:center;gap:11px;}
-.chat-head .who h4{color:var(--ivory);font-size:15px;margin:0;} .chat-head .who small{color:var(--muted);font-size:11.5px;}
-.chat-head .dot{width:8px;height:8px;border-radius:50%;background:#34d399;margin-left:auto;box-shadow:0 0 0 3px rgba(52,211,153,.2);}
-.chat-body{flex:1;overflow-y:auto;padding:16px;background:#F4F5F9;display:flex;flex-direction:column;gap:10px;}
-.msg{max-width:84%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.5;}
-.msg.bot{background:#fff;border:1px solid #E7E9F1;border-bottom-left-radius:5px;align-self:flex-start;color:var(--ink);}
-.msg.user{background:var(--ink);color:var(--ivory);border-bottom-right-radius:5px;align-self:flex-end;}
-.chat-input{display:flex;gap:8px;padding:11px;border-top:1px solid #E7E9F1;background:#fff;}
-.chat-input input{flex:1;border:1px solid #E7E9F1;border-radius:999px;padding:10px 15px;font-family:inherit;font-size:14px;outline:none;}
-.chat-input input:focus{border-color:var(--indigo);}
-.chat-input button{flex:none;width:40px;height:40px;border-radius:50%;border:none;background:var(--amber);color:var(--ink);font-size:17px;cursor:pointer;}
-
-/* back to top */
-.totop{position:fixed;left:20px;bottom:20px;z-index:55;width:46px;height:46px;border-radius:50%;background:rgba(27,30,60,.9);border:1px solid var(--line);color:var(--ivory);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;}
-.totop.show{opacity:1;pointer-events:auto;} .totop:hover{transform:translateY(-3px);}
-
-/* scroll reveal */
-.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;} .reveal.in{opacity:1;transform:none;}
-
-@media (max-width:880px){
-  :root{--sect:58px;}
-  .nav a:not(.navcta){display:none;} .nav{gap:0;} .logo-svg{height:38px;}
-  .hero{grid-template-columns:1fr;padding:48px 0 36px;} .hero-icon{order:-1;margin-bottom:6px;} .hero-icon-svg{width:165px;}
-  .mission{grid-template-columns:1fr;}
-  .svc-grid,.method-grid{grid-template-columns:1fr;}
-  .cost-grid,.about-grid,.consult-grid{grid-template-columns:1fr;gap:26px;}
-  .stat-row{grid-template-columns:1fr 1fr;}
-  .foot-inner{flex-direction:column;} .foot-contact{text-align:left;}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Outfit','Helvetica Neue',Arial,sans-serif;
+  background:var(--ivory);
+  color:var(--ink);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
 }
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;} .reveal{opacity:1;transform:none;}}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+::selection{background:var(--amber);color:var(--ink)}
+
+h1,h2,h3,h4,.display{font-family:'Space Grotesk','Outfit',Arial,sans-serif;font-weight:700;letter-spacing:-0.025em;line-height:1.03}
+h1{font-size:clamp(2.6rem,6.4vw,4.6rem)}
+h2{font-size:clamp(2rem,4.2vw,3.1rem)}
+h3{font-size:clamp(1.25rem,2.2vw,1.6rem);line-height:1.15}
+h4{font-size:1.05rem;letter-spacing:-0.01em}
+p{max-width:66ch}
+.lead{font-size:clamp(1.06rem,1.7vw,1.3rem);line-height:1.5;max-width:60ch}
+strong{font-weight:600}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;position:relative;z-index:2}
+section.band{padding:88px 0;position:relative;overflow:hidden}
+section.band.tight{padding:64px 0}
+.b-ivory{background:var(--ivory)}
+.b-warm{background:var(--ivory-warm)}
+.b-white{background:var(--white)}
+.b-ink{background:var(--ink);color:var(--ivory)}
+.b-ink-deep{background:var(--ink-deep);color:var(--ivory)}
+.b-indigo{background:var(--indigo);color:var(--white)}
+.b-amber{background:var(--amber);color:var(--ink)}
+.b-ink p,.b-ink-deep p,.b-indigo p{color:rgba(250,247,240,.82)}
+.b-ink .lead,.b-ink-deep .lead,.b-indigo .lead{color:rgba(250,247,240,.9)}
+
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
+.stack-lg>*+*{margin-top:24px}
+.stack-md>*+*{margin-top:14px}
+.mt-s{margin-top:14px}.mt-m{margin-top:28px}.mt-l{margin-top:48px}
+
+/* ---------- type helpers ---------- */
+.eyebrow{
+  font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--indigo);margin-bottom:14px;display:block
+}
+.eyebrow.on-dark{color:var(--amber)}
+.eyebrow.on-amber{color:var(--ink);opacity:.7}
+.muted{color:var(--slate)}
+.small{font-size:.92rem;line-height:1.5}
+.tiny{font-size:.8rem;line-height:1.5;color:var(--slate)}
+.b-ink .tiny,.b-ink-deep .tiny{color:rgba(250,247,240,.55)}
+.rule{height:6px;width:64px;background:var(--amber);border:0;margin-bottom:26px}
+.rule.indigo{background:var(--indigo)}
+
+/* ---------- buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  height:58px;padding:0 30px;border:0;border-radius:var(--r-sm);
+  font-family:'Outfit',Arial,sans-serif;font-weight:600;font-size:1.02rem;
+  text-decoration:none;cursor:pointer;transition:transform .2s ease,background-color .2s ease,color .2s ease
+}
+.btn:hover{transform:scale(1.04)}
+.btn-primary{background:var(--indigo);color:#fff}
+.btn-primary:hover{background:var(--indigo-dark)}
+.btn-amber{background:var(--amber);color:var(--ink)}
+.btn-amber:hover{background:var(--amber-dark)}
+.btn-ink{background:var(--ink);color:var(--ivory)}
+.btn-ink:hover{background:var(--ink-deep)}
+.btn-outline{background:transparent;border:4px solid var(--ink);color:var(--ink)}
+.btn-outline:hover{background:var(--ink);color:var(--ivory)}
+.btn-outline.light{border-color:var(--ivory);color:var(--ivory)}
+.btn-outline.light:hover{background:var(--ivory);color:var(--ink)}
+.btn-row{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ---------- nav ---------- */
+header.nav{position:sticky;top:0;z-index:50;background:var(--ink)}
+.nav-inner{max-width:var(--max);margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none}
+.brand svg{width:34px;height:34px}
+.brand-word{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.42rem;letter-spacing:-0.03em;color:var(--ivory)}
+.brand-word .t{color:var(--amber)}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-links a{
+  position:relative;text-decoration:none;color:rgba(250,247,240,.72);
+  font-weight:500;font-size:.97rem;padding:10px 14px;border-radius:var(--r-sm);
+  transition:color .2s ease,background-color .2s ease
+}
+.nav-links a:hover{color:var(--ivory);background:rgba(250,247,240,.07)}
+.nav-links a[aria-current="page"]{color:var(--ivory)}
+.nav-links a[aria-current="page"]::after{
+  content:"";position:absolute;left:14px;right:14px;bottom:2px;height:4px;background:var(--amber);border-radius:2px
+}
+.nav-cta{margin-left:12px;height:46px;padding:0 20px;font-size:.95rem}
+.menu-btn{display:none;background:none;border:0;color:var(--ivory);padding:10px;cursor:pointer}
+.menu-btn svg{width:26px;height:26px}
+.mobile-menu{display:none;background:var(--ink-deep);padding:12px 24px 24px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:14px 0;color:var(--ivory);text-decoration:none;font-size:1.15rem;font-weight:500;border-bottom:2px solid rgba(250,247,240,.1)}
+
+/* ---------- decorative flat shapes ---------- */
+.deco{position:absolute;pointer-events:none;z-index:1}
+.deco-circle{border-radius:50%}
+.deco-sq{transform:rotate(18deg)}
+
+/* ---------- hero ---------- */
+.hero{background:var(--ink);color:var(--ivory);padding:104px 0 0;position:relative;overflow:hidden}
+.hero h1{color:var(--ivory);max-width:15ch}
+.hero .lead{margin-top:26px}
+.kicker{
+  display:inline-flex;align-items:center;gap:9px;background:rgba(79,70,229,.22);
+  color:var(--ivory);border-radius:100px;padding:8px 16px;font-size:.85rem;font-weight:500;margin-bottom:26px
+}
+.kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--amber)}
+
+/* cycle-time readout */
+.readout{background:var(--ink-deep);border-radius:var(--r);padding:26px;margin-top:44px}
+.readout .row{display:grid;grid-template-columns:120px 1fr 78px;align-items:center;gap:14px;padding:9px 0}
+.readout .lbl{font-size:.85rem;font-weight:500;color:rgba(250,247,240,.7)}
+.readout .track{height:20px;background:rgba(250,247,240,.08);border-radius:3px;overflow:hidden}
+.readout .fill{display:block;height:100%;border-radius:3px}
+.readout .val{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.05rem;text-align:right}
+
+/* ---------- stat blocks ---------- */
+.stat{padding:30px 26px;border-radius:var(--r)}
+.stat .n{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:clamp(2.1rem,4vw,2.9rem);letter-spacing:-0.03em;line-height:1}
+.stat .k{margin-top:12px;font-size:.95rem;line-height:1.45}
+.stat.a{background:var(--indigo);color:#fff}
+.stat.b{background:var(--amber);color:var(--ink)}
+.stat.c{background:var(--ink);color:var(--ivory)}
+.stat.d{background:var(--white);color:var(--ink);border:0}
+.stat.d .n{color:var(--indigo)}
+
+/* ---------- cards ---------- */
+.card{border-radius:var(--r);padding:32px;transition:transform .2s ease,background-color .2s ease}
+.card.hoverable{cursor:default}
+.card.hoverable:hover{transform:scale(1.02)}
+.card-white{background:var(--white)}
+.card-white:hover{background:#fff}
+.card-indigo{background:var(--indigo-tint)}
+.card-indigo:hover{background:#E4E2FA}
+.card-amber{background:var(--amber-tint)}
+.card-amber:hover{background:#FCE9C6}
+.card-ink{background:var(--ink);color:var(--ivory)}
+.card-ink p{color:rgba(250,247,240,.78)}
+.card h3{margin-bottom:12px}
+.card p+p{margin-top:12px}
+.card .tag{
+  display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  padding:6px 12px;border-radius:100px;margin-bottom:18px
+}
+.tag-indigo{background:var(--indigo);color:#fff}
+.tag-amber{background:var(--amber);color:var(--ink)}
+.tag-ink{background:var(--ink);color:var(--ivory)}
+
+.icon-badge{
+  width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:var(--white);margin-bottom:20px;transition:transform .2s ease
+}
+.card.hoverable:hover .icon-badge{transform:scale(1.1)}
+.icon-badge svg{width:26px;height:26px;stroke-width:2.4}
+
+/* ---------- lists ---------- */
+ul.checks{list-style:none;display:grid;gap:12px}
+ul.checks li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:1rem;line-height:1.5}
+ul.checks li::before{
+  content:"";width:13px;height:13px;background:var(--amber);border-radius:3px;margin-top:7px
+}
+ul.checks.indigo li::before{background:var(--indigo)}
+ul.checks.light li::before{background:var(--amber)}
+
+/* ---------- steps ---------- */
+.step{display:grid;grid-template-columns:78px 1fr;gap:26px;padding:30px 0;border-top:3px solid var(--line)}
+.step:last-child{border-bottom:3px solid var(--line)}
+.step .num{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.5rem;color:var(--indigo);letter-spacing:-0.02em}
+.step .when{font-size:.85rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-top:6px}
+.b-ink .step{border-color:rgba(250,247,240,.16)}
+.b-ink .step .num{color:var(--amber)}
+.b-ink .step .when{color:rgba(250,247,240,.55)}
+
+/* ---------- pricing ---------- */
+.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.price{border-radius:var(--r);padding:30px 26px;background:var(--white);transition:transform .2s ease}
+.price:hover{transform:scale(1.02)}
+.price.feature{background:var(--indigo);color:#fff;transform:scale(1.035)}
+.price.feature:hover{transform:scale(1.06)}
+.price .name{font-weight:600;font-size:1.02rem;min-height:48px}
+.price .amt{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.85rem;letter-spacing:-0.03em;margin:14px 0 10px}
+.price.feature .amt{color:#fff}
+.price .note{font-size:.9rem;color:var(--slate);line-height:1.45}
+.price.feature .note{color:rgba(255,255,255,.82)}
+.price .flag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block;min-height:16px}
+
+/* ---------- table ---------- */
+.tbl{width:100%;border-collapse:collapse;font-size:.95rem}
+.tbl th,.tbl td{text-align:left;padding:16px 14px;border-bottom:2px solid var(--line)}
+.tbl th{font-weight:600;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase;color:var(--slate)}
+.tbl td.mono{font-family:'Space Grotesk',Arial,sans-serif;font-weight:500}
+.tbl tr:last-child td{border-bottom:0}
+.b-ink .tbl th{color:rgba(250,247,240,.55)}
+.b-ink .tbl th,.b-ink .tbl td{border-color:rgba(250,247,240,.16)}
+
+/* ---------- work cards ---------- */
+.work{border-radius:var(--r);overflow:hidden;background:var(--white);transition:transform .2s ease}
+.work:hover{transform:scale(1.02)}
+.work .top{height:132px;display:flex;align-items:flex-end;padding:20px;position:relative;overflow:hidden}
+.work .top .mark{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:-0.03em;position:relative;z-index:2}
+.work .body{padding:24px}
+.work .meta{font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
+
+/* ---------- form ---------- */
+form .field{margin-bottom:20px}
+label{display:block;font-weight:600;font-size:.95rem;margin-bottom:8px}
+input,select,textarea{
+  width:100%;font-family:'Outfit',Arial,sans-serif;font-size:1rem;color:var(--ink);
+  background:var(--ivory-warm);border:2px solid transparent;border-radius:var(--r-sm);padding:15px 16px
+}
+textarea{min-height:132px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;background:var(--white);border-color:var(--indigo)}
+.form-note{font-size:.86rem;color:var(--slate);margin-top:10px}
+.form-status{display:none;padding:20px;border-radius:var(--r);font-weight:500;margin-top:18px}
+.form-status.ok{display:block;background:var(--indigo);color:#fff}
+.form-status.err{display:block;background:var(--amber-tint);color:var(--ink)}
+
+/* ---------- faq ---------- */
+.faq-item{border-top:3px solid var(--line);padding:26px 0}
+.faq-item:last-child{border-bottom:3px solid var(--line)}
+.faq-item h4{margin-bottom:10px}
+
+/* ---------- footer ---------- */
+footer{background:var(--ink-deep);color:var(--ivory);padding:64px 0 34px}
+footer a{color:rgba(250,247,240,.72);text-decoration:none}
+footer a:hover{color:var(--amber)}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.foot-col h5{font-size:.76rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);margin-bottom:16px}
+.foot-col ul{list-style:none;display:grid;gap:10px;font-size:.95rem}
+.foot-bottom{margin-top:48px;padding-top:22px;border-top:2px solid rgba(250,247,240,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:rgba(250,247,240,.55)}
+
+/* ---------- sources ---------- */
+.sources{display:grid;gap:10px;font-size:.87rem;line-height:1.5}
+.sources a{color:var(--indigo);text-decoration:underline;text-underline-offset:3px}
+.b-ink .sources a{color:var(--amber)}
+
+/* ---------- a11y ---------- */
+.skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--ink);padding:12px 18px;z-index:99;border-radius:0 0 var(--r-sm) 0}
+.skip:focus{left:0}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:3px solid var(--amber);outline-offset:3px
+}
+.page{display:none}
+.page.active{display:block}
+.hero-anim{opacity:0;transform:translateY(14px);animation:rise .55s cubic-bezier(.2,.7,.3,1) forwards}
+.hero-anim.d2{animation-delay:.09s}
+.hero-anim.d3{animation-delay:.18s}
+@keyframes rise{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .btn:hover,.card.hoverable:hover,.price:hover,.work:hover{transform:none}
+}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .split{grid-template-columns:1fr;gap:36px}
+  .g4,.price-grid{grid-template-columns:repeat(2,1fr)}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  section.band{padding:60px 0}
+  .nav-links,.nav-cta{display:none}
+  .menu-btn{display:block}
+  .g2,.g3,.g4,.price-grid{grid-template-columns:1fr}
+  .price.feature{transform:none}
+  .hero{padding-top:64px}
+  .step{grid-template-columns:1fr;gap:10px}
+  .foot-grid{grid-template-columns:1fr}
+  .readout .row{grid-template-columns:92px 1fr 62px;gap:10px}
+  .tbl th,.tbl td{padding:12px 8px;font-size:.9rem}
+}
 </style>
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-<header>
-  <div class="wrap head-inner">
-    <a href="#top" aria-label="tsKaizen"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481 170" class="logo-svg"><rect width="481" height="170" fill="#16182E"/><defs><linearGradient id="loopgradHead" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><g transform="translate(40,30.0) scale(1.1)"><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradHead)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></g><g transform="translate(180.00,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M261.39990234375 0Q215.899658203125 0 189.2493896484375 26.82525634765625Q162.59912109375 53.6505126953125 162.59912109375 99.40087890625V405.9990234375H27.39990234375V492.500244140625H162.59912109375V656.299560546875H265.500732421875V492.500244140625H413.39990234375V405.9990234375H265.500732421875V116.501220703125Q265.500732421875 86.501220703125 294.20068359375 86.501220703125H396.500244140625V0Z" fill="#F59E0B"/></g><g transform="translate(448.00,0)"><path d="M277.7498779296875 -14Q183.899658203125 -14 121.72467041015625 28.0Q59.5496826171875 70 46.19970703125 154.6495361328125L142.2510986328125 178Q149.60107421875 136.700439453125 168.90087890625 113.02569580078125Q188.20068359375 89.3509521484375 216.5504150390625 79.27606201171875Q244.900146484375 69.201171875 277.7498779296875 69.201171875Q327.3494873046875 69.201171875 353.77410888671875 87.8509521484375Q380.19873046875 106.500732421875 380.19873046875 136.500244140625Q380.19873046875 166.8497314453125 355.12408447265625 180.92462158203125Q330.0494384765625 194.99951171875 281.499755859375 203.699462890625L247.2001953125 209.7493896484375Q197.300048828125 219.0494384765625 156.39990234375 236.199462890625Q115.499755859375 253.3494873046875 91.07464599609375 283.299560546875Q66.6495361328125 313.2496337890625 66.6495361328125 359.7998046875Q66.6495361328125 429.9500732421875 119.07464599609375 468.22515869140625Q171.499755859375 506.500244140625 257.39990234375 506.500244140625Q340.39990234375 506.500244140625 393.82501220703125 469.32525634765625Q447.2501220703125 432.1502685546875 462.8502197265625 368.300537109375L367.19873046875 340.699951171875Q358.498779296875 385.699462890625 329.4490966796875 404.499267578125Q300.3994140625 423.299072265625 257.39990234375 423.299072265625Q214.7503662109375 423.299072265625 190.8507080078125 407.82427978515625Q166.9510498046875 392.3494873046875 166.9510498046875 363.699951171875Q166.9510498046875 334.100341796875 190.4508056640625 320.1505126953125Q213.9505615234375 306.20068359375 254.2501220703125 299.1507568359375L288.5496826171875 293.100830078125Q342.4498291015625 283.80078125 386.02496337890625 267.6507568359375Q429.60009765625 251.500732421875 455.0501708984375 221.87567138671875Q480.500244140625 192.2506103515625 480.500244140625 142.3504638671875Q480.500244140625 67.500244140625 425.57513427734375 26.7501220703125Q370.6500244140625 -14 277.7498779296875 -14Z" fill="#F59E0B"/></g></g><g transform="translate(242.91,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M66 0V700H198V422H216L443 700H612L320 355L622 0H448L216 284H198V0Z" fill="#FAF7F0"/></g><g transform="translate(611.00,0)"><path d="M224 -14Q171 -14 129.0 4.5Q87 23 62.5 58.5Q38 94 38 145Q38 196 62.5 230.5Q87 265 130.5 282.5Q174 300 230 300H366V328Q366 363 344.0 385.5Q322 408 274 408Q227 408 204.0 386.5Q181 365 174 331L58 370Q70 408 96.5 439.5Q123 471 167.5 490.5Q212 510 276 510Q374 510 431.0 461.0Q488 412 488 319V134Q488 104 516 104H556V0H472Q435 0 411.0 18.0Q387 36 387 66V67H368Q364 55 350.0 35.5Q336 16 306.0 1.0Q276 -14 224 -14ZM246 88Q299 88 332.5 117.5Q366 147 366 196V206H239Q204 206 184.0 191.0Q164 176 164 149Q164 122 185.0 105.0Q206 88 246 88Z" fill="#FAF7F0"/></g><g transform="translate(1174.00,0)"><path d="M70 0V496H196V0ZM133 554Q99 554 75.5 576.0Q52 598 52 634Q52 670 75.5 692.0Q99 714 133 714Q168 714 191.0 692.0Q214 670 214 634Q214 598 191.0 576.0Q168 554 133 554Z" fill="#FAF7F0"/></g><g transform="translate(1425.00,0)"><path d="M52 0V150L324 376V392H62V496H462V346L190 120V104H470V0Z" fill="#FAF7F0"/></g><g transform="translate(1928.00,0)"><path d="M296 -14Q222 -14 165.5 17.5Q109 49 77.5 106.5Q46 164 46 242V254Q46 332 77.0 389.5Q108 447 164.0 478.5Q220 510 294 510Q367 510 421.0 477.5Q475 445 505.0 387.5Q535 330 535 254V211H174Q176 160 212.0 128.0Q248 96 300 96Q353 96 378.0 119.0Q403 142 416 170L519 116Q505 90 478.5 59.5Q452 29 408.0 7.5Q364 -14 296 -14ZM175 305H407Q403 348 372.5 374.0Q342 400 293 400Q242 400 212.0 374.0Q182 348 175 305Z" fill="#FAF7F0"/></g><g transform="translate(2490.00,0)"><path d="M70 0V496H194V431H212Q224 457 257.0 480.5Q290 504 357 504Q415 504 458.5 477.5Q502 451 526.0 404.5Q550 358 550 296V0H424V286Q424 342 396.5 370.0Q369 398 318 398Q260 398 228.0 359.5Q196 321 196 252V0Z" fill="#FAF7F0"/></g></g></svg></a>
-    <nav class="nav">
-      <a href="#mission">Mission</a>
-      <a href="#services">Services</a>
-      <a href="#data">The Data</a>
-      <a href="#method">Method</a>
-      <a href="#about">About</a>
-      <a href="#consult" class="navcta">Book a free consultation</a>
+<!-- ============ NAV ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="brand" href="#/" aria-label="tsKaizen home">
+      <svg viewBox="14 12 82 78" aria-hidden="true">
+        <defs><linearGradient id="lg" x1="0" y1="1" x2="1" y2="0">
+          <stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs>
+        <path d="M 35 26.02 A 30 30 0 1 0 65.9 26.56 Q 67.28 28.21 70.05 28.1 L 77.17 28.38" fill="none" stroke="url(#lg)" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B"/>
+        <line x1="50" y1="52" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.8"/>
+        <line x1="50" y1="52" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.8"/>
+        <circle cx="46.24" cy="62.34" r="2.6" fill="#4F46E5"/>
+        <circle cx="59.19" cy="59.71" r="2.6" fill="#F59E0B"/>
+        <circle cx="50" cy="52" r="6.2" fill="#4F46E5"/>
+        <circle cx="50" cy="52" r="2.6" fill="#FAF7F0"/>
+      </svg>
+      <span class="brand-word"><span class="t">t</span>sKaizen</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#/" data-route="/">Home</a>
+      <a href="#/services" data-route="/services">Services</a>
+      <a href="#/data" data-route="/data">The Data</a>
+      <a href="#/method" data-route="/method">Method</a>
+      <a href="#/about" data-route="/about">About Us</a>
+      <a class="btn btn-amber nav-cta" href="#/consult">Book a free consultation</a>
     </nav>
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileMenu" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#/">Home</a>
+    <a href="#/services">Services</a>
+    <a href="#/data">The Data</a>
+    <a href="#/method">Method</a>
+    <a href="#/about">About Us</a>
+    <a href="#/consult" style="color:var(--amber)">Book a free consultation</a>
   </div>
 </header>
 
-<main id="top">
+<main id="main">
 
-  <section class="hero-sect"><div class="wrap hero">
-    <div class="reveal">
-      <div class="eyebrow">AI &amp; Automation Consulting &middot; Orlando</div>
-      <h1>Innovating tech with AI. Building a <span class="hl">better future</span> with automation.</h1>
-      <p class="sub">tsKaizen helps local businesses put AI and automation to work, so they capture every lead, answer every customer, and grow without adding hours to the day.</p>
-      <div class="cta-row">
-        <a href="#consult" class="btn btn-primary">Book a free consultation</a>
-        <a href="#services" class="btn btn-ghost">Explore services</a>
-      </div>
-    </div>
-    <div class="hero-icon"><div class="hero-glow"></div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" class="hero-icon-svg" width="100" height="100"><defs><linearGradient id="loopgradHero" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradHero)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
-  </div></section>
+<!-- ================= HOME ================= -->
+<div class="page" id="page-home">
 
-  <section class="section band" id="mission"><div class="wrap">
-    <div class="mission reveal">
-      <div class="mi"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="46" height="46"><defs><linearGradient id="loopgradMis" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradMis)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
-      <div>
-        <div class="eyebrow">Our mission</div>
-        <h2>Put enterprise-grade AI within reach of every local business.</h2>
-        <p class="muted">The tools big companies use to move faster and serve better should not be locked behind enterprise budgets. We build, deploy, and maintain AI and automation for the businesses that give a community its character, so they can compete, grow, and spend more time on the people they serve.</p>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="section" id="services"><div class="wrap">
-    <div class="shead reveal">
-      <div class="eyebrow">What we build</div>
-      <h2>Three services. One outcome: a business that runs smarter.</h2>
-      <p class="muted">Each one closes a gap that quietly costs local businesses customers every single day.</p>
-    </div>
-    <div class="svc-grid reveal">
-      <div class="svc"><div class="badge">&#128187;</div><h3>Website Design &amp; Build</h3><p class="why">Your website is your first impression and your hardest working salesperson. A slow or dated site sends visitors straight to a competitor.</p><p class="impact"><b>The result:</b> a fast, modern, mobile-first site that turns visitors into customers.</p></div>
-      <div class="svc"><div class="badge">&#129302;</div><h3>AI Chatbots &amp; Call Assistants</h3><p class="why">Customers expect answers instantly, day or night. When no one replies, they move on, and you never even know it happened.</p><p class="impact"><b>The result:</b> an AI assistant that answers messages and calls 24/7 and captures every lead.</p></div>
-      <div class="svc"><div class="badge">&#9889;</div><h3>Automation Systems</h3><p class="why">Every hour on repetitive manual work is an hour not spent growing or serving customers. Busywork silently caps how far you can scale.</p><p class="impact"><b>The result:</b> follow-ups, scheduling, and data entry run themselves, freeing your team.</p></div>
-    </div>
-  </div></section>
-
-  <section class="section band" id="cost"><div class="wrap">
-    <div class="shead reveal">
-      <div class="eyebrow">The hidden cost</div>
-      <h2>What really happens when there is no automation.</h2>
-      <p class="muted">The leaks are invisible on a busy day. Over a month, they add up to real revenue walking out the door.</p>
-    </div>
-    <div class="cost-grid reveal">
-      <div class="cost-narr">
-        <h3>Every gap is a customer you never met.</h3>
-        <p>When a business runs on memory and manual effort, opportunities slip through the cracks the moment things get busy. The phone rings while you are serving a table. A message arrives at 9pm. A quote never gets followed up. None of it feels like a loss in the moment, because you never see the customer you missed.</p>
-        <p>Automation is simply a system that never gets busy, never forgets, and never sleeps. It catches what a busy team cannot, so the work you already did to earn that lead does not go to waste.</p>
-        <p class="muted">Multiply one missed call a day by your average order value, and the cost of doing nothing becomes very real, very fast.</p>
-      </div>
-      <div class="leak-list">
-        <div class="leak"><span class="x">&#33;</span><div><b>The missed call</b><span>A call at lunch is a catering order or booking that quietly goes to whoever picks up first.</span></div></div>
-        <div class="leak"><span class="x">&#33;</span><div><b>The after-hours message</b><span>A question at night with no reply is a customer who has booked elsewhere by morning.</span></div></div>
-        <div class="leak"><span class="x">&#33;</span><div><b>The follow-up that never happens</b><span>A warm lead with no follow-up cools off and never closes. Most sales need more than one touch.</span></div></div>
-        <div class="leak"><span class="x">&#33;</span><div><b>The manual hours</b><span>Time spent retyping, scheduling, and chasing is time not spent growing or serving customers.</span></div></div>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="section" id="data"><div class="wrap">
-    <div class="shead reveal">
-      <div class="eyebrow">The shift is already here</div>
-      <h2>AI is not a trend. It is the new baseline.</h2>
-      <p class="muted">Around the world, the businesses adopting AI are answering faster, serving better, and pulling ahead. The data is hard to argue with.</p>
-    </div>
-    <div class="data-wrap reveal">
-      <div class="chart-title">Share of organizations using AI in at least one business function</div>
-      <div class="chart-sub">Global, 2017 to 2025</div>
-      <svg viewBox="0 0 720 360" class="chart-svg" xmlns="http://www.w3.org/2000/svg"><defs>
-<linearGradient id="chartLine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6366F1"/><stop offset="1" stop-color="#F59E0B"/></linearGradient>
-<linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6366F1" stop-opacity="0.32"/><stop offset="1" stop-color="#6366F1" stop-opacity="0"/></linearGradient>
-</defs><line x1="56" y1="312.0" x2="694" y2="312.0" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="316.0" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">0%</text><line x1="56" y1="242.5" x2="694" y2="242.5" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="246.5" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">25%</text><line x1="56" y1="173.0" x2="694" y2="173.0" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="177.0" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">50%</text><line x1="56" y1="103.5" x2="694" y2="103.5" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="107.5" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">75%</text><line x1="56" y1="34.0" x2="694" y2="34.0" stroke="rgba(255,255,255,.08)" stroke-width="1"/><text x="46" y="38.0" fill="#7C7F99" font-size="12" text-anchor="end" font-family="DM Sans">100%</text><path d="M56.0 256.4 L215.5 150.8 L375.0 156.3 L534.5 159.1 L614.2 95.2 L694.0 67.4 L 694.0 312.0 L 56.0 312.0 Z" fill="url(#chartArea)"/><path d="M56.0 256.4 L215.5 150.8 L375.0 156.3 L534.5 159.1 L614.2 95.2 L694.0 67.4" fill="none" stroke="url(#chartLine)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="56.0" cy="256.4" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="56.0" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2017</text><circle cx="215.5" cy="150.8" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="215.5" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2019</text><circle cx="375.0" cy="156.3" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="375.0" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2021</text><circle cx="534.5" cy="159.1" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="534.5" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2023</text><circle cx="614.2" cy="95.2" r="4" fill="#6366F1" stroke="#0B0D1E" stroke-width="2"/><text x="614.2" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2024</text><circle cx="694.0" cy="67.4" r="6" fill="#F59E0B" stroke="#0B0D1E" stroke-width="2"/><text x="694.0" y="334" fill="#9aa0b8" font-size="12" text-anchor="middle" font-family="DM Sans">2025</text><text x="694.0" y="53.4" fill="#F59E0B" font-size="18" font-weight="700" text-anchor="end" font-family="Space Grotesk">88%</text><text x="54.0" y="244.4" fill="#A9AEC6" font-size="13" font-weight="600" text-anchor="start" font-family="Space Grotesk">20%</text></svg>
-      <div class="chart-source">Source: McKinsey Global Survey on the State of AI, 2025 (1,993 respondents across ~105 countries).</div>
-    </div>
-    <div class="stat-row reveal">
-      <div class="stat"><div class="n"><span class="grad">88%</span></div><div class="l">of organizations now use AI in at least one business function, up from 78% a year earlier.</div></div>
-      <div class="stat"><div class="n">74%</div><div class="l">of executives report a return on investment within the first year of adopting AI.</div></div>
-      <div class="stat"><div class="n">15%</div><div class="l">average cost savings reported by early adopters across their operations.</div></div>
-      <div class="stat"><div class="n">23%</div><div class="l">average productivity improvement reported by early AI adopters.</div></div>
-    </div>
-    <div class="data-source">Sources: McKinsey State of AI 2025 &middot; Google Cloud ROI of AI study &middot; Gartner. AI keeps getting cheaper, faster, and easier, and starting early is the simplest edge you will ever gain.</div>
-  </div></section>
-
-  <section class="section band" id="method"><div class="wrap">
-    <div class="shead reveal">
-      <div class="eyebrow">How we work</div>
-      <h2>Advise. Build. Improve.</h2>
-      <p class="muted">A simple, proven path from where you are to a system that keeps paying off. True to the name: purpose first, then continuous improvement.</p>
-    </div>
-    <div class="method-grid reveal">
-      <div class="mstep"><div class="mn">01 / ADVISE</div><h3>Find the leaks</h3><p>I study how your business shows up and pinpoint exactly what is costing you customers, then recommend the highest-impact fix first.</p></div>
-      <div class="mstep"><div class="mn">02 / BUILD</div><h3>Put it to work</h3><p>I design and deploy your website, AI assistant, and automations, tailored to how you actually operate, and launch them fast.</p></div>
-      <div class="mstep"><div class="mn">03 / IMPROVE</div><h3>Keep getting better</h3><p>I monitor, refine, and grow the system month after month, so it keeps compounding value instead of going stale.</p></div>
-    </div>
-    <div class="loopline reveal"><b>&#8635;</b> Improve feeds back into Advise. That continuous loop is the heart of Kaizen.</div>
-  </div></section>
-
-  <section class="section" id="who"><div class="wrap">
-    <div class="shead reveal"><div class="eyebrow">Who we help</div><h2>Built for the businesses that make a neighborhood feel like home.</h2></div>
-    <div class="reveal">
-      <div class="chips">
-        <span class="chip">Cafes &amp; Restaurants</span><span class="chip">Salons &amp; Spas</span><span class="chip">Home Services</span>
-        <span class="chip">Real Estate</span><span class="chip">Auto &amp; Collision</span><span class="chip">Professional Services</span>
-      </div>
-      <div class="feature">
-        <div class="ic"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="50" height="50"><defs><linearGradient id="loopgradFeat" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradFeat)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
-        <div><h4>Jacob&rsquo;s Cafe &amp; Restaurant &middot; Orlando, FL</h4><p class="muted">A full rebuild: a warm, modern website plus an AI assistant that answers messages and phone calls around the clock and captures every catering and order lead automatically.</p></div>
-      </div>
-    </div>
-  </div></section>
-
-  <section class="section band" id="about"><div class="wrap">
-    <div class="about-grid reveal">
-      <div>
-        <div class="eyebrow">Our name &amp; story</div>
-        <h2 style="font-size:clamp(28px,3.6vw,42px);margin-bottom:20px;">Hi, I&rsquo;m Anthony.</h2>
-        <p>I founded tsKaizen to bring the kind of technology big companies take for granted to the local businesses that give a community its character.</p>
-        <p>My background is in finance and operations, and I have spent years building real technology that solves real problems for real people. I do not just recommend tools. I design, build, and maintain them.</p>
-        <p>What drives me is the joy of building something that works and watching a business grow because of it. Innovation and your success are the same goal to me.</p>
-      </div>
-      <div class="name-card">
-        <div class="eyebrow" style="margin-bottom:8px;">What the name means</div>
-        <div class="row"><div class="k">ts</div><div class="v"><b>Telos</b> is Greek for purpose. It stands for innovating technology with AI, always starting from the outcome that matters to you.</div></div>
-        <div class="row"><div class="k">Kaizen</div><div class="v"><b>Kaizen</b> is Japanese for continuous improvement. It stands for building a better future with automation that keeps getting better over time.</div></div>
-        <div class="row"><div class="k" style="font-size:15px;">Together</div><div class="v">Purpose-driven technology, built to improve the longer we work together.</div></div>
-      </div>
-    </div>
-    <div class="slogan reveal">
-      <div class="eyebrow" style="text-align:center;">The tsKaizen promise</div>
-      <div class="q">Smarter systems, <span class="hl">with a human touch.</span></div>
-    </div>
-  </div></section>
-
-  <section class="section" id="consult"><div class="wrap">
-    <div class="shead reveal" style="margin-bottom:34px;">
-      <div class="eyebrow">Consultation</div>
-      <h2>Tell me what you are trying to solve.</h2>
-      <p class="muted">I review every request personally and get back to you quickly with a plan, not a sales pitch. The more detail you give, the faster I can help.</p>
-    </div>
-    <div class="consult-grid reveal">
-      <div class="form-card">
-        <div class="field"><label>Your name <span class="req">*</span></label><input id="f-name" type="text" placeholder="Jane Smith"></div>
-        <div class="field"><label>Company name <span class="req">*</span></label><input id="f-company" type="text" placeholder="Jane's Bakery"></div>
-        <div class="field"><label>Email <span class="req">*</span></label><input id="f-email" type="email" placeholder="jane@janesbakery.com"></div>
-        <div class="field"><label>Phone <span style="color:var(--muted);font-weight:400;">(optional)</span></label><input id="f-phone" type="tel" placeholder="(555) 123-4567"></div>
-        <div class="field"><label>Which service are you looking for? <span class="req">*</span></label>
-          <select id="f-service"><option value="">Select a service</option><option>Website design or build</option><option>AI chatbot or call assistant</option><option>Automation systems</option><option>Not sure / more than one</option></select></div>
-        <div class="field"><label>What problem are you trying to solve? <span class="req">*</span></label><textarea id="f-problem" placeholder="Tell me what is slowing you down or costing you customers right now."></textarea></div>
-        <button class="btn btn-primary" style="width:100%;justify-content:center;" onclick="submitConsult()">Send my request</button>
-        <div class="form-msg" id="formMsg"></div>
-      </div>
-      <div class="aside">
-        <h3>Or reach me directly</h3>
-        <div class="cline"><span class="ic">&#9742;</span><a href="tel:+15612603951">+1 (561) 260-3951</a></div>
-        <div class="cline"><span class="ic">&#9993;</span><a href="mailto:anthonypichardo31@tskaizen.com">anthonypichardo31@tskaizen.com</a></div>
-        <div class="steps">
-          <div class="eyebrow" style="margin-bottom:14px;">What happens next</div>
-          <div class="st"><div class="n">1</div><p><b>I review your request</b> personally, usually the same day.</p></div>
-          <div class="st"><div class="n">2</div><p><b>I reach out with a tailored plan</b> and clear next steps.</p></div>
-          <div class="st"><div class="n">3</div><p><b>We build and launch</b> the solution, then keep improving it.</p></div>
+  <section class="hero">
+    <div class="deco deco-circle" style="width:520px;height:520px;background:var(--indigo);opacity:.16;right:-160px;top:-190px"></div>
+    <div class="deco deco-sq" style="width:230px;height:230px;background:var(--amber);opacity:.13;right:120px;bottom:-70px"></div>
+    <div class="wrap" style="padding-bottom:96px">
+      <div class="split" style="align-items:center">
+        <div>
+          <span class="kicker hero-anim"><span class="dot"></span>Orange, Seminole and Osceola counties</span>
+          <h1 class="hero-anim d2">Plan review takes weeks. Your bid desk shouldn't.</h1>
+          <p class="lead hero-anim d3">tsKaizen builds AI agents for Central Florida contractors that read the invitation to bid, predict the plan reviewer's comments, and assemble the closeout package. Trained on your jobs, your pricing, your corrections history.</p>
+          <div class="btn-row mt-m hero-anim d3">
+            <a class="btn btn-amber" href="#/consult">Book a free 30-minute audit</a>
+            <a class="btn btn-outline light" href="#/data">See your permit numbers</a>
+          </div>
+        </div>
+        <div class="readout hero-anim d3" aria-label="Illustrative permit cycle time comparison">
+          <div style="font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.15rem;color:var(--ivory);letter-spacing:-.02em">Permit cycle time, one trade</div>
+          <p class="tiny" style="margin:8px 0 14px">Structure of the readout we build for every prospect from City of Orlando permit records. Bars below are shaped for illustration, not a real contractor's file.</p>
+          <div class="row"><span class="lbl">Fastest quartile</span><span class="track"><span class="fill" style="width:34%;background:var(--indigo)"></span></span><span class="val">Low</span></div>
+          <div class="row"><span class="lbl">Trade median</span><span class="track"><span class="fill" style="width:58%;background:#8B85EE"></span></span><span class="val">Mid</span></div>
+          <div class="row"><span class="lbl">Your last 20</span><span class="track"><span class="fill" style="width:88%;background:var(--amber)"></span></span><span class="val">High</span></div>
+          <p class="tiny" style="margin-top:14px">Source fields: application date, issue date, license type, valuation. City of Orlando open data.</p>
         </div>
       </div>
     </div>
-  </div></section>
+  </section>
+
+  <section class="band tight b-warm">
+    <div class="wrap">
+      <div class="grid g4">
+        <div class="stat a"><div class="n">92,730</div><div class="k">Construction workers in the Orlando metro, June 2026</div></div>
+        <div class="stat b"><div class="n">3 to 5 wks</div><div class="k">Reported Orange County plan review wait, early 2026</div></div>
+        <div class="stat c"><div class="n">~$30K</div><div class="k">Typical delay cost on a single-family project</div></div>
+        <div class="stat d"><div class="n">$5 to 8K</div><div class="k">Weekly carrying cost on a stalled commercial job</div></div>
+      </div>
+      <p class="tiny mt-s">Figures cited from public sources listed on <a href="#/data" style="color:var(--indigo);text-decoration:underline">The Data</a>. Delay costs are industry reported ranges, not a guarantee of results.</p>
+    </div>
+  </section>
+
+  <section class="band b-ivory">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>Three agents. One system underneath.</h2>
+      <p class="lead mt-s">Each one reads your own history first. That is the part a generic assistant cannot copy.</p>
+      <div class="grid g3 mt-m">
+        <div class="card card-white hoverable">
+          <span class="tag tag-indigo">Sell first</span>
+          <h3>Bid Agent</h3>
+          <p>Reads the ITB, pulls scope and exclusions, cross-references what you actually charged on similar work, and drafts the response. The one that makes money in week one.</p>
+        </div>
+        <div class="card card-white hoverable">
+          <span class="tag tag-amber">The moat</span>
+          <h3>Permit Agent</h3>
+          <p>Pre-submittal review that predicts what the plan reviewer will flag, with code citations. Then drafts responses to real comment letters. It gets sharper with every correction in your jurisdiction.</p>
+        </div>
+        <div class="card card-white hoverable">
+          <span class="tag tag-ink">Retention</span>
+          <h3>Closeout Agent</h3>
+          <p>Submittal packages, O and M manuals, warranties, lien waivers, AIA paperwork. Assembled from the job record instead of rebuilt by hand at the worst possible week.</p>
+        </div>
+      </div>
+      <div class="btn-row mt-m"><a class="btn btn-primary" href="#/services">See what each agent does</a></div>
+    </div>
+  </section>
+
+  <section class="band b-ink">
+    <div class="deco deco-circle" style="width:400px;height:400px;background:var(--indigo);opacity:.2;left:-150px;bottom:-160px"></div>
+    <div class="wrap">
+      <span class="eyebrow on-dark">Why a vertical shop</span>
+      <h2 style="color:var(--ivory);max-width:20ch">A generalist's tenth client teaches them nothing about the eleventh.</h2>
+      <div class="grid g3 mt-m">
+        <div class="card card-ink" style="background:rgba(250,247,240,.06)">
+          <h3 style="color:var(--ivory)">Private institutional memory</h3>
+          <p>Your bids, your jobs, your mistakes, made queryable. Nobody can rent that. A license to a general purpose chatbot is parity, not an edge.</p>
+        </div>
+        <div class="card card-ink" style="background:rgba(250,247,240,.06)">
+          <h3 style="color:var(--ivory)">Agents that finish work</h3>
+          <p>The value is in the last twenty percent, not the first draft. We hand back a deliverable you can send, not a starting point you still have to fix.</p>
+        </div>
+        <div class="card card-ink" style="background:rgba(250,247,240,.06)">
+          <h3 style="color:var(--ivory)">Data only operating produces</h3>
+          <p>What Orange County actually rejects and why. What a bid really costs to win. That corpus is built by doing the work, one jurisdiction at a time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-white">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <hr class="rule indigo">
+          <h2>Start with an outcome, not a platform</h2>
+          <p class="lead mt-s">The first five clients get run as a service. We do the work by hand, hand back the deliverable, and keep every correction you make.</p>
+          <p class="mt-s muted">You pay for a result you can check against your own numbers. No implementation quarter, no seat licenses for software nobody opens, no six figure discovery phase.</p>
+          <div class="btn-row mt-m"><a class="btn btn-ink" href="#/method">How the engagement runs</a></div>
+        </div>
+        <div class="card card-amber">
+          <h3>Bid Sprint</h3>
+          <p style="margin-top:6px"><strong style="font-family:'Space Grotesk';font-size:2.1rem;letter-spacing:-.03em">$2,500</strong> <span class="muted">/ two weeks, paid pilot</span></p>
+          <ul class="checks mt-s indigo">
+            <li>Bring one live ITB. We turn the response around by hand.</li>
+            <li>Your pricing history structured and searchable.</li>
+            <li>Side by side against how long the same bid takes you now.</li>
+            <li>Written report at the end, whether or not you continue.</li>
+          </ul>
+          <div class="btn-row mt-s"><a class="btn btn-ink" href="#/consult">Start with the free audit</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-warm">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>Recent builds</h2>
+      <p class="lead mt-s">Before the agent work, the same shop rebuilds the front door: sites, intake, and the automation behind them.</p>
+      <div class="grid g3 mt-m" id="workGrid"></div>
+      <p class="tiny mt-s">Web and automation work remains available on its own. Ask for live links during the call.</p>
+    </div>
+  </section>
+
+  <section class="band b-amber">
+    <div class="deco deco-sq" style="width:300px;height:300px;background:var(--ink);opacity:.07;right:-60px;top:-90px"></div>
+    <div class="wrap">
+      <div class="split" style="align-items:center">
+        <div>
+          <h2>Bring one bid. See what comes back.</h2>
+          <p class="lead mt-s" style="color:rgba(22,24,46,.82)">Thirty minutes, no deck. We look at your last few jobs, your permit record, and where the hours actually go.</p>
+        </div>
+        <div class="btn-row" style="justify-content:flex-end">
+          <a class="btn btn-ink" href="#/consult">Book the consultation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= SERVICES ================= -->
+<div class="page" id="page-services">
+  <section class="band b-ink" style="padding-top:80px">
+    <div class="deco deco-circle" style="width:440px;height:440px;background:var(--amber);opacity:.12;right:-140px;top:-170px"></div>
+    <div class="wrap">
+      <span class="eyebrow on-dark">Services</span>
+      <h1 style="color:var(--ivory);max-width:16ch">One platform. Three agents. Sold in the order that pays you back.</h1>
+      <p class="lead mt-s">Built on one base layer so the second and third agent cost a fraction of the first.</p>
+    </div>
+  </section>
+
+  <section class="band b-ivory">
+    <div class="wrap">
+      <hr class="rule indigo">
+      <h2>The base layer</h2>
+      <p class="lead mt-s">Built once, deployed per client. Everything above it reads from here.</p>
+      <div class="split mt-m">
+        <div>
+          <ul class="checks indigo">
+            <li>Your corpus structured: past bids and outcomes, plan sets, RFIs, submittals, change orders, plan review comment letters, closeout packages.</li>
+            <li>Claude API for reasoning and plan sheet vision.</li>
+            <li>Agent SDK for multi step workflows with structured JSON output.</li>
+            <li>Retrieval across your corpus plus the Florida Building Code and local amendments.</li>
+            <li>Citations on every output, so a human can check it in under a minute.</li>
+          </ul>
+        </div>
+        <div class="card card-indigo">
+          <h3>What it is not</h3>
+          <p>Not a chatbot bolted to your website. Not a subscription to somebody else's model with your logo on it. Not a report generator that leaves the judgment call to you.</p>
+          <p>The work product is the thing you were going to send anyway, drafted from your own record, with the sources shown.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-white">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>The agents</h2>
+      <div class="grid g3 mt-m">
+        <div class="card card-indigo hoverable">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h3"/></svg></div>
+          <h3>Bid Agent</h3>
+          <p><strong>Sold first because it is measurable in week one.</strong></p>
+          <ul class="checks indigo mt-s">
+            <li>Reads the ITB and extracts scope, exclusions, and alternates</li>
+            <li>Flags terms that historically cost you money</li>
+            <li>Cross references your own pricing history on similar scope</li>
+            <li>Drafts the response in your format, with sources</li>
+          </ul>
+        </div>
+        <div class="card card-amber hoverable">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
+          <h3>Permit Agent</h3>
+          <p><strong>Built second. This is where the compounding happens.</strong></p>
+          <ul class="checks mt-s">
+            <li>Pre submittal review against the code and local amendments</li>
+            <li>Predicts likely reviewer comments with citations</li>
+            <li>Drafts responses to real comment letters</li>
+            <li>Corrections corpus deepens per jurisdiction, per trade</li>
+          </ul>
+        </div>
+        <div class="card card-white hoverable" style="background:var(--ivory-warm)">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#16182E" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg></div>
+          <h3>Closeout Agent</h3>
+          <p><strong>Sold third. It is what makes leaving expensive.</strong></p>
+          <ul class="checks mt-s">
+            <li>Submittal packages assembled from the job record</li>
+            <li>O and M manuals, warranties, lien waivers</li>
+            <li>AIA paperwork prepared against the contract terms</li>
+            <li>Forty jobs of history that would have to be rebuilt elsewhere</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-warm">
+    <div class="wrap">
+      <hr class="rule indigo">
+      <h2>Pricing</h2>
+      <p class="lead mt-s">Priced against the cost of the delay, not against a $500 assessment.</p>
+      <div class="price-grid mt-m" id="priceGrid"></div>
+      <p class="tiny mt-s">Integrated builds carry a hard floor. Anything that cannot be reused for the next client is quoted as custom work, not product.</p>
+    </div>
+  </section>
+
+  <section class="band b-ink">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <span class="eyebrow on-dark">The math we show on a call</span>
+          <h2 style="color:var(--ivory)">Conservative on purpose</h2>
+          <p class="lead mt-s">Win rate upside is left out of the model. If the time savings alone do not clear the cost, the rest of the argument does not matter.</p>
+        </div>
+        <div>
+          <table class="tbl">
+            <tbody>
+              <tr><td>Estimator time per bid, today</td><td class="mono" style="text-align:right">6 hrs</td></tr>
+              <tr><td>Time per bid with the agent</td><td class="mono" style="text-align:right">1.5 hrs</td></tr>
+              <tr><td>Bids per week</td><td class="mono" style="text-align:right">8</td></tr>
+              <tr><td>Hours returned weekly</td><td class="mono" style="text-align:right">36</td></tr>
+              <tr><td>Loaded rate assumption</td><td class="mono" style="text-align:right">~$45/hr</td></tr>
+              <tr><td><strong>Annual value of time returned</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>~$84,000</strong></td></tr>
+              <tr><td>Annual cost at $2,000/mo</td><td class="mono" style="text-align:right">$24,000</td></tr>
+              <tr><td><strong>Payback</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>under 4 months</strong></td></tr>
+            </tbody>
+          </table>
+          <p class="tiny mt-s">Assumptions, not promises. We rerun this with your real bid volume and rates during the audit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-white">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>Where the line is</h2>
+      <p class="lead mt-s">Worth saying out loud before you hire anyone to touch permit work.</p>
+      <div class="grid g2 mt-m">
+        <div class="card card-amber"><h3>We flag and cite. We never certify.</h3><p>Code interpretation and licensed sign off stay with your engineer of record. Every output points at the section it came from so a licensed professional can confirm or overrule it in seconds.</p></div>
+        <div class="card card-indigo"><h3>Nothing goes to a jurisdiction unreviewed.</h3><p>Human review on every deliverable through client ten, and no auto submission to any building department at any point. One bad output burns a referral network that took months to build.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tight b-amber">
+    <div class="wrap" style="text-align:center">
+      <h2>Bring one live ITB to the first call.</h2>
+      <p class="lead mt-s" style="margin:14px auto 0;color:rgba(22,24,46,.82)">You will see the output before you spend anything.</p>
+      <div class="btn-row mt-m" style="justify-content:center"><a class="btn btn-ink" href="#/consult">Book a free consultation</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= THE DATA ================= -->
+<div class="page" id="page-data">
+  <section class="band b-ink" style="padding-top:80px">
+    <div class="deco deco-sq" style="width:300px;height:300px;background:var(--indigo);opacity:.25;right:40px;top:-110px"></div>
+    <div class="wrap">
+      <span class="eyebrow on-dark">The Data</span>
+      <h1 style="color:var(--ivory);max-width:17ch">Your permit record is public. Almost nobody reads it.</h1>
+      <p class="lead mt-s">The City of Orlando publishes permit applications, issued permits, and business tax receipts as open data. Joined together, they show how long your jobs actually take to clear review compared with everyone else in your trade.</p>
+    </div>
+  </section>
+
+  <section class="band b-ivory">
+    <div class="wrap">
+      <hr class="rule indigo">
+      <h2>The datasets</h2>
+      <div class="mt-m" style="overflow-x:auto">
+        <table class="tbl">
+          <thead><tr><th>Dataset</th><th>ID</th><th>What we use it for</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Business Tax Receipts</strong></td><td class="mono">7388-4re5</td><td>Business name, owner name, phone, address, license type, open date, status. Filtered to contractor license categories.</td></tr>
+            <tr><td><strong>Permit Applications</strong></td><td class="mono">ryhf-m453</td><td>Who applied, for what scope, at what valuation, and when.</td></tr>
+            <tr><td><strong>Building Permits Issued</strong></td><td class="mono">k5wb-xgjc</td><td>Issue dates. Paired with application dates this gives the cycle time.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid g2 mt-m">
+        <div class="card card-white">
+          <h3>What we compute</h3>
+          <p>Median days from application to issue, by trade and by jurisdiction. Then your own last twenty permits against that median, and against the fastest quartile in the same category.</p>
+        </div>
+        <div class="card card-white">
+          <h3>What we verify first</h3>
+          <p>Orange, Seminole and Osceola publish separately with different completeness, and field definitions differ. Every number gets checked against the source definition before it goes in front of a contractor. Being wrong about someone's own data is not recoverable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-indigo">
+    <div class="deco deco-circle" style="width:360px;height:360px;background:#fff;opacity:.07;left:-120px;top:-120px"></div>
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--amber)">In development</span>
+      <h2 style="color:#fff;max-width:18ch">The Orlando Permit Index</h2>
+      <p class="lead mt-s">A free public dashboard of permit cycle times by jurisdiction and trade, refreshed from city records. Look up your own line, compare it to your trade, and see where the weeks are going.</p>
+      <div class="grid g3 mt-m">
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Free, no signup</h3><p style="color:rgba(255,255,255,.85)">It is public data. Charging for it would be strange.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Cycle time by trade</h3><p style="color:rgba(255,255,255,.85)">Mechanical, electrical, roofing first. More categories as the data holds up.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Jurisdiction splits</h3><p style="color:rgba(255,255,255,.85)">City of Orlando first, then Orange, Seminole and Osceola as coverage allows.</p></div>
+      </div>
+      <div class="btn-row mt-m"><a class="btn btn-amber" href="#/consult">Get your numbers before it launches</a></div>
+    </div>
+  </section>
+
+  <section class="band b-warm">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>The market, in numbers we can source</h2>
+      <div class="grid g4 mt-m">
+        <div class="stat a"><div class="n">92,730</div><div class="k">Construction workers, Orlando MSA, June 2026</div></div>
+        <div class="stat b"><div class="n">3 to 5 wks</div><div class="k">Contractor reported Orange County plan review wait</div></div>
+        <div class="stat c"><div class="n">~$30K</div><div class="k">Delay cost, single family project</div></div>
+        <div class="stat d"><div class="n">$5 to 8K</div><div class="k">Weekly carrying cost, commercial</div></div>
+      </div>
+      <div class="split mt-m">
+        <div>
+          <h3>Why this does not fix itself</h3>
+          <p class="mt-s muted">Central Florida's construction labor shortage means firms cannot hire their way out of a backlog of paperwork. The people who could clear it are the same people you cannot find. That is the gap the agents sit in.</p>
+        </div>
+        <div>
+          <h3>The hedge</h3>
+          <p class="mt-s muted">If construction softens, bid work gets more valuable, not less. Orlando financial activities already shed 3,100 jobs year over year and consumer spending is off 2.9 percent. Fewer jobs on the board means every bid matters more, which is why the Bid Agent leads.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-white">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <hr class="rule indigo">
+          <h2>Also tracking: Florida SIRS</h2>
+          <p class="lead mt-s">Structural integrity reserve studies are required for condo and co-op buildings of three or more habitable stories, with deadlines running through December 31, 2026.</p>
+          <p class="mt-s muted">Provider waits run three to six months in some markets and studies run $5,000 to $25,000 and up. Non compliance exposes boards to personal liability, insurance denial, and lending restrictions.</p>
+          <p class="mt-s muted">The engineering work requires a licensed engineer. The documentation and compliance tracking around it does not. Property management companies buy that across dozens of associations at once.</p>
+        </div>
+        <div class="card card-amber">
+          <h3>If you manage associations</h3>
+          <p>Say so on the call. The compliance tracking piece is a different build from the contractor agents and we will tell you honestly where it stands rather than sell you a roadmap.</p>
+          <div class="btn-row mt-s"><a class="btn btn-ink" href="#/consult">Start a conversation</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tight b-ink">
+    <div class="wrap">
+      <span class="eyebrow on-dark">Sources</span>
+      <div class="sources mt-s">
+        <div><a href="https://fred.stlouisfed.org/series/SMU12367402000000001SA" target="_blank" rel="noopener">FRED, Orlando MSA construction employment</a></div>
+        <div><a href="https://business.orlando.org/l/orlando-msa-market-snapshot/" target="_blank" rel="noopener">Orlando Economic Partnership, MSA market snapshot</a></div>
+        <div><a href="https://freedomcodecompliance.com/blog/florida-building-permit-delays-2026" target="_blank" rel="noopener">Florida permit wait times and delay costs, 2026</a></div>
+        <div><a href="https://data.cityoforlando.net/" target="_blank" rel="noopener">City of Orlando Open Data Portal</a></div>
+        <div><a href="https://data.cityoforlando.net/Permitting/Business-Tax-Receipts/7388-4re5" target="_blank" rel="noopener">Business Tax Receipts dataset</a></div>
+        <div><a href="https://data.cityoforlando.net/Permitting/Permit-Applications/ryhf-m453" target="_blank" rel="noopener">Permit Applications dataset</a></div>
+        <div><a href="https://www.propfusion.com/law-guide/florida-sirs-requirements" target="_blank" rel="noopener">Florida SIRS requirements</a></div>
+        <div><a href="https://mynews13.com/fl/orlando/news/2026/05/25/florida-s-labor-shortage-impacting-industries-like-construction--hospitality" target="_blank" rel="noopener">Central Florida labor shortage coverage</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= METHOD ================= -->
+<div class="page" id="page-method">
+  <section class="band b-ink" style="padding-top:80px">
+    <div class="deco deco-circle" style="width:480px;height:480px;background:var(--amber);opacity:.1;left:-180px;bottom:-220px"></div>
+    <div class="wrap">
+      <span class="eyebrow on-dark">Method</span>
+      <h1 style="color:var(--ivory);max-width:16ch">Service first. Software when it has earned it.</h1>
+      <p class="lead mt-s">Kaizen means small improvements, made continuously, by the people doing the work. The engagement is built that way on purpose: deliver by hand, record every correction, automate only what has proven itself twice.</p>
+    </div>
+  </section>
+
+  <section class="band b-ivory">
+    <div class="wrap">
+      <hr class="rule indigo">
+      <h2>The first ninety days</h2>
+      <p class="lead mt-s">A real sequence, not a phase diagram.</p>
+      <div class="mt-m">
+        <div class="step">
+          <div><div class="num">01</div><div class="when">Weeks 1 to 2</div></div>
+          <div>
+            <h3>Read the record</h3>
+            <p class="mt-s muted">Pull the public permit and license data, compute cycle time by trade, and build your line against the median. In parallel, the bid chain gets drafted against real invitations to bid, not sample documents.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div><div class="num">02</div><div class="when">Weeks 3 to 4</div></div>
+          <div>
+            <h3>One bid, by hand, in under a day</h3>
+            <p class="mt-s muted">You send one live ITB. We do not ask for a meeting first. The teardown comes back inside twenty four hours, done manually, and every correction you make gets recorded word for word. Then one question: what would you have paid to have this by Friday?</p>
+          </div>
+        </div>
+        <div class="step">
+          <div><div class="num">03</div><div class="when">Weeks 5 to 8</div></div>
+          <div>
+            <h3>Bid Sprint</h3>
+            <p class="mt-s muted">A two week paid pilot at $2,500. Delivered by hand, no interface. Between deliveries we build the ingestion and retrieval layer against your real documents, so the system is trained on your work rather than on a demo set.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div><div class="num">04</div><div class="when">Weeks 9 to 12</div></div>
+          <div>
+            <h3>Convert to a license</h3>
+            <p class="mt-s muted">Sprints convert to a monthly license with ongoing tuning. The Permit Index goes public. Referral partners get brought in, usually a permit expediter or a construction attorney, because that is where the next five clients come from.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-white">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>Why by hand first</h2>
+      <div class="grid g3 mt-m">
+        <div class="card card-indigo hoverable"><h3>Corrections are the asset</h3><p>Every edit you make to a draft is a training signal that a generic tool throws away. Delivering manually for the first five clients is how the system gets good by month six.</p></div>
+        <div class="card card-amber hoverable"><h3>You get paid work, not a pilot</h3><p>A deliverable you can send beats a demo you have to imagine using. Revenue and product development happen in the same motion instead of one waiting on the other.</p></div>
+        <div class="card card-white hoverable" style="background:var(--ivory-warm)"><h3>Custom work does not eat the product</h3><p>Nothing gets built that cannot be reused for the next client, and integrated builds carry a hard floor. That discipline is the difference between a product and a very slow agency.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-warm">
+    <div class="wrap">
+      <hr class="rule indigo">
+      <h2>Questions worth asking</h2>
+      <div class="mt-m">
+        <div class="faq-item"><h4>Who owns the data?</h4><p class="muted">You do. Your documents, your outputs, your corrections corpus. If the engagement ends, the record leaves with you.</p></div>
+        <div class="faq-item"><h4>Are you interpreting code?</h4><p class="muted">No. Outputs are flagged and cited so a licensed professional can confirm or overrule them. Licensed sign off stays in your contract, where it belongs.</p></div>
+        <div class="faq-item"><h4>Does anything get submitted automatically?</h4><p class="muted">Never. No automatic submission to any jurisdiction, at any stage, on any plan.</p></div>
+        <div class="faq-item"><h4>What if we already use Procore, Autodesk, or Sage?</h4><p class="muted">Good. Integrated builds are quoted separately, with a hard floor, and only after the standalone version has proven out on your work.</p></div>
+        <div class="faq-item"><h4>How fast is the first deliverable?</h4><p class="muted">The first bid teardown comes back within twenty four hours of you sending the ITB.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tight b-amber">
+    <div class="wrap" style="text-align:center">
+      <h2>Thirty minutes, one bid, no deck.</h2>
+      <div class="btn-row mt-m" style="justify-content:center"><a class="btn btn-ink" href="#/consult">Book a free consultation</a></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ABOUT ================= -->
+<div class="page" id="page-about">
+  <section class="band b-ink" style="padding-top:80px">
+    <div class="deco deco-sq" style="width:260px;height:260px;background:var(--amber);opacity:.14;right:60px;bottom:-80px"></div>
+    <div class="wrap">
+      <span class="eyebrow on-dark">About Us</span>
+      <h1 style="color:var(--ivory);max-width:15ch">A small shop that ships, not a firm that presents.</h1>
+      <p class="lead mt-s">tsKaizen is an Orlando based operations and AI shop. The pattern behind everything here is the same one the name points at: find the friction, build the system, automate it, then scale it.</p>
+    </div>
+  </section>
+
+  <section class="band b-ivory">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <hr class="rule indigo">
+          <h2>How we work</h2>
+          <p class="lead mt-s">Founded and run by Anthony Pichardo. You talk to the person building the thing, every time.</p>
+          <p class="mt-s muted">The background is operations and finance: process design, workflow automation, and the unglamorous work of making information move without a person carrying it. Before the agent work, that meant building a full operating system for a 300 plus member professional organization, with attendance, points, and communications automated end to end, and shipping a tournament platform that ran with thirty concurrent live users.</p>
+          <p class="mt-s muted">tsKaizen applies that to Central Florida businesses. Websites, AI builds, and automation for anyone. The contractor agents for the vertical we know best.</p>
+        </div>
+        <div class="grid" style="gap:18px">
+          <div class="card card-indigo"><h3>Solo by design</h3><p>No account manager between you and the build. No handoff to a junior after the sales call.</p></div>
+          <div class="card card-amber"><h3>Specific over general</h3><p>Ten clients in one trade teaches more than fifty across ten industries. Depth in Orange County amendments is not something a national vendor ships.</p></div>
+          <div class="card card-white"><h3>Honest about limits</h3><p>If the numbers do not clear the cost, we say so on the first call rather than sell a pilot.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band b-white">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>Selected work</h2>
+      <p class="lead mt-s">Site rebuilds and automation for local businesses, alongside the agent platform.</p>
+      <div class="grid g3 mt-m" id="workGrid2"></div>
+    </div>
+  </section>
+
+  <section class="band b-indigo">
+    <div class="wrap">
+      <span class="eyebrow" style="color:var(--amber)">Beyond the agents</span>
+      <h2 style="color:#fff">The rest of the shop</h2>
+      <div class="grid g3 mt-m">
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Websites</h3><p style="color:rgba(255,255,255,.85)">Design and build with a fast turnaround. Mobile first, fast loading, and written so a customer can find what they came for.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">AI builds</h3><p style="color:rgba(255,255,255,.85)">Custom assistants, document and intake automation, and prompt systems your team can actually run without help.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Automated systems</h3><p style="color:rgba(255,255,255,.85)">Make, Zapier, and Power Automate wired into the tools you already pay for, to remove the manual steps in between.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band tight b-warm">
+    <div class="wrap">
+      <div class="split" style="align-items:center">
+        <div>
+          <h2>Serving Orlando and Central Florida</h2>
+          <p class="lead mt-s muted">Orange, Seminole and Osceola counties, plus Palm Beach County for web and automation work.</p>
+        </div>
+        <div class="btn-row" style="justify-content:flex-end"><a class="btn btn-primary" href="#/consult">Book a free consultation</a></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CONSULT ================= -->
+<div class="page" id="page-consult">
+  <section class="band b-ink" style="padding-top:80px;padding-bottom:64px">
+    <div class="deco deco-circle" style="width:420px;height:420px;background:var(--indigo);opacity:.2;right:-140px;top:-160px"></div>
+    <div class="wrap">
+      <span class="eyebrow on-dark">Book a free consultation</span>
+      <h1 style="color:var(--ivory);max-width:16ch">Thirty minutes. Bring one bid or one permit.</h1>
+      <p class="lead mt-s">No deck and no discovery phase. We look at where the hours go, pull your permit record, and tell you whether this is worth doing.</p>
+    </div>
+  </section>
+
+  <section class="band b-ivory">
+    <div class="wrap">
+      <div class="split">
+        <div>
+          <div class="card card-white">
+            <h3>Tell us about the work</h3>
+            <p class="small muted" style="margin-top:6px">Replies come from <span id="emailInline"></span>, usually same day.</p>
+            <form id="consultForm" class="mt-s" novalidate>
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" name="name" type="text" autocomplete="name" required>
+              </div>
+              <div class="field">
+                <label for="company">Company</label>
+                <input id="company" name="company" type="text" autocomplete="organization" required>
+              </div>
+              <div class="field">
+                <label for="email">Work email</label>
+                <input id="email" name="email" type="email" autocomplete="email" required>
+              </div>
+              <div class="field">
+                <label for="phone">Phone (optional)</label>
+                <input id="phone" name="phone" type="tel" autocomplete="tel">
+              </div>
+              <div class="field">
+                <label for="trade">Trade or business type</label>
+                <select id="trade" name="trade" required>
+                  <option value="">Select one</option>
+                  <option>Mechanical</option>
+                  <option>Electrical</option>
+                  <option>Roofing</option>
+                  <option>Plumbing</option>
+                  <option>General contractor</option>
+                  <option>Architecture or engineering</option>
+                  <option>Property management</option>
+                  <option>Other service business</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="jurisdiction">Where you pull permits</label>
+                <input id="jurisdiction" name="jurisdiction" type="text" placeholder="City of Orlando, Orange County, Seminole, other">
+              </div>
+              <div class="field">
+                <label for="goal">What would you want back first?</label>
+                <textarea id="goal" name="goal" placeholder="A bid response turned around faster, a plan review that stops coming back, closeout packages that assemble themselves, or something else entirely."></textarea>
+              </div>
+              <button class="btn btn-primary" type="submit" id="submitBtn" style="width:100%">Request the consultation</button>
+              <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
+              <p class="form-note">No mailing list. We reply to the message and nothing else.</p>
+            </form>
+          </div>
+        </div>
+        <div class="stack-lg">
+          <div class="card card-amber">
+            <h3>What happens on the call</h3>
+            <ul class="checks indigo mt-s">
+              <li>Fifteen minutes on where your hours actually go</li>
+              <li>Your permit cycle time against your trade's median</li>
+              <li>A straight answer on whether the math works for your volume</li>
+              <li>If it does, a written opportunity report with a scoped price</li>
+            </ul>
+          </div>
+          <div class="card card-indigo">
+            <h3>What to bring</h3>
+            <p>One live invitation to bid, or one plan review comment letter you are unhappy about. Real documents make the call useful. If you would rather not share anything yet, that is fine too.</p>
+          </div>
+          <div class="card card-white">
+            <h3>Prefer email?</h3>
+            <p class="mt-s"><a id="emailLink" href="#" style="color:var(--indigo);font-weight:600;text-decoration:underline;text-underline-offset:3px"></a></p>
+            <p class="small muted mt-s">Serving Orange, Seminole and Osceola counties, plus Palm Beach County for web and automation work.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
 </main>
 
-<footer><div class="wrap">
-  <div class="foot-inner">
-    <div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 481 170" class="logo-svg-sm"><rect width="481" height="170" fill="#16182E"/><defs><linearGradient id="loopgradFoot" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><g transform="translate(40,30.0) scale(1.1)"><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradFoot)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></g><g transform="translate(180.00,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M261.39990234375 0Q215.899658203125 0 189.2493896484375 26.82525634765625Q162.59912109375 53.6505126953125 162.59912109375 99.40087890625V405.9990234375H27.39990234375V492.500244140625H162.59912109375V656.299560546875H265.500732421875V492.500244140625H413.39990234375V405.9990234375H265.500732421875V116.501220703125Q265.500732421875 86.501220703125 294.20068359375 86.501220703125H396.500244140625V0Z" fill="#F59E0B"/></g><g transform="translate(448.00,0)"><path d="M277.7498779296875 -14Q183.899658203125 -14 121.72467041015625 28.0Q59.5496826171875 70 46.19970703125 154.6495361328125L142.2510986328125 178Q149.60107421875 136.700439453125 168.90087890625 113.02569580078125Q188.20068359375 89.3509521484375 216.5504150390625 79.27606201171875Q244.900146484375 69.201171875 277.7498779296875 69.201171875Q327.3494873046875 69.201171875 353.77410888671875 87.8509521484375Q380.19873046875 106.500732421875 380.19873046875 136.500244140625Q380.19873046875 166.8497314453125 355.12408447265625 180.92462158203125Q330.0494384765625 194.99951171875 281.499755859375 203.699462890625L247.2001953125 209.7493896484375Q197.300048828125 219.0494384765625 156.39990234375 236.199462890625Q115.499755859375 253.3494873046875 91.07464599609375 283.299560546875Q66.6495361328125 313.2496337890625 66.6495361328125 359.7998046875Q66.6495361328125 429.9500732421875 119.07464599609375 468.22515869140625Q171.499755859375 506.500244140625 257.39990234375 506.500244140625Q340.39990234375 506.500244140625 393.82501220703125 469.32525634765625Q447.2501220703125 432.1502685546875 462.8502197265625 368.300537109375L367.19873046875 340.699951171875Q358.498779296875 385.699462890625 329.4490966796875 404.499267578125Q300.3994140625 423.299072265625 257.39990234375 423.299072265625Q214.7503662109375 423.299072265625 190.8507080078125 407.82427978515625Q166.9510498046875 392.3494873046875 166.9510498046875 363.699951171875Q166.9510498046875 334.100341796875 190.4508056640625 320.1505126953125Q213.9505615234375 306.20068359375 254.2501220703125 299.1507568359375L288.5496826171875 293.100830078125Q342.4498291015625 283.80078125 386.02496337890625 267.6507568359375Q429.60009765625 251.500732421875 455.0501708984375 221.87567138671875Q480.500244140625 192.2506103515625 480.500244140625 142.3504638671875Q480.500244140625 67.500244140625 425.57513427734375 26.7501220703125Q370.6500244140625 -14 277.7498779296875 -14Z" fill="#F59E0B"/></g></g><g transform="translate(242.91,107.40) scale(0.06400,-0.06400)"><g transform="translate(0.00,0)"><path d="M66 0V700H198V422H216L443 700H612L320 355L622 0H448L216 284H198V0Z" fill="#FAF7F0"/></g><g transform="translate(611.00,0)"><path d="M224 -14Q171 -14 129.0 4.5Q87 23 62.5 58.5Q38 94 38 145Q38 196 62.5 230.5Q87 265 130.5 282.5Q174 300 230 300H366V328Q366 363 344.0 385.5Q322 408 274 408Q227 408 204.0 386.5Q181 365 174 331L58 370Q70 408 96.5 439.5Q123 471 167.5 490.5Q212 510 276 510Q374 510 431.0 461.0Q488 412 488 319V134Q488 104 516 104H556V0H472Q435 0 411.0 18.0Q387 36 387 66V67H368Q364 55 350.0 35.5Q336 16 306.0 1.0Q276 -14 224 -14ZM246 88Q299 88 332.5 117.5Q366 147 366 196V206H239Q204 206 184.0 191.0Q164 176 164 149Q164 122 185.0 105.0Q206 88 246 88Z" fill="#FAF7F0"/></g><g transform="translate(1174.00,0)"><path d="M70 0V496H196V0ZM133 554Q99 554 75.5 576.0Q52 598 52 634Q52 670 75.5 692.0Q99 714 133 714Q168 714 191.0 692.0Q214 670 214 634Q214 598 191.0 576.0Q168 554 133 554Z" fill="#FAF7F0"/></g><g transform="translate(1425.00,0)"><path d="M52 0V150L324 376V392H62V496H462V346L190 120V104H470V0Z" fill="#FAF7F0"/></g><g transform="translate(1928.00,0)"><path d="M296 -14Q222 -14 165.5 17.5Q109 49 77.5 106.5Q46 164 46 242V254Q46 332 77.0 389.5Q108 447 164.0 478.5Q220 510 294 510Q367 510 421.0 477.5Q475 445 505.0 387.5Q535 330 535 254V211H174Q176 160 212.0 128.0Q248 96 300 96Q353 96 378.0 119.0Q403 142 416 170L519 116Q505 90 478.5 59.5Q452 29 408.0 7.5Q364 -14 296 -14ZM175 305H407Q403 348 372.5 374.0Q342 400 293 400Q242 400 212.0 374.0Q182 348 175 305Z" fill="#FAF7F0"/></g><g transform="translate(2490.00,0)"><path d="M70 0V496H194V431H212Q224 457 257.0 480.5Q290 504 357 504Q415 504 458.5 477.5Q502 451 526.0 404.5Q550 358 550 296V0H424V286Q424 342 396.5 370.0Q369 398 318 398Q260 398 228.0 359.5Q196 321 196 252V0Z" fill="#FAF7F0"/></g></g></svg><p class="foot-slogan">Innovating tech with AI. Building a better future with automation.</p></div>
-    <div class="foot-contact"><a href="tel:+15612603951">+1 (561) 260-3951</a><a href="mailto:anthonypichardo31@tskaizen.com">anthonypichardo31@tskaizen.com</a></div>
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-col">
+        <a class="brand" href="#/" style="margin-bottom:16px">
+          <svg viewBox="14 12 82 78" style="width:32px;height:32px" aria-hidden="true">
+            <defs><linearGradient id="lg2" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs>
+            <path d="M 35 26.02 A 30 30 0 1 0 65.9 26.56 Q 67.28 28.21 70.05 28.1 L 77.17 28.38" fill="none" stroke="url(#lg2)" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B"/>
+            <circle cx="50" cy="52" r="6.2" fill="#4F46E5"/><circle cx="50" cy="52" r="2.6" fill="#FAF7F0"/>
+          </svg>
+          <span class="brand-word"><span class="t">t</span>sKaizen</span>
+        </a>
+        <p class="small" style="color:rgba(250,247,240,.7);max-width:38ch">AI agents and automation for Central Florida contractors. Built on your own record, cited on every output.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="#/">Home</a></li>
+          <li><a href="#/services">Services</a></li>
+          <li><a href="#/data">The Data</a></li>
+          <li><a href="#/method">Method</a></li>
+          <li><a href="#/about">About Us</a></li>
+          <li><a href="#/consult">Book a free consultation</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <ul>
+          <li><a id="footEmail" href="#"></a></li>
+          <li>Orlando, Florida</li>
+          <li>Orange, Seminole, Osceola</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>&copy; <span id="year"></span> tsKaizen. All rights reserved.</span>
+      <span>tsKaizen does not provide code interpretation or licensed engineering sign off.</span>
+    </div>
   </div>
-  <div class="foot-copy"><span>&copy; <span id="yr"></span> tsKaizen. All rights reserved.</span><span>Orlando, Florida</span></div>
-</div></footer>
-
-<button class="totop" id="toTop" aria-label="Back to top">&#8593;</button>
-<div class="chat-fab" id="chatFab" role="button" tabindex="0" aria-label="Open assistant"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="34" height="34"><defs><linearGradient id="loopgradFab" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradFab)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg></div>
-<div class="chat-panel" id="chatPanel">
-  <div class="chat-head"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="30" height="30"><defs><linearGradient id="loopgradChat" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#4F46E5"/><stop offset="1" stop-color="#F59E0B"/></linearGradient></defs><path d="M 35.00 26.02 A 30.00 30.00 0 1 0 65.90 26.56 Q 67.28 28.21 70.05 28.10 L 77.17 28.38" fill="none" stroke="url(#loopgradChat)" stroke-width="9.50" stroke-linecap="round" stroke-linejoin="round"/><path d="M 87.58 19.33 L 84.13 33.19 L 73.37 20.82 Z" fill="#F59E0B" stroke-linejoin="round"/><line x1="50.00" y1="52.00" x2="46.24" y2="62.34" stroke="#4F46E5" stroke-width="1.60" opacity="0.9"/><line x1="50.00" y1="52.00" x2="59.19" y2="59.71" stroke="#F59E0B" stroke-width="1.60" opacity="0.9"/><circle cx="46.24" cy="62.34" r="2.60" fill="#4F46E5"/><circle cx="59.19" cy="59.71" r="2.60" fill="#F59E0B"/><circle cx="50.00" cy="52.00" r="6.20" fill="#4F46E5"/><circle cx="50.00" cy="52.00" r="2.60" fill="#FAF7F0"/></svg><div class="who"><h4>tsKaizen Assistant</h4><small>Ask about services or your business</small></div><span class="dot"></span></div>
-  <div class="chat-body" id="chatBody"><div class="msg bot">Hi! I&rsquo;m the tsKaizen assistant. Want to know how a website, an AI assistant, or automation could help your business? Ask away, or try &ldquo;What do you offer?&rdquo;</div></div>
-  <div class="chat-input"><input id="chatInput" type="text" placeholder="Type a message..." autocomplete="off"><button id="chatSend" aria-label="Send">&#8593;</button></div>
-</div>
+</footer>
 
 <script>
-document.getElementById('yr').textContent=new Date().getFullYear();
+/* ============================================================
+   CONFIG - edit values here, nothing in the markup
+   ============================================================ */
+const CONFIG = {
+  brand: "tsKaizen",
+  email: "anthonypichardo31@tskaizen.com",
+  region: "Orlando and Central Florida",
+  formEndpoint: "https://formspree.io/f/xkolwdag",
+  pricing: [
+    { name: "Bid Sprint", flag: "Start here", amount: "$2,500", note: "Two week paid pilot, delivered by hand. One live ITB, turned around and measured against your current process.", feature: false },
+    { name: "Platform license, one agent", flag: "Most common", amount: "$1,500 to $3,000", note: "Per month, including ongoing tuning as your corrections corpus grows.", feature: true },
+    { name: "Additional agent module", flag: "", amount: "+$750 to $1,500", note: "Per month. Cheaper because the base layer is already built on your corpus.", feature: false },
+    { name: "Integrated build", flag: "Hard floor $15K", amount: "$15,000 to $40,000", note: "Procore, Autodesk or Sage integration. Quoted after the standalone version has proven out.", feature: false }
+  ],
+  work: [
+    { name: "Wax On Wheels", meta: "Mobile detailing, Wellington FL", desc: "Full site rebuild across six pages, carrying over the original copy and imagery, rebuilt mobile first with the brand colors intact.", a: "#4F46E5", b: "#16182E", ink: "#FAF7F0" },
+    { name: "For The Plot", meta: "Bookstore and cafe, Avalon Park", desc: "Redesign built for a downtown Avalon Park bookstore and cafe, structured around what a first time visitor actually needs to find.", a: "#F59E0B", b: "#D97706", ink: "#16182E" },
+    { name: "Café Coquí", meta: "Puerto Rican cafe, Avalon Park", desc: "Replacement for a website builder template: Home, Menu, Fotos, About and Contact, rebuilt on a proper design system.", a: "#16182E", b: "#4F46E5", ink: "#FAF7F0" }
+  ]
+};
 
-/* scroll reveal */
-const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+/* ---------- render config driven blocks ---------- */
+function renderPricing(){
+  const el = document.getElementById('priceGrid');
+  if(!el) return;
+  el.innerHTML = CONFIG.pricing.map(p => `
+    <div class="price ${p.feature ? 'feature' : ''}">
+      <span class="flag">${p.flag}</span>
+      <div class="name">${p.name}</div>
+      <div class="amt">${p.amount}</div>
+      <div class="note">${p.note}</div>
+    </div>`).join('');
+}
+function renderWork(){
+  const html = CONFIG.work.map(w => `
+    <article class="work">
+      <div class="top" style="background:${w.a}">
+        <div class="deco deco-circle" style="width:150px;height:150px;background:${w.b};opacity:.5;right:-40px;top:-50px"></div>
+        <span class="mark" style="color:${w.ink}">${w.name}</span>
+      </div>
+      <div class="body">
+        <div class="meta">${w.meta}</div>
+        <p class="small">${w.desc}</p>
+      </div>
+    </article>`).join('');
+  ['workGrid','workGrid2'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = html; });
+}
+function renderContact(){
+  const mail = 'mailto:' + CONFIG.email;
+  const link = document.getElementById('emailLink');
+  if(link){ link.href = mail; link.textContent = CONFIG.email; }
+  const foot = document.getElementById('footEmail');
+  if(foot){ foot.href = mail; foot.textContent = CONFIG.email; }
+  const inline = document.getElementById('emailInline');
+  if(inline){ inline.textContent = CONFIG.email; }
+  const y = document.getElementById('year');
+  if(y){ y.textContent = new Date().getFullYear(); }
+}
 
-/* scroll-spy nav highlight */
-const navLinks=[...document.querySelectorAll('.nav a:not(.navcta)')];
-const spy=new IntersectionObserver((es)=>{es.forEach(e=>{
-  if(e.isIntersecting){var id=e.target.id; navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href')==='#'+id));}
-});},{rootMargin:'-45% 0px -50% 0px'});
-['mission','services','data','method','about'].forEach(id=>{var s=document.getElementById(id); if(s) spy.observe(s);});
+/* ---------- router ---------- */
+const ROUTES = { '/':'page-home', '/services':'page-services', '/data':'page-data', '/method':'page-method', '/about':'page-about', '/consult':'page-consult' };
+const TITLES = {
+  '/':'tsKaizen | AI systems for Orlando contractors',
+  '/services':'Services | tsKaizen',
+  '/data':'The Data | tsKaizen',
+  '/method':'Method | tsKaizen',
+  '/about':'About Us | tsKaizen',
+  '/consult':'Book a free consultation | tsKaizen'
+};
+function route(){
+  const hash = window.location.hash.replace('#','') || '/';
+  const path = ROUTES[hash] ? hash : '/';
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(ROUTES[path]).classList.add('active');
+  document.title = TITLES[path];
+  document.querySelectorAll('.nav-links a[data-route]').forEach(a => {
+    if(a.dataset.route === path){ a.setAttribute('aria-current','page'); }
+    else { a.removeAttribute('aria-current'); }
+  });
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('menuBtn').setAttribute('aria-expanded','false');
+  window.scrollTo({ top:0, behavior:'auto' });
+}
+window.addEventListener('hashchange', route);
 
-/* back to top */
-const toTop=document.getElementById('toTop');
-window.addEventListener('scroll',()=>{toTop.classList.toggle('show', window.scrollY>700);});
-toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+/* ---------- mobile menu ---------- */
+document.getElementById('menuBtn').addEventListener('click', function(){
+  const menu = document.getElementById('mobileMenu');
+  const open = menu.classList.toggle('open');
+  this.setAttribute('aria-expanded', open ? 'true' : 'false');
+});
 
-/* consultation form (sends to Formspree, lands in your inbox) */
-async function submitConsult(){
-  var v=id=>(document.getElementById(id).value||'').trim();
-  var name=v('f-name'),company=v('f-company'),email=v('f-email'),phone=v('f-phone'),service=v('f-service'),problem=v('f-problem');
-  var m=document.getElementById('formMsg');
-  if(!name||!company||!email||!service||!problem){m.className='form-msg err';m.textContent='Please fill in all required fields so I can help you properly.';return;}
-  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){m.className='form-msg err';m.textContent='That email does not look right. Mind double-checking it?';return;}
-  var btn=document.querySelector('#consult .btn-primary'); if(btn){btn.disabled=true;btn.textContent='Sending...';}
-  try{
-    var res=await fetch("https://formspree.io/f/xkolwdag",{
-      method:"POST",
-      headers:{"Content-Type":"application/json","Accept":"application/json"},
-      body:JSON.stringify({name:name,company:company,email:email,phone:(phone||'-'),service:service,message:problem,_subject:"New consultation: "+company+" ("+service+")"})
-    });
-    if(res.ok){
-      m.className='form-msg ok';m.textContent='Thanks '+name+'! Your request is in. I will get back to you fast.';
-      ['f-name','f-company','f-email','f-phone','f-service','f-problem'].forEach(id=>document.getElementById(id).value='');
-    } else {
-      m.className='form-msg err';m.textContent='Something went wrong. Please email anthonypichardo31@tskaizen.com directly.';
-    }
-  }catch(e){
-    m.className='form-msg err';m.textContent='Network hiccup. Please email anthonypichardo31@tskaizen.com directly.';
-  }finally{
-    if(btn){btn.disabled=false;btn.textContent='Send my request';}
+/* ---------- consultation form ---------- */
+document.getElementById('consultForm').addEventListener('submit', async function(e){
+  e.preventDefault();
+  const status = document.getElementById('formStatus');
+  const btn = document.getElementById('submitBtn');
+  const required = ['name','company','email','trade'];
+  const missing = required.filter(id => !document.getElementById(id).value.trim());
+  if(missing.length){
+    status.className = 'form-status err';
+    status.textContent = 'Add your name, company, email and trade so we can prepare before the call.';
+    document.getElementById(missing[0]).focus();
+    return;
   }
-}
+  btn.disabled = true; btn.textContent = 'Sending...';
+  try{
+    const res = await fetch(CONFIG.formEndpoint, {
+      method:'POST',
+      headers:{ 'Accept':'application/json' },
+      body: new FormData(this)
+    });
+    if(!res.ok) throw new Error('bad response');
+    status.className = 'form-status ok';
+    status.textContent = 'Got it. You will hear back from ' + CONFIG.email + ', usually the same day.';
+    this.reset();
+  }catch(err){
+    status.className = 'form-status err';
+    status.innerHTML = 'That did not send. Email ' + CONFIG.email + ' directly and it will get handled.';
+  }finally{
+    btn.disabled = false; btn.textContent = 'Request the consultation';
+  }
+});
 
-/* chat */
-const TSKAIZEN_BOT_URL="https://ts-kaizen-website--AnthonyPichardo.replit.app";
-const fab=document.getElementById('chatFab'),panel=document.getElementById('chatPanel'),cb=document.getElementById('chatBody'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
-function tgl(){panel.classList.toggle('open');if(panel.classList.contains('open'))ci.focus();}
-fab.addEventListener('click',tgl);fab.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();tgl();}});
-function add(t,w){var d=document.createElement('div');d.className='msg '+w;d.textContent=t;cb.appendChild(d);cb.scrollTop=cb.scrollHeight;}
-function demo(q){q=q.toLowerCase();
-  if(/offer|service|do you|build|provide/.test(q))return"I offer three things: modern websites, AI assistants that answer chats and calls 24/7, and automation that handles repetitive work. Which sounds closest to what you need?";
-  if(/price|cost|how much/.test(q))return"Pricing depends on your needs. Most clients start with a free consultation, then choose a build plus a monthly plan to keep it improving. Want to book that consultation?";
-  if(/website|site|web/.test(q))return"I build fast, modern, mobile-first websites that turn visitors into customers. Want me to look at your current one?";
-  if(/chat|call|phone|bot|assistant/.test(q))return"The AI assistant answers customer messages and phone calls around the clock and captures every lead, even when you are closed. You are using a small demo of it now.";
-  if(/automat|workflow|streamline/.test(q))return"Automation takes the busywork off your plate: follow-ups, scheduling, reminders, and data entry that run themselves. What task eats the most time?";
-  if(/data|stat|trend|grow/.test(q))return"AI use jumped from 20% of organizations in 2017 to 88% in 2025, and most adopters see a return within the first year. Starting early is the easiest edge you can get.";
-  if(/consult|book|meet|contact/.test(q))return"Love it. Scroll to the Consultation section and tell me what you are solving, or email anthonypichardo31@tskaizen.com. I respond fast.";
-  if(/hi|hello|hey/.test(q))return"Hey! Ask me about websites, AI assistants, or automation and how they could help your business.";
-  return"Great question. The best next step is a quick consultation, free and no obligation. Scroll to the Consultation section and tell me more.";
-}
-async function csend(){var q=(ci.value||'').trim();if(!q)return;add(q,'user');ci.value='';
-  if(TSKAIZEN_BOT_URL){try{var r=await fetch(TSKAIZEN_BOT_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:q})});var d=await r.json();add(d.reply||d.text||"Thanks! I will get back to you shortly.",'bot');}catch(e){add("I could not reach the assistant just now. Email anthonypichardo31@tskaizen.com and I will reply fast.",'bot');}}
-  else{setTimeout(()=>add(demo(q),'bot'),400);}
-}
-cs.addEventListener('click',csend);ci.addEventListener('keydown',e=>{if(e.key==='Enter')csend();});
+/* ---------- init ---------- */
+renderPricing();
+renderWork();
+renderContact();
+route();
 </script>
 </body>
 </html>
