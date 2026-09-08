@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>tsKaizen | AI systems for Orlando contractors</title>
-<meta name="description" content="tsKaizen builds AI agents for Central Florida contractors: bid response, pre-submittal permit review, and closeout packages. Built on your own job history.">
+<title>tsKaizen | Websites, automation and AI assistants</title>
+<meta name="description" content="tsKaizen is an Orlando AI studio. We build websites, automate the manual work behind them, and set up AI assistants that answer questions and capture leads.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -77,7 +77,6 @@ section.band.tight{padding:64px 0}
 .g4{grid-template-columns:repeat(4,1fr)}
 .split{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:start}
 .stack-lg>*+*{margin-top:24px}
-.stack-md>*+*{margin-top:14px}
 .mt-s{margin-top:14px}.mt-m{margin-top:28px}.mt-l{margin-top:48px}
 
 /* ---------- type helpers ---------- */
@@ -86,7 +85,6 @@ section.band.tight{padding:64px 0}
   color:var(--indigo);margin-bottom:14px;display:block
 }
 .eyebrow.on-dark{color:var(--amber)}
-.eyebrow.on-amber{color:var(--ink);opacity:.7}
 .muted{color:var(--slate)}
 .small{font-size:.92rem;line-height:1.5}
 .tiny{font-size:.8rem;line-height:1.5;color:var(--slate)}
@@ -154,30 +152,27 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--ink)}
 }
 .kicker .dot{width:8px;height:8px;border-radius:50%;background:var(--amber)}
 
-/* cycle-time readout */
+/* before / after readout */
 .readout{background:var(--ink-deep);border-radius:var(--r);padding:26px;margin-top:44px}
-.readout .row{display:grid;grid-template-columns:120px 1fr 78px;align-items:center;gap:14px;padding:9px 0}
+.readout .row{display:grid;grid-template-columns:118px 1fr;align-items:center;gap:14px;padding:9px 0}
 .readout .lbl{font-size:.85rem;font-weight:500;color:rgba(250,247,240,.7)}
 .readout .track{height:20px;background:rgba(250,247,240,.08);border-radius:3px;overflow:hidden}
-.readout .fill{display:block;height:100%;border-radius:3px}
-.readout .val{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.05rem;text-align:right}
+.readout .fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:10px;font-size:.72rem;font-weight:600;color:#fff;white-space:nowrap}
 
 /* ---------- stat blocks ---------- */
 .stat{padding:30px 26px;border-radius:var(--r)}
-.stat .n{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:clamp(2.1rem,4vw,2.9rem);letter-spacing:-0.03em;line-height:1}
+.stat .n{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:clamp(1.7rem,3.4vw,2.4rem);letter-spacing:-0.03em;line-height:1.05}
 .stat .k{margin-top:12px;font-size:.95rem;line-height:1.45}
 .stat.a{background:var(--indigo);color:#fff}
 .stat.b{background:var(--amber);color:var(--ink)}
 .stat.c{background:var(--ink);color:var(--ivory)}
-.stat.d{background:var(--white);color:var(--ink);border:0}
+.stat.d{background:var(--white);color:var(--ink)}
 .stat.d .n{color:var(--indigo)}
 
 /* ---------- cards ---------- */
 .card{border-radius:var(--r);padding:32px;transition:transform .2s ease,background-color .2s ease}
-.card.hoverable{cursor:default}
 .card.hoverable:hover{transform:scale(1.02)}
 .card-white{background:var(--white)}
-.card-white:hover{background:#fff}
 .card-indigo{background:var(--indigo-tint)}
 .card-indigo:hover{background:#E4E2FA}
 .card-amber{background:var(--amber-tint)}
@@ -204,33 +199,27 @@ header.nav{position:sticky;top:0;z-index:50;background:var(--ink)}
 /* ---------- lists ---------- */
 ul.checks{list-style:none;display:grid;gap:12px}
 ul.checks li{display:grid;grid-template-columns:22px 1fr;gap:12px;align-items:start;font-size:1rem;line-height:1.5}
-ul.checks li::before{
-  content:"";width:13px;height:13px;background:var(--amber);border-radius:3px;margin-top:7px
-}
+ul.checks li::before{content:"";width:13px;height:13px;background:var(--amber);border-radius:3px;margin-top:7px}
 ul.checks.indigo li::before{background:var(--indigo)}
-ul.checks.light li::before{background:var(--amber)}
 
 /* ---------- steps ---------- */
 .step{display:grid;grid-template-columns:78px 1fr;gap:26px;padding:30px 0;border-top:3px solid var(--line)}
 .step:last-child{border-bottom:3px solid var(--line)}
 .step .num{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.5rem;color:var(--indigo);letter-spacing:-0.02em}
 .step .when{font-size:.85rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--slate);margin-top:6px}
-.b-ink .step{border-color:rgba(250,247,240,.16)}
-.b-ink .step .num{color:var(--amber)}
-.b-ink .step .when{color:rgba(250,247,240,.55)}
 
 /* ---------- pricing ---------- */
-.price-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.price{border-radius:var(--r);padding:30px 26px;background:var(--white);transition:transform .2s ease}
-.price:hover{transform:scale(1.02)}
-.price.feature{background:var(--indigo);color:#fff;transform:scale(1.035)}
-.price.feature:hover{transform:scale(1.06)}
-.price .name{font-weight:600;font-size:1.02rem;min-height:48px}
-.price .amt{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.85rem;letter-spacing:-0.03em;margin:14px 0 10px}
-.price.feature .amt{color:#fff}
-.price .note{font-size:.9rem;color:var(--slate);line-height:1.45}
-.price.feature .note{color:rgba(255,255,255,.82)}
-.price .flag{font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:10px;display:block;min-height:16px}
+.price-line{background:var(--indigo);color:#fff;border-radius:var(--r);padding:48px 44px;position:relative;overflow:hidden}
+.price-line .big{
+  font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;
+  font-size:clamp(1.9rem,4.4vw,3.2rem);letter-spacing:-0.03em;line-height:1.05;max-width:22ch
+}
+.price-line .big em{font-style:normal;color:var(--amber)}
+.price-line .sub{margin-top:20px;font-size:clamp(1rem,1.6vw,1.18rem);line-height:1.5;color:rgba(255,255,255,.88);max-width:56ch}
+.price-line .fixed{
+  display:inline-block;margin-top:26px;background:var(--amber);color:var(--ink);
+  border-radius:var(--r-sm);padding:14px 22px;font-weight:600;font-size:1rem
+}
 
 /* ---------- table ---------- */
 .tbl{width:100%;border-collapse:collapse;font-size:.95rem}
@@ -248,6 +237,8 @@ ul.checks.light li::before{background:var(--amber)}
 .work .top .mark{font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:-0.03em;position:relative;z-index:2}
 .work .body{padding:24px}
 .work .meta{font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--slate);margin-bottom:10px}
+.work .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.work .tags span{font-size:.72rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;background:var(--ivory-warm);padding:5px 10px;border-radius:100px;color:var(--slate)}
 
 /* ---------- form ---------- */
 form .field{margin-bottom:20px}
@@ -277,11 +268,6 @@ footer a:hover{color:var(--amber)}
 .foot-col ul{list-style:none;display:grid;gap:10px;font-size:.95rem}
 .foot-bottom{margin-top:48px;padding-top:22px;border-top:2px solid rgba(250,247,240,.12);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.85rem;color:rgba(250,247,240,.55)}
 
-/* ---------- sources ---------- */
-.sources{display:grid;gap:10px;font-size:.87rem;line-height:1.5}
-.sources a{color:var(--indigo);text-decoration:underline;text-underline-offset:3px}
-.b-ink .sources a{color:var(--amber)}
-
 /* ---------- a11y ---------- */
 .skip{position:absolute;left:-9999px;top:0;background:var(--amber);color:var(--ink);padding:12px 18px;z-index:99;border-radius:0 0 var(--r-sm) 0}
 .skip:focus{left:0}
@@ -296,13 +282,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
 @keyframes rise{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
-  .btn:hover,.card.hoverable:hover,.price:hover,.work:hover{transform:none}
+  .btn:hover,.card.hoverable:hover,.work:hover{transform:none}
 }
 
 /* ---------- responsive ---------- */
 @media (max-width:980px){
   .split{grid-template-columns:1fr;gap:36px}
-  .g4,.price-grid{grid-template-columns:repeat(2,1fr)}
+  .g4{grid-template-columns:repeat(2,1fr)}
   .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
 }
 @media (max-width:760px){
@@ -310,12 +296,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   section.band{padding:60px 0}
   .nav-links,.nav-cta{display:none}
   .menu-btn{display:block}
-  .g2,.g3,.g4,.price-grid{grid-template-columns:1fr}
-  .price.feature{transform:none}
+  .g2,.g3,.g4{grid-template-columns:1fr}
   .hero{padding-top:64px}
   .step{grid-template-columns:1fr;gap:10px}
   .foot-grid{grid-template-columns:1fr}
-  .readout .row{grid-template-columns:92px 1fr 62px;gap:10px}
+  .readout .row{grid-template-columns:92px 1fr;gap:10px}
   .tbl th,.tbl td{padding:12px 8px;font-size:.9rem}
 }
 </style>
@@ -344,7 +329,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <nav class="nav-links" aria-label="Primary">
       <a href="#/" data-route="/">Home</a>
       <a href="#/services" data-route="/services">Services</a>
-      <a href="#/data" data-route="/data">The Data</a>
+      <a href="#/work" data-route="/work">Work</a>
       <a href="#/method" data-route="/method">Method</a>
       <a href="#/about" data-route="/about">About Us</a>
       <a class="btn btn-amber nav-cta" href="#/consult">Book a free consultation</a>
@@ -356,7 +341,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <div class="mobile-menu" id="mobileMenu">
     <a href="#/">Home</a>
     <a href="#/services">Services</a>
-    <a href="#/data">The Data</a>
+    <a href="#/work">Work</a>
     <a href="#/method">Method</a>
     <a href="#/about">About Us</a>
     <a href="#/consult" style="color:var(--amber)">Book a free consultation</a>
@@ -374,21 +359,21 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap" style="padding-bottom:96px">
       <div class="split" style="align-items:center">
         <div>
-          <span class="kicker hero-anim"><span class="dot"></span>Orange, Seminole and Osceola counties</span>
-          <h1 class="hero-anim d2">Plan review takes weeks. Your bid desk shouldn't.</h1>
-          <p class="lead hero-anim d3">tsKaizen builds AI agents for Central Florida contractors that read the invitation to bid, predict the plan reviewer's comments, and assemble the closeout package. Trained on your jobs, your pricing, your corrections history.</p>
+          <span class="kicker hero-anim"><span class="dot"></span>Orlando based, working with businesses anywhere</span>
+          <h1 class="hero-anim d2">A better website, and the systems behind it.</h1>
+          <p class="lead hero-anim d3">tsKaizen builds websites, automates the manual work that happens after someone fills out the form, and sets up AI assistants that answer questions around the clock. One person, start to finish.</p>
           <div class="btn-row mt-m hero-anim d3">
-            <a class="btn btn-amber" href="#/consult">Book a free 30-minute audit</a>
-            <a class="btn btn-outline light" href="#/data">See your permit numbers</a>
+            <a class="btn btn-amber" href="#/consult">Book a free consultation</a>
+            <a class="btn btn-outline light" href="#/work">See the work</a>
           </div>
         </div>
-        <div class="readout hero-anim d3" aria-label="Illustrative permit cycle time comparison">
-          <div style="font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.15rem;color:var(--ivory);letter-spacing:-.02em">Permit cycle time, one trade</div>
-          <p class="tiny" style="margin:8px 0 14px">Structure of the readout we build for every prospect from City of Orlando permit records. Bars below are shaped for illustration, not a real contractor's file.</p>
-          <div class="row"><span class="lbl">Fastest quartile</span><span class="track"><span class="fill" style="width:34%;background:var(--indigo)"></span></span><span class="val">Low</span></div>
-          <div class="row"><span class="lbl">Trade median</span><span class="track"><span class="fill" style="width:58%;background:#8B85EE"></span></span><span class="val">Mid</span></div>
-          <div class="row"><span class="lbl">Your last 20</span><span class="track"><span class="fill" style="width:88%;background:var(--amber)"></span></span><span class="val">High</span></div>
-          <p class="tiny" style="margin-top:14px">Source fields: application date, issue date, license type, valuation. City of Orlando open data.</p>
+        <div class="readout hero-anim d3">
+          <div style="font-family:'Space Grotesk',Arial,sans-serif;font-weight:700;font-size:1.15rem;color:var(--ivory);letter-spacing:-.02em">Where a week actually goes</div>
+          <p class="tiny" style="margin:8px 0 14px">The audit we run on the first call. We map the repeat tasks, then decide together which ones are worth automating and which are fine as they are.</p>
+          <div class="row"><span class="lbl">Answering the same questions</span><span class="track"><span class="fill" style="width:72%;background:var(--amber)">automatable</span></span></div>
+          <div class="row"><span class="lbl">Copying data between tools</span><span class="track"><span class="fill" style="width:58%;background:var(--indigo)">automatable</span></span></div>
+          <div class="row"><span class="lbl">Chasing follow ups</span><span class="track"><span class="fill" style="width:44%;background:#8B85EE">partly</span></span></div>
+          <div class="row"><span class="lbl">The actual work</span><span class="track"><span class="fill" style="width:30%;background:rgba(250,247,240,.35)">keep it</span></span></div>
         </div>
       </div>
     </div>
@@ -397,58 +382,57 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="band tight b-warm">
     <div class="wrap">
       <div class="grid g4">
-        <div class="stat a"><div class="n">92,730</div><div class="k">Construction workers in the Orlando metro, June 2026</div></div>
-        <div class="stat b"><div class="n">3 to 5 wks</div><div class="k">Reported Orange County plan review wait, early 2026</div></div>
-        <div class="stat c"><div class="n">~$30K</div><div class="k">Typical delay cost on a single-family project</div></div>
-        <div class="stat d"><div class="n">$5 to 8K</div><div class="k">Weekly carrying cost on a stalled commercial job</div></div>
+        <div class="stat a"><div class="n">2 to 3 weeks</div><div class="k">Typical turnaround on a small business site, start to launch</div></div>
+        <div class="stat b"><div class="n">Fixed price</div><div class="k">Quoted before the work starts. No hourly billing, no surprise invoice</div></div>
+        <div class="stat c"><div class="n">You own it</div><div class="k">Your domain, your code, your accounts, in your name from day one</div></div>
+        <div class="stat d"><div class="n">One person</div><div class="k">You talk to whoever is building it, every time</div></div>
       </div>
-      <p class="tiny mt-s">Figures cited from public sources listed on <a href="#/data" style="color:var(--indigo);text-decoration:underline">The Data</a>. Delay costs are industry reported ranges, not a guarantee of results.</p>
     </div>
   </section>
 
   <section class="band b-ivory">
     <div class="wrap">
       <hr class="rule">
-      <h2>Three agents. One system underneath.</h2>
-      <p class="lead mt-s">Each one reads your own history first. That is the part a generic assistant cannot copy.</p>
+      <h2>Three things, done properly.</h2>
+      <p class="lead mt-s">Most small businesses do not need a platform. They need a site that loads fast, a few tasks off their plate, and something that answers the phone at 9pm.</p>
       <div class="grid g3 mt-m">
         <div class="card card-white hoverable">
-          <span class="tag tag-indigo">Sell first</span>
-          <h3>Bid Agent</h3>
-          <p>Reads the ITB, pulls scope and exclusions, cross-references what you actually charged on similar work, and drafts the response. The one that makes money in week one.</p>
+          <span class="tag tag-indigo">Start here</span>
+          <h3>Websites</h3>
+          <p>Designed and built from scratch, not dropped into a template. Fast on a phone, easy to find in search, and structured around whatever action you actually want a visitor to take.</p>
         </div>
         <div class="card card-white hoverable">
-          <span class="tag tag-amber">The moat</span>
-          <h3>Permit Agent</h3>
-          <p>Pre-submittal review that predicts what the plan reviewer will flag, with code citations. Then drafts responses to real comment letters. It gets sharper with every correction in your jurisdiction.</p>
+          <span class="tag tag-amber">Highest leverage</span>
+          <h3>Automation</h3>
+          <p>The work between your tools. Form goes in, the details land where they belong, the follow up sends itself, and nobody retypes anything into a spreadsheet at 11pm.</p>
         </div>
         <div class="card card-white hoverable">
-          <span class="tag tag-ink">Retention</span>
-          <h3>Closeout Agent</h3>
-          <p>Submittal packages, O and M manuals, warranties, lien waivers, AIA paperwork. Assembled from the job record instead of rebuilt by hand at the worst possible week.</p>
+          <span class="tag tag-ink">Always on</span>
+          <h3>AI assistants</h3>
+          <p>A chatbot trained on your business, not the internet. It answers hours, pricing and availability questions, captures the details you need, and hands off to you when it should.</p>
         </div>
       </div>
-      <div class="btn-row mt-m"><a class="btn btn-primary" href="#/services">See what each agent does</a></div>
+      <div class="btn-row mt-m"><a class="btn btn-primary" href="#/services">See what each one includes</a></div>
     </div>
   </section>
 
   <section class="band b-ink">
     <div class="deco deco-circle" style="width:400px;height:400px;background:var(--indigo);opacity:.2;left:-150px;bottom:-160px"></div>
     <div class="wrap">
-      <span class="eyebrow on-dark">Why a vertical shop</span>
-      <h2 style="color:var(--ivory);max-width:20ch">A generalist's tenth client teaches them nothing about the eleventh.</h2>
+      <span class="eyebrow on-dark">How this is different</span>
+      <h2 style="color:var(--ivory);max-width:20ch">Software should remove work, not add a login.</h2>
       <div class="grid g3 mt-m">
         <div class="card card-ink" style="background:rgba(250,247,240,.06)">
-          <h3 style="color:var(--ivory)">Private institutional memory</h3>
-          <p>Your bids, your jobs, your mistakes, made queryable. Nobody can rent that. A license to a general purpose chatbot is parity, not an edge.</p>
+          <h3 style="color:var(--ivory)">Built around your process</h3>
+          <p>We start by watching how you actually work, not by picking a tool. The build follows the process. If a task is fine by hand, we leave it alone and say so.</p>
         </div>
         <div class="card card-ink" style="background:rgba(250,247,240,.06)">
-          <h3 style="color:var(--ivory)">Agents that finish work</h3>
-          <p>The value is in the last twenty percent, not the first draft. We hand back a deliverable you can send, not a starting point you still have to fix.</p>
+          <h3 style="color:var(--ivory)">Finished, not almost finished</h3>
+          <p>The value is in the last twenty percent. You get something live and working, not a draft with a list of things you still need to figure out yourself.</p>
         </div>
         <div class="card card-ink" style="background:rgba(250,247,240,.06)">
-          <h3 style="color:var(--ivory)">Data only operating produces</h3>
-          <p>What Orange County actually rejects and why. What a bid really costs to win. That corpus is built by doing the work, one jurisdiction at a time.</p>
+          <h3 style="color:var(--ivory)">No lock in</h3>
+          <p>Domain in your name, code in a repo you can take with you, accounts under your email. If you ever want to leave, we hand everything over and help you move.</p>
         </div>
       </div>
     </div>
@@ -459,21 +443,22 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="split">
         <div>
           <hr class="rule indigo">
-          <h2>Start with an outcome, not a platform</h2>
-          <p class="lead mt-s">The first five clients get run as a service. We do the work by hand, hand back the deliverable, and keep every correction you make.</p>
-          <p class="mt-s muted">You pay for a result you can check against your own numbers. No implementation quarter, no seat licenses for software nobody opens, no six figure discovery phase.</p>
-          <div class="btn-row mt-m"><a class="btn btn-ink" href="#/method">How the engagement runs</a></div>
+          <h2>See it before you commit</h2>
+          <p class="lead mt-s">Every project starts with a demo you can click through on a real link, not a mockup in a slide.</p>
+          <p class="mt-s muted">You look at it on your own phone, on your own time, and tell us what is wrong. Changes happen before launch, when they are cheap. That is the whole reason the demo exists.</p>
+          <div class="btn-row mt-m"><a class="btn btn-ink" href="#/method">How a project runs</a></div>
         </div>
         <div class="card card-amber">
-          <h3>Bid Sprint</h3>
-          <p style="margin-top:6px"><strong style="font-family:'Space Grotesk';font-size:2.1rem;letter-spacing:-.03em">$2,500</strong> <span class="muted">/ two weeks, paid pilot</span></p>
+          <h3>What a project includes</h3>
+          <p style="margin-top:6px"><strong style="font-family:'Space Grotesk';font-size:2.1rem;letter-spacing:-.03em" id="starterPrice"></strong> <span class="muted">/ fixed price, quoted up front</span></p>
           <ul class="checks mt-s indigo">
-            <li>Bring one live ITB. We turn the response around by hand.</li>
-            <li>Your pricing history structured and searchable.</li>
-            <li>Side by side against how long the same bid takes you now.</li>
-            <li>Written report at the end, whether or not you continue.</li>
+            <li>Designed around your business, not a template</li>
+            <li>Mobile first, built to load fast</li>
+            <li>Forms wired straight to your inbox</li>
+            <li>Domain connected and secured, in your name</li>
+            <li>A live demo link before anything goes public</li>
           </ul>
-          <div class="btn-row mt-s"><a class="btn btn-ink" href="#/consult">Start with the free audit</a></div>
+          <div class="btn-row mt-s"><a class="btn btn-ink" href="#/consult">Start with a free call</a></div>
         </div>
       </div>
     </div>
@@ -483,9 +468,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <hr class="rule">
       <h2>Recent builds</h2>
-      <p class="lead mt-s">Before the agent work, the same shop rebuilds the front door: sites, intake, and the automation behind them.</p>
+      <p class="lead mt-s">Local businesses, different industries, same approach.</p>
       <div class="grid g3 mt-m" id="workGrid"></div>
-      <p class="tiny mt-s">Web and automation work remains available on its own. Ask for live links during the call.</p>
+      <div class="btn-row mt-m"><a class="btn btn-primary" href="#/work">See the work in detail</a></div>
     </div>
   </section>
 
@@ -494,8 +479,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <div class="split" style="align-items:center">
         <div>
-          <h2>Bring one bid. See what comes back.</h2>
-          <p class="lead mt-s" style="color:rgba(22,24,46,.82)">Thirty minutes, no deck. We look at your last few jobs, your permit record, and where the hours actually go.</p>
+          <h2>Thirty minutes. No pitch deck.</h2>
+          <p class="lead mt-s" style="color:rgba(22,24,46,.82)">Tell us what is eating your time. If we are not the right fit, we will say so and point you somewhere better.</p>
         </div>
         <div class="btn-row" style="justify-content:flex-end">
           <a class="btn btn-ink" href="#/consult">Book the consultation</a>
@@ -511,71 +496,53 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="deco deco-circle" style="width:440px;height:440px;background:var(--amber);opacity:.12;right:-140px;top:-170px"></div>
     <div class="wrap">
       <span class="eyebrow on-dark">Services</span>
-      <h1 style="color:var(--ivory);max-width:16ch">One platform. Three agents. Sold in the order that pays you back.</h1>
-      <p class="lead mt-s">Built on one base layer so the second and third agent cost a fraction of the first.</p>
-    </div>
-  </section>
-
-  <section class="band b-ivory">
-    <div class="wrap">
-      <hr class="rule indigo">
-      <h2>The base layer</h2>
-      <p class="lead mt-s">Built once, deployed per client. Everything above it reads from here.</p>
-      <div class="split mt-m">
-        <div>
-          <ul class="checks indigo">
-            <li>Your corpus structured: past bids and outcomes, plan sets, RFIs, submittals, change orders, plan review comment letters, closeout packages.</li>
-            <li>Claude API for reasoning and plan sheet vision.</li>
-            <li>Agent SDK for multi step workflows with structured JSON output.</li>
-            <li>Retrieval across your corpus plus the Florida Building Code and local amendments.</li>
-            <li>Citations on every output, so a human can check it in under a minute.</li>
-          </ul>
-        </div>
-        <div class="card card-indigo">
-          <h3>What it is not</h3>
-          <p>Not a chatbot bolted to your website. Not a subscription to somebody else's model with your logo on it. Not a report generator that leaves the judgment call to you.</p>
-          <p>The work product is the thing you were going to send anyway, drafted from your own record, with the sources shown.</p>
-        </div>
-      </div>
+      <h1 style="color:var(--ivory);max-width:16ch">Websites, automation, and assistants that actually answer.</h1>
+      <p class="lead mt-s">Take one, take all three. They work better together, but nothing here requires the others.</p>
     </div>
   </section>
 
   <section class="band b-white">
     <div class="wrap">
       <hr class="rule">
-      <h2>The agents</h2>
+      <h2>What we build</h2>
       <div class="grid g3 mt-m">
         <div class="card card-indigo hoverable">
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M9 15h6"/><path d="M9 11h3"/></svg></div>
-          <h3>Bid Agent</h3>
-          <p><strong>Sold first because it is measurable in week one.</strong></p>
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20"/><path d="M6 6.5h.01"/></svg></div>
+          <h3>Websites</h3>
+          <p><strong>The front door. Usually the first thing worth fixing.</strong></p>
           <ul class="checks indigo mt-s">
-            <li>Reads the ITB and extracts scope, exclusions, and alternates</li>
-            <li>Flags terms that historically cost you money</li>
-            <li>Cross references your own pricing history on similar scope</li>
-            <li>Drafts the response in your format, with sources</li>
+            <li>Custom design, no template with your logo dropped in</li>
+            <li>Built mobile first, because that is where your traffic is</li>
+            <li>Copy written or rewritten so it sounds like you</li>
+            <li>Contact and booking forms wired straight to your inbox</li>
+            <li>Domain, hosting and the security certificate handled</li>
+            <li>A live demo link to review before it goes public</li>
           </ul>
         </div>
         <div class="card card-amber hoverable">
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg></div>
-          <h3>Permit Agent</h3>
-          <p><strong>Built second. This is where the compounding happens.</strong></p>
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h10"/><path d="M10 12h10"/><path d="M4 18h10"/><circle cx="18" cy="6" r="2"/><circle cx="6" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg></div>
+          <h3>Automation</h3>
+          <p><strong>The quiet time sink. Nobody notices it until it is gone.</strong></p>
           <ul class="checks mt-s">
-            <li>Pre submittal review against the code and local amendments</li>
-            <li>Predicts likely reviewer comments with citations</li>
-            <li>Drafts responses to real comment letters</li>
-            <li>Corrections corpus deepens per jurisdiction, per trade</li>
+            <li>Form submissions routed to the right place automatically</li>
+            <li>Follow up emails and reminders that send themselves</li>
+            <li>Bookings, invoices and records kept in sync across tools</li>
+            <li>Reports that build themselves on a schedule</li>
+            <li>Built on the tools you already pay for where possible</li>
+            <li>Documented, so you are not dependent on us to change it</li>
           </ul>
         </div>
-        <div class="card card-white hoverable" style="background:var(--ivory-warm)">
-          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#16182E" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8v13H3V8"/><path d="M1 3h22v5H1z"/><path d="M10 12h4"/></svg></div>
-          <h3>Closeout Agent</h3>
-          <p><strong>Sold third. It is what makes leaving expensive.</strong></p>
+        <div class="card hoverable" style="background:var(--ivory-warm)">
+          <div class="icon-badge"><svg viewBox="0 0 24 24" fill="none" stroke="#16182E" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/></svg></div>
+          <h3>AI assistants</h3>
+          <p><strong>For the questions you answer forty times a week.</strong></p>
           <ul class="checks mt-s">
-            <li>Submittal packages assembled from the job record</li>
-            <li>O and M manuals, warranties, lien waivers</li>
-            <li>AIA paperwork prepared against the contract terms</li>
-            <li>Forty jobs of history that would have to be rebuilt elsewhere</li>
+            <li>Trained on your hours, services, pricing and policies</li>
+            <li>Answers on your site, or over text and email</li>
+            <li>Collects the details you need before you ever reply</li>
+            <li>Hands off to a human when it does not know</li>
+            <li>You see every conversation it has</li>
+            <li>Tuned over the first few weeks against real questions</li>
           </ul>
         </div>
       </div>
@@ -586,9 +553,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <hr class="rule indigo">
       <h2>Pricing</h2>
-      <p class="lead mt-s">Priced against the cost of the delay, not against a $500 assessment.</p>
-      <div class="price-grid mt-m" id="priceGrid"></div>
-      <p class="tiny mt-s">Integrated builds carry a hard floor. Anything that cannot be reused for the next client is quoted as custom work, not product.</p>
+      <div class="price-line mt-m" id="priceLine"></div>
+      <h3 class="mt-l">What moves the number</h3>
+      <p class="lead mt-s">A five page site for a photographer and an online menu system for a restaurant are not the same job. These are the things we look at on the call.</p>
+      <div class="grid g4 mt-m">
+        <div class="card card-white"><h4>Size</h4><p class="small mt-s muted">How many pages, and how much of it is unique versus repeated.</p></div>
+        <div class="card card-white"><h4>Copy and photos</h4><p class="small mt-s muted">Whether you have them ready or we write and source them.</p></div>
+        <div class="card card-white"><h4>What it connects to</h4><p class="small mt-s muted">Booking, ordering, payments, a calendar, a CRM you already use.</p></div>
+        <div class="card card-white"><h4>What runs after</h4><p class="small mt-s muted">Automations behind the forms, and whether an assistant is part of it.</p></div>
+      </div>
+      <p class="tiny mt-m">If the scope changes mid project, you get a new number to approve rather than a bigger invoice at the end.</p>
     </div>
   </section>
 
@@ -596,24 +570,24 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <div class="split">
         <div>
-          <span class="eyebrow on-dark">The math we show on a call</span>
-          <h2 style="color:var(--ivory)">Conservative on purpose</h2>
-          <p class="lead mt-s">Win rate upside is left out of the model. If the time savings alone do not clear the cost, the rest of the argument does not matter.</p>
+          <span class="eyebrow on-dark">The math worth checking</span>
+          <h2 style="color:var(--ivory)">Run your own numbers</h2>
+          <p class="lead mt-s">Automation is only worth it if the hours it returns are worth more than it costs. Here is the shape of that calculation, using placeholder figures. We fill it in with yours on the call.</p>
+          <p class="tiny mt-s">Illustrative example. Not a projection of your results.</p>
         </div>
         <div>
           <table class="tbl">
             <tbody>
-              <tr><td>Estimator time per bid, today</td><td class="mono" style="text-align:right">6 hrs</td></tr>
-              <tr><td>Time per bid with the agent</td><td class="mono" style="text-align:right">1.5 hrs</td></tr>
-              <tr><td>Bids per week</td><td class="mono" style="text-align:right">8</td></tr>
-              <tr><td>Hours returned weekly</td><td class="mono" style="text-align:right">36</td></tr>
-              <tr><td>Loaded rate assumption</td><td class="mono" style="text-align:right">~$45/hr</td></tr>
-              <tr><td><strong>Annual value of time returned</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>~$84,000</strong></td></tr>
-              <tr><td>Annual cost at $2,000/mo</td><td class="mono" style="text-align:right">$24,000</td></tr>
-              <tr><td><strong>Payback</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>under 4 months</strong></td></tr>
+              <tr><td>Hours a week on one repeat task</td><td class="mono" style="text-align:right">6</td></tr>
+              <tr><td>Hours left after automating it</td><td class="mono" style="text-align:right">1</td></tr>
+              <tr><td>Hours returned weekly</td><td class="mono" style="text-align:right">5</td></tr>
+              <tr><td>What an hour of that time is worth</td><td class="mono" style="text-align:right">$40</td></tr>
+              <tr><td><strong>Value returned per year</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>$10,400</strong></td></tr>
+              <tr><td>One time build, plus a year of support</td><td class="mono" style="text-align:right">$3,000</td></tr>
+              <tr><td><strong>Break even</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>around month four</strong></td></tr>
             </tbody>
           </table>
-          <p class="tiny mt-s">Assumptions, not promises. We rerun this with your real bid volume and rates during the audit.</p>
+          <p class="tiny mt-s">If your numbers do not clear the cost, we will tell you on the first call instead of selling you the project.</p>
         </div>
       </div>
     </div>
@@ -623,131 +597,73 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <hr class="rule">
       <h2>Where the line is</h2>
-      <p class="lead mt-s">Worth saying out loud before you hire anyone to touch permit work.</p>
+      <p class="lead mt-s">Worth saying out loud before you hand anyone the keys to your business.</p>
       <div class="grid g2 mt-m">
-        <div class="card card-amber"><h3>We flag and cite. We never certify.</h3><p>Code interpretation and licensed sign off stay with your engineer of record. Every output points at the section it came from so a licensed professional can confirm or overrule it in seconds.</p></div>
-        <div class="card card-indigo"><h3>Nothing goes to a jurisdiction unreviewed.</h3><p>Human review on every deliverable through client ten, and no auto submission to any building department at any point. One bad output burns a referral network that took months to build.</p></div>
+        <div class="card card-amber"><h3>An assistant that says "I don't know"</h3><p>A chatbot that invents an answer about your pricing or your hours costs you more than having no chatbot at all. Ours are built to hand off to a human rather than guess, and you can read every conversation it has.</p></div>
+        <div class="card card-indigo"><h3>Your accounts stay yours</h3><p>Domain registered in your name, code in a repo you own, hosting under your email. We never buy a domain on your behalf or hold your accounts hostage. Leaving should cost you nothing but a goodbye.</p></div>
       </div>
     </div>
   </section>
 
   <section class="band tight b-amber">
     <div class="wrap" style="text-align:center">
-      <h2>Bring one live ITB to the first call.</h2>
-      <p class="lead mt-s" style="margin:14px auto 0;color:rgba(22,24,46,.82)">You will see the output before you spend anything.</p>
+      <h2>Not sure which one you need?</h2>
+      <p class="lead mt-s" style="margin:14px auto 0;color:rgba(22,24,46,.82)">That is what the free call is for. Bring the problem, not the solution.</p>
       <div class="btn-row mt-m" style="justify-content:center"><a class="btn btn-ink" href="#/consult">Book a free consultation</a></div>
     </div>
   </section>
 </div>
 
-<!-- ================= THE DATA ================= -->
-<div class="page" id="page-data">
+<!-- ================= WORK ================= -->
+<div class="page" id="page-work">
   <section class="band b-ink" style="padding-top:80px">
     <div class="deco deco-sq" style="width:300px;height:300px;background:var(--indigo);opacity:.25;right:40px;top:-110px"></div>
     <div class="wrap">
-      <span class="eyebrow on-dark">The Data</span>
-      <h1 style="color:var(--ivory);max-width:17ch">Your permit record is public. Almost nobody reads it.</h1>
-      <p class="lead mt-s">The City of Orlando publishes permit applications, issued permits, and business tax receipts as open data. Joined together, they show how long your jobs actually take to clear review compared with everyone else in your trade.</p>
+      <span class="eyebrow on-dark">Work</span>
+      <h1 style="color:var(--ivory);max-width:17ch">Different businesses. Same approach.</h1>
+      <p class="lead mt-s">A detail shop, a bookstore cafe and a Puerto Rican kitchen do not need the same website. They do need the same thing from the person building it.</p>
     </div>
   </section>
 
   <section class="band b-ivory">
     <div class="wrap">
       <hr class="rule indigo">
-      <h2>The datasets</h2>
-      <div class="mt-m" style="overflow-x:auto">
-        <table class="tbl">
-          <thead><tr><th>Dataset</th><th>ID</th><th>What we use it for</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Business Tax Receipts</strong></td><td class="mono">7388-4re5</td><td>Business name, owner name, phone, address, license type, open date, status. Filtered to contractor license categories.</td></tr>
-            <tr><td><strong>Permit Applications</strong></td><td class="mono">ryhf-m453</td><td>Who applied, for what scope, at what valuation, and when.</td></tr>
-            <tr><td><strong>Building Permits Issued</strong></td><td class="mono">k5wb-xgjc</td><td>Issue dates. Paired with application dates this gives the cycle time.</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="grid g2 mt-m">
-        <div class="card card-white">
-          <h3>What we compute</h3>
-          <p>Median days from application to issue, by trade and by jurisdiction. Then your own last twenty permits against that median, and against the fastest quartile in the same category.</p>
-        </div>
-        <div class="card card-white">
-          <h3>What we verify first</h3>
-          <p>Orange, Seminole and Osceola publish separately with different completeness, and field definitions differ. Every number gets checked against the source definition before it goes in front of a contractor. Being wrong about someone's own data is not recoverable.</p>
-        </div>
-      </div>
+      <h2>Selected projects</h2>
+      <div class="grid g3 mt-m" id="workGrid2"></div>
+      <p class="tiny mt-s">Live links available on request. Happy to walk you through any of these on a call.</p>
     </div>
   </section>
 
   <section class="band b-indigo">
     <div class="deco deco-circle" style="width:360px;height:360px;background:#fff;opacity:.07;left:-120px;top:-120px"></div>
     <div class="wrap">
-      <span class="eyebrow" style="color:var(--amber)">In development</span>
-      <h2 style="color:#fff;max-width:18ch">The Orlando Permit Index</h2>
-      <p class="lead mt-s">A free public dashboard of permit cycle times by jurisdiction and trade, refreshed from city records. Look up your own line, compare it to your trade, and see where the weeks are going.</p>
+      <span class="eyebrow" style="color:var(--amber)">What stays the same</span>
+      <h2 style="color:#fff;max-width:18ch">The parts every project gets</h2>
       <div class="grid g3 mt-m">
-        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Free, no signup</h3><p style="color:rgba(255,255,255,.85)">It is public data. Charging for it would be strange.</p></div>
-        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Cycle time by trade</h3><p style="color:rgba(255,255,255,.85)">Mechanical, electrical, roofing first. More categories as the data holds up.</p></div>
-        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Jurisdiction splits</h3><p style="color:rgba(255,255,255,.85)">City of Orlando first, then Orange, Seminole and Osceola as coverage allows.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Fast on a phone</h3><p style="color:rgba(255,255,255,.85)">Most people will find you while they are already out. That view gets built first, not adapted afterward.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">One clear action</h3><p style="color:rgba(255,255,255,.85)">Book, call, order, visit. Every page is built around the thing you want a visitor to do next.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Yours to keep</h3><p style="color:rgba(255,255,255,.85)">Domain, code and accounts in your name. Updating it later never requires calling us first.</p></div>
       </div>
-      <div class="btn-row mt-m"><a class="btn btn-amber" href="#/consult">Get your numbers before it launches</a></div>
     </div>
   </section>
 
   <section class="band b-warm">
     <div class="wrap">
       <hr class="rule">
-      <h2>The market, in numbers we can source</h2>
-      <div class="grid g4 mt-m">
-        <div class="stat a"><div class="n">92,730</div><div class="k">Construction workers, Orlando MSA, June 2026</div></div>
-        <div class="stat b"><div class="n">3 to 5 wks</div><div class="k">Contractor reported Orange County plan review wait</div></div>
-        <div class="stat c"><div class="n">~$30K</div><div class="k">Delay cost, single family project</div></div>
-        <div class="stat d"><div class="n">$5 to 8K</div><div class="k">Weekly carrying cost, commercial</div></div>
-      </div>
-      <div class="split mt-m">
-        <div>
-          <h3>Why this does not fix itself</h3>
-          <p class="mt-s muted">Central Florida's construction labor shortage means firms cannot hire their way out of a backlog of paperwork. The people who could clear it are the same people you cannot find. That is the gap the agents sit in.</p>
-        </div>
-        <div>
-          <h3>The hedge</h3>
-          <p class="mt-s muted">If construction softens, bid work gets more valuable, not less. Orlando financial activities already shed 3,100 jobs year over year and consumer spending is off 2.9 percent. Fewer jobs on the board means every bid matters more, which is why the Bid Agent leads.</p>
-        </div>
+      <h2>What clients actually ask for</h2>
+      <div class="grid g2 mt-m">
+        <div class="card card-white"><h3>"Our site looks dated"</h3><p class="mt-s muted">Usually a template from years ago that has stopped matching the business. The fix is a rebuild with the copy and photos carried over and reorganized, not a fresh start from zero.</p></div>
+        <div class="card card-white"><h3>"People message us on Instagram to book"</h3><p class="mt-s muted">The work is not the website. It is the path from seeing you to being on your calendar. That is a form, a confirmation and a reminder, wired together once.</p></div>
+        <div class="card card-white"><h3>"I answer the same question all day"</h3><p class="mt-s muted">Hours, parking, pricing, do you do X. An assistant handles those and passes anything unusual straight to you.</p></div>
+        <div class="card card-white"><h3>"I'm retyping everything into a spreadsheet"</h3><p class="mt-s muted">The clearest automation win there is. One connection between the tools you already use, and the retyping stops.</p></div>
       </div>
     </div>
   </section>
 
-  <section class="band b-white">
-    <div class="wrap">
-      <div class="split">
-        <div>
-          <hr class="rule indigo">
-          <h2>Also tracking: Florida SIRS</h2>
-          <p class="lead mt-s">Structural integrity reserve studies are required for condo and co-op buildings of three or more habitable stories, with deadlines running through December 31, 2026.</p>
-          <p class="mt-s muted">Provider waits run three to six months in some markets and studies run $5,000 to $25,000 and up. Non compliance exposes boards to personal liability, insurance denial, and lending restrictions.</p>
-          <p class="mt-s muted">The engineering work requires a licensed engineer. The documentation and compliance tracking around it does not. Property management companies buy that across dozens of associations at once.</p>
-        </div>
-        <div class="card card-amber">
-          <h3>If you manage associations</h3>
-          <p>Say so on the call. The compliance tracking piece is a different build from the contractor agents and we will tell you honestly where it stands rather than sell you a roadmap.</p>
-          <div class="btn-row mt-s"><a class="btn btn-ink" href="#/consult">Start a conversation</a></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="band tight b-ink">
-    <div class="wrap">
-      <span class="eyebrow on-dark">Sources</span>
-      <div class="sources mt-s">
-        <div><a href="https://fred.stlouisfed.org/series/SMU12367402000000001SA" target="_blank" rel="noopener">FRED, Orlando MSA construction employment</a></div>
-        <div><a href="https://business.orlando.org/l/orlando-msa-market-snapshot/" target="_blank" rel="noopener">Orlando Economic Partnership, MSA market snapshot</a></div>
-        <div><a href="https://freedomcodecompliance.com/blog/florida-building-permit-delays-2026" target="_blank" rel="noopener">Florida permit wait times and delay costs, 2026</a></div>
-        <div><a href="https://data.cityoforlando.net/" target="_blank" rel="noopener">City of Orlando Open Data Portal</a></div>
-        <div><a href="https://data.cityoforlando.net/Permitting/Business-Tax-Receipts/7388-4re5" target="_blank" rel="noopener">Business Tax Receipts dataset</a></div>
-        <div><a href="https://data.cityoforlando.net/Permitting/Permit-Applications/ryhf-m453" target="_blank" rel="noopener">Permit Applications dataset</a></div>
-        <div><a href="https://www.propfusion.com/law-guide/florida-sirs-requirements" target="_blank" rel="noopener">Florida SIRS requirements</a></div>
-        <div><a href="https://mynews13.com/fl/orlando/news/2026/05/25/florida-s-labor-shortage-impacting-industries-like-construction--hospitality" target="_blank" rel="noopener">Central Florida labor shortage coverage</a></div>
-      </div>
+  <section class="band tight b-amber">
+    <div class="wrap" style="text-align:center">
+      <h2>Want something like this?</h2>
+      <div class="btn-row mt-m" style="justify-content:center"><a class="btn btn-ink" href="#/consult">Book a free consultation</a></div>
     </div>
   </section>
 </div>
@@ -758,43 +674,43 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="deco deco-circle" style="width:480px;height:480px;background:var(--amber);opacity:.1;left:-180px;bottom:-220px"></div>
     <div class="wrap">
       <span class="eyebrow on-dark">Method</span>
-      <h1 style="color:var(--ivory);max-width:16ch">Service first. Software when it has earned it.</h1>
-      <p class="lead mt-s">Kaizen means small improvements, made continuously, by the people doing the work. The engagement is built that way on purpose: deliver by hand, record every correction, automate only what has proven itself twice.</p>
+      <h1 style="color:var(--ivory);max-width:16ch">Small improvements, shipped continuously.</h1>
+      <p class="lead mt-s">Kaizen means exactly that. Nothing here takes a quarter to deliver, and you see working output early enough to change your mind while it is still cheap.</p>
     </div>
   </section>
 
   <section class="band b-ivory">
     <div class="wrap">
       <hr class="rule indigo">
-      <h2>The first ninety days</h2>
-      <p class="lead mt-s">A real sequence, not a phase diagram.</p>
+      <h2>How a project runs</h2>
+      <p class="lead mt-s">Four steps. Most projects are done inside a month.</p>
       <div class="mt-m">
         <div class="step">
-          <div><div class="num">01</div><div class="when">Weeks 1 to 2</div></div>
+          <div><div class="num">01</div><div class="when">Free, 30 minutes</div></div>
           <div>
-            <h3>Read the record</h3>
-            <p class="mt-s muted">Pull the public permit and license data, compute cycle time by trade, and build your line against the median. In parallel, the bid chain gets drafted against real invitations to bid, not sample documents.</p>
+            <h3>The call</h3>
+            <p class="mt-s muted">We go through what you have now and where the time goes. No deck, no pitch. If a website is not your actual problem, this is where that comes out.</p>
           </div>
         </div>
         <div class="step">
-          <div><div class="num">02</div><div class="when">Weeks 3 to 4</div></div>
+          <div><div class="num">02</div><div class="when">Within a few days</div></div>
           <div>
-            <h3>One bid, by hand, in under a day</h3>
-            <p class="mt-s muted">You send one live ITB. We do not ask for a meeting first. The teardown comes back inside twenty four hours, done manually, and every correction you make gets recorded word for word. Then one question: what would you have paid to have this by Friday?</p>
+            <h3>Scope and fixed price</h3>
+            <p class="mt-s muted">You get it in writing: what gets built, what it costs, when it lands. One number, agreed before anything starts. Nothing gets added to the invoice later without you approving it first.</p>
           </div>
         </div>
         <div class="step">
-          <div><div class="num">03</div><div class="when">Weeks 5 to 8</div></div>
+          <div><div class="num">03</div><div class="when">Usually 1 to 3 weeks</div></div>
           <div>
-            <h3>Bid Sprint</h3>
-            <p class="mt-s muted">A two week paid pilot at $2,500. Delivered by hand, no interface. Between deliveries we build the ingestion and retrieval layer against your real documents, so the system is trained on your work rather than on a demo set.</p>
+            <h3>Build and demo</h3>
+            <p class="mt-s muted">You get a live link, not a mockup. Click through it on your phone, mark up anything that feels wrong, and we revise. This is the point where changes are easy, so we push for honest feedback rather than polite approval.</p>
           </div>
         </div>
         <div class="step">
-          <div><div class="num">04</div><div class="when">Weeks 9 to 12</div></div>
+          <div><div class="num">04</div><div class="when">Launch day and after</div></div>
           <div>
-            <h3>Convert to a license</h3>
-            <p class="mt-s muted">Sprints convert to a monthly license with ongoing tuning. The Permit Index goes public. Referral partners get brought in, usually a permit expediter or a construction attorney, because that is where the next five clients come from.</p>
+            <h3>Launch and hand over</h3>
+            <p class="mt-s muted">Domain connected, certificate live, forms tested. Then you get access to everything and a short walkthrough of how to update it. Ongoing support is optional, never automatic.</p>
           </div>
         </div>
       </div>
@@ -804,11 +720,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="band b-white">
     <div class="wrap">
       <hr class="rule">
-      <h2>Why by hand first</h2>
+      <h2>Why it works this way</h2>
       <div class="grid g3 mt-m">
-        <div class="card card-indigo hoverable"><h3>Corrections are the asset</h3><p>Every edit you make to a draft is a training signal that a generic tool throws away. Delivering manually for the first five clients is how the system gets good by month six.</p></div>
-        <div class="card card-amber hoverable"><h3>You get paid work, not a pilot</h3><p>A deliverable you can send beats a demo you have to imagine using. Revenue and product development happen in the same motion instead of one waiting on the other.</p></div>
-        <div class="card card-white hoverable" style="background:var(--ivory-warm)"><h3>Custom work does not eat the product</h3><p>Nothing gets built that cannot be reused for the next client, and integrated builds carry a hard floor. That discipline is the difference between a product and a very slow agency.</p></div>
+        <div class="card card-indigo hoverable"><h3>You see it early</h3><p>A demo link on day seven beats a finished site on day thirty that missed the point. Feedback while it is cheap is the entire reason for the schedule.</p></div>
+        <div class="card card-amber hoverable"><h3>Fixed price protects you</h3><p>Hourly billing rewards slow work. A number agreed up front means the incentive is to build it well and be done, and you know the cost before you commit.</p></div>
+        <div class="card hoverable" style="background:var(--ivory-warm)"><h3>Handover is part of the job</h3><p>You should be able to change your own hours, prices and photos without paying anyone. Anything we cannot make self serve, we document.</p></div>
       </div>
     </div>
   </section>
@@ -816,20 +732,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <section class="band b-warm">
     <div class="wrap">
       <hr class="rule indigo">
-      <h2>Questions worth asking</h2>
+      <h2>Questions we get</h2>
       <div class="mt-m">
-        <div class="faq-item"><h4>Who owns the data?</h4><p class="muted">You do. Your documents, your outputs, your corrections corpus. If the engagement ends, the record leaves with you.</p></div>
-        <div class="faq-item"><h4>Are you interpreting code?</h4><p class="muted">No. Outputs are flagged and cited so a licensed professional can confirm or overrule them. Licensed sign off stays in your contract, where it belongs.</p></div>
-        <div class="faq-item"><h4>Does anything get submitted automatically?</h4><p class="muted">Never. No automatic submission to any jurisdiction, at any stage, on any plan.</p></div>
-        <div class="faq-item"><h4>What if we already use Procore, Autodesk, or Sage?</h4><p class="muted">Good. Integrated builds are quoted separately, with a hard floor, and only after the standalone version has proven out on your work.</p></div>
-        <div class="faq-item"><h4>How fast is the first deliverable?</h4><p class="muted">The first bid teardown comes back within twenty four hours of you sending the ITB.</p></div>
+        <div class="faq-item"><h4>Who owns the site and the domain?</h4><p class="muted">You do. The domain is registered in your name on your account, the code lives in a repo you own, and hosting is under your email. We only ever need access, never ownership.</p></div>
+        <div class="faq-item"><h4>What if I already have a website?</h4><p class="muted">Most clients do. We rebuild it, carry over the copy and photos worth keeping, and cut over with minimal downtime. Your email keeps working throughout.</p></div>
+        <div class="faq-item"><h4>Can I update it myself afterward?</h4><p class="muted">Yes, and you get a walkthrough at handover. If you would rather not, a monthly care plan covers edits.</p></div>
+        <div class="faq-item"><h4>Do I need the AI parts?</h4><p class="muted">Probably not on day one. Most businesses get more out of a better site and one automation than out of a chatbot. We will tell you which is which.</p></div>
+        <div class="faq-item"><h4>How do payments work?</h4><p class="muted">Half to start, half at launch, for most projects. Monthly plans are month to month with no contract.</p></div>
       </div>
     </div>
   </section>
 
   <section class="band tight b-amber">
     <div class="wrap" style="text-align:center">
-      <h2>Thirty minutes, one bid, no deck.</h2>
+      <h2>Thirty minutes to find out if it is worth doing.</h2>
       <div class="btn-row mt-m" style="justify-content:center"><a class="btn btn-ink" href="#/consult">Book a free consultation</a></div>
     </div>
   </section>
@@ -842,7 +758,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <span class="eyebrow on-dark">About Us</span>
       <h1 style="color:var(--ivory);max-width:15ch">A small shop that ships, not a firm that presents.</h1>
-      <p class="lead mt-s">tsKaizen is an Orlando based operations and AI shop. The pattern behind everything here is the same one the name points at: find the friction, build the system, automate it, then scale it.</p>
+      <p class="lead mt-s">tsKaizen is an Orlando based AI and web studio. The pattern behind everything here is the one the name points at: find the friction, build the system, automate it, then scale it.</p>
     </div>
   </section>
 
@@ -853,13 +769,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           <hr class="rule indigo">
           <h2>How we work</h2>
           <p class="lead mt-s">Founded and run by Anthony Pichardo. You talk to the person building the thing, every time.</p>
-          <p class="mt-s muted">The background is operations and finance: process design, workflow automation, and the unglamorous work of making information move without a person carrying it. Before the agent work, that meant building a full operating system for a 300 plus member professional organization, with attendance, points, and communications automated end to end, and shipping a tournament platform that ran with thirty concurrent live users.</p>
-          <p class="mt-s muted">tsKaizen applies that to Central Florida businesses. Websites, AI builds, and automation for anyone. The contractor agents for the vertical we know best.</p>
+          <p class="mt-s muted">The background is operations: process design, workflow automation, and the unglamorous work of making information move without a person carrying it. That has meant building a full operating system for a 300 plus member organization, with attendance, points and communications automated end to end, and shipping a tournament platform that ran with thirty concurrent live users.</p>
+          <p class="mt-s muted">tsKaizen applies that to small businesses. A cafe, a detail shop, a photographer and a bookstore all have the same underlying problem: too much of the week goes to work that a system should be doing.</p>
         </div>
         <div class="grid" style="gap:18px">
-          <div class="card card-indigo"><h3>Solo by design</h3><p>No account manager between you and the build. No handoff to a junior after the sales call.</p></div>
-          <div class="card card-amber"><h3>Specific over general</h3><p>Ten clients in one trade teaches more than fifty across ten industries. Depth in Orange County amendments is not something a national vendor ships.</p></div>
-          <div class="card card-white"><h3>Honest about limits</h3><p>If the numbers do not clear the cost, we say so on the first call rather than sell a pilot.</p></div>
+          <div class="card card-indigo"><h3>Small by design</h3><p>No account manager between you and the build. No handoff to a junior after the sales call.</p></div>
+          <div class="card card-amber"><h3>Practical over impressive</h3><p>We would rather ship a simple thing that works on Monday than a clever thing you have to be trained to use.</p></div>
+          <div class="card card-white"><h3>Honest about limits</h3><p>If the numbers do not clear the cost, or you do not actually need what you asked for, we say so on the first call.</p></div>
         </div>
       </div>
     </div>
@@ -869,19 +785,19 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <hr class="rule">
       <h2>Selected work</h2>
-      <p class="lead mt-s">Site rebuilds and automation for local businesses, alongside the agent platform.</p>
-      <div class="grid g3 mt-m" id="workGrid2"></div>
+      <p class="lead mt-s">Websites and automation for local businesses.</p>
+      <div class="grid g3 mt-m" id="workGrid3"></div>
     </div>
   </section>
 
   <section class="band b-indigo">
     <div class="wrap">
-      <span class="eyebrow" style="color:var(--amber)">Beyond the agents</span>
-      <h2 style="color:#fff">The rest of the shop</h2>
+      <span class="eyebrow" style="color:var(--amber)">What we do</span>
+      <h2 style="color:#fff">The whole offering, in one place</h2>
       <div class="grid g3 mt-m">
-        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Websites</h3><p style="color:rgba(255,255,255,.85)">Design and build with a fast turnaround. Mobile first, fast loading, and written so a customer can find what they came for.</p></div>
-        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">AI builds</h3><p style="color:rgba(255,255,255,.85)">Custom assistants, document and intake automation, and prompt systems your team can actually run without help.</p></div>
-        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Automated systems</h3><p style="color:rgba(255,255,255,.85)">Make, Zapier, and Power Automate wired into the tools you already pay for, to remove the manual steps in between.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Websites</h3><p style="color:rgba(255,255,255,.85)">Design and build with a fast turnaround. Mobile first, quick to load, and written so a customer finds what they came for.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">Automation</h3><p style="color:rgba(255,255,255,.85)">The tools you already pay for, wired together, so the manual steps between them disappear.</p></div>
+        <div class="card" style="background:rgba(255,255,255,.12)"><h3 style="color:#fff">AI assistants</h3><p style="color:rgba(255,255,255,.85)">Chatbots and intake assistants trained on your business, that hand off to you rather than guess.</p></div>
       </div>
     </div>
   </section>
@@ -890,8 +806,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="wrap">
       <div class="split" style="align-items:center">
         <div>
-          <h2>Serving Orlando and Central Florida</h2>
-          <p class="lead mt-s muted">Orange, Seminole and Osceola counties, plus Palm Beach County for web and automation work.</p>
+          <h2>Based in Orlando, working anywhere</h2>
+          <p class="lead mt-s muted">Central Florida in person, everywhere else over a call. Remote has never been the hard part.</p>
         </div>
         <div class="btn-row" style="justify-content:flex-end"><a class="btn btn-primary" href="#/consult">Book a free consultation</a></div>
       </div>
@@ -905,8 +821,8 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <div class="deco deco-circle" style="width:420px;height:420px;background:var(--indigo);opacity:.2;right:-140px;top:-160px"></div>
     <div class="wrap">
       <span class="eyebrow on-dark">Book a free consultation</span>
-      <h1 style="color:var(--ivory);max-width:16ch">Thirty minutes. Bring one bid or one permit.</h1>
-      <p class="lead mt-s">No deck and no discovery phase. We look at where the hours go, pull your permit record, and tell you whether this is worth doing.</p>
+      <h1 style="color:var(--ivory);max-width:16ch">Thirty minutes. Bring the problem.</h1>
+      <p class="lead mt-s">No deck and no obligation. We look at what you have, where the time goes, and whether any of this is worth doing for you.</p>
     </div>
   </section>
 
@@ -915,7 +831,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <div class="split">
         <div>
           <div class="card card-white">
-            <h3>Tell us about the work</h3>
+            <h3>Tell us about your business</h3>
             <p class="small muted" style="margin-top:6px">Replies come from <span id="emailInline"></span>, usually same day.</p>
             <form id="consultForm" class="mt-s" novalidate>
               <div class="field">
@@ -923,11 +839,11 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
                 <input id="name" name="name" type="text" autocomplete="name" required>
               </div>
               <div class="field">
-                <label for="company">Company</label>
+                <label for="company">Business name</label>
                 <input id="company" name="company" type="text" autocomplete="organization" required>
               </div>
               <div class="field">
-                <label for="email">Work email</label>
+                <label for="email">Email</label>
                 <input id="email" name="email" type="email" autocomplete="email" required>
               </div>
               <div class="field">
@@ -935,26 +851,23 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
                 <input id="phone" name="phone" type="tel" autocomplete="tel">
               </div>
               <div class="field">
-                <label for="trade">Trade or business type</label>
-                <select id="trade" name="trade" required>
+                <label for="need">What are you after?</label>
+                <select id="need" name="need" required>
                   <option value="">Select one</option>
-                  <option>Mechanical</option>
-                  <option>Electrical</option>
-                  <option>Roofing</option>
-                  <option>Plumbing</option>
-                  <option>General contractor</option>
-                  <option>Architecture or engineering</option>
-                  <option>Property management</option>
-                  <option>Other service business</option>
+                  <option>A new website</option>
+                  <option>A rebuild of my current site</option>
+                  <option>Automating a manual process</option>
+                  <option>An AI assistant or chatbot</option>
+                  <option>Not sure yet</option>
                 </select>
               </div>
               <div class="field">
-                <label for="jurisdiction">Where you pull permits</label>
-                <input id="jurisdiction" name="jurisdiction" type="text" placeholder="City of Orlando, Orange County, Seminole, other">
+                <label for="current">Current website (optional)</label>
+                <input id="current" name="current" type="text" placeholder="yourbusiness.com, or a social profile if that is all you have">
               </div>
               <div class="field">
-                <label for="goal">What would you want back first?</label>
-                <textarea id="goal" name="goal" placeholder="A bid response turned around faster, a plan review that stops coming back, closeout packages that assemble themselves, or something else entirely."></textarea>
+                <label for="goal">What would you fix first?</label>
+                <textarea id="goal" name="goal" placeholder="The site nobody can find, the questions you answer forty times a week, the spreadsheet you keep retyping into, or something else entirely."></textarea>
               </div>
               <button class="btn btn-primary" type="submit" id="submitBtn" style="width:100%">Request the consultation</button>
               <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
@@ -966,20 +879,20 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           <div class="card card-amber">
             <h3>What happens on the call</h3>
             <ul class="checks indigo mt-s">
-              <li>Fifteen minutes on where your hours actually go</li>
-              <li>Your permit cycle time against your trade's median</li>
-              <li>A straight answer on whether the math works for your volume</li>
-              <li>If it does, a written opportunity report with a scoped price</li>
+              <li>Fifteen minutes on where your week actually goes</li>
+              <li>A look at your current site, if you have one</li>
+              <li>A straight answer on what is worth doing first</li>
+              <li>If it is a fit, a written scope and a fixed price</li>
             </ul>
           </div>
           <div class="card card-indigo">
             <h3>What to bring</h3>
-            <p>One live invitation to bid, or one plan review comment letter you are unhappy about. Real documents make the call useful. If you would rather not share anything yet, that is fine too.</p>
+            <p>Nothing formal. If you have a site, send the link. If there is one task that eats your week, have it in mind. That is enough to make the call useful.</p>
           </div>
           <div class="card card-white">
             <h3>Prefer email?</h3>
             <p class="mt-s"><a id="emailLink" href="#" style="color:var(--indigo);font-weight:600;text-decoration:underline;text-underline-offset:3px"></a></p>
-            <p class="small muted mt-s">Serving Orange, Seminole and Osceola counties, plus Palm Beach County for web and automation work.</p>
+            <p class="small muted mt-s">Based in Orlando. In person around Central Florida, remote everywhere else.</p>
           </div>
         </div>
       </div>
@@ -1004,14 +917,14 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           </svg>
           <span class="brand-word"><span class="t">t</span>sKaizen</span>
         </a>
-        <p class="small" style="color:rgba(250,247,240,.7);max-width:38ch">AI agents and automation for Central Florida contractors. Built on your own record, cited on every output.</p>
+        <p class="small" style="color:rgba(250,247,240,.7);max-width:38ch">Websites, automation and AI assistants for small businesses. Built to remove work, not add another login.</p>
       </div>
       <div class="foot-col">
         <h5>Pages</h5>
         <ul>
           <li><a href="#/">Home</a></li>
           <li><a href="#/services">Services</a></li>
-          <li><a href="#/data">The Data</a></li>
+          <li><a href="#/work">Work</a></li>
           <li><a href="#/method">Method</a></li>
           <li><a href="#/about">About Us</a></li>
           <li><a href="#/consult">Book a free consultation</a></li>
@@ -1022,13 +935,13 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <ul>
           <li><a id="footEmail" href="#"></a></li>
           <li>Orlando, Florida</li>
-          <li>Orange, Seminole, Osceola</li>
+          <li>Remote anywhere</li>
         </ul>
       </div>
     </div>
     <div class="foot-bottom">
       <span>&copy; <span id="year"></span> tsKaizen. All rights reserved.</span>
-      <span>tsKaizen does not provide code interpretation or licensed engineering sign off.</span>
+      <span>Built in Orlando.</span>
     </div>
   </div>
 </footer>
@@ -1042,30 +955,24 @@ const CONFIG = {
   email: "anthonypichardo31@tskaizen.com",
   region: "Orlando and Central Florida",
   formEndpoint: "https://formspree.io/f/xkolwdag",
-  pricing: [
-    { name: "Bid Sprint", flag: "Start here", amount: "$2,500", note: "Two week paid pilot, delivered by hand. One live ITB, turned around and measured against your current process.", feature: false },
-    { name: "Platform license, one agent", flag: "Most common", amount: "$1,500 to $3,000", note: "Per month, including ongoing tuning as your corrections corpus grows.", feature: true },
-    { name: "Additional agent module", flag: "", amount: "+$750 to $1,500", note: "Per month. Cheaper because the base layer is already built on your corpus.", feature: false },
-    { name: "Integrated build", flag: "Hard floor $15K", amount: "$15,000 to $40,000", note: "Procore, Autodesk or Sage integration. Quoted after the standalone version has proven out.", feature: false }
-  ],
+  startingPrice: "$2,500",
+  carePlanFrom: "$150",
   work: [
-    { name: "Wax On Wheels", meta: "Mobile detailing, Wellington FL", desc: "Full site rebuild across six pages, carrying over the original copy and imagery, rebuilt mobile first with the brand colors intact.", a: "#4F46E5", b: "#16182E", ink: "#FAF7F0" },
-    { name: "For The Plot", meta: "Bookstore and cafe, Avalon Park", desc: "Redesign built for a downtown Avalon Park bookstore and cafe, structured around what a first time visitor actually needs to find.", a: "#F59E0B", b: "#D97706", ink: "#16182E" },
-    { name: "Café Coquí", meta: "Puerto Rican cafe, Avalon Park", desc: "Replacement for a website builder template: Home, Menu, Fotos, About and Contact, rebuilt on a proper design system.", a: "#16182E", b: "#4F46E5", ink: "#FAF7F0" }
+    { name: "Wax On Wheels", meta: "Mobile detailing, Wellington FL", desc: "Full site rebuild across six pages, carrying over the original copy and imagery, rebuilt mobile first with the brand colors intact.", tags: ["Website", "Rebuild"], a: "#4F46E5", b: "#16182E", ink: "#FAF7F0" },
+    { name: "For The Plot", meta: "Bookstore and cafe, Avalon Park", desc: "Redesign for a bookstore and cafe, structured around what a first time visitor actually needs to find: what it is, where it is, and when it is open.", tags: ["Website", "Redesign"], a: "#F59E0B", b: "#D97706", ink: "#16182E" },
+    { name: "Café Coquí", meta: "Puerto Rican cafe, Avalon Park", desc: "Replacement for a website builder template: Home, Menu, Fotos, About and Contact, rebuilt on a proper design system.", tags: ["Website", "Menu"], a: "#16182E", b: "#4F46E5", ink: "#FAF7F0" }
   ]
 };
 
 /* ---------- render config driven blocks ---------- */
 function renderPricing(){
-  const el = document.getElementById('priceGrid');
+  const el = document.getElementById('priceLine');
   if(!el) return;
-  el.innerHTML = CONFIG.pricing.map(p => `
-    <div class="price ${p.feature ? 'feature' : ''}">
-      <span class="flag">${p.flag}</span>
-      <div class="name">${p.name}</div>
-      <div class="amt">${p.amount}</div>
-      <div class="note">${p.note}</div>
-    </div>`).join('');
+  el.innerHTML = `
+    <div class="deco deco-circle" style="width:320px;height:320px;background:#fff;opacity:.07;right:-90px;top:-110px"></div>
+    <div class="big">Projects start at <em>${CONFIG.startingPrice}</em>.</div>
+    <div class="sub">Care plans from ${CONFIG.carePlanFrom} a month. Every project is quoted individually after the first call, because a five page site and a full booking system are not the same job.</div>
+    <span class="fixed">Fixed price, in writing, before any work starts</span>`;
 }
 function renderWork(){
   const html = CONFIG.work.map(w => `
@@ -1077,9 +984,10 @@ function renderWork(){
       <div class="body">
         <div class="meta">${w.meta}</div>
         <p class="small">${w.desc}</p>
+        <div class="tags">${(w.tags||[]).map(t => `<span>${t}</span>`).join('')}</div>
       </div>
     </article>`).join('');
-  ['workGrid','workGrid2'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = html; });
+  ['workGrid','workGrid2','workGrid3'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = html; });
 }
 function renderContact(){
   const mail = 'mailto:' + CONFIG.email;
@@ -1089,16 +997,18 @@ function renderContact(){
   if(foot){ foot.href = mail; foot.textContent = CONFIG.email; }
   const inline = document.getElementById('emailInline');
   if(inline){ inline.textContent = CONFIG.email; }
+  const starter = document.getElementById('starterPrice');
+  if(starter){ starter.textContent = 'From ' + CONFIG.startingPrice; }
   const y = document.getElementById('year');
   if(y){ y.textContent = new Date().getFullYear(); }
 }
 
 /* ---------- router ---------- */
-const ROUTES = { '/':'page-home', '/services':'page-services', '/data':'page-data', '/method':'page-method', '/about':'page-about', '/consult':'page-consult' };
+const ROUTES = { '/':'page-home', '/services':'page-services', '/work':'page-work', '/method':'page-method', '/about':'page-about', '/consult':'page-consult' };
 const TITLES = {
-  '/':'tsKaizen | AI systems for Orlando contractors',
+  '/':'tsKaizen | Websites, automation and AI assistants',
   '/services':'Services | tsKaizen',
-  '/data':'The Data | tsKaizen',
+  '/work':'Work | tsKaizen',
   '/method':'Method | tsKaizen',
   '/about':'About Us | tsKaizen',
   '/consult':'Book a free consultation | tsKaizen'
@@ -1131,11 +1041,11 @@ document.getElementById('consultForm').addEventListener('submit', async function
   e.preventDefault();
   const status = document.getElementById('formStatus');
   const btn = document.getElementById('submitBtn');
-  const required = ['name','company','email','trade'];
+  const required = ['name','company','email','need'];
   const missing = required.filter(id => !document.getElementById(id).value.trim());
   if(missing.length){
     status.className = 'form-status err';
-    status.textContent = 'Add your name, company, email and trade so we can prepare before the call.';
+    status.textContent = 'Add your name, business, email and what you are after so we can prepare before the call.';
     document.getElementById(missing[0]).focus();
     return;
   }
@@ -1152,7 +1062,7 @@ document.getElementById('consultForm').addEventListener('submit', async function
     this.reset();
   }catch(err){
     status.className = 'form-status err';
-    status.innerHTML = 'That did not send. Email ' + CONFIG.email + ' directly and it will get handled.';
+    status.textContent = 'That did not send. Email ' + CONFIG.email + ' directly and it will get handled.';
   }finally{
     btn.disabled = false; btn.textContent = 'Request the consultation';
   }
