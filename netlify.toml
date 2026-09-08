@@ -1,0 +1,9 @@
+# Static site. No build step, no dependencies.
+# The whole site is a single index.html at the repo root.
+
+[build]
+  publish = "."
+
+[build.environment]
+  # Nothing to install. Keeps Netlify from probing for a package manager.
+  NETLIFY_USE_YARN = "false"
