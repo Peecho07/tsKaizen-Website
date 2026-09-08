@@ -1,0 +1,37 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+id_rsa*
+credentials.json
+secrets.json
+
+# Netlify
+.netlify/
+
+# Dependencies
+node_modules/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+npm-debug.log*
+
+# Drafts and backups
+*.bak
+*.tmp
+*.orig
+*~
+* copy*
+* (*)*
