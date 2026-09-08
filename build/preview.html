@@ -1,0 +1,1315 @@
+<title>tsKaizen</title>
+<style>
+/* ==========================================================================
+   tsKaizen — site stylesheet
+   Shared by every page: index, services, data, method, about, consultation.
+   Palette: ink #16182E · amber #F59E0B · indigo #6366F1 · ivory #FAF7F0
+   ========================================================================== */
+
+
+:root{
+  --ink:#16182E; --amber:#F59E0B; --indigo:#6366F1; --indigo-d:#4F46E5;
+  --ivory:#FAF7F0; --muted:#A9AEC6; --muted-d:#7C7F99; --line:rgba(255,255,255,.10);
+  --grad:linear-gradient(120deg,var(--indigo),var(--amber));
+  --hl:linear-gradient(100deg,#8E97FF 0%,#F59E0B 95%);
+  --maxw:1120px; --sect:74px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0; font-family:"DM Sans",system-ui,sans-serif; color:var(--muted); line-height:1.62; -webkit-font-smoothing:antialiased;
+  background:
+   radial-gradient(900px 600px at 82% 2%, rgba(99,102,241,.22), transparent 60%),
+   radial-gradient(760px 520px at 6% 12%, rgba(245,158,11,.10), transparent 60%),
+   radial-gradient(900px 760px at 60% 80%, rgba(99,102,241,.13), transparent 65%),
+   linear-gradient(180deg,#0B0D1E 0%, #131530 30%, #14162C 55%, #161834 78%, #0C0E20 100%);
+  background-repeat:no-repeat;}
+h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif; color:var(--ivory); line-height:1.07; margin:0; letter-spacing:-0.02em;}
+p{margin:0;} a{color:inherit; text-decoration:none;}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px;}
+.eyebrow{font-family:"Space Grotesk",sans-serif; font-size:12.5px; font-weight:600; letter-spacing:.18em; text-transform:uppercase; color:var(--amber); margin-bottom:16px;}
+.grad{background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.hl{background:var(--hl); -webkit-background-clip:text; background-clip:text; color:transparent;}
+.muted{color:var(--muted);}
+
+/* sections: full-bleed with inner wrap, consistent rhythm, alternating faint band */
+.section{padding:var(--sect) 0;}
+.section.band{background:rgba(255,255,255,.022); box-shadow:inset 0 1px 0 rgba(255,255,255,.05), inset 0 -1px 0 rgba(255,255,255,.035);}
+
+.btn{display:inline-flex; align-items:center; gap:9px; font-family:"Space Grotesk",sans-serif; font-weight:600; font-size:15px; padding:14px 27px; border-radius:999px; cursor:pointer; border:1.5px solid transparent; transition:transform .18s,box-shadow .18s,border-color .18s;}
+.btn-primary{background:var(--amber); color:var(--ink); box-shadow:0 12px 28px -10px rgba(245,158,11,.6);}
+.btn-primary:hover{transform:translateY(-2px); box-shadow:0 18px 34px -10px rgba(245,158,11,.72);}
+.btn-ghost{border-color:rgba(250,247,240,.26); color:var(--ivory);}
+.btn-ghost:hover{border-color:var(--ivory); transform:translateY(-2px);}
+
+/* header: logo LEFT (large, blended), nav RIGHT */
+header{position:sticky; top:0; z-index:50; background:rgba(11,13,30,.55); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px);}
+.head-inner{display:flex; align-items:center; justify-content:space-between; padding:14px 0;}
+.logo-svg{height:48px; width:auto; display:block;}
+.logo-svg-sm{height:28px; width:auto; display:block;}
+.nav{display:flex; gap:24px; align-items:center;}
+.nav a{color:var(--muted); font-size:14.5px; font-weight:500; position:relative; padding:6px 1px; transition:color .15s;}
+.nav a:hover, .nav a.active{color:var(--ivory);}
+.nav a.active:not(.navcta)::after{content:""; position:absolute; left:0; right:0; bottom:-3px; height:2px; border-radius:2px; background:var(--grad);}
+.navcta{color:var(--ink)!important; background:var(--amber); padding:10px 18px; border-radius:999px; font-family:"Space Grotesk"; font-weight:600;}
+
+/* hero (tightened + balanced right) */
+.hero{padding:82px 0 70px; display:grid; grid-template-columns:1.25fr .75fr; gap:34px; align-items:center;}
+.hero h1{font-size:clamp(40px,5.4vw,64px); font-weight:700; letter-spacing:-0.03em;}
+.hero .sub{margin-top:24px; font-size:clamp(16px,1.9vw,20px); max-width:540px;}
+.hero .cta-row{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
+.hero-icon{position:relative; display:flex; justify-content:center; align-items:center;}
+.hero-glow{position:absolute; width:78%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle, rgba(99,102,241,.40), rgba(245,158,11,.12) 45%, transparent 68%); filter:blur(26px); z-index:0;}
+.hero-icon-svg{position:relative; z-index:1; width:min(330px,74vw); height:auto; filter:drop-shadow(0 26px 52px rgba(99,102,241,.4)); animation:floaty 7s ease-in-out infinite;}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+.hero-loop{stroke-dasharray:1; stroke-dashoffset:1; animation:draw 1.9s ease-out forwards;}
+@keyframes draw{to{stroke-dashoffset:0;}}
+
+/* mission */
+.mission{display:grid; grid-template-columns:auto 1fr; gap:26px; align-items:center; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:24px; padding:38px 40px;}
+.mission .mi{width:84px;height:84px;flex:none;border-radius:20px;background:radial-gradient(circle at 35% 30%, rgba(99,102,241,.5), transparent), var(--ink);display:flex;align-items:center;justify-content:center;}
+.mission h2{font-size:clamp(23px,2.8vw,32px); margin-bottom:10px;} .mission p{font-size:17px;}
+
+/* section heads (all left-aligned) */
+.shead{max-width:680px; margin-bottom:44px;}
+.shead h2{font-size:clamp(28px,3.4vw,42px); font-weight:700;}
+.shead p{margin-top:15px; font-size:17px;}
+
+/* services (equal-height cards, result pinned to bottom) */
+.svc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; align-items:stretch;}
+.svc{display:flex; flex-direction:column; background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:20px; padding:30px 26px; transition:transform .2s,border-color .2s,background .2s;}
+.svc:hover{transform:translateY(-5px); border-color:rgba(245,158,11,.4); background:rgba(255,255,255,.06);}
+.svc .badge{width:50px;height:50px;border-radius:14px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:18px;}
+.svc h3{font-size:20px; margin-bottom:10px;} .svc .why{font-size:14.5px; margin-bottom:18px;}
+.svc .impact{font-size:14px; color:var(--ivory); border-top:1px solid var(--line); padding-top:13px; margin-top:auto;}
+.svc .impact b{color:var(--amber);}
+
+/* cost */
+.cost-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px; align-items:stretch;}
+.cost-narr{background:linear-gradient(135deg, rgba(99,102,241,.14), rgba(245,158,11,.08)); border:1px solid var(--line); border-radius:22px; padding:34px 32px;}
+.cost-narr h3{font-size:22px; margin-bottom:14px;} .cost-narr p{font-size:15.5px; margin-bottom:13px;}
+.leak-list{display:flex; flex-direction:column; gap:14px;}
+.leak{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:16px; padding:20px 22px; display:flex; gap:15px; align-items:flex-start;}
+.leak .x{flex:none; width:30px;height:30px;border-radius:9px;background:rgba(245,158,11,.16);color:var(--amber);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:700;}
+.leak b{color:var(--ivory); display:block; margin-bottom:3px; font-family:"Space Grotesk"; font-size:15.5px;} .leak span{font-size:14.5px;}
+
+/* data */
+.data-wrap{background:rgba(255,255,255,.035); border:1px solid var(--line); border-radius:24px; padding:36px 34px;}
+.chart-title{font-family:"Space Grotesk"; color:var(--ivory); font-size:16px; font-weight:600; margin-bottom:4px;}
+.chart-sub{font-size:13px; color:var(--muted-d); margin-bottom:18px;}
+.chart-svg{width:100%; height:auto; display:block;}
+.chart-source{font-size:12px; color:var(--muted-d); margin-top:10px;}
+.stat-row{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:30px;}
+.stat{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:18px; padding:24px 22px;}
+.stat .n{font-family:"Space Grotesk"; font-size:34px; font-weight:700; color:var(--ivory); line-height:1;}
+.stat .l{font-size:13.5px; color:var(--muted); margin-top:9px;}
+.data-source{font-size:12px; color:var(--muted-d); margin-top:18px;}
+
+/* method */
+.method-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; align-items:stretch;}
+.mstep{background:rgba(255,255,255,.04); border:1px solid var(--line); border-radius:20px; padding:30px 28px;}
+.mstep .mn{font-family:"Space Grotesk"; font-weight:700; font-size:13px; letter-spacing:.1em; color:var(--amber); margin-bottom:14px;}
+.mstep h3{color:var(--ivory); font-size:20px; margin-bottom:10px;} .mstep p{font-size:14.5px;}
+.loopline{margin-top:26px; display:inline-flex; gap:9px; align-items:center; color:var(--muted); font-size:14.5px;} .loopline b{color:var(--amber);}
+
+/* who */
+.chips{display:flex;flex-wrap:wrap;gap:10px;}
+.chip{font-family:"Space Grotesk";font-weight:500;font-size:14px;color:var(--ivory);background:rgba(255,255,255,.05);border:1px solid var(--line);padding:9px 16px;border-radius:999px;}
+.feature{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:26px 28px;margin-top:26px;}
+.feature .ic{width:80px;height:80px;flex:none;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 35% 30%, rgba(99,102,241,.45), transparent), var(--ink);border-radius:18px;}
+.feature .ic svg{width:50px;height:50px;}
+.feature h4{font-size:18px;margin-bottom:4px;}.feature p{font-size:14.5px;}
+
+/* about */
+.about-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:46px; align-items:start;}
+.about-grid p{font-size:16.5px; margin-bottom:15px;}
+.name-card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:30px 30px;}
+.name-card .row{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--line);}
+.name-card .row:last-child{border-bottom:none;}
+.name-card .k{font-family:"Space Grotesk";font-weight:700;color:var(--amber);font-size:19px;flex:none;width:78px;}
+.name-card .v{font-size:14.5px;} .name-card .v b{color:var(--ivory);}
+.slogan{margin-top:42px;text-align:center;padding:38px;background:rgba(255,255,255,.03);border:1px solid var(--line);border-radius:20px;}
+.slogan .q{font-family:"Space Grotesk";font-size:clamp(22px,3vw,33px);color:var(--ivory);font-weight:600;}
+
+/* consultation */
+.consult-grid{display:grid; grid-template-columns:1.12fr .88fr; gap:40px; align-items:start;}
+.form-card{background:rgba(255,255,255,.045);border:1px solid var(--line);border-radius:22px;padding:34px 32px;}
+.field{margin-bottom:18px;}
+.field label{display:block;font-family:"Space Grotesk";font-size:13.5px;font-weight:500;color:var(--ivory);margin-bottom:7px;}
+.field .req{color:var(--amber);}
+.field input,.field select,.field textarea{width:100%;background:rgba(11,13,30,.6);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--ivory);font-family:inherit;font-size:15px;outline:none;transition:border-color .15s;}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--indigo);}
+.field textarea{min-height:108px;resize:vertical;}
+.field select{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'><path d='M2 4l4 4 4-4' stroke='%23A9AEC6' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");background-repeat:no-repeat;background-position:right 15px center;}
+.form-msg{display:none;margin-top:4px;padding:14px 16px;border-radius:12px;font-size:14.5px;}
+.form-msg.ok{display:block;background:rgba(52,211,153,.12);border:1px solid rgba(52,211,153,.4);color:#a7f3d0;}
+.form-msg.err{display:block;background:rgba(248,113,113,.12);border:1px solid rgba(248,113,113,.4);color:#fecaca;}
+.aside h3{font-size:20px;margin-bottom:14px;}
+.cline{display:flex;align-items:center;gap:11px;margin-bottom:13px;font-size:15.5px;color:var(--ivory);}
+.cline .ic{width:38px;height:38px;flex:none;border-radius:10px;background:rgba(99,102,241,.16);display:flex;align-items:center;justify-content:center;font-size:17px;}
+.cline a:hover{color:var(--amber);}
+.steps{margin-top:24px;padding-top:22px;border-top:1px solid var(--line);}
+.steps .st{display:flex;gap:13px;margin-bottom:15px;}
+.steps .n{flex:none;width:28px;height:28px;border-radius:50%;background:var(--grad);color:#fff;font-family:"Space Grotesk";font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center;}
+.steps .st p{font-size:14.5px;} .steps .st b{color:var(--ivory);}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:42px 0 34px;}
+.foot-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:20px;flex-wrap:wrap;}
+.foot-slogan{font-size:14px;color:var(--muted);margin-top:10px;}
+.foot-contact{text-align:right;font-size:14.5px;}
+.foot-contact a{display:block;color:var(--ivory);margin-bottom:6px;} .foot-contact a:hover{color:var(--amber);}
+.foot-copy{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted-d);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+
+/* chat */
+.chat-fab{position:fixed;right:20px;bottom:20px;z-index:60;width:60px;height:60px;border-radius:50%;background:var(--ink);border:1px solid var(--line);box-shadow:0 14px 34px -10px rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .2s;}
+.chat-fab:hover{transform:scale(1.07);}
+.chat-panel{position:fixed;right:20px;bottom:92px;z-index:60;width:min(372px,calc(100vw - 32px));height:520px;max-height:calc(100vh - 130px);background:#fff;border-radius:20px;box-shadow:0 30px 70px -18px rgba(0,0,0,.55);display:none;flex-direction:column;overflow:hidden;}
+.chat-panel.open{display:flex;}
+.chat-head{background:var(--ink);padding:15px 18px;display:flex;align-items:center;gap:11px;}
+.chat-head .who h4{color:var(--ivory);font-size:15px;margin:0;} .chat-head .who small{color:var(--muted);font-size:11.5px;}
+.chat-head .dot{width:8px;height:8px;border-radius:50%;background:#34d399;margin-left:auto;box-shadow:0 0 0 3px rgba(52,211,153,.2);}
+.chat-body{flex:1;overflow-y:auto;padding:16px;background:#F4F5F9;display:flex;flex-direction:column;gap:10px;}
+.msg{max-width:84%;padding:11px 14px;border-radius:14px;font-size:14px;line-height:1.5;}
+.msg.bot{background:#fff;border:1px solid #E7E9F1;border-bottom-left-radius:5px;align-self:flex-start;color:var(--ink);}
+.msg.user{background:var(--ink);color:var(--ivory);border-bottom-right-radius:5px;align-self:flex-end;}
+.chat-input{display:flex;gap:8px;padding:11px;border-top:1px solid #E7E9F1;background:#fff;}
+.chat-input input{flex:1;border:1px solid #E7E9F1;border-radius:999px;padding:10px 15px;font-family:inherit;font-size:14px;outline:none;}
+.chat-input input:focus{border-color:var(--indigo);}
+.chat-input button{flex:none;width:40px;height:40px;border-radius:50%;border:none;background:var(--amber);color:var(--ink);font-size:17px;cursor:pointer;}
+
+/* back to top */
+.totop{position:fixed;left:20px;bottom:20px;z-index:55;width:46px;height:46px;border-radius:50%;background:rgba(27,30,60,.9);border:1px solid var(--line);color:var(--ivory);font-size:18px;display:flex;align-items:center;justify-content:center;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s,transform .2s;}
+.totop.show{opacity:1;pointer-events:auto;} .totop:hover{transform:translateY(-3px);}
+
+/* scroll reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;} .reveal.in{opacity:1;transform:none;}
+
+@media (max-width:880px){
+  :root{--sect:58px;}
+  .logo-svg{height:38px;}
+  .hero{grid-template-columns:1fr;padding:48px 0 36px;} .hero-icon{order:-1;margin-bottom:6px;} .hero-icon-svg{width:165px;}
+  .mission{grid-template-columns:1fr;}
+  .svc-grid,.method-grid{grid-template-columns:1fr;}
+  .cost-grid,.about-grid,.consult-grid{grid-template-columns:1fr;gap:26px;}
+  .stat-row{grid-template-columns:1fr 1fr;}
+  .foot-inner{flex-direction:column;} .foot-contact{text-align:left;}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;} .reveal{opacity:1;transform:none;}}
+
+/* ==========================================================================
+   Multi-page additions
+   ========================================================================== */
+
+/* accessibility */
+.skip{position:absolute;left:-9999px;top:0;z-index:100;background:var(--amber);color:var(--ink);padding:12px 18px;border-radius:0 0 10px 0;font-family:"Space Grotesk",sans-serif;font-weight:600;}
+.skip:focus{left:0;}
+:focus-visible{outline:2px solid var(--amber);outline-offset:3px;border-radius:6px;}
+
+/* header / mobile drawer */
+.navtoggle{display:none;flex:none;width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid var(--line);color:var(--ivory);align-items:center;justify-content:center;cursor:pointer;padding:0;}
+.navtoggle span{display:block;width:18px;height:2px;background:var(--ivory);border-radius:2px;position:relative;transition:background .18s;}
+.navtoggle span::before,.navtoggle span::after{content:"";position:absolute;left:0;width:18px;height:2px;background:var(--ivory);border-radius:2px;transition:transform .2s;}
+.navtoggle span::before{top:-6px;} .navtoggle span::after{top:6px;}
+.navtoggle[aria-expanded="true"] span{background:transparent;}
+.navtoggle[aria-expanded="true"] span::before{transform:translateY(6px) rotate(45deg);}
+.navtoggle[aria-expanded="true"] span::after{transform:translateY(-6px) rotate(-45deg);}
+
+/* page hero (every inner page) */
+.phero{padding:66px 0 44px;}
+.phero h1{font-size:clamp(34px,4.6vw,54px);font-weight:700;letter-spacing:-.03em;max-width:15ch;}
+.phero .lede{margin-top:20px;font-size:clamp(16px,1.8vw,19px);max-width:640px;}
+.phero .cta-row{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;}
+.crumbs{font-size:13px;color:var(--muted-d);margin-bottom:18px;}
+.crumbs a:hover{color:var(--amber);}
+
+/* generic card grids */
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:stretch;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;align-items:stretch;}
+.card{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:28px 26px;}
+.card h3{font-size:19px;margin-bottom:10px;} .card p{font-size:14.8px;}
+.card.hoverable{transition:transform .2s,border-color .2s,background .2s;}
+.card.hoverable:hover{transform:translateY(-5px);border-color:rgba(245,158,11,.4);background:rgba(255,255,255,.06);}
+
+/* project / case cards */
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;}
+.work{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:transform .2s,border-color .2s;}
+.work:hover{transform:translateY(-5px);border-color:rgba(99,102,241,.45);}
+.work .thumb{height:132px;display:flex;align-items:center;justify-content:center;font-family:"Space Grotesk",sans-serif;font-weight:700;font-size:26px;letter-spacing:-.02em;color:var(--ivory);border-bottom:1px solid var(--line);}
+.work .thumb.w1{background:linear-gradient(135deg,rgba(99,102,241,.45),rgba(245,158,11,.16));}
+.work .thumb.w2{background:linear-gradient(135deg,rgba(245,158,11,.38),rgba(99,102,241,.18));}
+.work .thumb.w3{background:linear-gradient(135deg,rgba(79,70,229,.42),rgba(245,158,11,.26));}
+.work .body{padding:24px 24px 26px;display:flex;flex-direction:column;flex:1;}
+.work .kicker{font-family:"Space Grotesk",sans-serif;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:9px;}
+.work h3{font-size:19px;margin-bottom:9px;}
+.work p{font-size:14.5px;}
+.work .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;padding-top:15px;border-top:1px solid var(--line);}
+.work .tag{font-size:12.5px;font-family:"Space Grotesk",sans-serif;color:var(--ivory);background:rgba(255,255,255,.06);border:1px solid var(--line);border-radius:999px;padding:5px 11px;}
+
+/* deep service blocks */
+.svc-deep{display:grid;grid-template-columns:.9fr 1.1fr;gap:38px;align-items:center;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:24px;padding:36px 36px;margin-bottom:22px;}
+.svc-deep:nth-child(even) .sd-media{order:2;}
+.sd-media{display:flex;align-items:center;justify-content:center;min-height:190px;border-radius:18px;background:radial-gradient(circle at 40% 30%,rgba(99,102,241,.34),transparent 65%),rgba(11,13,30,.5);border:1px solid var(--line);font-size:62px;}
+.svc-deep h2{font-size:clamp(23px,2.7vw,30px);margin-bottom:12px;}
+.svc-deep .lead{font-size:16px;margin-bottom:18px;}
+.checks{list-style:none;margin:0;padding:0;display:grid;gap:10px;}
+.checks li{position:relative;padding-left:28px;font-size:14.8px;}
+.checks li::before{content:"\2713";position:absolute;left:0;top:0;color:var(--amber);font-weight:700;}
+.sd-result{margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:14.5px;color:var(--ivory);}
+.sd-result b{color:var(--amber);}
+
+/* plans */
+.plan{display:flex;flex-direction:column;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:20px;padding:30px 28px;}
+.plan.featured{border-color:rgba(245,158,11,.5);background:linear-gradient(140deg,rgba(245,158,11,.10),rgba(99,102,241,.10));}
+.plan .tier{font-family:"Space Grotesk",sans-serif;font-weight:600;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;}
+.plan h3{font-size:21px;margin-bottom:10px;}
+.plan p{font-size:14.6px;margin-bottom:16px;}
+.plan .checks{margin-bottom:20px;}
+.plan .foot{margin-top:auto;font-size:13.5px;color:var(--muted-d);border-top:1px solid var(--line);padding-top:14px;}
+
+/* timeline (method) */
+.timeline{position:relative;padding-left:34px;}
+.timeline::before{content:"";position:absolute;left:11px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--indigo),var(--amber));border-radius:2px;}
+.tl{position:relative;margin-bottom:26px;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:18px;padding:24px 26px;}
+.tl::before{content:"";position:absolute;left:-29px;top:28px;width:12px;height:12px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 4px rgba(245,158,11,.18);}
+.tl .wk{font-family:"Space Grotesk",sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.13em;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
+.tl h3{font-size:19px;margin-bottom:8px;} .tl p{font-size:14.8px;}
+
+/* faq */
+.faq{border-top:1px solid var(--line);}
+.faq details{border-bottom:1px solid var(--line);padding:20px 2px;}
+.faq summary{list-style:none;cursor:pointer;font-family:"Space Grotesk",sans-serif;font-size:17px;color:var(--ivory);display:flex;justify-content:space-between;gap:18px;align-items:flex-start;}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";color:var(--amber);font-size:22px;line-height:1;flex:none;}
+.faq details[open] summary::after{content:"\2013";}
+.faq details p{margin-top:12px;font-size:15px;max-width:76ch;}
+
+/* quote / testimonial */
+.quote{background:rgba(255,255,255,.035);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:0 18px 18px 0;padding:26px 28px;}
+.quote p{font-size:16px;color:var(--ivory);font-style:italic;}
+.quote .by{margin-top:12px;font-size:13.5px;color:var(--muted-d);font-style:normal;}
+
+/* closing CTA band */
+.cta-band{background:linear-gradient(120deg,rgba(99,102,241,.18),rgba(245,158,11,.12));border:1px solid var(--line);border-radius:24px;padding:44px 42px;display:grid;grid-template-columns:1fr auto;gap:28px;align-items:center;}
+.cta-band h2{font-size:clamp(24px,3vw,34px);margin-bottom:10px;}
+.cta-band p{font-size:16px;max-width:60ch;}
+.cta-band .cta-row{display:flex;gap:12px;flex-wrap:wrap;}
+
+/* footer nav columns */
+.foot-nav{display:flex;gap:34px;flex-wrap:wrap;}
+.foot-col h5{font-family:"Space Grotesk",sans-serif;font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin:0 0 12px;}
+.foot-col a{display:block;font-size:14.2px;color:var(--muted);margin-bottom:8px;}
+.foot-col a:hover{color:var(--ivory);}
+
+@media (max-width:880px){
+  .navtoggle{display:flex;position:relative;z-index:3;}
+  .head-logo{position:relative;z-index:3;}
+  .nav{position:fixed;inset:0 0 auto;top:0;flex-direction:column;align-items:stretch;gap:4px;background:#0B0D1E;padding:86px 24px 30px;transform:translateY(-102%);transition:transform .28s ease;height:auto;z-index:1;box-shadow:0 24px 50px -20px rgba(0,0,0,.7);}
+  .nav.open{transform:translateY(0);}
+  .nav a{font-size:17px;padding:14px 4px;border-bottom:1px solid var(--line);}
+  .nav a.active:not(.navcta)::after{display:none;}
+  .navcta{text-align:center;margin-top:16px;border-bottom:none!important;}
+  .grid-2,.grid-3,.work-grid{grid-template-columns:1fr;}
+  .grid-4{grid-template-columns:1fr 1fr;}
+  .svc-deep{grid-template-columns:1fr;padding:28px 24px;}
+  .svc-deep:nth-child(even) .sd-media{order:0;}
+  .sd-media{min-height:130px;font-size:44px;}
+  .cta-band{grid-template-columns:1fr;padding:32px 26px;}
+  .phero{padding:44px 0 30px;}
+}
+@media (max-width:560px){
+  .grid-4,.stat-row{grid-template-columns:1fr;}
+}
+
+.route[hidden]{display:none!important;}
+</style>
+<a class="skip" href="#top">Skip to content</a>
+<header>
+  <div class="wrap head-inner">
+    <a class="head-logo" href="#/home" aria-label="tsKaizen home"><img class="logo-svg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODEgMTcwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRzay1ncmFkIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEY0NkU1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAsMzAuMCkgc2NhbGUoMS4xKSI+PHBhdGggZD0iTSAzNS4wMCAyNi4wMiBBIDMwLjAwIDMwLjAwIDAgMSAwIDY1LjkwIDI2LjU2IFEgNjcuMjggMjguMjEgNzAuMDUgMjguMTAgTCA3Ny4xNyAyOC4zOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3Rzay1ncmFkKSIgc3Ryb2tlLXdpZHRoPSI5LjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNIDg3LjU4IDE5LjMzIEwgODQuMTMgMzMuMTkgTCA3My4zNyAyMC44MiBaIiBmaWxsPSIjRjU5RTBCIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI0Ni4yNCIgeTI9IjYyLjM0IiBzdHJva2U9IiM0RjQ2RTUiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI1OS4xOSIgeTI9IjU5LjcxIiBzdHJva2U9IiNGNTlFMEIiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDYuMjQiIGN5PSI2Mi4zNCIgcj0iMi42MCIgZmlsbD0iIzRGNDZFNSIvPjxjaXJjbGUgY3g9IjU5LjE5IiBjeT0iNTkuNzEiIHI9IjIuNjAiIGZpbGw9IiNGNTlFMEIiLz48Y2lyY2xlIGN4PSI1MC4wMCIgY3k9IjUyLjAwIiByPSI2LjIwIiBmaWxsPSIjNEY0NkU1Ii8+PGNpcmNsZSBjeD0iNTAuMDAiIGN5PSI1Mi4wMCIgcj0iMi42MCIgZmlsbD0iI0ZBRjdGMCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODAuMDAsMTA3LjQwKSBzY2FsZSgwLjA2NDAwLC0wLjA2NDAwKSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMCwwKSI+PHBhdGggZD0iTTI2MS4zOTk5MDIzNDM3NSAwUTIxNS44OTk2NTgyMDMxMjUgMCAxODkuMjQ5Mzg5NjQ4NDM3NSAyNi44MjUyNTYzNDc2NTYyNVExNjIuNTk5MTIxMDkzNzUgNTMuNjUwNTEyNjk1MzEyNSAxNjIuNTk5MTIxMDkzNzUgOTkuNDAwODc4OTA2MjVWNDA1Ljk5OTAyMzQzNzVIMjcuMzk5OTAyMzQzNzVWNDkyLjUwMDI0NDE0MDYyNUgxNjIuNTk5MTIxMDkzNzVWNjU2LjI5OTU2MDU0Njg3NUgyNjUuNTAwNzMyNDIxODc1VjQ5Mi41MDAyNDQxNDA2MjVINDEzLjM5OTkwMjM0Mzc1VjQwNS45OTkwMjM0Mzc1SDI2NS41MDA3MzI0MjE4NzVWMTE2LjUwMTIyMDcwMzEyNVEyNjUuNTAwNzMyNDIxODc1IDg2LjUwMTIyMDcwMzEyNSAyOTQuMjAwNjgzNTkzNzUgODYuNTAxMjIwNzAzMTI1SDM5Ni41MDAyNDQxNDA2MjVWMFoiIGZpbGw9IiNGNTlFMEIiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQ4LjAwLDApIj48cGF0aCBkPSJNMjc3Ljc0OTg3NzkyOTY4NzUgLTE0UTE4My44OTk2NTgyMDMxMjUgLTE0IDEyMS43MjQ2NzA0MTAxNTYyNSAyOC4wUTU5LjU0OTY4MjYxNzE4NzUgNzAgNDYuMTk5NzA3MDMxMjUgMTU0LjY0OTUzNjEzMjgxMjVMMTQyLjI1MTA5ODYzMjgxMjUgMTc4UTE0OS42MDEwNzQyMTg3NSAxMzYuNzAwNDM5NDUzMTI1IDE2OC45MDA4Nzg5MDYyNSAxMTMuMDI1Njk1ODAwNzgxMjVRMTg4LjIwMDY4MzU5Mzc1IDg5LjM1MDk1MjE0ODQzNzUgMjE2LjU1MDQxNTAzOTA2MjUgNzkuMjc2MDYyMDExNzE4NzVRMjQ0LjkwMDE0NjQ4NDM3NSA2OS4yMDExNzE4NzUgMjc3Ljc0OTg3NzkyOTY4NzUgNjkuMjAxMTcxODc1UTMyNy4zNDk0ODczMDQ2ODc1IDY5LjIwMTE3MTg3NSAzNTMuNzc0MTA4ODg2NzE4NzUgODcuODUwOTUyMTQ4NDM3NVEzODAuMTk4NzMwNDY4NzUgMTA2LjUwMDczMjQyMTg3NSAzODAuMTk4NzMwNDY4NzUgMTM2LjUwMDI0NDE0MDYyNVEzODAuMTk4NzMwNDY4NzUgMTY2Ljg0OTczMTQ0NTMxMjUgMzU1LjEyNDA4NDQ3MjY1NjI1IDE4MC45MjQ2MjE1ODIwMzEyNVEzMzAuMDQ5NDM4NDc2NTYyNSAxOTQuOTk5NTExNzE4NzUgMjgxLjQ5OTc1NTg1OTM3NSAyMDMuNjk5NDYyODkwNjI1TDI0Ny4yMDAxOTUzMTI1IDIwOS43NDkzODk2NDg0Mzc1UTE5Ny4zMDAwNDg4MjgxMjUgMjE5LjA0OTQzODQ3NjU2MjUgMTU2LjM5OTkwMjM0Mzc1IDIzNi4xOTk0NjI4OTA2MjVRMTE1LjQ5OTc1NTg1OTM3NSAyNTMuMzQ5NDg3MzA0Njg3NSA5MS4wNzQ2NDU5OTYwOTM3NSAyODMuMjk5NTYwNTQ2ODc1UTY2LjY0OTUzNjEzMjgxMjUgMzEzLjI0OTYzMzc4OTA2MjUgNjYuNjQ5NTM2MTMyODEyNSAzNTkuNzk5ODA0Njg3NVE2Ni42NDk1MzYxMzI4MTI1IDQyOS45NTAwNzMyNDIxODc1IDExOS4wNzQ2NDU5OTYwOTM3NSA0NjguMjI1MTU4NjkxNDA2MjVRMTcxLjQ5OTc1NTg1OTM3NSA1MDYuNTAwMjQ0MTQwNjI1IDI1Ny4zOTk5MDIzNDM3NSA1MDYuNTAwMjQ0MTQwNjI1UTM0MC4zOTk5MDIzNDM3NSA1MDYuNTAwMjQ0MTQwNjI1IDM5My44MjUwMTIyMDcwMzEyNSA0NjkuMzI1MjU2MzQ3NjU2MjVRNDQ3LjI1MDEyMjA3MDMxMjUgNDMyLjE1MDI2ODU1NDY4NzUgNDYyLjg1MDIxOTcyNjU2MjUgMzY4LjMwMDUzNzEwOTM3NUwzNjcuMTk4NzMwNDY4NzUgMzQwLjY5OTk1MTE3MTg3NVEzNTguNDk4Nzc5Mjk2ODc1IDM4NS42OTk0NjI4OTA2MjUgMzI5LjQ0OTA5NjY3OTY4NzUgNDA0LjQ5OTI2NzU3ODEyNVEzMDAuMzk5NDE0MDYyNSA0MjMuMjk5MDcyMjY1NjI1IDI1Ny4zOTk5MDIzNDM3NSA0MjMuMjk5MDcyMjY1NjI1UTIxNC43NTAzNjYyMTA5Mzc1IDQyMy4yOTkwNzIyNjU2MjUgMTkwLjg1MDcwODAwNzgxMjUgNDA3LjgyNDI3OTc4NTE1NjI1UTE2Ni45NTEwNDk4MDQ2ODc1IDM5Mi4zNDk0ODczMDQ2ODc1IDE2Ni45NTEwNDk4MDQ2ODc1IDM2My42OTk5NTExNzE4NzVRMTY2Ljk1MTA0OTgwNDY4NzUgMzM0LjEwMDM0MTc5Njg3NSAxOTAuNDUwODA1NjY0MDYyNSAzMjAuMTUwNTEyNjk1MzEyNVEyMTMuOTUwNTYxNTIzNDM3NSAzMDYuMjAwNjgzNTkzNzUgMjU0LjI1MDEyMjA3MDMxMjUgMjk5LjE1MDc1NjgzNTkzNzVMMjg4LjU0OTY4MjYxNzE4NzUgMjkzLjEwMDgzMDA3ODEyNVEzNDIuNDQ5ODI5MTAxNTYyNSAyODMuODAwNzgxMjUgMzg2LjAyNDk2MzM3ODkwNjI1IDI2Ny42NTA3NTY4MzU5Mzc1UTQyOS42MDAwOTc2NTYyNSAyNTEuNTAwNzMyNDIxODc1IDQ1NS4wNTAxNzA4OTg0Mzc1IDIyMS44NzU2NzEzODY3MTg3NVE0ODAuNTAwMjQ0MTQwNjI1IDE5Mi4yNTA2MTAzNTE1NjI1IDQ4MC41MDAyNDQxNDA2MjUgMTQyLjM1MDQ2Mzg2NzE4NzVRNDgwLjUwMDI0NDE0MDYyNSA2Ny41MDAyNDQxNDA2MjUgNDI1LjU3NTEzNDI3NzM0Mzc1IDI2Ljc1MDEyMjA3MDMxMjVRMzcwLjY1MDAyNDQxNDA2MjUgLTE0IDI3Ny43NDk4Nzc5Mjk2ODc1IC0xNFoiIGZpbGw9IiNGNTlFMEIiLz48L2c+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0Mi45MSwxMDcuNDApIHNjYWxlKDAuMDY0MDAsLTAuMDY0MDApIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwLDApIj48cGF0aCBkPSJNNjYgMFY3MDBIMTk4VjQyMkgyMTZMNDQzIDcwMEg2MTJMMzIwIDM1NUw2MjIgMEg0NDhMMjE2IDI4NEgxOThWMFoiIGZpbGw9IiNGQUY3RjAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjExLjAwLDApIj48cGF0aCBkPSJNMjI0IC0xNFExNzEgLTE0IDEyOS4wIDQuNVE4NyAyMyA2Mi41IDU4LjVRMzggOTQgMzggMTQ1UTM4IDE5NiA2Mi41IDIzMC41UTg3IDI2NSAxMzAuNSAyODIuNVExNzQgMzAwIDIzMCAzMDBIMzY2VjMyOFEzNjYgMzYzIDM0NC4wIDM4NS41UTMyMiA0MDggMjc0IDQwOFEyMjcgNDA4IDIwNC4wIDM4Ni41UTE4MSAzNjUgMTc0IDMzMUw1OCAzNzBRNzAgNDA4IDk2LjUgNDM5LjVRMTIzIDQ3MSAxNjcuNSA0OTAuNVEyMTIgNTEwIDI3NiA1MTBRMzc0IDUxMCA0MzEuMCA0NjEuMFE0ODggNDEyIDQ4OCAzMTlWMTM0UTQ4OCAxMDQgNTE2IDEwNEg1NTZWMEg0NzJRNDM1IDAgNDExLjAgMTguMFEzODcgMzYgMzg3IDY2VjY3SDM2OFEzNjQgNTUgMzUwLjAgMzUuNVEzMzYgMTYgMzA2LjAgMS4wUTI3NiAtMTQgMjI0IC0xNFpNMjQ2IDg4UTI5OSA4OCAzMzIuNSAxMTcuNVEzNjYgMTQ3IDM2NiAxOTZWMjA2SDIzOVEyMDQgMjA2IDE4NC4wIDE5MS4wUTE2NCAxNzYgMTY0IDE0OVExNjQgMTIyIDE4NS4wIDEwNS4wUTIwNiA4OCAyNDYgODhaIiBmaWxsPSIjRkFGN0YwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExNzQuMDAsMCkiPjxwYXRoIGQ9Ik03MCAwVjQ5NkgxOTZWMFpNMTMzIDU1NFE5OSA1NTQgNzUuNSA1NzYuMFE1MiA1OTggNTIgNjM0UTUyIDY3MCA3NS41IDY5Mi4wUTk5IDcxNCAxMzMgNzE0UTE2OCA3MTQgMTkxLjAgNjkyLjBRMjE0IDY3MCAyMTQgNjM0UTIxNCA1OTggMTkxLjAgNTc2LjBRMTY4IDU1NCAxMzMgNTU0WiIgZmlsbD0iI0ZBRjdGMCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDI1LjAwLDApIj48cGF0aCBkPSJNNTIgMFYxNTBMMzI0IDM3NlYzOTJINjJWNDk2SDQ2MlYzNDZMMTkwIDEyMFYxMDRINDcwVjBaIiBmaWxsPSIjRkFGN0YwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MjguMDAsMCkiPjxwYXRoIGQ9Ik0yOTYgLTE0UTIyMiAtMTQgMTY1LjUgMTcuNVExMDkgNDkgNzcuNSAxMDYuNVE0NiAxNjQgNDYgMjQyVjI1NFE0NiAzMzIgNzcuMCAzODkuNVExMDggNDQ3IDE2NC4wIDQ3OC41UTIyMCA1MTAgMjk0IDUxMFEzNjcgNTEwIDQyMS4wIDQ3Ny41UTQ3NSA0NDUgNTA1LjAgMzg3LjVRNTM1IDMzMCA1MzUgMjU0VjIxMUgxNzRRMTc2IDE2MCAyMTIuMCAxMjguMFEyNDggOTYgMzAwIDk2UTM1MyA5NiAzNzguMCAxMTkuMFE0MDMgMTQyIDQxNiAxNzBMNTE5IDExNlE1MDUgOTAgNDc4LjUgNTkuNVE0NTIgMjkgNDA4LjAgNy41UTM2NCAtMTQgMjk2IC0xNFpNMTc1IDMwNUg0MDdRNDAzIDM0OCAzNzIuNSAzNzQuMFEzNDIgNDAwIDI5MyA0MDBRMjQyIDQwMCAyMTIuMCAzNzQuMFExODIgMzQ4IDE3NSAzMDVaIiBmaWxsPSIjRkFGN0YwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0OTAuMDAsMCkiPjxwYXRoIGQ9Ik03MCAwVjQ5NkgxOTRWNDMxSDIxMlEyMjQgNDU3IDI1Ny4wIDQ4MC41UTI5MCA1MDQgMzU3IDUwNFE0MTUgNTA0IDQ1OC41IDQ3Ny41UTUwMiA0NTEgNTI2LjAgNDA0LjVRNTUwIDM1OCA1NTAgMjk2VjBINDI0VjI4NlE0MjQgMzQyIDM5Ni41IDM3MC4wUTM2OSAzOTggMzE4IDM5OFEyNjAgMzk4IDIyOC4wIDM1OS41UTE5NiAzMjEgMTk2IDI1MlYwWiIgZmlsbD0iI0ZBRjdGMCIvPjwvZz48L2c+PC9zdmc+Cg==" alt="tsKaizen" width="481" height="170"></a>
+    <button class="navtoggle" id="navToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open menu"><span></span></button>
+    <nav class="nav" id="siteNav" aria-label="Main">
+      <a href="#/home" data-nav="home">Home</a>
+      <a href="#/services" data-nav="services">Services</a>
+      <a href="#/data" data-nav="data">The Data</a>
+      <a href="#/method" data-nav="method">Method</a>
+      <a href="#/about" data-nav="about">About Us</a>
+      <a href="#/consultation" data-nav="consultation" class="navcta">Book a free consultation</a>
+    </nav>
+  </div>
+</header>
+<main id="top">
+<div class="route" id="route-home" data-route="home" hidden>
+
+  <section class="hero-sect"><div class="wrap hero">
+    <div class="reveal">
+      <div class="eyebrow">AI &amp; Automation Consulting &middot; Orlando</div>
+      <h1>Innovating tech with AI. Building a <span class="hl">better future</span> with automation.</h1>
+      <p class="sub">tsKaizen helps local businesses put AI and automation to work, so they capture every lead, answer every customer, and grow without adding hours to the day.</p>
+      <div class="cta-row">
+        <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+        <a href="#/services" class="btn btn-ghost">Explore services</a>
+      </div>
+    </div>
+    <div class="hero-icon"><div class="hero-glow"></div><img class="hero-icon-svg" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRzay1ncmFkIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEY0NkU1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZD0iTSAzNS4wMCAyNi4wMiBBIDMwLjAwIDMwLjAwIDAgMSAwIDY1LjkwIDI2LjU2IFEgNjcuMjggMjguMjEgNzAuMDUgMjguMTAgTCA3Ny4xNyAyOC4zOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3Rzay1ncmFkKSIgc3Ryb2tlLXdpZHRoPSI5LjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNIDg3LjU4IDE5LjMzIEwgODQuMTMgMzMuMTkgTCA3My4zNyAyMC44MiBaIiBmaWxsPSIjRjU5RTBCIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI0Ni4yNCIgeTI9IjYyLjM0IiBzdHJva2U9IiM0RjQ2RTUiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI1OS4xOSIgeTI9IjU5LjcxIiBzdHJva2U9IiNGNTlFMEIiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDYuMjQiIGN5PSI2Mi4zNCIgcj0iMi42MCIgZmlsbD0iIzRGNDZFNSIvPjxjaXJjbGUgY3g9IjU5LjE5IiBjeT0iNTkuNzEiIHI9IjIuNjAiIGZpbGw9IiNGNTlFMEIiLz48Y2lyY2xlIGN4PSI1MC4wMCIgY3k9IjUyLjAwIiByPSI2LjIwIiBmaWxsPSIjNEY0NkU1Ii8+PGNpcmNsZSBjeD0iNTAuMDAiIGN5PSI1Mi4wMCIgcj0iMi42MCIgZmlsbD0iI0ZBRjdGMCIvPjwvc3ZnPgo=" alt="" width="330" height="330"></div>
+  </div></section>
+
+  <section class="section band" id="mission"><div class="wrap">
+    <div class="mission reveal">
+      <div class="mi"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRzay1ncmFkIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEY0NkU1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZD0iTSAzNS4wMCAyNi4wMiBBIDMwLjAwIDMwLjAwIDAgMSAwIDY1LjkwIDI2LjU2IFEgNjcuMjggMjguMjEgNzAuMDUgMjguMTAgTCA3Ny4xNyAyOC4zOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3Rzay1ncmFkKSIgc3Ryb2tlLXdpZHRoPSI5LjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNIDg3LjU4IDE5LjMzIEwgODQuMTMgMzMuMTkgTCA3My4zNyAyMC44MiBaIiBmaWxsPSIjRjU5RTBCIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI0Ni4yNCIgeTI9IjYyLjM0IiBzdHJva2U9IiM0RjQ2RTUiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI1OS4xOSIgeTI9IjU5LjcxIiBzdHJva2U9IiNGNTlFMEIiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDYuMjQiIGN5PSI2Mi4zNCIgcj0iMi42MCIgZmlsbD0iIzRGNDZFNSIvPjxjaXJjbGUgY3g9IjU5LjE5IiBjeT0iNTkuNzEiIHI9IjIuNjAiIGZpbGw9IiNGNTlFMEIiLz48Y2lyY2xlIGN4PSI1MC4wMCIgY3k9IjUyLjAwIiByPSI2LjIwIiBmaWxsPSIjNEY0NkU1Ii8+PGNpcmNsZSBjeD0iNTAuMDAiIGN5PSI1Mi4wMCIgcj0iMi42MCIgZmlsbD0iI0ZBRjdGMCIvPjwvc3ZnPgo=" alt="" width="46" height="46"></div>
+      <div>
+        <div class="eyebrow">Our mission</div>
+        <h2>Put enterprise-grade AI within reach of every local business.</h2>
+        <p class="muted">The tools big companies use to move faster and serve better should not be locked behind enterprise budgets. We build, deploy, and maintain AI and automation for the businesses that give a community its character, so they can compete, grow, and spend more time on the people they serve.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section" id="services"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">What we build</div>
+      <h2>Three services. One outcome: a business that runs smarter.</h2>
+      <p class="muted">Each one closes a gap that quietly costs local businesses customers every single day.</p>
+    </div>
+    <div class="svc-grid reveal">
+      <a class="svc" href="#/services/websites"><div class="badge">&#128187;</div><h3>Website Design &amp; Build</h3><p class="why">Your website is your first impression and your hardest working salesperson. A slow or dated site sends visitors straight to a competitor.</p><p class="impact"><b>The result:</b> a fast, modern, mobile-first site that turns visitors into customers.</p></a>
+      <a class="svc" href="#/services/assistants"><div class="badge">&#129302;</div><h3>AI Chatbots &amp; Call Assistants</h3><p class="why">Customers expect answers instantly, day or night. When no one replies, they move on, and you never even know it happened.</p><p class="impact"><b>The result:</b> an AI assistant that answers messages and calls 24/7 and captures every lead.</p></a>
+      <a class="svc" href="#/services/automation"><div class="badge">&#9889;</div><h3>Automation Systems</h3><p class="why">Every hour on repetitive manual work is an hour not spent growing or serving customers. Busywork silently caps how far you can scale.</p><p class="impact"><b>The result:</b> follow-ups, scheduling, and data entry run themselves, freeing your team.</p></a>
+    </div>
+    <p class="muted reveal" style="margin-top:26px;"><a href="#/services" style="color:var(--amber);font-weight:600;">See what is included in each service &rarr;</a></p>
+  </div></section>
+
+  <section class="section band" id="work"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2>Real businesses, running on systems that do the chasing.</h2>
+      <p class="muted">Different industries, same pattern: a site that earns trust, an assistant that never sleeps, and automation that keeps the follow-up from falling through.</p>
+    </div>
+
+    <div class="work-grid reveal">
+      <article class="work">
+        <div class="thumb w1">Wax on Wheels</div>
+        <div class="body">
+          <div class="kicker">Mobile auto detailing</div>
+          <h3>A booking-first site with an assistant that never misses a quote</h3>
+          <p class="muted">Detailing happens on the road, so the phone goes unanswered all day. We built a fast mobile-first site and an assistant that answers questions, collects vehicle details, and turns every inquiry into a scheduled job.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">AI assistant</span><span class="tag">Booking automation</span></div>
+        </div>
+      </article>
+      <article class="work">
+        <div class="thumb w2">For the Plot</div>
+        <div class="body">
+          <div class="kicker">Creative brand &amp; content</div>
+          <h3>A brand-forward site with intake that runs itself</h3>
+          <p class="muted">A creative brand lives or dies on first impression. We built a site that carries the brand properly, then automated the boring half: inquiries captured, sorted, and answered without anyone copying details into a spreadsheet.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">Brand</span><span class="tag">Intake automation</span></div>
+        </div>
+      </article>
+      <article class="work">
+        <div class="thumb w3">Cafe Coqui</div>
+        <div class="body">
+          <div class="kicker">Neighborhood cafe</div>
+          <h3>Menu, orders, and catering leads handled around the clock</h3>
+          <p class="muted">Lunch rush and the phone ring at the same time. We gave the cafe a warm, modern site plus a chat and call assistant that answers hours, menu, and catering questions 24/7 and hands over every lead.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">Call assistant</span><span class="tag">Catering leads</span></div>
+        </div>
+      </article>
+    </div>
+
+  </div></section>
+
+  <section class="section" id="cost"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">The hidden cost</div>
+      <h2>What really happens when there is no automation.</h2>
+      <p class="muted">The leaks are invisible on a busy day. Over a month, they add up to real revenue walking out the door.</p>
+    </div>
+    <div class="cost-grid reveal">
+      <div class="cost-narr">
+        <h3>Every gap is a customer you never met.</h3>
+        <p>When a business runs on memory and manual effort, opportunities slip through the cracks the moment things get busy. The phone rings while you are serving a table. A message arrives at 9pm. A quote never gets followed up. None of it feels like a loss in the moment, because you never see the customer you missed.</p>
+        <p>Automation is simply a system that never gets busy, never forgets, and never sleeps. It catches what a busy team cannot, so the work you already did to earn that lead does not go to waste.</p>
+        <p class="muted">Multiply one missed call a day by your average order value, and the cost of doing nothing becomes very real, very fast.</p>
+      </div>
+      <div class="leak-list">
+        <div class="leak"><span class="x">&#33;</span><div><b>The missed call</b><span>A call at lunch is a catering order or booking that quietly goes to whoever picks up first.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>The after-hours message</b><span>A question at night with no reply is a customer who has booked elsewhere by morning.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>The follow-up that never happens</b><span>A warm lead with no follow-up cools off and never closes. Most sales need more than one touch.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>The manual hours</b><span>Time spent retyping, scheduling, and chasing is time not spent growing or serving customers.</span></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section band" id="data"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">The shift is already here</div>
+      <h2>AI is not a trend. It is the new baseline.</h2>
+      <p class="muted">Around the world, the businesses adopting AI are answering faster, serving better, and pulling ahead.</p>
+    </div>
+    <div class="stat-row reveal" style="margin-top:0;">
+      <div class="stat"><div class="n"><span class="grad">88%</span></div><div class="l">of organizations now use AI in at least one business function, up from 78% a year earlier.</div></div>
+      <div class="stat"><div class="n">74%</div><div class="l">of executives report a return on investment within the first year of adopting AI.</div></div>
+      <div class="stat"><div class="n">15%</div><div class="l">average cost savings reported by early adopters across their operations.</div></div>
+      <div class="stat"><div class="n">23%</div><div class="l">average productivity improvement reported by early AI adopters.</div></div>
+    </div>
+    <p class="data-source reveal">Sources: McKinsey State of AI 2025 &middot; Google Cloud ROI of AI study &middot; Gartner. <a href="#/data" style="color:var(--amber);font-weight:600;">See the full picture &rarr;</a></p>
+  </div></section>
+
+  <section class="section" id="method"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">How we work</div>
+      <h2>Advise. Build. Improve.</h2>
+      <p class="muted">A simple, proven path from where you are to a system that keeps paying off. True to the name: purpose first, then continuous improvement.</p>
+    </div>
+    <div class="method-grid reveal">
+      <div class="mstep"><div class="mn">01 / ADVISE</div><h3>Find the leaks</h3><p>I study how your business shows up and pinpoint exactly what is costing you customers, then recommend the highest-impact fix first.</p></div>
+      <div class="mstep"><div class="mn">02 / BUILD</div><h3>Put it to work</h3><p>I design and deploy your website, AI assistant, and automations, tailored to how you actually operate, and launch them fast.</p></div>
+      <div class="mstep"><div class="mn">03 / IMPROVE</div><h3>Keep getting better</h3><p>I monitor, refine, and grow the system month after month, so it keeps compounding value instead of going stale.</p></div>
+    </div>
+    <div class="loopline reveal"><b>&#8635;</b> Improve feeds back into Advise. That continuous loop is the heart of Kaizen. <a href="#/method" style="color:var(--amber);font-weight:600;margin-left:8px;">See the full method &rarr;</a></div>
+  </div></section>
+
+  <section class="section band" id="who"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">Who we help</div><h2>Built for the businesses that make a neighborhood feel like home.</h2></div>
+    <div class="reveal">
+      <div class="chips">
+        <span class="chip">Cafes &amp; Restaurants</span><span class="chip">Salons &amp; Spas</span><span class="chip">Home Services</span>
+        <span class="chip">Auto &amp; Detailing</span><span class="chip">Real Estate</span><span class="chip">Creative Studios</span><span class="chip">Professional Services</span>
+      </div>
+      <div class="feature">
+        <div class="ic"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRzay1ncmFkIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEY0NkU1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZD0iTSAzNS4wMCAyNi4wMiBBIDMwLjAwIDMwLjAwIDAgMSAwIDY1LjkwIDI2LjU2IFEgNjcuMjggMjguMjEgNzAuMDUgMjguMTAgTCA3Ny4xNyAyOC4zOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3Rzay1ncmFkKSIgc3Ryb2tlLXdpZHRoPSI5LjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNIDg3LjU4IDE5LjMzIEwgODQuMTMgMzMuMTkgTCA3My4zNyAyMC44MiBaIiBmaWxsPSIjRjU5RTBCIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI0Ni4yNCIgeTI9IjYyLjM0IiBzdHJva2U9IiM0RjQ2RTUiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI1OS4xOSIgeTI9IjU5LjcxIiBzdHJva2U9IiNGNTlFMEIiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDYuMjQiIGN5PSI2Mi4zNCIgcj0iMi42MCIgZmlsbD0iIzRGNDZFNSIvPjxjaXJjbGUgY3g9IjU5LjE5IiBjeT0iNTkuNzEiIHI9IjIuNjAiIGZpbGw9IiNGNTlFMEIiLz48Y2lyY2xlIGN4PSI1MC4wMCIgY3k9IjUyLjAwIiByPSI2LjIwIiBmaWxsPSIjNEY0NkU1Ii8+PGNpcmNsZSBjeD0iNTAuMDAiIGN5PSI1Mi4wMCIgcj0iMi42MCIgZmlsbD0iI0ZBRjdGMCIvPjwvc3ZnPgo=" alt="" width="50" height="50"></div>
+        <div><h4>Not sure which one you need?</h4><p class="muted">That is exactly what the free consultation is for. Tell me what is slowing you down and I will tell you the highest-impact fix, even if it turns out you do not need me yet.</p></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Let us find the leak that is costing you the most.</h2>
+        <p class="muted">A free consultation, no obligation and no sales pitch. I review every request personally and reply with a plan.</p>
+      </div>
+      <div class="cta-row">
+        <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+        <a href="#/method" class="btn btn-ghost">See how it works</a>
+      </div>
+    </div>
+  </div></section>
+
+</div>
+<div class="route" id="route-services" data-route="services" hidden>
+
+  <section class="phero"><div class="wrap reveal">
+    <div class="crumbs"><a href="#/home">Home</a> &nbsp;/&nbsp; Services</div>
+    <div class="eyebrow">What we build</div>
+    <h1>Three services that close the gaps <span class="hl">costing you customers</span>.</h1>
+    <p class="lede muted">A website that earns trust, an assistant that answers around the clock, and automation that keeps the follow-up from falling through. Take one, or run all three together as one system.</p>
+    <div class="cta-row">
+      <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+      <a href="#/method" class="btn btn-ghost">How the process works</a>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+
+    <div class="svc-deep reveal" id="websites">
+      <div class="sd-media">&#128187;</div>
+      <div>
+        <div class="eyebrow">Service 01</div>
+        <h2>Website Design &amp; Build</h2>
+        <p class="lead muted">Your website is your first impression and your hardest working salesperson. A slow, dated, or hard-to-use site sends visitors straight to a competitor before you ever hear from them.</p>
+        <ul class="checks">
+          <li>Custom design built around your brand, not a recycled template</li>
+          <li>Mobile-first and fast, because most of your visitors arrive on a phone</li>
+          <li>Clear paths to call, book, order, or request a quote on every screen</li>
+          <li>Search-ready structure, local business details, and clean page titles</li>
+          <li>Contact and booking forms wired straight to your inbox</li>
+          <li>Hosting, updates, and fixes handled so nothing goes stale</li>
+        </ul>
+        <p class="sd-result"><b>The result:</b> a fast, modern, mobile-first site that turns visitors into customers.</p>
+      </div>
+    </div>
+
+    <div class="svc-deep reveal" id="assistants">
+      <div class="sd-media">&#129302;</div>
+      <div>
+        <div class="eyebrow">Service 02</div>
+        <h2>AI Chatbots &amp; Call Assistants</h2>
+        <p class="lead muted">Customers expect answers instantly, day or night. When no one replies, they move on to whoever answers first, and you never even know it happened.</p>
+        <ul class="checks">
+          <li>Website chat that answers hours, pricing, menu, and service questions instantly</li>
+          <li>A call assistant that picks up when you cannot, and never puts anyone on hold</li>
+          <li>Trained on your business: your services, your policies, your tone</li>
+          <li>Captures name, number, and what the customer needs, then hands it to you</li>
+          <li>Books appointments and takes catering or quote requests 24/7</li>
+          <li>Escalates to a real person the moment a conversation needs one</li>
+        </ul>
+        <p class="sd-result"><b>The result:</b> an AI assistant that answers messages and calls 24/7 and captures every lead.</p>
+      </div>
+    </div>
+
+    <div class="svc-deep reveal" id="automation">
+      <div class="sd-media">&#9889;</div>
+      <div>
+        <div class="eyebrow">Service 03</div>
+        <h2>Automation Systems</h2>
+        <p class="lead muted">Every hour spent on repetitive manual work is an hour not spent growing or serving customers. Busywork silently caps how far your business can scale.</p>
+        <ul class="checks">
+          <li>Lead intake that files itself: form, chat, and call requests in one place</li>
+          <li>Automatic follow-up sequences so warm leads never go cold</li>
+          <li>Scheduling, confirmations, and reminders that cut no-shows</li>
+          <li>Review requests sent at the right moment, without anyone remembering to</li>
+          <li>Invoices, receipts, and reports that generate themselves</li>
+          <li>Your tools connected, so data stops being retyped between them</li>
+        </ul>
+        <p class="sd-result"><b>The result:</b> follow-ups, scheduling, and data entry run themselves, freeing your team.</p>
+      </div>
+    </div>
+
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2>What that looks like in practice.</h2>
+      <p class="muted">Three businesses, three different problems, one approach: fix the leak first, then make the system compound.</p>
+    </div>
+
+    <div class="work-grid reveal">
+      <article class="work">
+        <div class="thumb w1">Wax on Wheels</div>
+        <div class="body">
+          <div class="kicker">Mobile auto detailing</div>
+          <h3>A booking-first site with an assistant that never misses a quote</h3>
+          <p class="muted">Detailing happens on the road, so the phone goes unanswered all day. We built a fast mobile-first site and an assistant that answers questions, collects vehicle details, and turns every inquiry into a scheduled job.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">AI assistant</span><span class="tag">Booking automation</span></div>
+        </div>
+      </article>
+      <article class="work">
+        <div class="thumb w2">For the Plot</div>
+        <div class="body">
+          <div class="kicker">Creative brand &amp; content</div>
+          <h3>A brand-forward site with intake that runs itself</h3>
+          <p class="muted">A creative brand lives or dies on first impression. We built a site that carries the brand properly, then automated the boring half: inquiries captured, sorted, and answered without anyone copying details into a spreadsheet.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">Brand</span><span class="tag">Intake automation</span></div>
+        </div>
+      </article>
+      <article class="work">
+        <div class="thumb w3">Cafe Coqui</div>
+        <div class="body">
+          <div class="kicker">Neighborhood cafe</div>
+          <h3>Menu, orders, and catering leads handled around the clock</h3>
+          <p class="muted">Lunch rush and the phone ring at the same time. We gave the cafe a warm, modern site plus a chat and call assistant that answers hours, menu, and catering questions 24/7 and hands over every lead.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">Call assistant</span><span class="tag">Catering leads</span></div>
+        </div>
+      </article>
+    </div>
+
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">How engagements are shaped</div>
+      <h2>Start where it hurts. Grow from there.</h2>
+      <p class="muted">Every business is different, so pricing is quoted after the consultation. These are the shapes most engagements take.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="plan">
+        <div class="tier">Starter</div>
+        <h3>Fix one leak</h3>
+        <p class="muted">The single highest-impact build, launched fast so you feel the difference in weeks, not quarters.</p>
+        <ul class="checks">
+          <li>One service: site, assistant, or automation</li>
+          <li>Discovery call and written plan</li>
+          <li>Build, launch, and handover</li>
+          <li>30 days of post-launch support</li>
+        </ul>
+        <p class="foot">Best for: a first project with a clear, obvious problem.</p>
+      </div>
+      <div class="plan featured">
+        <div class="tier">Growth &middot; most common</div>
+        <h3>The full system</h3>
+        <p class="muted">Website, AI assistant, and automation built to work as one, so a visitor becomes a lead becomes a booking.</p>
+        <ul class="checks">
+          <li>All three services, designed together</li>
+          <li>Full audit of how customers reach you today</li>
+          <li>Staged launch so nothing disrupts operations</li>
+          <li>Training for you and your team</li>
+          <li>Monthly improvement plan included</li>
+        </ul>
+        <p class="foot">Best for: businesses ready to stop losing leads for good.</p>
+      </div>
+      <div class="plan">
+        <div class="tier">Ongoing</div>
+        <h3>Keep improving</h3>
+        <p class="muted">The Kaizen half of the name. Your system is monitored, refined, and extended month after month.</p>
+        <ul class="checks">
+          <li>Monitoring, hosting, and updates</li>
+          <li>Assistant retrained as your business changes</li>
+          <li>New automations added as needs appear</li>
+          <li>A monthly report on what changed and why</li>
+        </ul>
+        <p class="foot">Best for: anyone who wants the system to keep paying off.</p>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">Common questions</div><h2>Before you book.</h2></div>
+    <div class="faq reveal">
+      <details><summary>Do I have to buy all three services?</summary><p class="muted">No. Most businesses start with the one leak that is costing them the most, and add the rest once it is clearly working. The consultation is where we figure out which one that is.</p></details>
+      <details><summary>How much does it cost?</summary><p class="muted">It depends on what you actually need, so I quote after the consultation rather than guessing up front. You get a fixed price for the build and a clear monthly figure if you want ongoing improvement. No surprises mid-project.</p></details>
+      <details><summary>How long does it take?</summary><p class="muted">A focused single-service build usually launches in a few weeks. A full system is staged so each piece goes live as it is ready, instead of waiting months for one big reveal.</p></details>
+      <details><summary>Will the AI assistant sound like a robot?</summary><p class="muted">It is trained on your business, your services, and your tone, and it hands off to a real person the moment a conversation needs one. The goal is a customer who feels helped, not handled.</p></details>
+      <details><summary>What if I already have a website?</summary><p class="muted">Then we start by looking at whether it is working. Sometimes the answer is an assistant and automation layered onto what you have. I will tell you honestly if a rebuild is not the right spend.</p></details>
+      <details><summary>Do you work outside Orlando?</summary><p class="muted">Yes. The work is remote-friendly, and Orlando-area businesses get in-person time when it helps.</p></details>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Not sure which service you need?</h2>
+        <p class="muted">Tell me what is slowing you down. I will point you at the highest-impact fix, even if that turns out to be the smallest one.</p>
+      </div>
+      <div class="cta-row">
+        <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+        <a href="#/method" class="btn btn-ghost">How the process works</a>
+      </div>
+    </div>
+  </div></section>
+
+</div>
+<div class="route" id="route-data" data-route="data" hidden>
+
+  <section class="phero"><div class="wrap reveal">
+    <div class="crumbs"><a href="#/home">Home</a> &nbsp;/&nbsp; The Data</div>
+    <div class="eyebrow">The shift is already here</div>
+    <h1>AI is not a trend. It is the <span class="hl">new baseline</span>.</h1>
+    <p class="lede muted">Around the world, the businesses adopting AI are answering faster, serving better, and pulling ahead. The data is hard to argue with, and none of it requires an enterprise budget anymore.</p>
+    <div class="cta-row">
+      <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+      <a href="#/services" class="btn btn-ghost">See the services</a>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="data-wrap reveal">
+      <div class="chart-title">Share of organizations using AI in at least one business function</div>
+      <div class="chart-sub">Global, 2017 to 2025</div>
+      <img class="chart-svg" src="data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgNzIwIDM2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz4KPGxpbmVhckdyYWRpZW50IGlkPSJjaGFydExpbmUiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiM2MzY2RjEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNGNTlFMEIiLz48L2xpbmVhckdyYWRpZW50Pgo8bGluZWFyR3JhZGllbnQgaWQ9ImNoYXJ0QXJlYSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzYzNjZGMSIgc3RvcC1vcGFjaXR5PSIwLjMyIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjM2NkYxIiBzdG9wLW9wYWNpdHk9IjAiLz48L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+PGxpbmUgeDE9IjU2IiB5MT0iMzEyLjAiIHgyPSI2OTQiIHkyPSIzMTIuMCIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LC4wOCkiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjQ2IiB5PSIzMTYuMCIgZmlsbD0iIzdDN0Y5OSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9ImVuZCIgZm9udC1mYW1pbHk9IkRNIFNhbnMiPjAlPC90ZXh0PjxsaW5lIHgxPSI1NiIgeTE9IjI0Mi41IiB4Mj0iNjk0IiB5Mj0iMjQyLjUiIHN0cm9rZT0icmdiYSgyNTUsMjU1LDI1NSwuMDgpIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSI0NiIgeT0iMjQ2LjUiIGZpbGw9IiM3QzdGOTkiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtZmFtaWx5PSJETSBTYW5zIj4yNSU8L3RleHQ+PGxpbmUgeDE9IjU2IiB5MT0iMTczLjAiIHgyPSI2OTQiIHkyPSIxNzMuMCIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LC4wOCkiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjQ2IiB5PSIxNzcuMCIgZmlsbD0iIzdDN0Y5OSIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9ImVuZCIgZm9udC1mYW1pbHk9IkRNIFNhbnMiPjUwJTwvdGV4dD48bGluZSB4MT0iNTYiIHkxPSIxMDMuNSIgeDI9IjY5NCIgeTI9IjEwMy41IiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsLjA4KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNDYiIHk9IjEwNy41IiBmaWxsPSIjN0M3Rjk5IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0iZW5kIiBmb250LWZhbWlseT0iRE0gU2FucyI+NzUlPC90ZXh0PjxsaW5lIHgxPSI1NiIgeTE9IjM0LjAiIHgyPSI2OTQiIHkyPSIzNC4wIiBzdHJva2U9InJnYmEoMjU1LDI1NSwyNTUsLjA4KSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iNDYiIHk9IjM4LjAiIGZpbGw9IiM3QzdGOTkiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtZmFtaWx5PSJETSBTYW5zIj4xMDAlPC90ZXh0PjxwYXRoIGQ9Ik01Ni4wIDI1Ni40IEwyMTUuNSAxNTAuOCBMMzc1LjAgMTU2LjMgTDUzNC41IDE1OS4xIEw2MTQuMiA5NS4yIEw2OTQuMCA2Ny40IEwgNjk0LjAgMzEyLjAgTCA1Ni4wIDMxMi4wIFoiIGZpbGw9InVybCgjY2hhcnRBcmVhKSIvPjxwYXRoIGQ9Ik01Ni4wIDI1Ni40IEwyMTUuNSAxNTAuOCBMMzc1LjAgMTU2LjMgTDUzNC41IDE1OS4xIEw2MTQuMiA5NS4yIEw2OTQuMCA2Ny40IiBmaWxsPSJub25lIiBzdHJva2U9InVybCgjY2hhcnRMaW5lKSIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjU2LjAiIGN5PSIyNTYuNCIgcj0iNCIgZmlsbD0iIzYzNjZGMSIgc3Ryb2tlPSIjMEIwRDFFIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI1Ni4wIiB5PSIzMzQiIGZpbGw9IiM5YWEwYjgiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJETSBTYW5zIj4yMDE3PC90ZXh0PjxjaXJjbGUgY3g9IjIxNS41IiBjeT0iMTUwLjgiIHI9IjQiIGZpbGw9IiM2MzY2RjEiIHN0cm9rZT0iIzBCMEQxRSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iMjE1LjUiIHk9IjMzNCIgZmlsbD0iIzlhYTBiOCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRNIFNhbnMiPjIwMTk8L3RleHQ+PGNpcmNsZSBjeD0iMzc1LjAiIGN5PSIxNTYuMyIgcj0iNCIgZmlsbD0iIzYzNjZGMSIgc3Ryb2tlPSIjMEIwRDFFIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSIzNzUuMCIgeT0iMzM0IiBmaWxsPSIjOWFhMGI4IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iRE0gU2FucyI+MjAyMTwvdGV4dD48Y2lyY2xlIGN4PSI1MzQuNSIgY3k9IjE1OS4xIiByPSI0IiBmaWxsPSIjNjM2NkYxIiBzdHJva2U9IiMwQjBEMUUiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjUzNC41IiB5PSIzMzQiIGZpbGw9IiM5YWEwYjgiIGZvbnQtc2l6ZT0iMTIiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJETSBTYW5zIj4yMDIzPC90ZXh0PjxjaXJjbGUgY3g9IjYxNC4yIiBjeT0iOTUuMiIgcj0iNCIgZmlsbD0iIzYzNjZGMSIgc3Ryb2tlPSIjMEIwRDFFIiBzdHJva2Utd2lkdGg9IjIiLz48dGV4dCB4PSI2MTQuMiIgeT0iMzM0IiBmaWxsPSIjOWFhMGI4IiBmb250LXNpemU9IjEyIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iRE0gU2FucyI+MjAyNDwvdGV4dD48Y2lyY2xlIGN4PSI2OTQuMCIgY3k9IjY3LjQiIHI9IjYiIGZpbGw9IiNGNTlFMEIiIHN0cm9rZT0iIzBCMEQxRSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHRleHQgeD0iNjk0LjAiIHk9IjMzNCIgZmlsbD0iIzlhYTBiOCIgZm9udC1zaXplPSIxMiIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkRNIFNhbnMiPjIwMjU8L3RleHQ+PHRleHQgeD0iNjk0LjAiIHk9IjUzLjQiIGZpbGw9IiNGNTlFMEIiIGZvbnQtc2l6ZT0iMTgiIGZvbnQtd2VpZ2h0PSI3MDAiIHRleHQtYW5jaG9yPSJlbmQiIGZvbnQtZmFtaWx5PSJTcGFjZSBHcm90ZXNrIj44OCU8L3RleHQ+PHRleHQgeD0iNTQuMCIgeT0iMjQ0LjQiIGZpbGw9IiNBOUFFQzYiIGZvbnQtc2l6ZT0iMTMiIGZvbnQtd2VpZ2h0PSI2MDAiIHRleHQtYW5jaG9yPSJzdGFydCIgZm9udC1mYW1pbHk9IlNwYWNlIEdyb3Rlc2siPjIwJTwvdGV4dD48L3N2Zz4K" alt="Line chart showing organizations using AI rising from about 20 percent in 2017 to 88 percent in 2025." width="720" height="360">
+      <div class="chart-source">Source: McKinsey Global Survey on the State of AI, 2025 (1,993 respondents across ~105 countries).</div>
+    </div>
+    <div class="stat-row reveal">
+      <div class="stat"><div class="n"><span class="grad">88%</span></div><div class="l">of organizations now use AI in at least one business function, up from 78% a year earlier.</div></div>
+      <div class="stat"><div class="n">74%</div><div class="l">of executives report a return on investment within the first year of adopting AI.</div></div>
+      <div class="stat"><div class="n">15%</div><div class="l">average cost savings reported by early adopters across their operations.</div></div>
+      <div class="stat"><div class="n">23%</div><div class="l">average productivity improvement reported by early AI adopters.</div></div>
+    </div>
+    <div class="data-source reveal">Sources: McKinsey State of AI 2025 &middot; Google Cloud ROI of AI study &middot; Gartner. AI keeps getting cheaper, faster, and easier, and starting early is the simplest edge you will ever gain.</div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">What the numbers mean</div>
+      <h2>Read past the headline and it is a story about customer patience.</h2>
+      <p class="muted">The statistics describe large organizations, but the behaviour they measure belongs to your customers too.</p>
+    </div>
+    <div class="grid-3 reveal">
+      <div class="card hoverable"><h3>Response time became the product</h3><p class="muted">When most businesses answer instantly, a two-hour reply reads as closed. The bar your customers hold you to was set by companies you never competed with before.</p></div>
+      <div class="card hoverable"><h3>The cost of entry collapsed</h3><p class="muted">What required a data team five years ago now runs on tools a single business can afford. That is the whole reason a local cafe can have what an enterprise had.</p></div>
+      <div class="card hoverable"><h3>Early beats perfect</h3><p class="muted">Most adopters see a return inside the first year, because the wins are unglamorous: fewer missed calls, faster quotes, follow-ups that actually happen.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">Closer to home</div>
+      <h2>The same math, on a Main Street scale.</h2>
+      <p class="muted">You do not need survey data to see this one. You can count it on your own phone.</p>
+    </div>
+    <div class="grid-2 reveal">
+      <div class="cost-narr">
+        <h3>Do the arithmetic on one missed call a day.</h3>
+        <p>Take your average order or job value. Multiply it by one missed call per day. Multiply that by the days you are open. That number is what doing nothing costs you this year, and it is usually larger than the system that would have caught it.</p>
+        <p>The same math works for the message that arrives at 9pm, the quote nobody followed up on, and the hour a week spent retyping information between two apps.</p>
+        <p class="muted">None of it shows up on a profit and loss statement, which is exactly why it goes unfixed for years.</p>
+      </div>
+      <div class="leak-list">
+        <div class="leak"><span class="x">&#33;</span><div><b>Customers expect an answer now</b><span>Instant replies are the norm your customers already live with everywhere else.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>Most buying decisions start online</b><span>If your site is slow or dated, the comparison is over before you are in it.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>One touch is rarely enough</b><span>Sales usually need several follow-ups. Manual follow-up stops after the first.</span></div></div>
+        <div class="leak"><span class="x">&#33;</span><div><b>Your competitors are adopting</b><span>Adoption jumped from 78% to 88% in a single year. The gap widens quietly.</span></div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">Honest framing</div><h2>What the data does not say.</h2></div>
+    <div class="grid-2 reveal">
+      <div class="card"><h3>AI does not replace your judgement</h3><p class="muted">It handles the repeatable part: answering the same question at midnight, remembering the follow-up, filing the details. What makes your business worth choosing still comes from you.</p></div>
+      <div class="card"><h3>Tools alone do not produce a return</h3><p class="muted">The organizations reporting gains changed how work flows, not just which software they bought. That is why every engagement starts by finding the leak instead of picking a tool.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>See what these numbers would look like in your business.</h2>
+        <p class="muted">A free consultation, no obligation. I will show you where the leaks are and what fixing them is realistically worth.</p>
+      </div>
+      <div class="cta-row">
+        <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+        <a href="#/method" class="btn btn-ghost">See the method</a>
+      </div>
+    </div>
+  </div></section>
+
+</div>
+<div class="route" id="route-method" data-route="method" hidden>
+
+  <section class="phero"><div class="wrap reveal">
+    <div class="crumbs"><a href="#/home">Home</a> &nbsp;/&nbsp; Method</div>
+    <div class="eyebrow">How we work</div>
+    <h1>Advise. Build. <span class="hl">Improve.</span></h1>
+    <p class="lede muted">A simple, proven path from where you are to a system that keeps paying off. True to the name: purpose first, then continuous improvement, forever.</p>
+    <div class="cta-row">
+      <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+      <a href="#/services" class="btn btn-ghost">See the services</a>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="method-grid reveal">
+      <div class="mstep"><div class="mn">01 / ADVISE</div><h3>Find the leaks</h3><p>I study how your business shows up and pinpoint exactly what is costing you customers, then recommend the highest-impact fix first.</p></div>
+      <div class="mstep"><div class="mn">02 / BUILD</div><h3>Put it to work</h3><p>I design and deploy your website, AI assistant, and automations, tailored to how you actually operate, and launch them fast.</p></div>
+      <div class="mstep"><div class="mn">03 / IMPROVE</div><h3>Keep getting better</h3><p>I monitor, refine, and grow the system month after month, so it keeps compounding value instead of going stale.</p></div>
+    </div>
+    <div class="loopline reveal"><b>&#8635;</b> Improve feeds back into Advise. That continuous loop is the heart of Kaizen.</div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">Step by step</div>
+      <h2>What actually happens, in order.</h2>
+      <p class="muted">No mystery, no month of silence. Here is the whole engagement, from first message to the system running on its own.</p>
+    </div>
+    <div class="timeline reveal">
+      <div class="tl"><div class="wk">Step 01 &middot; Advise</div><h3>The free consultation</h3><p class="muted">You tell me what is slowing you down. I ask how customers actually reach you today, what happens when nobody picks up, and where the day disappears. Nothing to prepare, and no obligation at the end of it.</p></div>
+      <div class="tl"><div class="wk">Step 02 &middot; Advise</div><h3>The audit and the plan</h3><p class="muted">I go through your site, your response times, your intake, and your follow-up the way a customer would. You get a written plan naming the biggest leak, the fix, what it costs, and what it should be worth. If the honest answer is that you do not need me yet, that is what the plan says.</p></div>
+      <div class="tl"><div class="wk">Step 03 &middot; Build</div><h3>Design and approval</h3><p class="muted">You see the design and the conversation flows before anything is built. We adjust on paper, where changes are free, and agree on exactly what launch includes.</p></div>
+      <div class="tl"><div class="wk">Step 04 &middot; Build</div><h3>Build and test</h3><p class="muted">I build the site, train the assistant on your business, and wire the automations to the tools you already use. Then I try to break it: odd questions, bad phone connections, weird form entries, edge cases at 2am.</p></div>
+      <div class="tl"><div class="wk">Step 05 &middot; Build</div><h3>Launch and handover</h3><p class="muted">We go live in stages so nothing disrupts your operations, and I walk you and your team through it in plain language. You own your accounts, your data, and your domain. Always.</p></div>
+      <div class="tl"><div class="wk">Step 06 &middot; Improve</div><h3>Watch the first weeks closely</h3><p class="muted">Real customers ask things nobody predicts. I read the actual conversations, fix the gaps, and tune the assistant to how your customers really talk.</p></div>
+      <div class="tl"><div class="wk">Step 07 &middot; Improve</div><h3>The monthly loop</h3><p class="muted">Every month: what changed, what improved, what is next. New automations get added as needs appear, and the assistant gets retrained as your business changes. Small improvements, compounding, which is precisely what Kaizen means.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">Principles</div><h2>The rules I work by.</h2></div>
+    <div class="grid-2 reveal">
+      <div class="card"><h3>The leak comes before the tool</h3><p class="muted">I do not lead with technology. I find what is costing you customers, then pick the smallest thing that fixes it. Sometimes that is not a rebuild.</p></div>
+      <div class="card"><h3>You own everything</h3><p class="muted">Your domain, your accounts, your data, your customer conversations. No hostage situations, no platform you cannot leave.</p></div>
+      <div class="card"><h3>Plain language, always</h3><p class="muted">You should be able to explain your own system to a friend. If I cannot describe it without jargon, I have not designed it well enough.</p></div>
+      <div class="card"><h3>Ship early, improve forever</h3><p class="muted">A good system live this month beats a perfect one launched next year. Then it gets better every month it runs.</p></div>
+      <div class="card"><h3>A human is always reachable</h3><p class="muted">The assistant handles the repeatable part and hands off the moment a conversation needs a person. Smarter systems, with a human touch.</p></div>
+      <div class="card"><h3>Honest advice, even when it costs me</h3><p class="muted">If the highest-impact fix is something you can do yourself in an afternoon, I will tell you that instead of selling you a project.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">Common questions</div><h2>About the process.</h2></div>
+    <div class="faq reveal">
+      <details><summary>What do I need to prepare for the consultation?</summary><p class="muted">Nothing. Bring what frustrates you. If you have numbers on missed calls or leads, great, but the conversation works fine without them.</p></details>
+      <details><summary>How involved do I have to be?</summary><p class="muted">Heaviest at the start, where you tell me how the business really runs, and at design approval. After launch, the point is that the system runs without you.</p></details>
+      <details><summary>What if I want changes after launch?</summary><p class="muted">Expected, and built into the improve stage. Small refinements are part of the monthly loop, and anything larger gets scoped and priced up front.</p></details>
+      <details><summary>Can I stop the monthly plan?</summary><p class="muted">Yes. The site and systems stay yours, running on your own accounts. Ongoing improvement is a choice you keep making, not a contract you get stuck in.</p></details>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Step one is a conversation, and it is free.</h2>
+        <p class="muted">Tell me what is slowing you down. You will leave with a plan, whether or not you ever hire me.</p>
+      </div>
+      <div class="cta-row">
+        <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+        <a href="#/about" class="btn btn-ghost">Meet the person behind it</a>
+      </div>
+    </div>
+  </div></section>
+
+</div>
+<div class="route" id="route-about" data-route="about" hidden>
+
+  <section class="phero"><div class="wrap reveal">
+    <div class="crumbs"><a href="#/home">Home</a> &nbsp;/&nbsp; About Us</div>
+    <div class="eyebrow">Our name &amp; story</div>
+    <h1>Hi, I&rsquo;m Anthony. I build the tech <span class="hl">local businesses</span> deserve.</h1>
+    <p class="lede muted">tsKaizen is a consultancy with one purpose: bring the kind of technology big companies take for granted to the businesses that give a community its character.</p>
+    <div class="cta-row">
+      <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+      <a href="#/method" class="btn btn-ghost">How I work</a>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="about-grid reveal">
+      <div>
+        <div class="eyebrow">The story</div>
+        <h2 style="font-size:clamp(26px,3.4vw,38px);margin-bottom:20px;">Why tsKaizen exists.</h2>
+        <p>I founded tsKaizen to bring the kind of technology big companies take for granted to the local businesses that give a community its character.</p>
+        <p>My background is in finance and operations, and I have spent years building real technology that solves real problems for real people. I do not just recommend tools. I design, build, and maintain them.</p>
+        <p>What I kept noticing was the same quiet pattern everywhere: excellent businesses losing customers for reasons that had nothing to do with the quality of their work. A call at lunch nobody could take. A message at 9pm nobody saw. A quote that never got a second follow-up. None of it was a skill problem. It was a systems problem, and systems are fixable.</p>
+        <p>What drives me is the joy of building something that works and watching a business grow because of it. Innovation and your success are the same goal to me.</p>
+      </div>
+      <div class="name-card">
+        <div class="eyebrow" style="margin-bottom:8px;">What the name means</div>
+        <div class="row"><div class="k">ts</div><div class="v"><b>Telos</b> is Greek for purpose. It stands for innovating technology with AI, always starting from the outcome that matters to you.</div></div>
+        <div class="row"><div class="k">Kaizen</div><div class="v"><b>Kaizen</b> is Japanese for continuous improvement. It stands for building a better future with automation that keeps getting better over time.</div></div>
+        <div class="row"><div class="k" style="font-size:15px;">Together</div><div class="v">Purpose-driven technology, built to improve the longer we work together.</div></div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">What you can expect</div><h2>How I actually work with clients.</h2></div>
+    <div class="grid-3 reveal">
+      <div class="card hoverable"><h3>You talk to the builder</h3><p class="muted">No account manager relaying messages to a team you never meet. The person who plans your system is the person who builds it and the person who answers when you call.</p></div>
+      <div class="card hoverable"><h3>Plain language, no jargon</h3><p class="muted">You should be able to explain your own system to a friend. If I cannot describe what I built without acronyms, I have not finished designing it.</p></div>
+      <div class="card hoverable"><h3>Honest advice first</h3><p class="muted">If the highest-impact fix is small, or something you can do yourself, that is what the plan will say. A recommendation you cannot trust is worth nothing.</p></div>
+      <div class="card hoverable"><h3>Built for your reality</h3><p class="muted">Systems get designed around how you actually operate, including the messy parts, not around how a demo assumes a business runs.</p></div>
+      <div class="card hoverable"><h3>Local, and present</h3><p class="muted">Based in Orlando, Florida. Orlando-area businesses get in-person time when it helps, and everyone else gets the same responsiveness remotely.</p></div>
+      <div class="card hoverable"><h3>It keeps improving</h3><p class="muted">Launch is the start, not the finish. The system gets watched, tuned, and extended, because a set-and-forget build goes stale within a year.</p></div>
+    </div>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="shead reveal">
+      <div class="eyebrow">Selected work</div>
+      <h2>Businesses I have built for.</h2>
+      <p class="muted">Different industries, same pattern: a site that earns trust, an assistant that never sleeps, and automation that keeps the follow-up from falling through.</p>
+    </div>
+
+    <div class="work-grid reveal">
+      <article class="work">
+        <div class="thumb w1">Wax on Wheels</div>
+        <div class="body">
+          <div class="kicker">Mobile auto detailing</div>
+          <h3>A booking-first site with an assistant that never misses a quote</h3>
+          <p class="muted">Detailing happens on the road, so the phone goes unanswered all day. We built a fast mobile-first site and an assistant that answers questions, collects vehicle details, and turns every inquiry into a scheduled job.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">AI assistant</span><span class="tag">Booking automation</span></div>
+        </div>
+      </article>
+      <article class="work">
+        <div class="thumb w2">For the Plot</div>
+        <div class="body">
+          <div class="kicker">Creative brand &amp; content</div>
+          <h3>A brand-forward site with intake that runs itself</h3>
+          <p class="muted">A creative brand lives or dies on first impression. We built a site that carries the brand properly, then automated the boring half: inquiries captured, sorted, and answered without anyone copying details into a spreadsheet.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">Brand</span><span class="tag">Intake automation</span></div>
+        </div>
+      </article>
+      <article class="work">
+        <div class="thumb w3">Cafe Coqui</div>
+        <div class="body">
+          <div class="kicker">Neighborhood cafe</div>
+          <h3>Menu, orders, and catering leads handled around the clock</h3>
+          <p class="muted">Lunch rush and the phone ring at the same time. We gave the cafe a warm, modern site plus a chat and call assistant that answers hours, menu, and catering questions 24/7 and hands over every lead.</p>
+          <div class="tags"><span class="tag">Website</span><span class="tag">Call assistant</span><span class="tag">Catering leads</span></div>
+        </div>
+      </article>
+    </div>
+
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="grid-2 reveal">
+      <div>
+        <div class="eyebrow">Who I build for</div>
+        <h2 style="font-size:clamp(24px,3vw,34px);margin-bottom:18px;">The businesses that make a neighborhood feel like home.</h2>
+        <p class="muted" style="margin-bottom:20px;">Cafes where the staff knows your order. Detailers who show up at your driveway. Studios built on one person&rsquo;s taste. They compete against companies with entire technology departments, and they should not have to do it with a contact form from 2014.</p>
+        <div class="chips">
+          <span class="chip">Cafes &amp; Restaurants</span><span class="chip">Salons &amp; Spas</span><span class="chip">Home Services</span>
+          <span class="chip">Auto &amp; Detailing</span><span class="chip">Real Estate</span><span class="chip">Creative Studios</span><span class="chip">Professional Services</span>
+        </div>
+      </div>
+      <div class="quote">
+        <p>Smarter systems, with a human touch.</p>
+        <div class="by">The promise every tsKaizen build is measured against. The technology handles what is repeatable so you can spend your attention on the people in front of you.</div>
+      </div>
+    </div>
+    <div class="slogan reveal">
+      <div class="eyebrow" style="text-align:center;">The tsKaizen promise</div>
+      <div class="q">Smarter systems, <span class="hl">with a human touch.</span></div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Let us talk about your business.</h2>
+        <p class="muted">I review every request personally and reply with a plan, not a sales pitch. The consultation is free and there is no obligation.</p>
+      </div>
+      <div class="cta-row">
+        <a href="#/consultation" class="btn btn-primary">Book a free consultation</a>
+        <a href="#/services" class="btn btn-ghost">See the services</a>
+      </div>
+    </div>
+  </div></section>
+
+</div>
+<div class="route" id="route-consultation" data-route="consultation" hidden>
+
+  <section class="phero"><div class="wrap reveal">
+    <div class="crumbs"><a href="#/home">Home</a> &nbsp;/&nbsp; Book a free consultation</div>
+    <div class="eyebrow">Consultation</div>
+    <h1>Tell me what you are <span class="hl">trying to solve</span>.</h1>
+    <p class="lede muted">I review every request personally and get back to you quickly with a plan, not a sales pitch. Free, no obligation, and the more detail you give, the faster I can help.</p>
+  </div></section>
+
+  <section class="section band"><div class="wrap">
+    <div class="consult-grid reveal">
+      <form class="form-card" id="consultForm" novalidate>
+        <div class="field"><label for="f-name">Your name <span class="req">*</span></label><input id="f-name" name="name" type="text" autocomplete="name" placeholder="Jane Smith" required></div>
+        <div class="field"><label for="f-company">Company name <span class="req">*</span></label><input id="f-company" name="company" type="text" autocomplete="organization" placeholder="Jane&rsquo;s Bakery" required></div>
+        <div class="field"><label for="f-email">Email <span class="req">*</span></label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="jane@janesbakery.com" required></div>
+        <div class="field"><label for="f-phone">Phone <span style="color:var(--muted);font-weight:400;">(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 123-4567"></div>
+        <div class="field"><label for="f-service">Which service are you looking for? <span class="req">*</span></label>
+          <select id="f-service" name="service" required>
+            <option value="">Select a service</option>
+            <option>Website design or build</option>
+            <option>AI chatbot or call assistant</option>
+            <option>Automation systems</option>
+            <option>The full system (all three)</option>
+            <option>Not sure / more than one</option>
+          </select></div>
+        <div class="field"><label for="f-budget">Rough budget <span style="color:var(--muted);font-weight:400;">(optional)</span></label>
+          <select id="f-budget" name="budget">
+            <option value="">Prefer not to say</option>
+            <option>Under $2,000</option>
+            <option>$2,000 &ndash; $5,000</option>
+            <option>$5,000 &ndash; $10,000</option>
+            <option>$10,000+</option>
+            <option>Not sure yet</option>
+          </select></div>
+        <div class="field"><label for="f-problem">What problem are you trying to solve? <span class="req">*</span></label><textarea id="f-problem" name="message" placeholder="Tell me what is slowing you down or costing you customers right now." required></textarea></div>
+        <button class="btn btn-primary" type="submit" style="width:100%;justify-content:center;">Send my request</button>
+        <div class="form-msg" id="formMsg" role="status" aria-live="polite"></div>
+        <p class="muted" style="font-size:13px;margin-top:14px;">Your details are used to answer your request and nothing else. No lists, no resale.</p>
+      </form>
+      <div class="aside">
+        <h3>Or reach me directly</h3>
+        <div class="cline"><span class="ic">&#9742;</span><a href="tel:+15612603951">+1 (561) 260-3951</a></div>
+        <div class="cline"><span class="ic">&#9993;</span><a href="mailto:anthonypichardo31@tskaizen.com">anthonypichardo31@tskaizen.com</a></div>
+        <div class="cline"><span class="ic">&#128205;</span><span>Orlando, Florida</span></div>
+        <div class="steps">
+          <div class="eyebrow" style="margin-bottom:14px;">What happens next</div>
+          <div class="st"><div class="n">1</div><p><b>I review your request</b> personally, usually the same day.</p></div>
+          <div class="st"><div class="n">2</div><p><b>We talk for about 30 minutes</b> about how customers reach you today and where things fall through.</p></div>
+          <div class="st"><div class="n">3</div><p><b>I send a written plan</b> naming the biggest leak, the fix, and what it costs. Yours to keep either way.</p></div>
+          <div class="st"><div class="n">4</div><p><b>We build and launch</b> if it makes sense, then keep improving it every month.</p></div>
+        </div>
+        <div class="steps">
+          <div class="eyebrow" style="margin-bottom:14px;">What it is not</div>
+          <p class="muted" style="font-size:14.5px;">Not a sales call with a slide deck. If the honest answer is that you do not need me yet, that is what I will tell you, and the plan is still yours.</p>
+        </div>
+      </div>
+    </div>
+  </div></section>
+
+  <section class="section"><div class="wrap">
+    <div class="shead reveal"><div class="eyebrow">Before you send</div><h2>Quick answers.</h2></div>
+    <div class="faq reveal">
+      <details><summary>Is the consultation really free?</summary><p class="muted">Yes, and there is no obligation at the end of it. You get the conversation and a written plan whether or not you hire me.</p></details>
+      <details><summary>What should I have ready?</summary><p class="muted">Nothing formal. Bring what frustrates you: the calls you miss, the hours you lose, the site you are not proud of. That is enough to work from.</p></details>
+      <details><summary>How fast will you reply?</summary><p class="muted">Usually the same day, and at the latest the next business day. If it is urgent, call or text the number above.</p></details>
+      <details><summary>Do you work with businesses outside Orlando?</summary><p class="muted">Yes. The work is remote-friendly. Orlando-area businesses get in-person time when it helps.</p></details>
+      <details><summary>What does a project cost?</summary><p class="muted">It depends on what you need, so I quote after the consultation instead of guessing. You get a fixed build price and a clear monthly figure if you want ongoing improvement.</p></details>
+    </div>
+  </div></section>
+
+</div>
+</main>
+<footer><div class="wrap">
+  <div class="foot-inner">
+    <div>
+      <img class="logo-svg-sm" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0ODEgMTcwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRzay1ncmFkIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEY0NkU1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDAsMzAuMCkgc2NhbGUoMS4xKSI+PHBhdGggZD0iTSAzNS4wMCAyNi4wMiBBIDMwLjAwIDMwLjAwIDAgMSAwIDY1LjkwIDI2LjU2IFEgNjcuMjggMjguMjEgNzAuMDUgMjguMTAgTCA3Ny4xNyAyOC4zOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3Rzay1ncmFkKSIgc3Ryb2tlLXdpZHRoPSI5LjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNIDg3LjU4IDE5LjMzIEwgODQuMTMgMzMuMTkgTCA3My4zNyAyMC44MiBaIiBmaWxsPSIjRjU5RTBCIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI0Ni4yNCIgeTI9IjYyLjM0IiBzdHJva2U9IiM0RjQ2RTUiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI1OS4xOSIgeTI9IjU5LjcxIiBzdHJva2U9IiNGNTlFMEIiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDYuMjQiIGN5PSI2Mi4zNCIgcj0iMi42MCIgZmlsbD0iIzRGNDZFNSIvPjxjaXJjbGUgY3g9IjU5LjE5IiBjeT0iNTkuNzEiIHI9IjIuNjAiIGZpbGw9IiNGNTlFMEIiLz48Y2lyY2xlIGN4PSI1MC4wMCIgY3k9IjUyLjAwIiByPSI2LjIwIiBmaWxsPSIjNEY0NkU1Ii8+PGNpcmNsZSBjeD0iNTAuMDAiIGN5PSI1Mi4wMCIgcj0iMi42MCIgZmlsbD0iI0ZBRjdGMCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxODAuMDAsMTA3LjQwKSBzY2FsZSgwLjA2NDAwLC0wLjA2NDAwKSI+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMC4wMCwwKSI+PHBhdGggZD0iTTI2MS4zOTk5MDIzNDM3NSAwUTIxNS44OTk2NTgyMDMxMjUgMCAxODkuMjQ5Mzg5NjQ4NDM3NSAyNi44MjUyNTYzNDc2NTYyNVExNjIuNTk5MTIxMDkzNzUgNTMuNjUwNTEyNjk1MzEyNSAxNjIuNTk5MTIxMDkzNzUgOTkuNDAwODc4OTA2MjVWNDA1Ljk5OTAyMzQzNzVIMjcuMzk5OTAyMzQzNzVWNDkyLjUwMDI0NDE0MDYyNUgxNjIuNTk5MTIxMDkzNzVWNjU2LjI5OTU2MDU0Njg3NUgyNjUuNTAwNzMyNDIxODc1VjQ5Mi41MDAyNDQxNDA2MjVINDEzLjM5OTkwMjM0Mzc1VjQwNS45OTkwMjM0Mzc1SDI2NS41MDA3MzI0MjE4NzVWMTE2LjUwMTIyMDcwMzEyNVEyNjUuNTAwNzMyNDIxODc1IDg2LjUwMTIyMDcwMzEyNSAyOTQuMjAwNjgzNTkzNzUgODYuNTAxMjIwNzAzMTI1SDM5Ni41MDAyNDQxNDA2MjVWMFoiIGZpbGw9IiNGNTlFMEIiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDQ4LjAwLDApIj48cGF0aCBkPSJNMjc3Ljc0OTg3NzkyOTY4NzUgLTE0UTE4My44OTk2NTgyMDMxMjUgLTE0IDEyMS43MjQ2NzA0MTAxNTYyNSAyOC4wUTU5LjU0OTY4MjYxNzE4NzUgNzAgNDYuMTk5NzA3MDMxMjUgMTU0LjY0OTUzNjEzMjgxMjVMMTQyLjI1MTA5ODYzMjgxMjUgMTc4UTE0OS42MDEwNzQyMTg3NSAxMzYuNzAwNDM5NDUzMTI1IDE2OC45MDA4Nzg5MDYyNSAxMTMuMDI1Njk1ODAwNzgxMjVRMTg4LjIwMDY4MzU5Mzc1IDg5LjM1MDk1MjE0ODQzNzUgMjE2LjU1MDQxNTAzOTA2MjUgNzkuMjc2MDYyMDExNzE4NzVRMjQ0LjkwMDE0NjQ4NDM3NSA2OS4yMDExNzE4NzUgMjc3Ljc0OTg3NzkyOTY4NzUgNjkuMjAxMTcxODc1UTMyNy4zNDk0ODczMDQ2ODc1IDY5LjIwMTE3MTg3NSAzNTMuNzc0MTA4ODg2NzE4NzUgODcuODUwOTUyMTQ4NDM3NVEzODAuMTk4NzMwNDY4NzUgMTA2LjUwMDczMjQyMTg3NSAzODAuMTk4NzMwNDY4NzUgMTM2LjUwMDI0NDE0MDYyNVEzODAuMTk4NzMwNDY4NzUgMTY2Ljg0OTczMTQ0NTMxMjUgMzU1LjEyNDA4NDQ3MjY1NjI1IDE4MC45MjQ2MjE1ODIwMzEyNVEzMzAuMDQ5NDM4NDc2NTYyNSAxOTQuOTk5NTExNzE4NzUgMjgxLjQ5OTc1NTg1OTM3NSAyMDMuNjk5NDYyODkwNjI1TDI0Ny4yMDAxOTUzMTI1IDIwOS43NDkzODk2NDg0Mzc1UTE5Ny4zMDAwNDg4MjgxMjUgMjE5LjA0OTQzODQ3NjU2MjUgMTU2LjM5OTkwMjM0Mzc1IDIzNi4xOTk0NjI4OTA2MjVRMTE1LjQ5OTc1NTg1OTM3NSAyNTMuMzQ5NDg3MzA0Njg3NSA5MS4wNzQ2NDU5OTYwOTM3NSAyODMuMjk5NTYwNTQ2ODc1UTY2LjY0OTUzNjEzMjgxMjUgMzEzLjI0OTYzMzc4OTA2MjUgNjYuNjQ5NTM2MTMyODEyNSAzNTkuNzk5ODA0Njg3NVE2Ni42NDk1MzYxMzI4MTI1IDQyOS45NTAwNzMyNDIxODc1IDExOS4wNzQ2NDU5OTYwOTM3NSA0NjguMjI1MTU4NjkxNDA2MjVRMTcxLjQ5OTc1NTg1OTM3NSA1MDYuNTAwMjQ0MTQwNjI1IDI1Ny4zOTk5MDIzNDM3NSA1MDYuNTAwMjQ0MTQwNjI1UTM0MC4zOTk5MDIzNDM3NSA1MDYuNTAwMjQ0MTQwNjI1IDM5My44MjUwMTIyMDcwMzEyNSA0NjkuMzI1MjU2MzQ3NjU2MjVRNDQ3LjI1MDEyMjA3MDMxMjUgNDMyLjE1MDI2ODU1NDY4NzUgNDYyLjg1MDIxOTcyNjU2MjUgMzY4LjMwMDUzNzEwOTM3NUwzNjcuMTk4NzMwNDY4NzUgMzQwLjY5OTk1MTE3MTg3NVEzNTguNDk4Nzc5Mjk2ODc1IDM4NS42OTk0NjI4OTA2MjUgMzI5LjQ0OTA5NjY3OTY4NzUgNDA0LjQ5OTI2NzU3ODEyNVEzMDAuMzk5NDE0MDYyNSA0MjMuMjk5MDcyMjY1NjI1IDI1Ny4zOTk5MDIzNDM3NSA0MjMuMjk5MDcyMjY1NjI1UTIxNC43NTAzNjYyMTA5Mzc1IDQyMy4yOTkwNzIyNjU2MjUgMTkwLjg1MDcwODAwNzgxMjUgNDA3LjgyNDI3OTc4NTE1NjI1UTE2Ni45NTEwNDk4MDQ2ODc1IDM5Mi4zNDk0ODczMDQ2ODc1IDE2Ni45NTEwNDk4MDQ2ODc1IDM2My42OTk5NTExNzE4NzVRMTY2Ljk1MTA0OTgwNDY4NzUgMzM0LjEwMDM0MTc5Njg3NSAxOTAuNDUwODA1NjY0MDYyNSAzMjAuMTUwNTEyNjk1MzEyNVEyMTMuOTUwNTYxNTIzNDM3NSAzMDYuMjAwNjgzNTkzNzUgMjU0LjI1MDEyMjA3MDMxMjUgMjk5LjE1MDc1NjgzNTkzNzVMMjg4LjU0OTY4MjYxNzE4NzUgMjkzLjEwMDgzMDA3ODEyNVEzNDIuNDQ5ODI5MTAxNTYyNSAyODMuODAwNzgxMjUgMzg2LjAyNDk2MzM3ODkwNjI1IDI2Ny42NTA3NTY4MzU5Mzc1UTQyOS42MDAwOTc2NTYyNSAyNTEuNTAwNzMyNDIxODc1IDQ1NS4wNTAxNzA4OTg0Mzc1IDIyMS44NzU2NzEzODY3MTg3NVE0ODAuNTAwMjQ0MTQwNjI1IDE5Mi4yNTA2MTAzNTE1NjI1IDQ4MC41MDAyNDQxNDA2MjUgMTQyLjM1MDQ2Mzg2NzE4NzVRNDgwLjUwMDI0NDE0MDYyNSA2Ny41MDAyNDQxNDA2MjUgNDI1LjU3NTEzNDI3NzM0Mzc1IDI2Ljc1MDEyMjA3MDMxMjVRMzcwLjY1MDAyNDQxNDA2MjUgLTE0IDI3Ny43NDk4Nzc5Mjk2ODc1IC0xNFoiIGZpbGw9IiNGNTlFMEIiLz48L2c+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0Mi45MSwxMDcuNDApIHNjYWxlKDAuMDY0MDAsLTAuMDY0MDApIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwLjAwLDApIj48cGF0aCBkPSJNNjYgMFY3MDBIMTk4VjQyMkgyMTZMNDQzIDcwMEg2MTJMMzIwIDM1NUw2MjIgMEg0NDhMMjE2IDI4NEgxOThWMFoiIGZpbGw9IiNGQUY3RjAiLz48L2c+PGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjExLjAwLDApIj48cGF0aCBkPSJNMjI0IC0xNFExNzEgLTE0IDEyOS4wIDQuNVE4NyAyMyA2Mi41IDU4LjVRMzggOTQgMzggMTQ1UTM4IDE5NiA2Mi41IDIzMC41UTg3IDI2NSAxMzAuNSAyODIuNVExNzQgMzAwIDIzMCAzMDBIMzY2VjMyOFEzNjYgMzYzIDM0NC4wIDM4NS41UTMyMiA0MDggMjc0IDQwOFEyMjcgNDA4IDIwNC4wIDM4Ni41UTE4MSAzNjUgMTc0IDMzMUw1OCAzNzBRNzAgNDA4IDk2LjUgNDM5LjVRMTIzIDQ3MSAxNjcuNSA0OTAuNVEyMTIgNTEwIDI3NiA1MTBRMzc0IDUxMCA0MzEuMCA0NjEuMFE0ODggNDEyIDQ4OCAzMTlWMTM0UTQ4OCAxMDQgNTE2IDEwNEg1NTZWMEg0NzJRNDM1IDAgNDExLjAgMTguMFEzODcgMzYgMzg3IDY2VjY3SDM2OFEzNjQgNTUgMzUwLjAgMzUuNVEzMzYgMTYgMzA2LjAgMS4wUTI3NiAtMTQgMjI0IC0xNFpNMjQ2IDg4UTI5OSA4OCAzMzIuNSAxMTcuNVEzNjYgMTQ3IDM2NiAxOTZWMjA2SDIzOVEyMDQgMjA2IDE4NC4wIDE5MS4wUTE2NCAxNzYgMTY0IDE0OVExNjQgMTIyIDE4NS4wIDEwNS4wUTIwNiA4OCAyNDYgODhaIiBmaWxsPSIjRkFGN0YwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDExNzQuMDAsMCkiPjxwYXRoIGQ9Ik03MCAwVjQ5NkgxOTZWMFpNMTMzIDU1NFE5OSA1NTQgNzUuNSA1NzYuMFE1MiA1OTggNTIgNjM0UTUyIDY3MCA3NS41IDY5Mi4wUTk5IDcxNCAxMzMgNzE0UTE2OCA3MTQgMTkxLjAgNjkyLjBRMjE0IDY3MCAyMTQgNjM0UTIxNCA1OTggMTkxLjAgNTc2LjBRMTY4IDU1NCAxMzMgNTU0WiIgZmlsbD0iI0ZBRjdGMCIvPjwvZz48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgxNDI1LjAwLDApIj48cGF0aCBkPSJNNTIgMFYxNTBMMzI0IDM3NlYzOTJINjJWNDk2SDQ2MlYzNDZMMTkwIDEyMFYxMDRINDcwVjBaIiBmaWxsPSIjRkFGN0YwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDE5MjguMDAsMCkiPjxwYXRoIGQ9Ik0yOTYgLTE0UTIyMiAtMTQgMTY1LjUgMTcuNVExMDkgNDkgNzcuNSAxMDYuNVE0NiAxNjQgNDYgMjQyVjI1NFE0NiAzMzIgNzcuMCAzODkuNVExMDggNDQ3IDE2NC4wIDQ3OC41UTIyMCA1MTAgMjk0IDUxMFEzNjcgNTEwIDQyMS4wIDQ3Ny41UTQ3NSA0NDUgNTA1LjAgMzg3LjVRNTM1IDMzMCA1MzUgMjU0VjIxMUgxNzRRMTc2IDE2MCAyMTIuMCAxMjguMFEyNDggOTYgMzAwIDk2UTM1MyA5NiAzNzguMCAxMTkuMFE0MDMgMTQyIDQxNiAxNzBMNTE5IDExNlE1MDUgOTAgNDc4LjUgNTkuNVE0NTIgMjkgNDA4LjAgNy41UTM2NCAtMTQgMjk2IC0xNFpNMTc1IDMwNUg0MDdRNDAzIDM0OCAzNzIuNSAzNzQuMFEzNDIgNDAwIDI5MyA0MDBRMjQyIDQwMCAyMTIuMCAzNzQuMFExODIgMzQ4IDE3NSAzMDVaIiBmaWxsPSIjRkFGN0YwIi8+PC9nPjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDI0OTAuMDAsMCkiPjxwYXRoIGQ9Ik03MCAwVjQ5NkgxOTRWNDMxSDIxMlEyMjQgNDU3IDI1Ny4wIDQ4MC41UTI5MCA1MDQgMzU3IDUwNFE0MTUgNTA0IDQ1OC41IDQ3Ny41UTUwMiA0NTEgNTI2LjAgNDA0LjVRNTUwIDM1OCA1NTAgMjk2VjBINDI0VjI4NlE0MjQgMzQyIDM5Ni41IDM3MC4wUTM2OSAzOTggMzE4IDM5OFEyNjAgMzk4IDIyOC4wIDM1OS41UTE5NiAzMjEgMTk2IDI1MlYwWiIgZmlsbD0iI0ZBRjdGMCIvPjwvZz48L2c+PC9zdmc+Cg==" alt="tsKaizen" width="481" height="170">
+      <p class="foot-slogan">Innovating tech with AI. Building a better future with automation.</p>
+    </div>
+    <nav class="foot-nav" aria-label="Footer">
+      <div class="foot-col">
+        <h5>Explore</h5>
+        <a href="#/home">Home</a>
+        <a href="#/services">Services</a>
+        <a href="#/data">The Data</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#/method">Method</a>
+        <a href="#/about">About Us</a>
+        <a href="#/consultation">Book a consultation</a>
+      </div>
+    </nav>
+    <div class="foot-contact">
+      <a href="tel:+15612603951">+1 (561) 260-3951</a>
+      <a href="mailto:anthonypichardo31@tskaizen.com">anthonypichardo31@tskaizen.com</a>
+    </div>
+  </div>
+  <div class="foot-copy"><span>&copy; <span id="yr"></span> tsKaizen. All rights reserved.</span><span>Orlando, Florida</span></div>
+</div></footer>
+<button class="totop" id="toTop" type="button" aria-label="Back to top">&#8593;</button>
+
+<div class="chat-fab" id="chatFab" role="button" tabindex="0" aria-label="Open assistant"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRzay1ncmFkIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEY0NkU1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZD0iTSAzNS4wMCAyNi4wMiBBIDMwLjAwIDMwLjAwIDAgMSAwIDY1LjkwIDI2LjU2IFEgNjcuMjggMjguMjEgNzAuMDUgMjguMTAgTCA3Ny4xNyAyOC4zOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3Rzay1ncmFkKSIgc3Ryb2tlLXdpZHRoPSI5LjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNIDg3LjU4IDE5LjMzIEwgODQuMTMgMzMuMTkgTCA3My4zNyAyMC44MiBaIiBmaWxsPSIjRjU5RTBCIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI0Ni4yNCIgeTI9IjYyLjM0IiBzdHJva2U9IiM0RjQ2RTUiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI1OS4xOSIgeTI9IjU5LjcxIiBzdHJva2U9IiNGNTlFMEIiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDYuMjQiIGN5PSI2Mi4zNCIgcj0iMi42MCIgZmlsbD0iIzRGNDZFNSIvPjxjaXJjbGUgY3g9IjU5LjE5IiBjeT0iNTkuNzEiIHI9IjIuNjAiIGZpbGw9IiNGNTlFMEIiLz48Y2lyY2xlIGN4PSI1MC4wMCIgY3k9IjUyLjAwIiByPSI2LjIwIiBmaWxsPSIjNEY0NkU1Ii8+PGNpcmNsZSBjeD0iNTAuMDAiIGN5PSI1Mi4wMCIgcj0iMi42MCIgZmlsbD0iI0ZBRjdGMCIvPjwvc3ZnPgo=" alt="" width="34" height="34"></div>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-head">
+    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48ZGVmcz48bGluZWFyR3JhZGllbnQgaWQ9InRzay1ncmFkIiB4MT0iMCIgeTE9IjEiIHgyPSIxIiB5Mj0iMCI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjNEY0NkU1Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjRjU5RTBCIi8+PC9saW5lYXJHcmFkaWVudD48L2RlZnM+PHBhdGggZD0iTSAzNS4wMCAyNi4wMiBBIDMwLjAwIDMwLjAwIDAgMSAwIDY1LjkwIDI2LjU2IFEgNjcuMjggMjguMjEgNzAuMDUgMjguMTAgTCA3Ny4xNyAyOC4zOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJ1cmwoI3Rzay1ncmFkKSIgc3Ryb2tlLXdpZHRoPSI5LjUwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz48cGF0aCBkPSJNIDg3LjU4IDE5LjMzIEwgODQuMTMgMzMuMTkgTCA3My4zNyAyMC44MiBaIiBmaWxsPSIjRjU5RTBCIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI0Ni4yNCIgeTI9IjYyLjM0IiBzdHJva2U9IiM0RjQ2RTUiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGxpbmUgeDE9IjUwLjAwIiB5MT0iNTIuMDAiIHgyPSI1OS4xOSIgeTI9IjU5LjcxIiBzdHJva2U9IiNGNTlFMEIiIHN0cm9rZS13aWR0aD0iMS42MCIgb3BhY2l0eT0iMC45Ii8+PGNpcmNsZSBjeD0iNDYuMjQiIGN5PSI2Mi4zNCIgcj0iMi42MCIgZmlsbD0iIzRGNDZFNSIvPjxjaXJjbGUgY3g9IjU5LjE5IiBjeT0iNTkuNzEiIHI9IjIuNjAiIGZpbGw9IiNGNTlFMEIiLz48Y2lyY2xlIGN4PSI1MC4wMCIgY3k9IjUyLjAwIiByPSI2LjIwIiBmaWxsPSIjNEY0NkU1Ii8+PGNpcmNsZSBjeD0iNTAuMDAiIGN5PSI1Mi4wMCIgcj0iMi42MCIgZmlsbD0iI0ZBRjdGMCIvPjwvc3ZnPgo=" alt="" width="30" height="30">
+    <div class="who"><h4>tsKaizen Assistant</h4><small>Usually replies instantly</small></div>
+    <span class="dot" aria-hidden="true"></span>
+  </div>
+  <div class="chat-body" id="chatBody"><div class="msg bot">Hi! I&rsquo;m the tsKaizen assistant. Want to know how a website, an AI assistant, or automation could help your business? Ask away, or try &ldquo;What do you offer?&rdquo;</div></div>
+  <div class="chat-input"><input id="chatInput" type="text" placeholder="Type a message..." autocomplete="off" aria-label="Message"><button id="chatSend" type="button" aria-label="Send">&#8593;</button></div>
+</div>
+
+
+<script>
+/* tsKaizen — shared site behaviour (all pages) */
+(function () {
+  'use strict';
+
+  /* current year in the footer */
+  var yr = document.getElementById('yr');
+  if (yr) yr.textContent = new Date().getFullYear();
+
+  /* mark the nav link for the page we are on */
+  var page = (document.body.getAttribute('data-page') || '').toLowerCase();
+  document.querySelectorAll('.nav a[data-nav]').forEach(function (a) {
+    if (a.getAttribute('data-nav') === page) a.classList.add('active');
+  });
+
+  /* mobile nav drawer */
+  var toggle = document.getElementById('navToggle');
+  var nav = document.getElementById('siteNav');
+  if (toggle && nav) {
+    var setOpen = function (open) {
+      nav.classList.toggle('open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.style.overflow = open ? 'hidden' : '';
+    };
+    toggle.addEventListener('click', function () {
+      setOpen(!nav.classList.contains('open'));
+    });
+    nav.addEventListener('click', function (e) {
+      if (e.target.closest('a')) setOpen(false);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') setOpen(false);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 880) setOpen(false);
+    });
+  }
+
+  /* scroll reveal */
+  var reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    reveals.forEach(function (el) { io.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* back to top */
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    window.addEventListener('scroll', function () {
+      toTop.classList.toggle('show', window.scrollY > 700);
+    }, { passive: true });
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     Consultation form -> Formspree
+     ------------------------------------------------------------------ */
+  var FORMSPREE = 'https://formspree.io/f/xkolwdag';
+  var CONTACT_EMAIL = 'anthonypichardo31@tskaizen.com';
+  var form = document.getElementById('consultForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      submitConsult();
+    });
+  }
+
+  async function submitConsult() {
+    var val = function (id) {
+      var el = document.getElementById(id);
+      return el ? (el.value || '').trim() : '';
+    };
+    var name = val('f-name'), company = val('f-company'), email = val('f-email'),
+        phone = val('f-phone'), service = val('f-service'), budget = val('f-budget'),
+        problem = val('f-problem');
+    var msg = document.getElementById('formMsg');
+
+    if (!name || !company || !email || !service || !problem) {
+      msg.className = 'form-msg err';
+      msg.textContent = 'Please fill in all required fields so I can help you properly.';
+      return;
+    }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      msg.className = 'form-msg err';
+      msg.textContent = 'That email does not look right. Mind double-checking it?';
+      return;
+    }
+
+    var btn = form.querySelector('button[type="submit"]');
+    if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+
+    try {
+      var res = await fetch(FORMSPREE, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          name: name, company: company, email: email, phone: phone || '-',
+          service: service, budget: budget || 'Not specified', message: problem,
+          _subject: 'New consultation: ' + company + ' (' + service + ')'
+        })
+      });
+      if (res.ok) {
+        msg.className = 'form-msg ok';
+        msg.textContent = 'Thanks ' + name + '! Your request is in. I will get back to you fast.';
+        ['f-name', 'f-company', 'f-email', 'f-phone', 'f-service', 'f-budget', 'f-problem']
+          .forEach(function (id) { var el = document.getElementById(id); if (el) el.value = ''; });
+      } else {
+        msg.className = 'form-msg err';
+        msg.textContent = 'Something went wrong. Please email ' + CONTACT_EMAIL + ' directly.';
+      }
+    } catch (err) {
+      msg.className = 'form-msg err';
+      msg.textContent = 'Network hiccup. Please email ' + CONTACT_EMAIL + ' directly.';
+    } finally {
+      if (btn) { btn.disabled = false; btn.textContent = 'Send my request'; }
+    }
+  }
+
+  /* ------------------------------------------------------------------
+     Assistant widget (demo replies, upgraded to the live bot when set)
+     ------------------------------------------------------------------ */
+  var BOT_URL = 'https://ts-kaizen-website--AnthonyPichardo.replit.app';
+  var fab = document.getElementById('chatFab'),
+      panel = document.getElementById('chatPanel'),
+      body = document.getElementById('chatBody'),
+      input = document.getElementById('chatInput'),
+      send = document.getElementById('chatSend');
+
+  if (fab && panel) {
+    var toggleChat = function () {
+      panel.classList.toggle('open');
+      if (panel.classList.contains('open') && input) input.focus();
+    };
+    fab.addEventListener('click', toggleChat);
+    fab.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleChat(); }
+    });
+
+    var add = function (text, who) {
+      var d = document.createElement('div');
+      d.className = 'msg ' + who;
+      d.textContent = text;
+      body.appendChild(d);
+      body.scrollTop = body.scrollHeight;
+    };
+
+    var demo = function (q) {
+      q = q.toLowerCase();
+      if (/offer|service|do you|build|provide/.test(q)) return 'I offer three things: modern websites, AI assistants that answer chats and calls 24/7, and automation that handles repetitive work. Which sounds closest to what you need?';
+      if (/price|cost|how much|budget/.test(q)) return 'Pricing depends on your needs. Most clients start with a free consultation, then choose a build plus a monthly plan to keep it improving. Want to book that consultation?';
+      if (/website|site|web/.test(q)) return 'I build fast, modern, mobile-first websites that turn visitors into customers. Want me to look at your current one?';
+      if (/chat|call|phone|bot|assistant/.test(q)) return 'The AI assistant answers customer messages and phone calls around the clock and captures every lead, even when you are closed. You are using a small demo of it now.';
+      if (/automat|workflow|streamline/.test(q)) return 'Automation takes the busywork off your plate: follow-ups, scheduling, reminders, and data entry that run themselves. What task eats the most time?';
+      if (/data|stat|trend|grow/.test(q)) return 'AI use jumped from 20% of organizations in 2017 to 88% in 2025, and most adopters see a return within the first year. Starting early is the easiest edge you can get.';
+      if (/work|project|client|portfolio|example/.test(q)) return 'Recent work includes Wax on Wheels (mobile detailing), For the Plot (creative studio), and Cafe Coqui (neighborhood cafe). Head to the Home page to see what each one needed.';
+      if (/consult|book|meet|contact/.test(q)) return 'Love it. Open the Book a free consultation page and tell me what you are solving, or email ' + CONTACT_EMAIL + '. I respond fast.';
+      if (/hi|hello|hey/.test(q)) return 'Hey! Ask me about websites, AI assistants, or automation and how they could help your business.';
+      return 'Great question. The best next step is a quick consultation, free and no obligation. Open the consultation page and tell me more.';
+    };
+
+    var csend = async function () {
+      var q = (input.value || '').trim();
+      if (!q) return;
+      add(q, 'user');
+      input.value = '';
+      if (BOT_URL) {
+        try {
+          var r = await fetch(BOT_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: q })
+          });
+          var d = await r.json();
+          add(d.reply || d.text || 'Thanks! I will get back to you shortly.', 'bot');
+          return;
+        } catch (err) { /* fall through to the local demo reply */ }
+      }
+      setTimeout(function () { add(demo(q), 'bot'); }, 380);
+    };
+
+    if (send) send.addEventListener('click', csend);
+    if (input) input.addEventListener('keydown', function (e) { if (e.key === 'Enter') csend(); });
+  }
+})();
+
+</script>
+<script>
+
+/* hash router: only used by the single-file preview build */
+(function () {
+  var ROUTES = ['home', 'services', 'data', 'method', 'about', 'consultation'];
+  var TITLES = {
+    home: 'tsKaizen | AI and Automation for Local Business',
+    services: 'Services | tsKaizen',
+    data: 'The Data | tsKaizen',
+    method: 'Method | tsKaizen',
+    about: 'About Us | tsKaizen',
+    consultation: 'Book a Free Consultation | tsKaizen'
+  };
+
+  function parse() {
+    var raw = (location.hash || '').replace(/^#\/?/, '');
+    var bits = raw.split('/');
+    var route = ROUTES.indexOf(bits[0]) > -1 ? bits[0] : 'home';
+    return { route: route, anchor: bits[1] || '' };
+  }
+
+  function show(first) {
+    var p = parse();
+    document.querySelectorAll('.route').forEach(function (el) {
+      el.hidden = el.getAttribute('data-route') !== p.route;
+    });
+    document.body.setAttribute('data-page', p.route);
+    document.title = TITLES[p.route];
+    document.querySelectorAll('.nav a[data-nav]').forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('data-nav') === p.route);
+    });
+    document.querySelectorAll('.route:not([hidden]) .reveal').forEach(function (el) {
+      el.classList.add('in');
+    });
+    if (p.anchor) {
+      var t = document.querySelector('.route:not([hidden]) #' + p.anchor);
+      if (t) { t.scrollIntoView({ behavior: first ? 'auto' : 'smooth', block: 'start' }); return; }
+    }
+    if (!first) window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  window.addEventListener('hashchange', function () { show(false); });
+  show(true);
+})();
+
+</script>
