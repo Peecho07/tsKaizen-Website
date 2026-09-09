@@ -254,6 +254,16 @@ input:focus,select:focus,textarea:focus{outline:none;background:var(--white);bor
 .form-status.ok{display:block;background:var(--indigo);color:#fff}
 .form-status.err{display:block;background:var(--amber-tint);color:var(--ink)}
 
+/* ---------- payback calculator ---------- */
+.calc{display:grid;grid-template-columns:1fr 1fr;gap:16px 18px}
+.calc .field{margin:0}
+.calc label{font-size:.84rem;font-weight:600;color:rgba(250,247,240,.74);margin-bottom:7px;line-height:1.35}
+.calc .in{position:relative}
+.calc .in .pre{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-family:'Space Grotesk',Arial,sans-serif;font-weight:500;color:var(--slate);pointer-events:none}
+.calc input{font-family:'Space Grotesk',Arial,sans-serif;font-weight:500;padding:13px 14px}
+.calc input.money{padding-left:28px}
+@media (max-width:520px){.calc{grid-template-columns:1fr}}
+
 /* ---------- faq ---------- */
 .faq-item{border-top:3px solid var(--line);padding:26px 0}
 .faq-item:last-child{border-bottom:3px solid var(--line)}
@@ -385,7 +395,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <div class="stat a"><div class="n">2 to 3 weeks</div><div class="k">Typical turnaround on a small business site, start to launch</div></div>
         <div class="stat b"><div class="n">Fixed price</div><div class="k">Quoted before the work starts. No hourly billing, no surprise invoice</div></div>
         <div class="stat c"><div class="n">You own it</div><div class="k">Your domain, your code, your accounts, in your name from day one</div></div>
-        <div class="stat d"><div class="n">One person</div><div class="k">You talk to whoever is building it, every time</div></div>
+        <div class="stat d"><div class="n">One person</div><div class="k">The person you talk to is the person building your site</div></div>
       </div>
     </div>
   </section>
@@ -416,6 +426,16 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </section>
 
+  <section class="band b-white">
+    <div class="wrap">
+      <hr class="rule">
+      <h2>Recent builds</h2>
+      <p class="lead mt-s">Three local businesses, three different industries, the same approach. Every one of these is a real build, and we will walk you through any of them on a call.</p>
+      <div class="grid g3 mt-m" id="workGrid"></div>
+      <div class="btn-row mt-m"><a class="btn btn-primary" href="#/work">See all of the work</a></div>
+    </div>
+  </section>
+
   <section class="band b-ink">
     <div class="deco deco-circle" style="width:400px;height:400px;background:var(--indigo);opacity:.2;left:-150px;bottom:-160px"></div>
     <div class="wrap">
@@ -438,7 +458,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </section>
 
-  <section class="band b-white">
+  <section class="band b-warm">
     <div class="wrap">
       <div class="split">
         <div>
@@ -450,7 +470,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         </div>
         <div class="card card-amber">
           <h3>What a project includes</h3>
-          <p style="margin-top:6px"><strong style="font-family:'Space Grotesk';font-size:2.1rem;letter-spacing:-.03em" id="starterPrice"></strong> <span class="muted">/ fixed price, quoted up front</span></p>
+          <p style="margin-top:6px"><strong style="font-family:'Space Grotesk';font-size:1.75rem;letter-spacing:-.03em">One fixed price</strong> <span class="muted">/ quoted after a free call, in writing</span></p>
           <ul class="checks mt-s indigo">
             <li>Designed around your business, not a template</li>
             <li>Mobile first, built to load fast</li>
@@ -461,16 +481,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           <div class="btn-row mt-s"><a class="btn btn-ink" href="#/consult">Start with a free call</a></div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <section class="band b-warm">
-    <div class="wrap">
-      <hr class="rule">
-      <h2>Recent builds</h2>
-      <p class="lead mt-s">Local businesses, different industries, same approach.</p>
-      <div class="grid g3 mt-m" id="workGrid"></div>
-      <div class="btn-row mt-m"><a class="btn btn-primary" href="#/work">See the work in detail</a></div>
     </div>
   </section>
 
@@ -554,6 +564,15 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <hr class="rule indigo">
       <h2>Pricing</h2>
       <div class="price-line mt-m" id="priceLine"></div>
+
+      <h3 class="mt-l">How the number gets set</h3>
+      <p class="lead mt-s">Three steps, and you can stop after any of them at no cost.</p>
+      <div class="grid g3 mt-m">
+        <div class="card card-white"><h4>1. A free consultation</h4><p class="small mt-s muted">Thirty minutes on what you actually need and what it has to connect to. Nothing is quoted on the spot, and there is nothing to sign.</p></div>
+        <div class="card card-white"><h4>2. A written scope</h4><p class="small mt-s muted">Everything the build includes, listed out, so you can see exactly what you would be paying for before you see a price at all.</p></div>
+        <div class="card card-white"><h4>3. One fixed price</h4><p class="small mt-s muted">Quoted against that scope and held to it. You approve it before any work starts, and you are free to take it elsewhere.</p></div>
+      </div>
+
       <h3 class="mt-l">What moves the number</h3>
       <p class="lead mt-s">A five page site for a photographer and an online menu system for a restaurant are not the same job. These are the things we look at on the call.</p>
       <div class="grid g4 mt-m">
@@ -562,7 +581,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <div class="card card-white"><h4>What it connects to</h4><p class="small mt-s muted">Booking, ordering, payments, a calendar, a CRM you already use.</p></div>
         <div class="card card-white"><h4>What runs after</h4><p class="small mt-s muted">Automations behind the forms, and whether an assistant is part of it.</p></div>
       </div>
-      <p class="tiny mt-m">If the scope changes mid project, you get a new number to approve rather than a bigger invoice at the end.</p>
+      <p class="tiny mt-m">Most builds are followed by an optional monthly care plan for hosting, updates and monitoring. It is quoted alongside the project and it is never required. If the scope changes mid project, you get a new number to approve rather than a bigger invoice at the end.</p>
     </div>
   </section>
 
@@ -572,22 +591,57 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <div>
           <span class="eyebrow on-dark">The math worth checking</span>
           <h2 style="color:var(--ivory)">Run your own numbers</h2>
-          <p class="lead mt-s">Automation is only worth it if the hours it returns are worth more than it costs. Here is the shape of that calculation, using placeholder figures. We fill it in with yours on the call.</p>
-          <p class="tiny mt-s">Illustrative example. Not a projection of your results.</p>
+          <p class="lead mt-s">Automation is only worth buying if the hours it hands back are worth more than it costs. Change the four boxes to match your business and the payback recalculates as you type.</p>
+          <p class="mt-s">Nothing here is filled in from an industry average or a study. Every figure is one you can check against your own week, and the four starting values are only a place to begin. What each one means is spelled out underneath.</p>
+          <p class="tiny mt-s">This is a calculator, not a projection. Nothing here is a claim about what your business will save.</p>
         </div>
         <div>
-          <table class="tbl">
+          <div class="calc">
+            <div class="field">
+              <label for="calcHours">Hours a week on the task now</label>
+              <div class="in"><input id="calcHours" type="number" min="0" max="80" step="0.5" inputmode="decimal"></div>
+            </div>
+            <div class="field">
+              <label for="calcAfter">Hours a week it still takes after</label>
+              <div class="in"><input id="calcAfter" type="number" min="0" max="80" step="0.5" inputmode="decimal"></div>
+            </div>
+            <div class="field">
+              <label for="calcValue">What one of those hours is worth</label>
+              <div class="in"><span class="pre">$</span><input id="calcValue" class="money" type="number" min="0" max="1000" step="1" inputmode="decimal"></div>
+            </div>
+            <div class="field">
+              <label for="calcCost">Build, plus a year of support</label>
+              <div class="in"><span class="pre">$</span><input id="calcCost" class="money" type="number" min="0" max="500000" step="100" inputmode="decimal"></div>
+            </div>
+          </div>
+          <table class="tbl mt-m">
             <tbody>
-              <tr><td>Hours a week on one repeat task</td><td class="mono" style="text-align:right">6</td></tr>
-              <tr><td>Hours left after automating it</td><td class="mono" style="text-align:right">1</td></tr>
-              <tr><td>Hours returned weekly</td><td class="mono" style="text-align:right">5</td></tr>
-              <tr><td>What an hour of that time is worth</td><td class="mono" style="text-align:right">$40</td></tr>
-              <tr><td><strong>Value returned per year</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>$10,400</strong></td></tr>
-              <tr><td>One time build, plus a year of support</td><td class="mono" style="text-align:right">$3,000</td></tr>
-              <tr><td><strong>Break even</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong>around month four</strong></td></tr>
+              <tr><td>Hours returned weekly</td><td class="mono" style="text-align:right" id="calcReturned">5</td></tr>
+              <tr><td><strong>Value returned per year</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong id="calcYear">$10,400</strong></td></tr>
+              <tr><td><strong>Break even</strong></td><td class="mono" style="text-align:right;color:var(--amber)"><strong id="calcBreak">around month 4</strong></td></tr>
             </tbody>
           </table>
-          <p class="tiny mt-s">If your numbers do not clear the cost, we will tell you on the first call instead of selling you the project.</p>
+          <p class="tiny mt-s" id="calcNote">If your numbers do not clear the cost, we will tell you on the first call instead of selling you the project.</p>
+        </div>
+      </div>
+
+      <h3 class="mt-l" style="color:var(--ivory)">Where each starting figure comes from</h3>
+      <div class="grid g4 mt-m">
+        <div class="card card-ink" style="background:rgba(250,247,240,.06)">
+          <h4 style="color:var(--ivory)">Hours a week</h4>
+          <p class="small mt-s">The one task you already know eats your week: the inbox, the intake form, the spreadsheet you retype into. Six is a round placeholder, roughly an hour a working day. We count yours properly during the audit on the first call.</p>
+        </div>
+        <div class="card card-ink" style="background:rgba(250,247,240,.06)">
+          <h4 style="color:var(--ivory)">Hours left after</h4>
+          <p class="small mt-s">Automation rarely takes a task to zero. Someone still reviews the exceptions, so an hour stays on the books rather than us promising you the whole six back.</p>
+        </div>
+        <div class="card card-ink" style="background:rgba(250,247,240,.06)">
+          <h4 style="color:var(--ivory)">What the hour is worth</h4>
+          <p class="small mt-s">Your number, not a market rate we picked: the wage plus payroll cost of whoever does the task today, or what you would have billed a customer for that same hour.</p>
+        </div>
+        <div class="card card-ink" style="background:rgba(250,247,240,.06)">
+          <h4 style="color:var(--ivory)">Build, plus a year of support</h4>
+          <p class="small mt-s">Whatever your written quote says. We do not publish prices, so until you have one, put in the most you would be comfortable spending and see whether the hours cover it.</p>
         </div>
       </div>
     </div>
@@ -768,7 +822,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <div>
           <hr class="rule indigo">
           <h2>How we work</h2>
-          <p class="lead mt-s">Founded and run by Anthony Pichardo. You talk to the person building the thing, every time.</p>
+          <p class="lead mt-s">Founded and run by Anthony Pichardo. The person you talk to on the first call is the person who designs it, builds it and hands it over.</p>
           <p class="mt-s muted">The background is operations: process design, workflow automation, and the unglamorous work of making information move without a person carrying it. That has meant building a full operating system for a 300 plus member organization, with attendance, points and communications automated end to end, and shipping a tournament platform that ran with thirty concurrent live users.</p>
           <p class="mt-s muted">tsKaizen applies that to small businesses. A cafe, a detail shop, a photographer and a bookstore all have the same underlying problem: too much of the week goes to work that a system should be doing.</p>
         </div>
@@ -955,8 +1009,16 @@ const CONFIG = {
   email: "anthonypichardo31@tskaizen.com",
   region: "Orlando and Central Florida",
   formEndpoint: "https://formspree.io/f/xkolwdag",
-  startingPrice: "$2,500",
-  carePlanFrom: "$150",
+  /* No prices are published. Every project is quoted after the consultation.
+     The figures below are only the starting positions of the payback
+     calculator, which the visitor overwrites with their own. They are not
+     prices and not a claim about results. */
+  calc: {
+    hoursNow: 6,       // hours a week one repeat task takes today
+    hoursAfter: 1,     // hours a week it still takes once automated
+    hourValue: 40,     // what one of those hours costs the business
+    projectCost: 3000  // one time build plus a first year of support
+  },
   work: [
     { name: "Wax On Wheels", meta: "Mobile detailing, Wellington FL", desc: "Full site rebuild across six pages, carrying over the original copy and imagery, rebuilt mobile first with the brand colors intact.", tags: ["Website", "Rebuild"], a: "#4F46E5", b: "#16182E", ink: "#FAF7F0" },
     { name: "For The Plot", meta: "Bookstore and cafe, Avalon Park", desc: "Redesign for a bookstore and cafe, structured around what a first time visitor actually needs to find: what it is, where it is, and when it is open.", tags: ["Website", "Redesign"], a: "#F59E0B", b: "#D97706", ink: "#16182E" },
@@ -970,8 +1032,8 @@ function renderPricing(){
   if(!el) return;
   el.innerHTML = `
     <div class="deco deco-circle" style="width:320px;height:320px;background:#fff;opacity:.07;right:-90px;top:-110px"></div>
-    <div class="big">Projects start at <em>${CONFIG.startingPrice}</em>.</div>
-    <div class="sub">Care plans from ${CONFIG.carePlanFrom} a month. Every project is quoted individually after the first call, because a five page site and a full booking system are not the same job.</div>
+    <div class="big">Your price comes from the call, <em>not from this page</em>.</div>
+    <div class="sub">There is no price list here and no starting number to anchor you. We talk first, we look at what you actually need, and then you get one fixed price in writing for it. The consultation costs nothing and commits you to nothing.</div>
     <span class="fixed">Fixed price, in writing, before any work starts</span>`;
 }
 function renderWork(){
@@ -997,10 +1059,67 @@ function renderContact(){
   if(foot){ foot.href = mail; foot.textContent = CONFIG.email; }
   const inline = document.getElementById('emailInline');
   if(inline){ inline.textContent = CONFIG.email; }
-  const starter = document.getElementById('starterPrice');
-  if(starter){ starter.textContent = 'From ' + CONFIG.startingPrice; }
   const y = document.getElementById('year');
   if(y){ y.textContent = new Date().getFullYear(); }
+}
+
+/* ---------- payback calculator ---------- */
+function initCalc(){
+  const hoursEl = document.getElementById('calcHours');
+  const afterEl = document.getElementById('calcAfter');
+  const valueEl = document.getElementById('calcValue');
+  const costEl  = document.getElementById('calcCost');
+  const outHours = document.getElementById('calcReturned');
+  const outYear  = document.getElementById('calcYear');
+  const outBreak = document.getElementById('calcBreak');
+  const note     = document.getElementById('calcNote');
+  if(!hoursEl || !afterEl || !valueEl || !costEl || !outHours || !outYear || !outBreak) return;
+
+  hoursEl.value = CONFIG.calc.hoursNow;
+  afterEl.value = CONFIG.calc.hoursAfter;
+  valueEl.value = CONFIG.calc.hourValue;
+  costEl.value  = CONFIG.calc.projectCost;
+
+  function num(el, max){
+    const v = parseFloat(el.value);
+    if(isNaN(v) || v < 0) return 0;
+    return Math.min(v, max);
+  }
+  function money(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function update(){
+    const now   = num(hoursEl, 80);
+    const after = Math.min(num(afterEl, 80), now);
+    const rate  = num(valueEl, 1000);
+    const cost  = num(costEl, 500000);
+    const returned = now - after;
+    const perYear  = returned * rate * 52;
+
+    outHours.textContent = String(Math.round(returned * 10) / 10);
+    outYear.textContent  = money(perYear);
+
+    if(perYear <= 0){
+      outBreak.textContent = 'nothing to pay back yet';
+    }else if(cost <= 0){
+      outBreak.textContent = 'immediately';
+    }else{
+      const months = Math.ceil(cost / (perYear / 12));
+      outBreak.textContent = months > 36 ? 'past three years' : 'around month ' + months;
+    }
+
+    if(note){
+      note.textContent = perYear <= 0
+        ? 'On these numbers there is nothing to gain, and that is a real answer. We would give you the same one on the call.'
+        : 'If your numbers do not clear the cost, we will tell you on the first call instead of selling you the project.';
+    }
+  }
+
+  [hoursEl, afterEl, valueEl, costEl].forEach(el => el.addEventListener('input', update));
+  afterEl.addEventListener('change', function(){
+    if(num(afterEl, 80) > num(hoursEl, 80)){ afterEl.value = hoursEl.value; }
+    update();
+  });
+  update();
 }
 
 /* ---------- router ---------- */
@@ -1072,6 +1191,7 @@ document.getElementById('consultForm').addEventListener('submit', async function
 renderPricing();
 renderWork();
 renderContact();
+initCalc();
 route();
 </script>
 </body>
