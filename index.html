@@ -339,7 +339,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     <nav class="nav-links" aria-label="Primary">
       <a href="#/" data-route="/">Home</a>
       <a href="#/services" data-route="/services">Services</a>
-      <a href="#/work" data-route="/work">Work</a>
       <a href="#/method" data-route="/method">Method</a>
       <a href="#/about" data-route="/about">About Us</a>
       <a class="btn btn-amber nav-cta" href="#/consult">Book a free consultation</a>
@@ -351,7 +350,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
   <div class="mobile-menu" id="mobileMenu">
     <a href="#/">Home</a>
     <a href="#/services">Services</a>
-    <a href="#/work">Work</a>
     <a href="#/method">Method</a>
     <a href="#/about">About Us</a>
     <a href="#/consult" style="color:var(--amber)">Book a free consultation</a>
@@ -374,7 +372,7 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
           <p class="lead hero-anim d3">tsKaizen builds websites, automates the manual work that happens after someone fills out the form, and sets up AI assistants that answer questions around the clock. One person, start to finish.</p>
           <div class="btn-row mt-m hero-anim d3">
             <a class="btn btn-amber" href="#/consult">Book a free consultation</a>
-            <a class="btn btn-outline light" href="#/work">See the work</a>
+            <a class="btn btn-outline light" href="#/services">See what we do</a>
           </div>
         </div>
         <div class="readout hero-anim d3">
@@ -432,7 +430,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
       <h2>Recent builds</h2>
       <p class="lead mt-s">Three local businesses, three different industries, the same approach. Every one of these is a real build, and we will walk you through any of them on a call.</p>
       <div class="grid g3 mt-m" id="workGrid"></div>
-      <div class="btn-row mt-m"><a class="btn btn-primary" href="#/work">See all of the work</a></div>
     </div>
   </section>
 
@@ -978,7 +975,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
         <ul>
           <li><a href="#/">Home</a></li>
           <li><a href="#/services">Services</a></li>
-          <li><a href="#/work">Work</a></li>
           <li><a href="#/method">Method</a></li>
           <li><a href="#/about">About Us</a></li>
           <li><a href="#/consult">Book a free consultation</a></li>
@@ -1123,6 +1119,9 @@ function initCalc(){
 }
 
 /* ---------- router ---------- */
+/* /work is intentionally unlinked: it is not in the nav, the mobile menu,
+   the footer or any button, but the route still resolves so the page can be
+   sent to someone directly. Re-add the nav entry to bring it back. */
 const ROUTES = { '/':'page-home', '/services':'page-services', '/work':'page-work', '/method':'page-method', '/about':'page-about', '/consult':'page-consult' };
 const TITLES = {
   '/':'tsKaizen | Websites, automation and AI assistants',
