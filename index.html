@@ -424,15 +424,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </section>
 
-  <section class="band b-white">
-    <div class="wrap">
-      <hr class="rule">
-      <h2>Recent builds</h2>
-      <p class="lead mt-s">Three local businesses, three different industries, the same approach. Every one of these is a real build, and we will walk you through any of them on a call.</p>
-      <div class="grid g3 mt-m" id="workGrid"></div>
-    </div>
-  </section>
-
   <section class="band b-ink">
     <div class="deco deco-circle" style="width:400px;height:400px;background:var(--indigo);opacity:.2;left:-150px;bottom:-160px"></div>
     <div class="wrap">
@@ -832,15 +823,6 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
     </div>
   </section>
 
-  <section class="band b-white">
-    <div class="wrap">
-      <hr class="rule">
-      <h2>Selected work</h2>
-      <p class="lead mt-s">Websites and automation for local businesses.</p>
-      <div class="grid g3 mt-m" id="workGrid3"></div>
-    </div>
-  </section>
-
   <section class="band b-indigo">
     <div class="wrap">
       <span class="eyebrow" style="color:var(--amber)">What we do</span>
@@ -1045,7 +1027,7 @@ function renderWork(){
         <div class="tags">${(w.tags||[]).map(t => `<span>${t}</span>`).join('')}</div>
       </div>
     </article>`).join('');
-  ['workGrid','workGrid2','workGrid3'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = html; });
+  ['workGrid2'].forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = html; });
 }
 function renderContact(){
   const mail = 'mailto:' + CONFIG.email;
