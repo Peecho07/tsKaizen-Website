@@ -1,0 +1,65 @@
+<section class="phero" style="padding-bottom:32px">
+  <div class="wrap">
+    <p class="kicker">Book a free consultation</p>
+    <h1>Thirty minutes. Bring the problem.</h1>
+    <p class="lede">No deck and no obligation. We look at what you have, where the time goes, and whether any of this is worth doing for you.</p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:0">
+  <div class="wrap contact-grid">
+    <div class="form-card">
+      <h2 style="font-size:24px">Tell us about your business</h2>
+      <p class="muted" style="font-size:15.5px;margin-bottom:24px">Replies come from {{EMAIL}}, usually the same day.</p>
+      <form id="contact-form" method="POST" action="https://formspree.io/f/xkolwdag" novalidate>
+        <input type="hidden" name="_subject" value="New consultation request from tskaizen.com">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="display:none" aria-hidden="true">
+        <div class="form-grid">
+          <div class="field"><label for="f-name">Name <span class="req" aria-hidden="true">*</span></label><div class="input"><input id="f-name" name="name" autocomplete="name" required></div></div>
+          <div class="field"><label for="f-biz">Business name <span class="req" aria-hidden="true">*</span></label><div class="input"><input id="f-biz" name="business" autocomplete="organization" required></div></div>
+          <div class="field"><label for="f-email">Email <span class="req" aria-hidden="true">*</span></label><div class="input"><input id="f-email" name="email" type="email" autocomplete="email" required></div></div>
+          <div class="field"><label for="f-phone">Phone <span class="opt">(optional)</span></label><div class="input"><input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel"></div></div>
+          <div class="field full"><label for="f-need">What are you after? <span class="req" aria-hidden="true">*</span></label>
+            <div class="input"><select id="f-need" name="need" required>
+              <option value="">Select one</option>
+              <option>A new website</option>
+              <option>A rebuild of my current site</option>
+              <option>An AI assistant for questions or calls</option>
+              <option>Automating a manual process</option>
+              <option>Not sure yet</option>
+            </select><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></div></div>
+          <div class="field full"><label for="f-site">Current website <span class="opt">(optional)</span></label><div class="input"><input id="f-site" name="website" type="url" inputmode="url" placeholder="https://"></div></div>
+          <div class="field full"><label for="f-msg">What would you fix first? <span class="opt">(optional)</span></label><div class="input"><textarea id="f-msg" name="message" rows="4" placeholder="The one task that eats your week, or what is not working on your site"></textarea></div></div>
+          <div class="full"><button class="btn btn-primary" type="submit">Request my free call</button></div>
+        </div>
+        <div id="form-status" class="form-status" role="status" tabindex="-1"></div>
+        <p class="form-note">No mailing list. We reply to your message and nothing else.</p>
+      </form>
+    </div>
+
+    <aside class="aside">
+      <div class="aside-block">
+        <h2>What happens next</h2>
+        <ul class="checks">
+          <li>{{CHECK}}A reply by email, usually the same day, with a couple of times to talk</li>
+          <li>{{CHECK}}Fifteen minutes on where your week actually goes</li>
+          <li>{{CHECK}}A look at your current site, if you have one</li>
+          <li>{{CHECK}}A straight answer on what is worth doing first</li>
+          <li>{{CHECK}}If it is a fit, a written scope and fixed price within a few days</li>
+        </ul>
+      </div>
+      <div class="aside-block">
+        <h2>What to bring</h2>
+        <p>Nothing formal. If you have a site, send the link. If one task eats your week, have it in mind. That is enough to make the call useful.</p>
+      </div>
+      <div class="aside-block">
+        <h2>Rather reach out directly?</h2>
+        <div class="direct">
+          <a href="mailto:{{EMAIL}}"><span class="ic">{{icon:mail}}</span>{{EMAIL}}</a>
+          <a href="tel:{{PHONE_TEL}}"><span class="ic">{{icon:phone}}</span>{{PHONE_DISPLAY}}</a>
+          <span style="display:flex;gap:12px;align-items:center;font:600 17px/1.3 var(--display);color:var(--ink)"><span class="ic" style="width:44px;height:44px;border-radius:10px;background:var(--paper-2);display:flex;align-items:center;justify-content:center">{{icon:pin}}</span>Orlando, FL. In person around Central Florida.</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
