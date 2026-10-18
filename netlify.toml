@@ -1,5 +1,5 @@
 # Static site. No build step, no dependencies.
-# Five pages (index, services, work, about, quote) plus a 404, all at the repo root.
+# Pages: index, pricing, work, about, quote and a 404, all at the repo root.
 
 [build]
   publish = "."
@@ -9,3 +9,9 @@
   NETLIFY_USE_YARN = "false"
 
 # Netlify serves 404.html automatically for unknown paths.
+
+# The old Services page now lives on Pricing.
+[[redirects]]
+  from = "/services.html"
+  to = "/pricing.html"
+  status = 301

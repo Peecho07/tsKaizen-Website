@@ -90,3 +90,94 @@ function selectEmail(btn) {
   const update = function () { checks.forEach(function (fn, i) { bars[i].classList.toggle("on", !!fn()); }); };
   form.addEventListener("input", update); form.addEventListener("change", update); update();
 })();
+
+// Free website check form (and any other [data-formspree] form)
+document.querySelectorAll("form[data-formspree]").forEach(function (form) {
+  const status = form.querySelector(".form-status");
+  const btn = form.querySelector("button[type=submit]");
+  const label = btn.textContent;
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    if (!form.reportValidity()) return;
+    btn.disabled = true; btn.textContent = "Sending...";
+    try {
+      const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
+      if (!res.ok) throw new Error("Bad response");
+      form.reset();
+      status.className = "form-status ok";
+      status.textContent = form.dataset.success || "Got it. We'll reply within " + QUOTE_TURNAROUND + ".";
+    } catch (err) {
+      status.className = "form-status err";
+      status.textContent = "That didn't send. Email the same details to " + CONTACT_EMAIL + " and we'll take it from there.";
+    }
+    status.hidden = false; btn.disabled = false; btn.textContent = label;
+  });
+});
+
+// Quote form: preselect the plan from ?plan= links on the pricing page
+(function () {
+  const sel = document.getElementById("q-plan"), care = document.getElementById("q-care");
+  if (!sel) return;
+  let plan = "";
+  try { plan = new URLSearchParams(location.search).get("plan") || ""; } catch (e) {}
+  const map = { launch: ["q-plan", "Launch"], growth: ["q-plan", "Growth"], custom: ["q-plan", "Custom"], care: ["q-care", "Care"], careplus: ["q-care", "Care Plus"] };
+  if (map[plan]) document.getElementById(map[plan][0]).value = map[plan][1];
+  if (plan === "care" || plan === "careplus") sel.value = "Care";
+})();
+
+// Pricing tabs
+(function () {
+  const tabs = document.querySelectorAll('.price-tabs [role="tab"]');
+  if (!tabs.length) return;
+  function show(tab) {
+    tabs.forEach(function (t) {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { show(t); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      show(next); next.focus();
+    });
+  });
+  show(tabs[0]);
+})();
+
+// Care plan billing toggle
+(function () {
+  const btns = document.querySelectorAll("[data-bill]");
+  if (!btns.length) return;
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      const mode = b.dataset.bill;
+      btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      document.querySelectorAll("[data-monthly]").forEach(function (el) { el.textContent = el.dataset[mode]; });
+    });
+  });
+})();
+
+// Feature tabs on Home ([data-tabs])
+document.querySelectorAll("[data-tabs]").forEach(function (root) {
+  const tabs = root.querySelectorAll('[role="tab"]');
+  function show(tab) {
+    tabs.forEach(function (t) {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { show(t); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      show(next); next.focus();
+    });
+  });
+});
