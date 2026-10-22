@@ -133,9 +133,10 @@ h1 em { color: var(--coral); }
 .climb .st { fill: var(--tint-sky); }
 .climb .st1 { fill: var(--tint-lilac); } .climb .st2 { fill: var(--tint-peach); } .climb .st3 { fill: var(--blue); }
 .climb .st-n { font: 700 13px var(--body); fill: var(--muted); }
-.climb .st-t { font: 700 17px var(--display); fill: var(--ink); letter-spacing: -.01em; }
-.climb .st-s { font: 500 12.5px var(--body); fill: var(--muted); }
-.climb text:nth-last-of-type(-n+3) { fill: var(--on-blue); }
+.climb .st-t { font: 700 16px var(--display); fill: var(--ink); letter-spacing: -.012em; }
+.climb .st-s { font: 500 12px var(--body); fill: var(--muted); }
+.climb .st-t.on-blue { fill: var(--on-blue); }
+.climb .st-n.on-blue, .climb .st-s.on-blue { fill: rgba(255, 255, 255, .78); }
 .climb .trail { fill: none; stroke: var(--coral); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 100; stroke-dashoffset: 0; animation: trail 8s cubic-bezier(.5,0,.3,1) infinite; }
 @keyframes trail { 0%, 6% { stroke-dashoffset: 100; } 70%, 100% { stroke-dashoffset: 0; } }
 .climb .hop-c { fill: var(--coral); stroke: var(--card); stroke-width: 4; }
