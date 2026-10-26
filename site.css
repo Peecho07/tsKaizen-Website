@@ -354,6 +354,14 @@ section[id] { scroll-margin-top: 88px; }
 .cd-card p::before { content: ""; width: 1.3cqw; height: 1.3cqw; border-radius: 50%; background: #3DD68C; flex: none; }
 .cd-btn { background: #3DD68C; color: #0B2545; font: 700 1.6cqw/1 var(--body); text-align: center; padding: 1.4cqw; border-radius: 99px; }
 .frame-desk .cd-screen { flex: 1; }
+.cd-how { padding: 4cqw 5cqw; display: grid; justify-items: center; text-align: center; align-content: center; }
+.cd-how .cd-h { font-size: 4.4cqw; }
+.cd-how .cd-sub { font-size: 2cqw; margin-bottom: 3cqw; }
+.cd-how .cd-tag { font-size: 1.6cqw; }
+.cd-steps { list-style: none; margin: 0 0 3.4cqw; padding: 0; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.4cqw; width: 100%; }
+.cd-steps li { background: #fff; border: 1px solid #E3E8F0; border-radius: 1.8cqw; padding: 2.6cqw 1.6cqw; display: grid; gap: 1.4cqw; justify-items: center; font: 700 1.9cqw/1.2 var(--display); }
+.cd-steps b { width: 4.6cqw; height: 4.6cqw; border-radius: 50%; background: #0B2545; color: #3DD68C; display: grid; place-items: center; font-size: 2.2cqw; }
+.cd-how .cd-btn { font-size: 2cqw; padding: 1.6cqw 4cqw; }
 .cd-phone { container-type: inline-size; height: 100%; min-height: 100%; background: #F6F8FB; color: #0E1B3D; font-family: var(--body); display: grid; align-content: start; }
 .cd-phone .cd-top { padding: 6cqw 7cqw; }
 .cd-phone .cd-logo { font-size: 8cqw; }
