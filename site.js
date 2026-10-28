@@ -182,126 +182,29 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   });
 });
 
-// Kinetic headline: the hero title is drawn as particles that drift in, settle into the
-// letters, ripple every few seconds and scatter around the pointer
+// Hero rotator: the last word of the headline flips through what a better site brings,
+// then rests on "growth"
 (function () {
-  const h = document.querySelector("[data-kinetic]");
-  if (!h || !window.requestAnimationFrame) return;
+  const rot = document.querySelector("[data-rotator]");
+  if (!rot) return;
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const PAD = 40;
-  const cv = document.createElement("canvas");
-  cv.setAttribute("aria-hidden", "true");
-  const ctx = cv.getContext("2d");
-  if (!ctx) return;
-  let parts = [], W = 0, H = 0, dpr = 1, raf = 0, visible = true, t0 = 0, started = false;
-  const ptr = { x: -9999, y: -9999 };
-
-  // Lay each word out where the browser put it, in its own font and color
-  function targets() {
-    const box = h.getBoundingClientRect();
-    W = Math.ceil(box.width) + PAD * 2; H = Math.ceil(box.height) + PAD * 2;
-    dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const off = document.createElement("canvas");
-    off.width = W; off.height = H;
-    const o = off.getContext("2d");
-    o.textBaseline = "alphabetic";
-    const walker = document.createTreeWalker(h, NodeFilter.SHOW_TEXT);
-    let n;
-    while ((n = walker.nextNode())) {
-      const cs = getComputedStyle(n.parentElement);
-      o.font = cs.fontStyle + " " + cs.fontWeight + " " + cs.fontSize + " " + cs.fontFamily;
-      o.fillStyle = n.parentElement.dataset.kColor || cs.color;
-      if ("letterSpacing" in o) o.letterSpacing = cs.letterSpacing === "normal" ? "0px" : cs.letterSpacing;
-      const re = /\S+/g; let m;
-      while ((m = re.exec(n.data))) {
-        const r = document.createRange();
-        r.setStart(n, m.index); r.setEnd(n, m.index + m[0].length);
-        const rc = r.getBoundingClientRect();
-        const fm = o.measureText(m[0]);
-        const asc = fm.actualBoundingBoxAscent || parseFloat(cs.fontSize) * .75;
-        const desc = fm.actualBoundingBoxDescent || 0;
-        const base = rc.top - box.top + PAD + (rc.height + asc - desc) / 2;
-        o.fillText(m[0], rc.left - box.left + PAD, base);
-      }
-    }
-    const fs = parseFloat(getComputedStyle(h).fontSize);
-    const step = Math.max(2, Math.round(fs / 28));
-    const data = o.getImageData(0, 0, W, H).data;
-    const out = [];
-    for (let y = 0; y < H; y += step) for (let x = 0; x < W; x += step) {
-      const i = (y * W + x) * 4;
-      if (data[i + 3] > 100) out.push({ x: x, y: y, c: "rgb(" + data[i] + "," + data[i + 1] + "," + data[i + 2] + ")" });
-    }
-    return { pts: out, size: step * .9 };
+  const words = Array.prototype.slice.call(rot.querySelectorAll(".rot-w"));
+  let cur = 0;
+  function fit() { rot.style.width = words[cur].offsetWidth + "px"; }
+  function next() {
+    const prev = words[cur];
+    cur = (cur + 1) % words.length;
+    prev.classList.remove("is-on"); prev.classList.add("is-off");
+    words[cur].classList.remove("is-off"); words[cur].classList.add("is-on");
+    fit();
+    setTimeout(function () { prev.classList.remove("is-off"); }, 650);
+    // Linger on "growth" before the next cycle
+    setTimeout(next, cur === 0 ? 4200 : 1900);
   }
-
-  let size = 2;
-  function build() {
-    // Read the real colors before hiding the text
-    h.classList.remove("is-live");
-    h.querySelectorAll("em").forEach(function (e) { e.dataset.kColor = getComputedStyle(e).color; });
-    h.dataset.kColor = getComputedStyle(h).color;
-    const res = targets();
-    size = res.size;
-    const old = parts;
-    parts = res.pts.map(function (p, i) {
-      const prev = old[i];
-      const a = Math.random() * Math.PI * 2, d = 120 + Math.random() * 260;
-      return {
-        tx: p.x, ty: p.y, c: p.c,
-        x: prev ? prev.x : p.x + Math.cos(a) * d, y: prev ? prev.y : p.y + Math.sin(a) * d,
-        vx: 0, vy: 0, ph: Math.random() * Math.PI * 2, delay: prev ? 0 : Math.random() * 500 + (p.x / W) * 600
-      };
-    });
-    cv.width = W * dpr; cv.height = H * dpr;
-    cv.style.inset = -PAD + "px"; cv.style.width = W + "px"; cv.style.height = H + "px";
-    if (!cv.parentNode) h.appendChild(cv);
-    h.classList.add("is-live");
-  }
-
-  function frame(now) {
-    raf = 0;
-    if (!t0) t0 = now;
-    const t = now - t0;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, W, H);
-    // A ripple sweeps across the words once every 7 seconds, then they rest
-    const cyc = (t - 1800) % 7000;
-    const wave = t > 1800 && cyc < 2200 ? (cyc / 2200) * (W + 400) - 200 : -9999;
-    let last = "";
-    for (let i = 0; i < parts.length; i++) {
-      const p = parts[i];
-      if (t > p.delay) {
-        let gx = p.tx, gy = p.ty;
-        const dw = p.tx - wave;
-        if (dw > -90 && dw < 90) gy -= Math.cos(dw / 90 * Math.PI / 2) * 6;
-        gx += Math.sin(t / 900 + p.ph) * .25; gy += Math.cos(t / 1100 + p.ph) * .25;
-        const dx = p.x - ptr.x, dy = p.y - ptr.y, d2 = dx * dx + dy * dy;
-        if (d2 < 4900) { const f = (4900 - d2) / 4900 * 2.4; const d = Math.sqrt(d2) || 1; p.vx += dx / d * f; p.vy += dy / d * f; }
-        p.vx = (p.vx + (gx - p.x) * .07) * .82;
-        p.vy = (p.vy + (gy - p.y) * .07) * .82;
-        p.x += p.vx; p.y += p.vy;
-      }
-      if (p.c !== last) { ctx.fillStyle = p.c; last = p.c; }
-      ctx.fillRect(p.x - size / 2, p.y - size / 2, size, size);
-    }
-    if (visible) raf = requestAnimationFrame(frame);
-  }
-  function go() { if (!raf && visible) raf = requestAnimationFrame(frame); }
-
-  function start() {
-    if (started) return; started = true;
-    build(); go();
-    let rt;
-    window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(function () { build(); go(); }, 150); });
-    const hero = h.closest("section") || h;
-    hero.addEventListener("pointermove", function (e) { const b = cv.getBoundingClientRect(); ptr.x = e.clientX - b.left; ptr.y = e.clientY - b.top; });
-    hero.addEventListener("pointerleave", function () { ptr.x = ptr.y = -9999; });
-    if ("IntersectionObserver" in window) new IntersectionObserver(function (es) { visible = es[0].isIntersecting; go(); }).observe(h);
-  }
-  // Wait for the web fonts so the particles land on the real letter shapes
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(start, start); else start();
-  setTimeout(start, 2500);
+  fit();
+  window.addEventListener("resize", fit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+  setTimeout(next, 3200);
 })();
 
 // Reviews: a deck of cards that shuffles the front review to the back
