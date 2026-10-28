@@ -247,6 +247,45 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   show(0);
 })();
 
+// Client banner: scrolls the wordmarks and pops whichever one is passing the middle
+(function () {
+  const mq = document.querySelector("[data-marquee]");
+  if (!mq) return;
+  const track = mq.querySelector(".mq-track");
+  const items = Array.prototype.slice.call(track.children);
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (reduce) { items.forEach(function (it) { it.classList.add("is-pop"); }); return; }
+  const perSet = 3;
+  let x = 0, setW = 0, last = 0, hover = false, visible = true, raf = 0, popped = null;
+  function measure() { setW = items[perSet].offsetLeft - items[0].offsetLeft; }
+  function frame(now) {
+    raf = 0;
+    const dt = Math.min(64, now - (last || now)); last = now;
+    if (!hover) { x -= dt * 0.05; if (setW && x <= -setW) x += setW; }
+    track.style.transform = "translate3d(" + x + "px,0,0)";
+    // Pop the wordmark nearest the center of the banner
+    const mid = mq.getBoundingClientRect().left + mq.clientWidth / 2;
+    let best = null, bd = 1e9;
+    for (let i = 0; i < items.length; i++) {
+      const r = items[i].getBoundingClientRect();
+      const d = Math.abs(r.left + r.width / 2 - mid);
+      if (d < bd) { bd = d; best = items[i]; }
+    }
+    if (best !== popped) { if (popped) popped.classList.remove("is-pop"); best.classList.add("is-pop"); popped = best; }
+    if (visible) raf = requestAnimationFrame(frame);
+  }
+  measure();
+  window.addEventListener("resize", measure);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+  mq.addEventListener("mouseenter", function () { hover = true; });
+  mq.addEventListener("mouseleave", function () { hover = false; });
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) {
+    visible = es[0].isIntersecting; last = 0;
+    if (visible && !raf) raf = requestAnimationFrame(frame);
+  }).observe(mq);
+  raf = requestAnimationFrame(frame);
+})();
+
 // Reviews: a deck of cards that shuffles the front review to the back
 (function () {
   const deck = document.querySelector("[data-reviews]");
