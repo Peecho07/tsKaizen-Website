@@ -258,8 +258,11 @@ section[id] { scroll-margin-top: 88px; }
 .plan-price b { font: 800 clamp(40px, 4.4vw, 52px)/1 var(--display); color: var(--ink); letter-spacing: -.04em; font-variant-numeric: tabular-nums; }
 .plan-price span { font-size: 15px; color: var(--muted); }
 .plan .btn { width: 100%; }
-.plan .checks { font-size: 15.5px; border-top: 1px solid var(--line); padding-top: 18px; }
+.plan .checks { font-size: 15.5px; border-top: 1px solid var(--line); padding-top: 18px; align-content: start; }
 .plan-time { font: 600 14px var(--body); color: var(--green-text); }
+.plan:has(.plan-split) { grid-template-rows: auto auto auto auto auto 1fr auto; }
+.plan-split { font-size: 14px; color: var(--muted); margin-top: -6px; }
+.plans-note { margin-top: 22px; text-align: center; color: var(--ink-2); font-size: 16px; }
 @media (max-width: 960px) { .plans { grid-template-columns: 1fr; max-width: 540px; } .plans-2 { grid-template-columns: 1fr; } .plan-for { min-height: 0; } }
 .bill-toggle { display: inline-flex; gap: 4px; padding: 5px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 999px; justify-self: start; }
 .bill-toggle button { font: 600 15px var(--body); color: var(--muted); background: transparent; border: 0; border-radius: 999px; padding: 0 18px; cursor: pointer; min-height: 44px; }

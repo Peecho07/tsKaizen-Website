@@ -120,7 +120,7 @@ document.querySelectorAll("form[data-formspree]").forEach(function (form) {
   if (!sel) return;
   let plan = "";
   try { plan = new URLSearchParams(location.search).get("plan") || ""; } catch (e) {}
-  const map = { launch: ["q-plan", "Launch"], growth: ["q-plan", "Growth"], custom: ["q-plan", "Custom"], care: ["q-care", "Care"], careplus: ["q-care", "Care Plus"] };
+  const map = { launch: ["q-plan", "Launch"], growth: ["q-plan", "Growth"], pro: ["q-plan", "Pro"], custom: ["q-plan", "Custom"], care: ["q-care", "Care"], careplus: ["q-care", "Care Plus"] };
   if (map[plan]) document.getElementById(map[plan][0]).value = map[plan][1];
   if (plan === "care" || plan === "careplus") sel.value = "Care";
 })();
