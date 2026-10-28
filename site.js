@@ -207,6 +207,46 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   setTimeout(next, 3200);
 })();
 
+// Hero motion graphics: three scenes take turns, with tabs to jump between them
+(function () {
+  const mg = document.querySelector("[data-mg]");
+  if (!mg) return;
+  const scenes = Array.prototype.slice.call(mg.querySelectorAll(".mg-scene"));
+  const tabs = Array.prototype.slice.call(mg.querySelectorAll(".mg-tabs button"));
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const DUR = 7000;
+  mg.style.setProperty("--mg-dur", DUR / 1000 + "s");
+  let cur = 0, timer = 0, counter = 0, visible = true;
+  function count(el) {
+    clearInterval(counter);
+    const to = +el.dataset.countTo, start = Date.now() + 1400;
+    el.textContent = reduce ? to : 12;
+    if (reduce) return;
+    counter = setInterval(function () {
+      const k = Math.min(1, Math.max(0, (Date.now() - start) / 3600));
+      el.textContent = Math.round(12 + (to - 12) * (1 - Math.pow(1 - k, 3)));
+      if (k >= 1) clearInterval(counter);
+    }, 50);
+  }
+  function show(n) {
+    cur = (n + scenes.length) % scenes.length;
+    scenes.forEach(function (s, i) { s.classList.toggle("is-on", i === cur); });
+    // Re-trigger the progress bar on the active tab
+    tabs.forEach(function (t, i) { t.setAttribute("aria-pressed", "false"); if (i === cur) { void t.offsetWidth; t.setAttribute("aria-pressed", "true"); } });
+    const c = scenes[cur].querySelector("[data-count-to]");
+    if (c) count(c);
+    clearTimeout(timer);
+    if (!reduce && visible) timer = setTimeout(function () { show(cur + 1); }, DUR);
+  }
+  tabs.forEach(function (t, i) { t.addEventListener("click", function () { show(i); }); });
+  if ("IntersectionObserver" in window) new IntersectionObserver(function (es) {
+    visible = es[0].isIntersecting;
+    mg.classList.toggle("is-paused", !visible);
+    if (visible) show(cur); else clearTimeout(timer);
+  }).observe(mg);
+  show(0);
+})();
+
 // Reviews: a deck of cards that shuffles the front review to the back
 (function () {
   const deck = document.querySelector("[data-reviews]");
