@@ -313,7 +313,7 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   });
 })();
 
-// Reviews: a deck of cards that shuffles the front review to the back
+// Project highlights: a deck of cards that shuffles the front card to the back
 (function () {
   const deck = document.querySelector("[data-reviews]");
   if (!deck) return;
