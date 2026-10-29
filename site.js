@@ -286,6 +286,33 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   raf = requestAnimationFrame(frame);
 })();
 
+// Work page: reveal each case study as it scrolls in, and count the stats up from zero
+(function () {
+  const els = document.querySelectorAll("[data-reveal]");
+  if (els.length) {
+    if (!("IntersectionObserver" in window)) els.forEach(function (e) { e.classList.add("is-in"); });
+    else {
+      const io = new IntersectionObserver(function (es) {
+        es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } });
+      }, { rootMargin: "0px 0px -12% 0px" });
+      els.forEach(function (e) { io.observe(e); });
+    }
+  }
+  const nums = document.querySelectorAll("[data-count]");
+  if (!nums.length || (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches)) return;
+  nums.forEach(function (b) {
+    const to = +b.dataset.count;
+    if (!to) return;
+    b.textContent = "0";
+    const start = performance.now() + 500;
+    (function tick(now) {
+      const k = Math.min(1, Math.max(0, (now - start) / 1400));
+      b.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+      if (k < 1) requestAnimationFrame(tick);
+    })(performance.now());
+  });
+})();
+
 // Reviews: a deck of cards that shuffles the front review to the back
 (function () {
   const deck = document.querySelector("[data-reviews]");
