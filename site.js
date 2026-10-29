@@ -303,13 +303,48 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   nums.forEach(function (b) {
     const to = +b.dataset.count;
     if (!to) return;
-    b.textContent = "0";
+    b.textContent = "0" + (b.dataset.suffix || "");
     const start = performance.now() + 500;
     (function tick(now) {
       const k = Math.min(1, Math.max(0, (now - start) / 1400));
-      b.textContent = Math.round(to * (1 - Math.pow(1 - k, 3)));
+      b.textContent = Math.round(to * (1 - Math.pow(1 - k, 3))) + (b.dataset.suffix || "");
       if (k < 1) requestAnimationFrame(tick);
     })(performance.now());
+  });
+})();
+
+// Scroll reveal for every page: each section below the header fades up as it enters,
+// its blocks and grid items one after another. Case studies keep their own reveal.
+(function () {
+  if (!document.documentElement.classList.contains("js") || !("IntersectionObserver" in window)) return;
+  if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const GRIDS = ".plans, .addon-list, .work-grid, .stat-row, .trio, .faq, .checks, .side, .quote-grid, .demo-grid, .split";
+  const secs = Array.prototype.slice.call(document.querySelectorAll("main > section")).slice(1)
+    .filter(function (s) { return !s.querySelector("[data-reveal]") && !s.classList.contains("logos"); });
+  const io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      io.unobserve(e.target);
+      e.target.classList.add("sr-in");
+      // Drop the reveal styles once played so hover transitions run without delay
+      setTimeout(function () {
+        e.target.querySelectorAll(".sr").forEach(function (el) { el.classList.remove("sr"); el.style.removeProperty("--sr-d"); });
+      }, 2400);
+    });
+  }, { rootMargin: "0px 0px -10% 0px" });
+  secs.forEach(function (s) {
+    const wrap = s.querySelector(".wrap") || s;
+    let i = 0;
+    Array.prototype.forEach.call(wrap.children, function (el) {
+      const grid = el.matches(GRIDS) ? el : null;
+      if (grid && grid.children.length > 1) {
+        Array.prototype.forEach.call(grid.children, function (c, k) { c.classList.add("sr"); c.style.setProperty("--sr-d", Math.min(i + k, 8) * 0.09 + "s"); });
+        i += 1;
+      } else {
+        el.classList.add("sr"); el.style.setProperty("--sr-d", Math.min(i, 8) * 0.09 + "s"); i++;
+      }
+    });
+    io.observe(s);
   });
 })();
 

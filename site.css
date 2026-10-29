@@ -663,6 +663,12 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
 }
 .case-shots .frame-desk, .case-shots .frame-phone { transition: transform .5s cubic-bezier(.2,.8,.2,1); }
 
+/* Scroll reveal on every page (set up by site.js; inert without JS or with reduced motion) */
+@media (prefers-reduced-motion: no-preference) {
+  .js .sr { opacity: 0; transform: translateY(26px); transition: opacity .8s cubic-bezier(.2,.8,.2,1) var(--sr-d, 0s), transform .8s cubic-bezier(.2,.8,.2,1) var(--sr-d, 0s); }
+  .js .sr-in .sr { opacity: 1; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .hero-title .ln-in, .hero-reveal > *, .hero-visual { transform: none !important; opacity: 1 !important; }
