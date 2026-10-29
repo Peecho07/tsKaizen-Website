@@ -595,10 +595,11 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
 @keyframes ln-rise { to { transform: none; } }
 .hero-reveal > :not(h1) { opacity: 0; transform: translateY(18px); animation: hr-up .8s cubic-bezier(.2,.8,.2,1) forwards; }
 .hero-reveal > :nth-child(2) { animation-delay: .45s; } .hero-reveal > :nth-child(3) { animation-delay: .58s; } .hero-reveal > :nth-child(4) { animation-delay: .7s; }
+.hero-reveal > :nth-child(5) { animation-delay: .82s; } .hero-reveal > :nth-child(6) { animation-delay: .94s; }
 .hero-visual { opacity: 0; transform: translateY(24px) scale(.98); animation: hr-up 1s .3s cubic-bezier(.2,.8,.2,1) forwards; }
 @keyframes hr-up { to { opacity: 1; transform: none; } }
 .rot { display: inline-grid; vertical-align: bottom; perspective: 600px; transition: width .5s cubic-bezier(.2,.8,.2,1); position: relative; }
-.rot-w { grid-area: 1 / 1; white-space: nowrap; transform-origin: 50% 50% -.45em; transform: rotateX(-90deg); opacity: 0; transition: transform .6s cubic-bezier(.2,.8,.2,1), opacity .45s; backface-visibility: hidden; }
+.rot-w { grid-area: 1 / 1; justify-self: start; white-space: nowrap; transform-origin: 50% 50% -.45em; transform: rotateX(-90deg); opacity: 0; transition: transform .6s cubic-bezier(.2,.8,.2,1), opacity .45s; backface-visibility: hidden; }
 .rot-w.is-on { transform: none; opacity: 1; }
 .rot-w.is-off { transform: rotateX(90deg); opacity: 0; }
 .rot::after { content: ""; position: absolute; left: 0; right: .35em; bottom: .02em; height: .09em; border-radius: 99px; background: linear-gradient(90deg, var(--blue), var(--coral)); transform-origin: left; transform: scaleX(0); animation: rot-line 2.6s 1.1s cubic-bezier(.2,.8,.2,1) infinite; }
