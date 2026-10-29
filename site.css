@@ -268,18 +268,14 @@ h1 em { color: var(--coral); }
 .mq-card { display: flex; align-items: center; gap: 10px; height: 64px; padding: 0 22px; border-radius: 18px; border: 1.5px solid transparent; background: transparent; color: #8A93A8;
   transition: transform .45s cubic-bezier(.2,.8,.2,1), background-color .45s, border-color .45s, box-shadow .45s, color .45s; }
 .mq-item.is-pop .mq-card, .mq-item:hover .mq-card { transform: translateY(-4px) scale(1.12); }
-/* NextGen Blinds: navy and blue, heavy geometric caps with spaced BLINDS */
-.ngb-mark { width: 34px; height: 34px; display: grid; place-items: center; border: 3px solid currentColor; border-radius: 6px; font: 800 20px/1 Montserrat, var(--display); transition: color .45s, border-color .45s; }
-.ngb-word { display: grid; line-height: 1; text-transform: uppercase; }
-.ngb-word b { font: 800 19px/1 Montserrat, var(--display); letter-spacing: .01em; }
-.ngb-word small { font: 500 10.5px/1 Montserrat, var(--body); letter-spacing: .62em; margin-top: 3px; }
-.mq-ngb.is-pop .mq-card, .mq-ngb:hover .mq-card { background: #fff; border-color: #D5DFEA; color: #182B3A; box-shadow: 0 18px 36px -16px rgba(49,100,163,.55); }
-.mq-ngb.is-pop .ngb-mark, .mq-ngb:hover .ngb-mark { color: #3164A3; }
-/* Wax On Wheels: yellow italic with a red outline on black */
-.wow-word { font: 400 27px/1 "Racing Sans One", var(--display); letter-spacing: .01em; transition: color .45s, text-shadow .45s; }
-.wow-word i { font-size: .62em; font-style: normal; text-transform: uppercase; vertical-align: .45em; }
+/* NextGen Blinds and Wax On Wheels use their real logos: grayscale at rest, full color when popped */
+.mq-logo { display: block; width: auto; height: 36px; filter: grayscale(1) opacity(.5); transition: filter .45s; }
+.mq-item.is-pop .mq-logo, .mq-item:hover .mq-logo { filter: none; }
+.mq-ngb.is-pop .mq-card, .mq-ngb:hover .mq-card { background: #fff; border-color: #D5DFEA; box-shadow: 0 18px 36px -16px rgba(49,100,163,.55); }
+/* The Wax On Wheels logo has white lettering, so it always sits on a chip: muted gray at rest, black when popped */
+.mq-wow .mq-card { background: #C3C9D5; }
+.mq-logo-wow { height: 46px; filter: grayscale(1) brightness(1.15); }
 .mq-wow.is-pop .mq-card, .mq-wow:hover .mq-card { background: #161616; border-color: #B81A11; box-shadow: 0 18px 36px -14px rgba(184,26,17,.6); }
-.mq-wow.is-pop .wow-word, .mq-wow:hover .wow-word { color: #FFD21F; text-shadow: 1.5px 1.5px 0 #B81A11, -1px -1px 0 #B81A11, 1px -1px 0 #B81A11, -1px 1px 0 #B81A11, 3px 3px 0 #651818; }
 /* ClearDeal: navy with a green Clear */
 .cd-word { font: 500 25px/1 var(--display); letter-spacing: -.02em; }
 .cd-word b { font-weight: 800; transition: color .45s; }
@@ -287,8 +283,8 @@ h1 em { color: var(--coral); }
 .mq-cd.is-pop .cd-word b, .mq-cd:hover .cd-word b { color: #3DD68C; }
 @media (max-width: 600px) {
   .mq-card { height: 52px; padding: 0 16px; }
-  .ngb-mark { width: 28px; height: 28px; font-size: 16px; } .ngb-word b { font-size: 15.5px; } .ngb-word small { font-size: 9px; }
-  .wow-word { font-size: 22px; } .cd-word { font-size: 20px; }
+  .mq-logo { height: 28px; } .mq-logo-wow { height: 36px; }
+  .cd-word { font-size: 20px; }
 }
 
 /* Feature tabs */
