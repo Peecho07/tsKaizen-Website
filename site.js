@@ -182,8 +182,8 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   });
 });
 
-// Hero rotator: the last word of the headline flips through what a better site brings,
-// then rests on "growth"
+// Hero rotator: the last word of the headline flips through what we take off your plate,
+// then rests on the first word ("busywork" on Home)
 (function () {
   const rot = document.querySelector("[data-rotator]");
   if (!rot) return;
@@ -198,7 +198,7 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
     words[cur].classList.remove("is-off"); words[cur].classList.add("is-on");
     fit();
     setTimeout(function () { prev.classList.remove("is-off"); }, 650);
-    // Linger on "growth" before the next cycle
+    // Linger on the first word before the next cycle
     setTimeout(next, cur === 0 ? 4200 : 1900);
   }
   fit();
