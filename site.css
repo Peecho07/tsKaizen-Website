@@ -631,3 +631,28 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
   .mq-item[aria-hidden="true"] { display: none; }
   .marquee { -webkit-mask: none; mask: none; }
 }
+
+
+/* rebrand: hero scene 3, an AI assistant books a customer by chat.
+   Reuses the scene 2 phone; each bubble rests in its final state so reduced motion shows the end frame */
+.mga-phone { padding-top: 3.6cqw; }
+.mga-head { display: flex; align-items: center; justify-content: center; gap: 1.4cqw; flex-wrap: wrap; color: #fff; font: 700 3cqw/1.2 var(--display); margin-bottom: 3cqw; }
+.mga-head small { flex-basis: 100%; text-align: center; font: 500 2.2cqw var(--body); opacity: .7; }
+.mga-dot { width: 1.8cqw; height: 1.8cqw; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 .8cqw rgba(18,183,106,.25); }
+.mga-chat { display: grid; gap: 1.7cqw; }
+.mga-b { margin: 0; max-width: 82%; padding: 1.6cqw 2.2cqw; border-radius: 2.6cqw; font: 500 2.4cqw/1.3 var(--body); }
+.mga-b.you { justify-self: end; background: rgba(255,255,255,.94); color: var(--ink); border-bottom-right-radius: .8cqw; transform-origin: right bottom; }
+.mga-b.ai { justify-self: start; background: var(--blue); color: #fff; border-bottom-left-radius: .8cqw; transform-origin: left bottom; }
+.mga-toast { padding: 2cqw 4cqw 2cqw 2cqw; }
+.mg-ai.is-on .mgl-phone { animation: mg-rise .8s; }
+.mg-ai.is-on .mga-head { animation: mg-fade .6s .3s; }
+.mg-ai.is-on .mga-b { animation: mga-in .5s cubic-bezier(.2,.8,.2,1); }
+.mg-ai.is-on .mga-b:nth-child(1) { animation-delay: .9s; } .mg-ai.is-on .mga-b:nth-child(2) { animation-delay: 2.1s; }
+.mg-ai.is-on .mga-b:nth-child(3) { animation-delay: 3.3s; } .mg-ai.is-on .mga-b:nth-child(4) { animation-delay: 4.3s; }
+.mg-ai.is-on .mga-toast { animation: mg-float .6s 5.2s; }
+@keyframes mga-in { from { opacity: 0; transform: translateY(2cqw) scale(.92); } }
+
+/* rebrand: animated mockups inside the feature tabs reuse the hero stage, and replay each time a tab opens */
+.fp-mock { width: 100%; max-width: 560px; margin-inline: auto; box-shadow: var(--shadow-lg); border: 1px solid var(--line); }
+.fp-toast { padding: 2cqw 4cqw 2cqw 2cqw; }
+.mg-leads.is-on .fp-toast { animation: mg-float .6s 4.8s; }
