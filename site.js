@@ -11,8 +11,10 @@ window.addEventListener("pageshow", toTop);
 // Clicking the tab you are already on also returns to the top
 document.querySelectorAll('.nav-links a[aria-current="page"], .brand').forEach(function (a) {
   a.addEventListener("click", function (e) {
-    const here = location.pathname.split("/").pop() || "index.html";
-    if (a.getAttribute("href") === here) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }
+    // Pages use clean addresses (/pricing), but also match /pricing.html and /index.html
+    const norm = function (p) { return p.replace(/^\//, "").replace(/\.html$/, "").replace(/^index$/, ""); };
+    const here = norm(location.pathname.split("/").pop());
+    if (norm(a.getAttribute("href")) === here) { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }
   });
 });
 
