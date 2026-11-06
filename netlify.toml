@@ -1,3 +1,5 @@
+# Live site is hosted on GitHub Pages at https://tskaizen.com (CNAME file at the repo root).
+# Netlify is kept only for free Deploy Previews on pull requests.
 # Static site. No build step, no dependencies.
 # Pages: index, pricing, work, about, quote and a 404, all at the repo root.
 
@@ -15,3 +17,11 @@
   from = "/services.html"
   to = "/pricing.html"
   status = 301
+
+# Send the old Netlify address to the real domain so Google only indexes tskaizen.com.
+# Matches this host only, so deploy-preview-N--tskaizen.netlify.app links keep working.
+[[redirects]]
+  from = "https://tskaizen.netlify.app/*"
+  to = "https://tskaizen.com/:splat"
+  status = 301
+  force = true
