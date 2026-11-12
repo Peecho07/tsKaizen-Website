@@ -712,3 +712,10 @@ fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 10px; }
   .ba:not(.is-drag) .ba-handle { transition: left .35s cubic-bezier(.2,.8,.2,1); }
 }
 @media (max-width: 520px) { .ba-tag { top: 10px; font-size: 11px; padding: 4px 10px; } .ba-tag-b { left: 10px; } .ba-tag-a { right: 10px; } .ba-ph span { font-size: 12.5px; } }
+
+/* Pricing band on Home: starting prices only */
+.plans-lite .plan { grid-template-rows: auto 1fr auto auto; }
+.plans-lite .plan-price { align-items: baseline; }
+.plans-lite .plan-price span:first-child { flex-basis: 100%; font: 600 14px var(--body); color: var(--muted); }
+.plans-lite .plan-for { min-height: 0; }
+.ccard .frame-desk { box-shadow: var(--shadow); }

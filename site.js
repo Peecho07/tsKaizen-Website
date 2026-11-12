@@ -296,7 +296,7 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
 (function () {
   if (!document.documentElement.classList.contains("js") || !("IntersectionObserver" in window)) return;
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const GRIDS = ".work-grid, .inds, .side, .quote-grid, .demo-grid, .split";
+  const GRIDS = ".work-grid, .plans, .inds, .side, .quote-grid, .demo-grid, .split";
   const secs = Array.prototype.slice.call(document.querySelectorAll("main > section")).slice(1)
     .filter(function (s) { return !s.querySelector("[data-reveal]") && !s.classList.contains("logos"); });
   const io = new IntersectionObserver(function (es) {
