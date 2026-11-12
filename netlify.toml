@@ -1,7 +1,7 @@
 # Live site is hosted on GitHub Pages at https://tskaizen.com (CNAME file at the repo root).
 # Netlify is kept only for free Deploy Previews on pull requests.
 # Static site. No build step, no dependencies.
-# Pages: index, work, about, quote and a 404, all at the repo root. pricing.html redirects to /#pricing.
+# Pages: index, pricing, work, about, quote and a 404, all at the repo root.
 
 [build]
   publish = "."
@@ -12,10 +12,10 @@
 
 # Netlify serves 404.html automatically for unknown paths.
 
-# The old Services page redirects home.
+# The old Services page now lives on Pricing.
 [[redirects]]
   from = "/services.html"
-  to = "/#pricing"
+  to = "/pricing.html"
   status = 301
 
 # Send the old Netlify address to the real domain so Google only indexes tskaizen.com.

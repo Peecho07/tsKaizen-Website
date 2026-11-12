@@ -1,25 +1,7 @@
 // ---- Config ----
 const FORM_ENDPOINT = "https://formspree.io/f/xkolwdag";
 const CONTACT_EMAIL = "anthonypichardo31@tskaizen.com";
-const CONTACT_PHONE = "561-260-3951";
-const CONTACT_PHONE_TEL = "+15612603951";
 const QUOTE_TURNAROUND = "2 business days";
-const DEMO_LINK = "/#demo";
-
-// Live client sites, linked from the Selected Work case studies ("View the site").
-// Leave a value empty to hide that link.
-const CLIENT_LINKS = {
-  ngb: "https://nextgenblinds.com",  // NextGen Blinds
-  wow: "https://waxonwheels.com",    // Wax On Wheels
-  cd: "https://mycleardeal.com",     // MyClearDeal
-};
-
-// Before/after slider (Home and About). Drop the old site screenshot at BEFORE_AFTER_BEFORE_IMG.
-// Until that file exists, the "before" side shows a "Screenshot coming soon" placeholder.
-const BEFORE_AFTER_CLIENT = "Wax On Wheels";
-const BEFORE_AFTER_URL = "waxonwheels.com";
-const BEFORE_AFTER_BEFORE_IMG = "img/work/wow-home-before-desk.jpg"; // PLACEHOLDER: old site screenshot, 1440x900
-const BEFORE_AFTER_AFTER_IMG = "img/work/wow-home-desk.jpg";
 
 // Every page opens at the top, including when returning with Back
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -50,12 +32,6 @@ document.querySelectorAll('.nav-links a[aria-current="page"], .brand').forEach(f
 
 // Fill shared values
 document.querySelectorAll("[data-email]").forEach(function (el) { el.textContent = CONTACT_EMAIL; });
-document.querySelectorAll("[data-phone]").forEach(function (el) { el.textContent = CONTACT_PHONE; el.setAttribute("href", "tel:" + CONTACT_PHONE_TEL); });
-document.querySelectorAll('a[href="/#demo"]').forEach(function (el) { el.setAttribute("href", DEMO_LINK); });
-document.querySelectorAll("[data-client-link]").forEach(function (el) {
-  const url = CLIENT_LINKS[el.dataset.clientLink];
-  if (url) { el.setAttribute("href", url); el.hidden = false; } else { el.hidden = true; }
-});
 document.querySelectorAll("[data-turnaround]").forEach(function (el) { el.textContent = QUOTE_TURNAROUND; });
 document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
@@ -97,7 +73,7 @@ function selectEmail(btn) {
       status.textContent = "That didn't send. Please email the same details to " + CONTACT_EMAIL + " and we'll quote from there.";
     }
     status.hidden = false;
-    submit.disabled = false; submit.textContent = "Send my message";
+    submit.disabled = false; submit.textContent = "Send my quote request";
   });
 })();
 
@@ -110,6 +86,7 @@ function selectEmail(btn) {
     function () { return form.elements.name.value.trim() && form.elements.business.value.trim(); },
     function () { return /.+@.+\..+/.test(form.elements.email.value); },
     function () { return !!form.querySelector("input[name=need]:checked"); },
+    function () { return !!form.querySelector("input[name=pages]:checked"); },
     function () { return form.elements.details.value.trim().length > 10; },
   ];
   const update = function () { checks.forEach(function (fn, i) { bars[i].classList.toggle("on", !!fn()); }); };
@@ -139,6 +116,53 @@ document.querySelectorAll("form[data-formspree]").forEach(function (form) {
   });
 });
 
+// Quote form: preselect the plan from ?plan= links on the pricing page
+(function () {
+  const sel = document.getElementById("q-plan"), care = document.getElementById("q-care");
+  if (!sel) return;
+  let plan = "";
+  try { plan = new URLSearchParams(location.search).get("plan") || ""; } catch (e) {}
+  const map = { launch: ["q-plan", "Launch"], growth: ["q-plan", "Growth"], pro: ["q-plan", "Pro"], custom: ["q-plan", "Custom"], care: ["q-care", "Care"], careplus: ["q-care", "Care Plus"] };
+  if (map[plan]) document.getElementById(map[plan][0]).value = map[plan][1];
+  if (plan === "care" || plan === "careplus") sel.value = "Care";
+})();
+
+// Pricing tabs
+(function () {
+  const tabs = document.querySelectorAll('.price-tabs [role="tab"]');
+  if (!tabs.length) return;
+  function show(tab) {
+    tabs.forEach(function (t) {
+      const on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { show(t); });
+    t.addEventListener("keydown", function (e) {
+      if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+      const next = tabs[(i + (e.key === "ArrowRight" ? 1 : tabs.length - 1)) % tabs.length];
+      show(next); next.focus();
+    });
+  });
+  show(tabs[0]);
+})();
+
+// Care plan billing toggle
+(function () {
+  const btns = document.querySelectorAll("[data-bill]");
+  if (!btns.length) return;
+  btns.forEach(function (b) {
+    b.addEventListener("click", function () {
+      const mode = b.dataset.bill;
+      btns.forEach(function (x) { x.setAttribute("aria-pressed", x === b ? "true" : "false"); });
+      document.querySelectorAll("[data-monthly]").forEach(function (el) { el.textContent = el.dataset[mode]; });
+    });
+  });
+})();
+
 // Feature tabs on Home ([data-tabs])
 document.querySelectorAll("[data-tabs]").forEach(function (root) {
   const tabs = root.querySelectorAll('[role="tab"]');
@@ -161,7 +185,7 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
 });
 
 // Hero rotator: the last word of the headline flips through what we take off your plate,
-// then rests on the first word ("AI." on Home)
+// then rests on the first word ("busywork" on Home)
 (function () {
   const rot = document.querySelector("[data-rotator]");
   if (!rot) return;
@@ -296,7 +320,7 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
 (function () {
   if (!document.documentElement.classList.contains("js") || !("IntersectionObserver" in window)) return;
   if (window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const GRIDS = ".work-grid, .plans, .inds, .side, .quote-grid, .demo-grid, .split";
+  const GRIDS = ".plans, .addon-list, .work-grid, .stat-row, .trio, .faq, .checks, .side, .quote-grid, .demo-grid, .split";
   const secs = Array.prototype.slice.call(document.querySelectorAll("main > section")).slice(1)
     .filter(function (s) { return !s.querySelector("[data-reveal]") && !s.classList.contains("logos"); });
   const io = new IntersectionObserver(function (es) {
@@ -326,45 +350,39 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   });
 })();
 
-// Before/after slider: drag the divider (mouse, touch or pen), or use the arrow keys
-document.querySelectorAll("[data-ba]").forEach(function (root) {
-  const stage = root.querySelector(".ba-stage");
-  const handle = root.querySelector(".ba-handle");
-  const before = root.querySelector("[data-ba-before]");
-  const after = root.querySelector("[data-ba-after]");
-  const url = root.querySelector("[data-ba-url]");
-  if (url) url.textContent = BEFORE_AFTER_URL;
-  if (after) { after.src = BEFORE_AFTER_AFTER_IMG; after.alt = BEFORE_AFTER_CLIENT + " website after the rebuild"; }
-  if (before) {
-    before.alt = BEFORE_AFTER_CLIENT + " website before the rebuild";
-    before.addEventListener("load", function () { root.classList.add("has-before"); });
-    before.src = BEFORE_AFTER_BEFORE_IMG;
+// Project highlights: a deck of cards that shuffles the front card to the back
+(function () {
+  const deck = document.querySelector("[data-reviews]");
+  if (!deck) return;
+  const cards = Array.prototype.slice.call(deck.querySelectorAll(".rv-card"));
+  const dots = Array.prototype.slice.call(document.querySelectorAll(".rv-dots button"));
+  const reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let cur = 0, timer = 0, busy = false;
+  function lay() {
+    cards.forEach(function (c, i) {
+      const pos = (i - cur + cards.length) % cards.length;
+      c.dataset.pos = pos;
+      c.setAttribute("aria-hidden", pos === 0 ? "false" : "true");
+    });
+    dots.forEach(function (d, i) { d.setAttribute("aria-selected", i === cur ? "true" : "false"); });
   }
-  let pos = 50, drag = false;
-  function set(p) {
-    pos = Math.max(0, Math.min(100, p));
-    root.style.setProperty("--ba-pos", pos + "%");
-    handle.setAttribute("aria-valuenow", Math.round(pos));
+  function show(n, fling) {
+    n = (n + cards.length) % cards.length;
+    if (n === cur || busy) return;
+    const front = cards[cur];
+    if (fling && !reduce) {
+      busy = true;
+      front.classList.add("is-leaving");
+      setTimeout(function () { front.classList.remove("is-leaving"); cur = n; lay(); busy = false; }, 420);
+    } else { cur = n; lay(); }
   }
-  function fromEvent(e) { const r = stage.getBoundingClientRect(); set((e.clientX - r.left) / r.width * 100); }
-  stage.addEventListener("pointerdown", function (e) {
-    if (e.button !== undefined && e.button > 0) return;
-    drag = true; root.classList.add("is-drag");
-    try { stage.setPointerCapture(e.pointerId); } catch (err) {}
-    fromEvent(e);
+  function auto() { clearInterval(timer); if (!reduce) timer = setInterval(function () { show(cur + 1, true); }, 5500); }
+  document.querySelectorAll("[data-rv]").forEach(function (b) {
+    b.addEventListener("click", function () { show(cur + (b.dataset.rv === "next" ? 1 : -1), b.dataset.rv === "next"); auto(); });
   });
-  stage.addEventListener("pointermove", function (e) { if (drag) { e.preventDefault(); fromEvent(e); } });
-  function end() { drag = false; root.classList.remove("is-drag"); }
-  stage.addEventListener("pointerup", end);
-  stage.addEventListener("pointercancel", end);
-  handle.addEventListener("keydown", function (e) {
-    const step = e.shiftKey ? 10 : 4;
-    if (e.key === "ArrowLeft" || e.key === "ArrowDown") set(pos - step);
-    else if (e.key === "ArrowRight" || e.key === "ArrowUp") set(pos + step);
-    else if (e.key === "Home") set(0);
-    else if (e.key === "End") set(100);
-    else return;
-    e.preventDefault();
-  });
-  set(50);
-});
+  dots.forEach(function (d, i) { d.addEventListener("click", function () { show(i, i > cur); auto(); }); });
+  deck.addEventListener("click", function () { show(cur + 1, true); auto(); });
+  deck.addEventListener("mouseenter", function () { clearInterval(timer); });
+  deck.addEventListener("mouseleave", auto);
+  lay(); auto();
+})();
