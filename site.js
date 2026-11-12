@@ -11,7 +11,7 @@ const DEMO_LINK = "/#demo";
 const CLIENT_LINKS = {
   ngb: "https://nextgenblinds.com",  // NextGen Blinds
   wow: "https://waxonwheels.com",    // Wax On Wheels
-  cd: "",                            // MyClearDeal: add the live URL here
+  cd: "https://mycleardeal.com",     // MyClearDeal
 };
 
 // Before/after slider (Home and About). Drop the old site screenshot at BEFORE_AFTER_BEFORE_IMG.
