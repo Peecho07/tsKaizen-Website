@@ -2,6 +2,29 @@
 const FORM_ENDPOINT = "https://formspree.io/f/xkolwdag";
 const CONTACT_EMAIL = "anthonypichardo31@tskaizen.com";
 const QUOTE_TURNAROUND = "2 business days";
+const CONTACT_PHONE = "561-260-3951";
+// Google Analytics 4. Paste the Measurement ID (looks like "G-XXXXXXXXXX") between the quotes.
+// While it is empty nothing loads and nothing is tracked.
+const GA_ID = "";
+
+// ---- Analytics ----
+window.dataLayer = window.dataLayer || [];
+function gtag() { dataLayer.push(arguments); }
+if (GA_ID) {
+  const ga = document.createElement("script");
+  ga.async = true; ga.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+  document.head.appendChild(ga);
+  gtag("js", new Date()); gtag("config", GA_ID);
+}
+// Named events: demo_request, quote_request, contact_click, live_site_click, assistant_open, assistant_question
+function track(name, params) { if (GA_ID) gtag("event", name, params || {}); }
+document.addEventListener("click", function (e) {
+  const a = e.target.closest && e.target.closest("a[href]");
+  if (!a) return;
+  const h = a.getAttribute("href");
+  if (/^(tel|sms|mailto):/.test(h)) track("contact_click", { method: h.split(":")[0] });
+  else if (a.target === "_blank" && /^https:/.test(h)) track("live_site_click", { url: h });
+});
 
 // Every page opens at the top, including when returning with Back
 if ("scrollRestoration" in history) history.scrollRestoration = "manual";
@@ -31,7 +54,7 @@ document.querySelectorAll('.nav-links a[aria-current="page"], .brand').forEach(f
 })();
 
 // Fill shared values
-document.querySelectorAll("[data-email]").forEach(function (el) { el.textContent = CONTACT_EMAIL; });
+document.querySelectorAll("[data-email]").forEach(function (el) { el.textContent = CONTACT_EMAIL; if (el.tagName === "A") el.href = "mailto:" + CONTACT_EMAIL; });
 document.querySelectorAll("[data-turnaround]").forEach(function (el) { el.textContent = QUOTE_TURNAROUND; });
 document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
@@ -65,12 +88,13 @@ function selectEmail(btn) {
     try {
       const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
       if (!res.ok) throw new Error("Bad response");
+      track("quote_request", { plan: form.elements.plan.value });
       form.reset();
       status.className = "form-status ok";
       status.textContent = "Got it. Your quote will land in your inbox within " + QUOTE_TURNAROUND + ".";
     } catch (err) {
       status.className = "form-status err";
-      status.textContent = "That didn't send. Please email the same details to " + CONTACT_EMAIL + " and we'll quote from there.";
+      status.textContent = "That didn't send. Please email the same details to " + CONTACT_EMAIL + " and I'll quote from there.";
     }
     status.hidden = false;
     submit.disabled = false; submit.textContent = "Send my quote request";
@@ -86,7 +110,6 @@ function selectEmail(btn) {
     function () { return form.elements.name.value.trim() && form.elements.business.value.trim(); },
     function () { return /.+@.+\..+/.test(form.elements.email.value); },
     function () { return !!form.querySelector("input[name=need]:checked"); },
-    function () { return !!form.querySelector("input[name=pages]:checked"); },
     function () { return form.elements.details.value.trim().length > 10; },
   ];
   const update = function () { checks.forEach(function (fn, i) { bars[i].classList.toggle("on", !!fn()); }); };
@@ -105,12 +128,13 @@ document.querySelectorAll("form[data-formspree]").forEach(function (form) {
     try {
       const res = await fetch(FORM_ENDPOINT, { method: "POST", body: new FormData(form), headers: { Accept: "application/json" } });
       if (!res.ok) throw new Error("Bad response");
+      track("demo_request");
       form.reset();
       status.className = "form-status ok";
-      status.textContent = form.dataset.success || "Got it. We'll reply within " + QUOTE_TURNAROUND + ".";
+      status.textContent = form.dataset.success || "Got it. I'll reply within " + QUOTE_TURNAROUND + ".";
     } catch (err) {
       status.className = "form-status err";
-      status.textContent = "That didn't send. Email the same details to " + CONTACT_EMAIL + " and we'll take it from there.";
+      status.textContent = "That didn't send. Email the same details to " + CONTACT_EMAIL + " and I'll take it from there.";
     }
     status.hidden = false; btn.disabled = false; btn.textContent = label;
   });
@@ -385,4 +409,106 @@ document.querySelectorAll("[data-tabs]").forEach(function (root) {
   deck.addEventListener("mouseenter", function () { clearInterval(timer); });
   deck.addEventListener("mouseleave", auto);
   lay(); auto();
+})();
+
+// Guided assistant: a chat box with set answers taken from the Pricing page.
+// It never guesses. Anything it has no answer for is handed to Anthony.
+(function () {
+  const TEL = '<a href="tel:+15612603951">' + CONTACT_PHONE + "</a>";
+  const DEMO = '<a href="/#demo">Request your free demo</a>';
+  const TOPICS = [
+    { q: "What does a site cost?", k: ["cost", "price", "pricing", "much", "cheap", "expensive", "budget", "fee", "$"],
+      a: "Website builds are fixed prices: Launch $499 (up to 5 pages), Growth $749 (up to 10 pages, copy written for you) and Pro $1,249 (payments or ordering). Half to start, half at launch. <a href=\"/pricing\">See everything included</a>." },
+    { q: "How does the free demo work?", k: ["demo", "free", "try", "preview", "sample", "risk", "catch"],
+      a: "Send your business name and email. Within 5 business days you get a working link to your new home page, in your colors. Like it and I finish the full site. If not, you owe nothing and there are no follow-up calls. " + DEMO + "." },
+    { q: "How long does it take?", k: ["long", "time", "timeline", "fast", "when", "weeks", "days", "soon", "launch", "deadline"],
+      a: "The free demo arrives within 5 business days. After you approve it, Launch sites go live in about 2 weeks, Growth in 2 to 3 weeks and Pro in 3 to 4 weeks." },
+    { q: "Who owns the site?", k: ["own", "owner", "ownership", "domain", "code", "leave", "cancel", "contract", "locked"],
+      a: "You do. The domain is registered in your name, the code lives in an account you own, and hosting is under your email. Care plans are month to month and you can cancel any time." },
+    { q: "What automations do you offer?", k: ["automation", "automate", "automatic", "follow", "review", "reviews", "form", "lead", "leads", "reply"],
+      a: "Form automation from $149: new leads go to your inbox, phone or spreadsheet and the customer gets an instant reply. Review requests go out automatically after each job, priced with your project. All of them work with a site you already have. <a href=\"/pricing#addons\">See automations</a>." },
+    { q: "Tell me about the AI assistant", k: ["ai", "assistant", "chat", "chatbot", "bot", "agent", "book", "booking", "appointment", "calendar"],
+      a: "It is a chat assistant trained on your hours, services and prices. It answers questions, books appointments into your calendar and hands anything it doesn't know to you. $299 setup, then $49 a month." },
+    { q: "Do I need a care plan?", k: ["care", "hosting", "host", "monthly", "month", "maintenance", "edit", "edits", "update", "backup"],
+      a: "No. You own the site and can host it yourself. Care is $59 a month for hosting, backups, fixes and 30 minutes of edits. Care Plus is $99 a month with 2 hours of edits, Google Business Profile posts and a monthly report." },
+    { q: "Can you rebuild my current site?", k: ["rebuild", "redesign", "existing", "already", "current", "old", "wordpress", "wix", "squarespace", "move"],
+      a: "Yes, at the same prices. I keep the copy and photos worth keeping, and your email keeps working the whole time." },
+    { q: "Do I have to get on a call?", k: ["call", "phone", "meeting", "zoom", "talk", "speak", "contact", "human", "person", "anthony", "text", "email"],
+      a: "No call is needed. If you would rather talk, call or text Anthony at " + TEL + " or email <a href=\"mailto:" + CONTACT_EMAIL + "\">" + CONTACT_EMAIL + "</a>." },
+    { q: "How do payments work?", k: ["pay", "payment", "payments", "deposit", "half", "invoice", "card", "refund", "upfront"],
+      a: "Builds are half to start and half at launch. The demo is free and comes first, so you see your home page before paying anything. Care plans and the AI assistant bill monthly, or yearly with 2 months free." },
+    { q: "Social media", k: ["social", "instagram", "facebook", "posts", "post"],
+      a: "The Social Media Manager turns your photos and jobs into 3 posts a week on Instagram and Facebook, and answers comments and messages. You see each week's posts before they go out. $299 setup, then $199 a month." },
+    { q: "Where do you work?", k: ["where", "area", "areas", "location", "local", "orlando", "florida", "remote", "state", "near"],
+      a: "tsKaizen is based in Orlando and works with businesses in Central Florida, Palm Beach County and remotely anywhere in the US." },
+  ];
+  const STARTERS = [0, 1, 2, 3, 4, 5];
+  const esc = function (t) { const d = document.createElement("div"); d.textContent = t; return d.innerHTML; };
+
+  const launch = document.createElement("button");
+  launch.type = "button"; launch.className = "qa-launch"; launch.setAttribute("aria-haspopup", "dialog");
+  launch.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 4h14v9H9l-4 3v-3H3z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>Questions?';
+  const panel = document.createElement("section");
+  panel.className = "qa-panel"; panel.hidden = true; panel.setAttribute("role", "dialog"); panel.setAttribute("aria-label", "tsKaizen assistant");
+  panel.innerHTML = '<div class="qa-head"><div><b>tsKaizen assistant</b><span>Set answers about prices, timing and how it works. Anything else goes to Anthony.</span></div><button type="button" class="qa-close" aria-label="Close assistant">&times;</button></div>'
+    + '<div class="qa-log" role="log" aria-live="polite"></div><div class="qa-chips"></div>'
+    + '<form class="qa-form"><input type="text" aria-label="Type a question" placeholder="Type a question" autocomplete="off" maxlength="200"><button type="submit">Send</button></form>';
+  document.body.appendChild(launch); document.body.appendChild(panel);
+  const log = panel.querySelector(".qa-log"), chips = panel.querySelector(".qa-chips"), input = panel.querySelector("input");
+  let started = false;
+
+  function say(html, who) {
+    const p = document.createElement("p");
+    p.className = "qa-msg " + who; p.innerHTML = html;
+    log.appendChild(p); log.scrollTop = log.scrollHeight;
+  }
+  function setChips(ids) {
+    chips.innerHTML = "";
+    ids.forEach(function (i) {
+      const b = document.createElement("button");
+      b.type = "button"; b.textContent = TOPICS[i].q;
+      b.addEventListener("click", function () { ask(TOPICS[i].q, i); });
+      chips.appendChild(b);
+    });
+  }
+  function match(text) {
+    const words = text.toLowerCase().replace(/[^a-z0-9$ ]/g, " ").split(/\s+/);
+    let best = -1, score = 0;
+    TOPICS.forEach(function (t, i) {
+      let n = 0;
+      t.k.forEach(function (k) { if (words.indexOf(k) > -1 || (k === "$" && text.indexOf("$") > -1)) n++; });
+      if (n > score) { score = n; best = i; }
+    });
+    return best;
+  }
+  function ask(text, id) {
+    say(esc(text), "me");
+    const i = id === undefined ? match(text) : id;
+    track("assistant_question", { topic: i > -1 ? TOPICS[i].q : "unanswered" });
+    if (i > -1) say(TOPICS[i].a, "bot");
+    else say("I don't have a set answer for that one, and I won't guess. Text or call Anthony at " + TEL + ", or " + DEMO.replace("Request", "request") + " and ask in your reply.", "bot");
+    const rest = [];
+    TOPICS.forEach(function (t, k) { if (k !== i && rest.length < 5) rest.push(k); });
+    setChips(rest);
+  }
+  function open() {
+    panel.hidden = false; launch.hidden = true;
+    if (!started) {
+      started = true;
+      say("Hi. I can answer the common questions about tsKaizen. Pick one below or type your own.", "bot");
+      setChips(STARTERS);
+    }
+    track("assistant_open");
+    input.focus({ preventScroll: true });
+  }
+  function close() { panel.hidden = true; launch.hidden = false; launch.focus(); }
+  launch.addEventListener("click", open);
+  panel.querySelector(".qa-close").addEventListener("click", close);
+  panel.addEventListener("keydown", function (e) { if (e.key === "Escape") close(); });
+  panel.querySelector("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const v = input.value.trim();
+    if (!v) return;
+    input.value = ""; ask(v);
+  });
 })();
